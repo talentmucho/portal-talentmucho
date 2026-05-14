@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 
-type AuthState = { error: string | null };
+type AuthState = { error: string | null; success?: boolean };
 
 export async function login(
   _prevState: AuthState,
@@ -54,6 +54,40 @@ export async function register(
   if (error) return { error: error.message };
 
   redirect("/participant");
+}
+
+export async function forgotPassword(
+  _prevState: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  const email = formData.get("email") as string;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${siteUrl}/auth/callback?next=/reset-password`,
+  });
+
+  if (error) return { error: error.message };
+  return { error: null, success: true };
+}
+
+export async function resetPassword(
+  _prevState: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  const password = formData.get("password") as string;
+
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) return { error: error.message };
+
+  await supabase.auth.signOut();
+  redirect("/login");
 }
 
 export async function logout(): Promise<void> {

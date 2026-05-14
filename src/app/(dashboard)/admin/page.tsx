@@ -95,7 +95,7 @@ export default async function AdminDashboard() {
         <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
           {/* Table header */}
           <div
-            className="grid grid-cols-[1fr_auto_auto_auto] gap-4 px-6 py-3 text-xs font-semibold uppercase tracking-wider hidden sm:grid"
+            className="grid grid-cols-[1fr_auto_auto_auto] gap-4 px-6 py-3 text-xs font-semibold uppercase tracking-wider sm:grid"
             style={{
               background: "var(--beige-100)",
               color: "var(--taupe-400)",
