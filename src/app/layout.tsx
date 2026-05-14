@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { GooeyToaster } from "@/components/ui/goey-toaster";
+import { gooeyToast } from "@/components/ui/goey-toaster";
 
 const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -34,10 +36,11 @@ export default function RootLayout({
       className={cn(
         "h-full antialiased",
         manrope.variable,
-        cormorantGaramond.variable
+        cormorantGaramond.variable,
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+      <GooeyToaster />
     </html>
   );
 }
