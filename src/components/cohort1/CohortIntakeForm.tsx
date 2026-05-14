@@ -63,7 +63,7 @@ export default function CohortIntakeForm({
   }, []);
 
   return (
-    <div className="h-screen bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden">
+    <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 
       {/* Top bar */}
       <header className="h-14 shrink-0 flex items-center justify-between px-5 border-b border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">

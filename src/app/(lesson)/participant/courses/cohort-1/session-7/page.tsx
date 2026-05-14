@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -124,7 +124,7 @@ Don&apos;t change anything else while fixing this.`,
 
 export default function Session7Page() {
   return (
-    <div className="h-screen bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden">
+    <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 
       {/* Top bar */}
       <header className="h-14 shrink-0 flex items-center justify-between px-5 border-b border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
@@ -161,7 +161,7 @@ export default function Session7Page() {
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
 
         {/* Content */}
-        <main className="flex-1 min-w-0 overflow-y-auto p-6 md:p-8 flex flex-col gap-8">
+        <main className="flex-1 min-w-0 overflow-y-auto p-6 md:p-8 flex flex-col gap-8 tm-scrollbar">
 
           {/* Title */}
           <div>
@@ -321,7 +321,7 @@ export default function Session7Page() {
         </main>
 
         {/* Sidebar */}
-        <aside className="lg:w-72 xl:w-80 shrink-0 border-t lg:border-t-0 lg:border-l border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-6 flex flex-col gap-6 overflow-y-auto">
+        <aside className="lg:w-72 xl:w-80 shrink-0 border-t lg:border-t-0 lg:border-l border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-6 flex flex-col gap-6 overflow-y-auto tm-scrollbar">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Session details</p>
             <dl className="space-y-2 text-sm">

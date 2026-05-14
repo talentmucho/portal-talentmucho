@@ -67,13 +67,17 @@ export function ParticipantTopbar({ fullName, email, onMenuClick }: Props) {
 
   return (
     <header
-      className="shrink-0 h-14 md:h-16 bg-white dark:bg-[var(--charcoal-900)] md:rounded-2xl border-b border-[var(--beige-200)] dark:border-white/5 md:border flex items-center px-4 md:px-6 gap-3"
-      style={{ boxShadow: "0 1px 8px -1px rgb(61 53 46 / 0.06)" }}
+      className="shrink-0 h-14 md:h-16 rounded-2xl border flex items-center px-4 md:px-6 gap-3"
+      style={{
+        background: "var(--charcoal-900)",
+        borderColor: "rgb(255 255 255 / 0.08)",
+      }}
     >
       {/* Hamburger — mobile only */}
       <button
         onClick={onMenuClick}
-        className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-[var(--taupe-400)] hover:bg-[var(--beige-100)] dark:hover:bg-[var(--accent)] transition-all"
+        className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:bg-white/10"
+        style={{ color: "rgb(255 255 255 / 0.45)" }}
         aria-label="Open menu"
       >
         <Menu className="size-5" />
@@ -83,14 +87,14 @@ export function ParticipantTopbar({ fullName, email, onMenuClick }: Props) {
         <BreadcrumbList>
           {crumbs.map((crumb, i) => (
             <React.Fragment key={crumb.href}>
-              {i > 0 && <BreadcrumbSeparator />}
+              {i > 0 && <BreadcrumbSeparator className="text-white/20" />}
               <BreadcrumbItem>
                 {crumb.isLast ? (
-                  <BreadcrumbPage className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground truncate" style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)" }}>
+                  <BreadcrumbPage className="font-serif font-light text-white/90 truncate" style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)" }}>
                     {crumb.label}
                   </BreadcrumbPage>
                 ) : (
-                  <BreadcrumbLink href={crumb.href} className="font-sans text-sm text-[var(--taupe-400)] hover:text-[var(--charcoal-900)] dark:hover:text-foreground">
+                  <BreadcrumbLink href={crumb.href} className="font-sans text-sm text-white/40 hover:text-white/80 transition-colors">
                     {crumb.label}
                   </BreadcrumbLink>
                 )}
@@ -106,31 +110,32 @@ export function ParticipantTopbar({ fullName, email, onMenuClick }: Props) {
           modes={["light", "dark"]}
           variant="ghost"
           size="default"
-          className="w-9 h-9 rounded-xl text-[var(--taupe-400)] hover:bg-[var(--beige-100)] dark:hover:bg-[var(--accent)] hover:text-[var(--espresso-700)] dark:hover:text-foreground"
+          className="w-9 h-9 rounded-xl hover:bg-white/10 text-white/45 hover:text-white/90"
           aria-label="Toggle theme"
         />
 
         {/* Notifications */}
         <button
-          className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--taupe-400)] hover:bg-[var(--beige-100)] dark:hover:bg-[var(--accent)] hover:text-[var(--espresso-700)] dark:hover:text-foreground transition-all duration-150"
+          className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all duration-150"
+          style={{ color: "rgb(255 255 255 / 0.45)" }}
           aria-label="Notifications"
         >
           <Bell className="size-4" />
         </button>
 
         {/* User dropdown */}
-        <div className="pl-2 ml-1 border-l border-[var(--beige-200)] dark:border-[var(--border)]">
+        <div className="pl-2 ml-1 border-l border-white/10">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-[var(--beige-100)] dark:hover:bg-[var(--accent)] transition-all duration-150"
+                className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-white/10 transition-all duration-150"
                 aria-label="User menu"
               >
-                <span className="text-sm font-medium text-[var(--espresso-800)] dark:text-foreground hidden sm:block">
+                <span className="text-sm font-medium text-white/80 hidden sm:block">
                   {fullName.split(" ")[0]}
                 </span>
-                <div className="w-8 h-8 rounded-full bg-[var(--beige-200)] dark:bg-[var(--accent)] flex items-center justify-center shrink-0">
-                  <span className="text-xs font-semibold text-[var(--espresso-700)] dark:text-foreground">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <span className="text-xs font-semibold text-white/70">
                     {initials}
                   </span>
                 </div>

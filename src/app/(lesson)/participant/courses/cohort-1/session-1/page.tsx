@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowLeft, ArrowRight, PlayCircle } from "lucide-react";
 
 const SESSION = {
@@ -23,7 +23,7 @@ const NEXT     = "/participant/courses/cohort-1/session-2";
 
 export default function Session1Page() {
   return (
-    <div className="h-screen bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden">
+    <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 
       {/* Top bar */}
       <header className="h-14 shrink-0 flex items-center justify-between px-5 border-b border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
@@ -64,7 +64,7 @@ export default function Session1Page() {
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
 
         {/* Content */}
-        <main className="flex-1 flex flex-col p-6 md:p-8 gap-6 min-w-0 overflow-y-auto">
+        <main className="flex-1 flex flex-col p-6 md:p-8 gap-6 min-w-0 overflow-y-auto tm-scrollbar">
           <div className="w-full max-h-[55vh] aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] flex flex-col items-center justify-center gap-3">
             {SESSION.videoUrl ? (
               <iframe src={SESSION.videoUrl} className="w-full h-full rounded-2xl" allowFullScreen />
