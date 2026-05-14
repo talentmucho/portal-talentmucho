@@ -13,7 +13,7 @@ import {
   updateAdminProfile,
   updateAdminEmail,
   updateAdminPassword,
-  promoteToAdmin,
+  createCoAdmin,
   demoteAdmin,
 } from "@/app/actions/admin-settings";
 
@@ -87,7 +87,7 @@ export function AdminSettingsForm({ fullName, email, currentUserId, admins }: Pr
   const [profileState, profileAction, profilePending] = useActionState(updateAdminProfile, initialState);
   const [emailState, emailAction, emailPending] = useActionState(updateAdminEmail, initialState);
   const [passwordState, passwordAction, passwordPending] = useActionState(updateAdminPassword, initialState);
-  const [promoteState, promoteAction, promotePending] = useActionState(promoteToAdmin, initialState);
+  const [coAdminState, coAdminAction, coAdminPending] = useActionState(createCoAdmin, initialState);
   const [demotePending, startDemoteTransition] = useTransition();
 
   useEffect(() => {
@@ -107,9 +107,9 @@ export function AdminSettingsForm({ fullName, email, currentUserId, admins }: Pr
   }, [passwordState]);
 
   useEffect(() => {
-    if (promoteState?.error) toast.error(promoteState.error);
-    if (promoteState?.success) toast.success("User promoted to admin");
-  }, [promoteState]);
+    if (coAdminState?.error) toast.error(coAdminState.error);
+    if (coAdminState?.success) toast.success("Co-admin account created");
+  }, [coAdminState]);
 
   function handleDemote(userId: string, name: string | null) {
     startDemoteTransition(async () => {
@@ -283,9 +283,21 @@ export function AdminSettingsForm({ fullName, email, currentUserId, admins }: Pr
                 Add co-admin
               </h3>
               <p className="tm-body-sm mb-5">
-                Enter the email of a registered participant to grant them admin access.
+                Create a new admin account. They can log in immediately with these credentials.
               </p>
-              <form action={promoteAction} className="space-y-4">
+              <form action={coAdminAction} className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="block text-sm font-medium text-[var(--espresso-800)] dark:text-foreground/70">
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    required
+                    placeholder="Jane Doe"
+                    className={inputClass}
+                  />
+                </div>
                 <div className="space-y-1.5">
                   <label className="block text-sm font-medium text-[var(--espresso-800)] dark:text-foreground/70">
                     Email address
@@ -297,12 +309,16 @@ export function AdminSettingsForm({ fullName, email, currentUserId, admins }: Pr
                     placeholder="colleague@example.com"
                     className={inputClass}
                   />
-                  <p className="text-xs text-[var(--taupe-400)]">
-                    The user must already have a registered account. They&apos;ll get admin access on their next login.
-                  </p>
                 </div>
-                <button type="submit" disabled={promotePending} className={btnClass} style={btnStyle}>
-                  {promotePending ? "Promoting…" : "Grant admin access"}
+                <div className="space-y-1.5">
+                  <label className="block text-sm font-medium text-[var(--espresso-800)] dark:text-foreground/70">
+                    Password
+                  </label>
+                  <PasswordInput name="password" autoComplete="new-password" />
+                  <p className="text-xs text-[var(--taupe-400)]">Min 6 characters.</p>
+                </div>
+                <button type="submit" disabled={coAdminPending} className={btnClass} style={btnStyle}>
+                  {coAdminPending ? "Creating…" : "Create admin account"}
                 </button>
               </form>
             </div>

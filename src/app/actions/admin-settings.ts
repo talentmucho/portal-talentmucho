@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/utils/supabase/server";
+import { createClient as createAnonClient } from "@supabase/supabase-js";
 
 type State = { error: string | null; success?: boolean };
 
@@ -79,31 +80,34 @@ export async function updateAdminPassword(_prev: State, formData: FormData): Pro
   return { error: null, success: true };
 }
 
-export async function promoteToAdmin(_prev: State, formData: FormData): Promise<State> {
+export async function createCoAdmin(_prev: State, formData: FormData): Promise<State> {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: "Not authenticated" };
 
+  const fullName = (formData.get("full_name") as string | null)?.trim();
   const email = (formData.get("email") as string | null)?.trim().toLowerCase();
+  const password = formData.get("password") as string | null;
+
+  if (!fullName) return { error: "Name is required" };
   if (!email) return { error: "Email is required" };
+  if (!password || password.length < 6) return { error: "Password must be at least 6 characters" };
 
-  const { data: profile, error: findError } = await supabase
-    .from("profiles")
-    .select("id, role, full_name, email")
-    .eq("email", email)
-    .maybeSingle();
+  // Use plain (non-SSR) client so signup doesn't touch current admin session cookies
+  const anonClient = createAnonClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
+  );
 
-  if (findError) return { error: findError.message };
-  if (!profile) return { error: "No registered user found with that email" };
-  if (profile.id === user.id) return { error: "Cannot change your own role this way" };
-  if (profile.role === "admin") return { error: "User is already an admin" };
-
-  const { error } = await supabase
-    .from("profiles")
-    .update({ role: "admin", updated_at: new Date().toISOString() })
-    .eq("id", profile.id);
+  const { error } = await anonClient.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: fullName, role: "admin" },
+    },
+  });
 
   if (error) return { error: error.message };
 
