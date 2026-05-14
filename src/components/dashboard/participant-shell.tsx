@@ -44,7 +44,7 @@ export function ParticipantShell({ fullName, email, children }: Props) {
           onMenuClick={() => setSidebarOpen((o) => !o)}
         />
         {/* Main — white on light / card on dark */}
-        <main className="flex-1 overflow-y-auto bg-white dark:bg-[var(--charcoal-900)] md:rounded-3xl md:border md:border-[var(--beige-200)] dark:md:border-[var(--border)]"
+        <main className="tm-scrollbar flex-1 overflow-y-auto bg-white dark:bg-[var(--charcoal-900)] md:rounded-3xl md:border md:border-[var(--beige-200)] dark:md:border-[var(--border)]"
           style={{ boxShadow: "0 2px 16px -2px rgb(61 53 46 / 0.06)" }}
         >
           {children}

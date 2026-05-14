@@ -506,3 +506,38 @@
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
+
+/* ================================================
+   CUSTOM SCROLLBAR — .tm-scrollbar
+   ================================================ */
+
+.tm-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.tm-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tm-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--clay-500);
+  border-radius: 999px;
+}
+.tm-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--clay-600);
+}
+
+.dark .tm-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--espresso-700);
+}
+.dark .tm-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--taupe-400);
+}
+
+/* Firefox */
+.tm-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--clay-500) transparent;
+}
+.dark .tm-scrollbar {
+  scrollbar-color: var(--espresso-700) transparent;
+}

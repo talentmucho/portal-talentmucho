@@ -47,16 +47,34 @@ export default async function ParticipantDashboard() {
         />
       </div>
 
-      {/* Courses placeholder */}
+      {/* Courses */}
       <div>
         <h3 className="font-serif font-light text-lg text-[var(--charcoal-900)] dark:text-foreground mb-4">
           My Courses
         </h3>
-        <div className="rounded-2xl border border-dashed border-[var(--beige-300)] dark:border-[var(--border)] p-10 text-center">
-          <BookOpen className="size-8 text-[var(--beige-300)] dark:text-muted-foreground mx-auto mb-3" />
-          <p className="text-sm text-[var(--taupe-400)]">
-            No courses enrolled yet.
-          </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a
+            href="/participant/courses/cohort-1"
+            className="group rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-6 flex flex-col gap-3 hover:shadow-md hover:border-[var(--beige-300)] dark:hover:border-white/10 transition-all"
+          >
+            <div className="flex items-center justify-between">
+              <span className="tm-eyebrow">Cohort 1</span>
+              <BookOpen className="size-4 text-[var(--taupe-400)]" />
+            </div>
+            <div>
+              <h4 className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground text-base leading-snug">
+                AI Bootcamp: From Zero to Practitioner
+              </h4>
+              <p className="tm-body-sm mt-1 line-clamp-2">
+                Master the fundamentals of AI — from prompting and automation to
+                building real workflows that save you hours every week.
+              </p>
+            </div>
+            <div className="mt-auto pt-2 border-t border-[var(--beige-200)] dark:border-white/5 flex items-center justify-between text-xs text-[var(--taupe-400)]">
+              <span>8 modules</span>
+              <span className="group-hover:underline">View course →</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
