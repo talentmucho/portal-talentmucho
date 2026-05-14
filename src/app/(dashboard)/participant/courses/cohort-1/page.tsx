@@ -1,6 +1,7 @@
 "use client";
 
-import { Calendar, Clock, Video, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Calendar, Clock, Video, ArrowRight, ClipboardList } from "lucide-react";
 import {
   Tabs,
   TabsList,
@@ -116,13 +117,37 @@ export default function Cohort1Page() {
             <div className="h-full rounded-full bg-[var(--clay-500)]" style={{ width: `${progress}%` }} />
           </div>
           <a
-            href="#"
+            href="/participant/courses/cohort-1/session-1"
             className="mt-1 inline-flex items-center justify-center gap-2 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity w-full"
           >
             Join next session
             <ArrowRight className="size-3.5" />
           </a>
         </div>
+      </div>
+
+      {/* Intake CTA */}
+      <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <span className="w-10 h-10 rounded-xl bg-[var(--beige-100)] dark:bg-white/5 flex items-center justify-center shrink-0">
+            <ClipboardList className="size-4 text-[var(--clay-500)]" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">
+              Build your Bootcamp Map
+            </p>
+            <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">
+              10 questions · shapes every session to your business
+            </p>
+          </div>
+        </div>
+        <Link
+          href="/participant/courses/cohort-1/session-2"
+          className="inline-flex items-center justify-center gap-2 shrink-0 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+        >
+          Start
+          <ArrowRight className="size-3.5" />
+        </Link>
       </div>
 
       {/* Tabs */}
