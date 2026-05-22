@@ -68,8 +68,6 @@ const sessions = [
   { tag: "W4 · S8", date: "Sun, Jun 28", time: "10 AM–1 PM EST", topic: "Showcases, Q&A, and graduation", color: "#6B5A7A" },
 ];
 
-const completedCount = 3;
-const progress = Math.round((completedCount / sessions.length) * 100);
 
 export default function Cohort1Page() {
   return (
@@ -106,20 +104,13 @@ export default function Cohort1Page() {
           </div>
         </div>
 
-        {/* Progress + CTA */}
-        <div className="lg:shrink-0 lg:w-72 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col gap-3">
-          <div className="flex items-center justify-between text-sm">
-            <span className="font-medium text-[var(--charcoal-900)] dark:text-foreground">Progress</span>
-            <span className="text-[var(--taupe-400)]">{completedCount} / {sessions.length} sessions</span>
-          </div>
-          <div className="w-full h-1.5 rounded-full bg-[var(--beige-200)] dark:bg-white/10 overflow-hidden">
-            <div className="h-full rounded-full bg-[var(--clay-500)]" style={{ width: `${progress}%` }} />
-          </div>
+        {/* CTA */}
+        <div className="lg:shrink-0 lg:w-72 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col justify-center">
           <a
             href="/participant/courses/cohort-1/session-3"
-            className="mt-1 inline-flex items-center justify-center gap-2 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity w-full"
+            className="inline-flex items-center justify-center gap-2 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity w-full"
           >
-            Join next session
+            Start session
             <ArrowRight className="size-3.5" />
           </a>
         </div>
