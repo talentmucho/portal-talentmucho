@@ -96,13 +96,6 @@ export function DataTable<TData, TValue>({
           />
         </div>
 
-        <Button
-          size="sm"
-          className="gap-1.5 rounded-xl shrink-0 bg-[var(--charcoal-900)] text-white hover:bg-[var(--espresso-800)] dark:bg-foreground dark:text-background dark:hover:bg-[var(--beige-200)]"
-        >
-          <UserPlus className="size-3.5" />
-          Add Participant
-        </Button>
       </div>
 
       {/* Table */}

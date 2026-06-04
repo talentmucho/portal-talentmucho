@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 import { register } from "@/app/actions/auth";
 import { toast } from "sonner";
 
@@ -9,6 +10,7 @@ const initialState = { error: null };
 
 export default function RegisterPage() {
   const [state, formAction, isPending] = useActionState(register, initialState);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (state?.error) toast.error("Registration failed", { description: state.error });
@@ -68,15 +70,26 @@ export default function RegisterPage() {
               <label className="block text-sm font-medium text-[var(--espresso-800)]">
                 Password
               </label>
-              <input
-                type="password"
-                name="password"
-                required
-                autoComplete="new-password"
-                placeholder="••••••••"
-                minLength={6}
-                className="w-full px-4 py-3 rounded-lg border border-[var(--beige-200)] bg-white text-sm text-[var(--charcoal-900)] placeholder:text-[var(--taupe-400)] focus:outline-none focus:ring-2 focus:ring-[var(--clay-500)] focus:border-transparent transition-all"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  required
+                  autoComplete="new-password"
+                  placeholder="••••••••"
+                  minLength={6}
+                  className="w-full px-4 py-3 pr-10 rounded-lg border border-[var(--beige-200)] bg-white text-sm text-[var(--charcoal-900)] placeholder:text-[var(--taupe-400)] focus:outline-none focus:ring-2 focus:ring-[var(--clay-500)] focus:border-transparent transition-all"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--taupe-400)] hover:text-[var(--charcoal-900)] transition-colors"
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
               <p className="text-xs text-[var(--taupe-400)]">Min 6 characters</p>
             </div>
 

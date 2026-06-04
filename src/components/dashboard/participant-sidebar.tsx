@@ -37,8 +37,8 @@ import { logout } from "@/app/actions/auth";
 const nav = [
   { href: "/participant", label: "Dashboard", icon: LayoutDashboard },
   { href: "/participant/courses", label: "My Courses", icon: BookOpen },
-  { href: "/participant/progress", label: "Progress", icon: BarChart2, locked: true },
-  { href: "/participant/certificates", label: "Certificates", icon: Award, locked: true },
+  // { href: "/participant/progress", label: "Progress", icon: BarChart2, locked: true },
+  { href: "/participant/certificates", label: "Certificates", icon: Award },
   { href: "/participant/settings", label: "Settings", icon: Settings },
 ];
 
@@ -140,7 +140,7 @@ export function ParticipantSidebar({ fullName, email, onClose, collapsed, onTogg
       {/* Nav */}
       <nav className="flex-1 px-2 py-4 space-y-0.5 overflow-y-auto overflow-x-hidden">
         <TooltipProvider>
-          {nav.map(({ href, label, icon: Icon, locked }) => {
+          {nav.map(({ href, label, icon: Icon }) => {
             const active = pathname === href;
 
             const content = (
@@ -152,8 +152,7 @@ export function ParticipantSidebar({ fullName, email, onClose, collapsed, onTogg
                 {!collapsed && (
                   <>
                     <span className="flex-1">{label}</span>
-                    {locked && <Lock className="size-3 opacity-50 shrink-0" />}
-                    {active && !locked && (
+                    {active && (
                       <span
                         className="w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ background: "var(--clay-500)" }}
@@ -167,7 +166,6 @@ export function ParticipantSidebar({ fullName, email, onClose, collapsed, onTogg
             const className = [
               "flex items-center py-2.5 rounded-xl text-sm font-medium transition-all duration-150",
               collapsed ? "justify-center px-0 w-full" : "gap-3 px-3",
-              locked ? "opacity-50 cursor-not-allowed" : "",
             ].join(" ");
 
             const style = {
@@ -175,11 +173,7 @@ export function ParticipantSidebar({ fullName, email, onClose, collapsed, onTogg
               color: active ? "rgb(255 255 255 / 0.95)" : "rgb(255 255 255 / 0.45)",
             };
 
-            const linkContent = locked ? (
-              <div className={className} style={style}>
-                {content}
-              </div>
-            ) : (
+            const linkContent = (
               <Link
                 href={href}
                 onClick={onClose}
@@ -209,7 +203,7 @@ export function ParticipantSidebar({ fullName, email, onClose, collapsed, onTogg
               return (
                 <Tooltip key={href} side="right">
                   <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
-                  <TooltipContent>{label}{locked ? " (Locked)" : ""}</TooltipContent>
+                  <TooltipContent>{label}</TooltipContent>
                 </Tooltip>
               );
             }

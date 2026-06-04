@@ -3,7 +3,7 @@ import { Users, BookOpen } from "lucide-react";
 import { createClient } from "@/utils/supabase/server";
 import { type Participant, type Course } from "./columns";
 import { type IntakeResponse } from "./responses-table";
-import { ParticipantsPageTabs } from "./participants-page-tabs";
+import { ParticipantsTable } from "./participants-table";
 
 export default async function ParticipantsPage() {
   const cookieStore = await cookies();
@@ -115,11 +115,13 @@ export default async function ParticipantsPage() {
         </div>
       </div>
 
-      <ParticipantsPageTabs
-        participants={participants}
-        courses={courses}
-        intakeResponses={intakeResponses}
-      />
+      <div className="pt-2">
+        <ParticipantsTable
+          participants={participants}
+          courses={courses}
+          intakeResponses={intakeResponses}
+        />
+      </div>
     </div>
   );
 }
