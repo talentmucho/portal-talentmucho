@@ -1,6 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getIntakeData } from "@/utils/intake-helper";
+import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
+import { SessionEditPanel } from "@/components/session-edit-panel";
 
 const SESSION = {
   tag: "Kickoff",
@@ -23,7 +26,12 @@ const OVERVIEW = "/participant/courses/cohort-1";
 const NEXT     = "/participant/courses/cohort-1/session-2";
 
 export default async function Session1Page() {
-  const intake = await getIntakeData();
+  const [intake, overrides, isAdmin] = await Promise.all([
+    getIntakeData(),
+    getSessionOverrides("cohort-1", 1),
+    getIsAdmin(),
+  ]);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
 
   const focusArea = intake?.first_focus || "business operations";
   const businessContext = intake?.business_oneliner || "[your business one-liner]";
@@ -52,15 +60,15 @@ export default async function Session1Page() {
           <span
             className="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full"
             style={{
-              background: `${SESSION.color}22`,
-              color: SESSION.color,
-              border: `1px solid ${SESSION.color}44`,
+              background: `${session.color}22`,
+              color: session.color,
+              border: `1px solid ${session.color}44`,
             }}
           >
-            {SESSION.tag}
+            {session.tag}
           </span>
           <span className="font-medium text-sm text-[var(--charcoal-900)] dark:text-foreground line-clamp-1 max-w-[280px]">
-            {SESSION.title}
+            {session.title}
           </span>
         </div>
 
@@ -78,28 +86,35 @@ export default async function Session1Page() {
 
         {/* Content */}
         <main className="flex-1 flex flex-col p-6 md:p-8 gap-6 min-w-0 overflow-y-auto tm-scrollbar">
-          <div className="w-full max-h-[55vh] aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] flex flex-col items-center justify-center gap-3">
-            {SESSION.videoUrl ? (
-              <iframe src={SESSION.videoUrl} className="w-full h-full rounded-2xl" allowFullScreen />
+          <div className="relative w-full max-h-[55vh] aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] overflow-hidden">
+            {session.videoUrl ? (
+              <iframe src={session.videoUrl} className="w-full h-full" allowFullScreen />
             ) : (
               <>
-                <PlayCircle className="size-12 text-[var(--taupe-400)] opacity-40" />
-                <p className="text-sm text-[var(--taupe-400)]">
-                  Recording will appear here after the live session
-                </p>
+                <Image
+                  src="/assets/events/kickoff-banner.png"
+                  alt="TalentMucho AI Bootcamp ~ Learn. Create. Grow."
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 70vw, 100vw"
+                  className="object-cover"
+                />
+                <span className="absolute bottom-3 right-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--charcoal-900)]/70 bg-white/70 backdrop-blur px-2.5 py-1 rounded-full">
+                  Recording goes live after the session
+                </span>
               </>
             )}
           </div>
 
           <div>
-            <p className="tm-eyebrow mb-1">{SESSION.weekLabel}</p>
+            <p className="tm-eyebrow mb-1">{session.weekLabel}</p>
             <h1
               className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-3"
               style={{ fontSize: "clamp(1.25rem, 2vw, 1.875rem)" }}
             >
-              {SESSION.title}
+              {session.title}
             </h1>
-            <p className="tm-body-sm max-w-2xl">{SESSION.description}</p>
+            <p className="tm-body-sm max-w-2xl">{session.description}</p>
 
             <div className="mt-8 p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">
@@ -145,11 +160,11 @@ export default async function Session1Page() {
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-2">
                 <dt className="text-[var(--taupe-400)]">Date</dt>
-                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{SESSION.date}</dd>
+                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{session.date}</dd>
               </div>
               <div className="flex justify-between gap-2">
                 <dt className="text-[var(--taupe-400)]">Time</dt>
-                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{SESSION.time}</dd>
+                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{session.time}</dd>
               </div>
             </dl>
           </div>
@@ -159,7 +174,7 @@ export default async function Session1Page() {
               Resources
             </p>
             <ul className="space-y-2">
-              {SESSION.resources.map((r) => (
+              {session.resources.map((r) => (
                 <li key={r.label}>
                   <a
                     href={r.href}
@@ -174,7 +189,7 @@ export default async function Session1Page() {
 
           <div className="mt-auto">
             <a
-              href="#"
+              href={session.zoomUrl}
               className="inline-flex items-center justify-center gap-2 w-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity"
             >
               Join live on Zoom
@@ -183,6 +198,9 @@ export default async function Session1Page() {
           </div>
         </aside>
       </div>
+      {isAdmin && (
+        <SessionEditPanel courseSlug="cohort-1" sessionNumber={1} initial={session} />
+      )}
     </div>
   );
 }

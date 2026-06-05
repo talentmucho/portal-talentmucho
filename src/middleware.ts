@@ -40,6 +40,10 @@ export async function middleware(request: NextRequest) {
   }
 
   if (pathname.startsWith("/participant") && role !== "participant") {
+    // Admins can access course/lesson content
+    if (role === "admin" && pathname.startsWith("/participant/courses")) {
+      return supabaseResponse;
+    }
     return NextResponse.redirect(new URL("/admin", request.url));
   }
 

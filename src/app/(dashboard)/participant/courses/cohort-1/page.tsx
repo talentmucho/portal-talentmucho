@@ -13,6 +13,9 @@ export default async function Cohort1Page() {
 
   if (!user) redirect("/login");
 
+  const role = user.app_metadata?.role || user.user_metadata?.role || null;
+  const isAdmin = role === "admin";
+
   const admin = createAdminClient();
 
   const { data: intake } = await admin
@@ -23,5 +26,5 @@ export default async function Cohort1Page() {
     .eq("user_id", user.id)
     .maybeSingle();
 
-  return <Cohort1Client intake={intake ?? {}} />;
+  return <Cohort1Client intake={intake ?? {}} isAdmin={isAdmin} />;
 }

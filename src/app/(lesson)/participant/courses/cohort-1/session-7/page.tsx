@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { getIntakeData } from "@/utils/intake-helper";
+import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
+import { SessionEditPanel } from "@/components/session-edit-panel";
 
 const SESSION = {
   tag: "W3 · S6",
@@ -54,7 +56,12 @@ const iterationRules = [
 ];
 
 export default async function Session8Page() {
-  const intake = await getIntakeData();
+  const [intake, overrides, isAdmin] = await Promise.all([
+    getIntakeData(),
+    getSessionOverrides("cohort-1", 7),
+    getIsAdmin(),
+  ]);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
 
   const PROMPTS: Record<string, string> = {
     "Dashboard planning conversation": `I want to build a business dashboard. Help me plan it before we build.
@@ -149,12 +156,12 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
         <div className="flex items-center gap-2">
           <span
             className="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full"
-            style={{ background: `${SESSION.color}22`, color: SESSION.color, border: `1px solid ${SESSION.color}44` }}
+            style={{ background: `${session.color}22`, color: session.color, border: `1px solid ${session.color}44` }}
           >
-            {SESSION.tag}
+            {session.tag}
           </span>
           <span className="font-medium text-sm text-[var(--charcoal-900)] dark:text-foreground line-clamp-1 max-w-[280px]">
-            {SESSION.title}
+            {session.title}
           </span>
         </div>
 
@@ -175,11 +182,16 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
 
           {/* Title */}
           <div>
-            <p className="tm-eyebrow mb-1">{SESSION.weekLabel}</p>
+            <p className="tm-eyebrow mb-1">{session.weekLabel}</p>
             <h1 className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-3" style={{ fontSize: "clamp(1.25rem, 2vw, 1.875rem)" }}>
-              {SESSION.title}
+              {session.title}
             </h1>
-            <p className="tm-body-sm max-w-2xl">{SESSION.description}</p>
+            <p className="tm-body-sm max-w-2xl">{session.description}</p>
+            {session.videoUrl && (
+              <div className="relative w-full aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] overflow-hidden mt-4">
+                <iframe src={session.videoUrl} className="w-full h-full" allowFullScreen />
+              </div>
+            )}
           </div>
 
           {/* Objectives */}
@@ -299,11 +311,11 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-2">
                 <dt className="text-[var(--taupe-400)]">Date</dt>
-                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{SESSION.date}</dd>
+                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{session.date}</dd>
               </div>
               <div className="flex justify-between gap-2">
                 <dt className="text-[var(--taupe-400)]">Time</dt>
-                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{SESSION.time}</dd>
+                <dd className="font-medium text-[var(--charcoal-900)] dark:text-foreground text-right">{session.time}</dd>
               </div>
             </dl>
           </div>
@@ -323,7 +335,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Resources</p>
             <ul className="space-y-2">
-              {SESSION.resources.map((r) => (
+              {session.resources.map((r) => (
                 <li key={r.label}>
                   <a href={r.href} className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]">
                     {r.label}
@@ -334,13 +346,16 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
           </div>
 
           <div className="mt-auto">
-            <a href="#" className="inline-flex items-center justify-center gap-2 w-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity">
+            <a href={session.zoomUrl} className="inline-flex items-center justify-center gap-2 w-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity">
               Join live on Zoom
               <ArrowRight className="size-3.5" />
             </a>
           </div>
         </aside>
       </div>
+      {isAdmin && (
+        <SessionEditPanel courseSlug="cohort-1" sessionNumber={7} initial={session} />
+      )}
     </div>
   );
 }
