@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Calendar, Clock, Video, ArrowRight, Lock } from "lucide-react";
+import { Calendar, Clock, Video, ArrowRight } from "lucide-react";
 import { IntakeTab } from "./intake/intake-tab";
 import type { IntakeAnswers } from "@/app/actions/intake";
 import {
@@ -213,12 +213,13 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 pt-2">
               {weeks.map((w) => {
                 const locked = !isAdmin && w.num !== "01";
+                if (locked) return null;
                 return (
                   <div
                     key={w.num}
-                    className={`rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden flex flex-col${locked ? " opacity-50" : ""}`}
+                    className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden flex flex-col"
                   >
-                    <div className="px-5 py-4 flex items-start justify-between gap-2" style={{ background: locked ? "#9CA3AF" : w.color }}>
+                    <div className="px-5 py-4 flex items-start justify-between gap-2" style={{ background: w.color }}>
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">
                           Week {w.num}
@@ -227,7 +228,6 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
                           {w.theme}
                         </p>
                       </div>
-                      {locked && <Lock className="size-3.5 text-white/60 shrink-0 mt-1" />}
                     </div>
                     <div className="p-5 bg-[var(--beige-100)] dark:bg-[var(--card)] flex-1 flex flex-col gap-3">
                       <div>
@@ -235,13 +235,13 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
                           Deliverable
                         </p>
                         <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-                          {locked ? "Unlocks after completing Week " + String(Number(w.num) - 1).padStart(2, "0") : w.deliverable}
+                          {w.deliverable}
                         </p>
                       </div>
                       <div className="border-t border-[var(--beige-200)] dark:border-white/5 pt-3 space-y-1">
                         {w.sessions.map((s) => (
                           <p key={s} className="text-xs text-[var(--taupe-400)] leading-relaxed">
-                            {locked ? "· Coming soon" : `· ${s}`}
+                            · {s}
                           </p>
                         ))}
                       </div>
