@@ -77,22 +77,22 @@ const sessions = [
 function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; labelPrefix?: string }) {
   return (
     <div className="flex flex-col gap-6">
-      {/* Cover photo */}
-      <div className="relative w-full rounded-2xl overflow-hidden">
+      {/* Cover photo — full bleed, no crop */}
+      <div className="relative w-full -mx-6 md:-mx-8" style={{ width: "calc(100% + 3rem)" }}>
         <Image src={data.photo} alt={data.name} width={1200} height={800} className="w-full h-auto block" />
         <div
           className="absolute inset-0"
-          style={{ background: `linear-gradient(to top, ${data.accentColor}F0 0%, ${data.accentColor}80 30%, transparent 70%)` }}
+          style={{ background: `linear-gradient(to top, ${data.accentColor}F5 0%, ${data.accentColor}90 25%, ${data.accentColor}30 55%, transparent 80%)` }}
         />
-        <div className="absolute bottom-0 left-0 px-6 pb-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/60 mb-2">Talent Mucho · AI Business Bootcamp · June 2026</p>
-          <p className="font-serif font-light text-white leading-tight mb-1" style={{ fontSize: "clamp(1.6rem, 3vw, 2.8rem)", textShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
+        <div className="absolute bottom-0 left-0 px-6 md:px-8 pb-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/60 mb-2">Talent Mucho · AI Business Bootcamp · June 2026</p>
+          <p className="font-serif font-light text-white leading-tight mb-2" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)", textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}>
             {data.name}&apos;s <span className="italic">Personal Roadmap</span>
           </p>
-          <p className="text-sm text-white/75 font-light">4 weeks · 9 live sessions · built around the real business {data.name} is running</p>
+          <p className="text-sm text-white/80 font-light">4 weeks · 9 live sessions · built around the real business {data.name} is running</p>
         </div>
       </div>
-      <div className="h-0.5 w-full rounded-full" style={{ background: `linear-gradient(to right, ${data.accentColor}, ${data.accentColor}00)` }} />
+      <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${data.accentColor}, ${data.accentColor}00)` }} />
 
       {/* Insight */}
       <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
