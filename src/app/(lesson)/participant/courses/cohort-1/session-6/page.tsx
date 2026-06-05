@@ -76,7 +76,7 @@ export default async function Session7Page() {
     getSessionOverrides("cohort-1", 6),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const BUILD_PROMPTS: Record<string, string> = {
     "First build prompt": `Build me a [type of tool ,  e.g. business dashboard, client intake form, weekly report template] for my **${intake?.business_oneliner || "[type of business]"}**.

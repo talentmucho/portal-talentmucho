@@ -58,7 +58,7 @@ export default async function Session10Page() {
     getSessionOverrides("cohort-1", 9),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
     "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here&apos;s what I built:

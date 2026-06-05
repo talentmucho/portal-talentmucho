@@ -51,7 +51,7 @@ export default async function Session5Page() {
     getSessionOverrides("cohort-1", 4),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
     "Identify my best first AI employee role": `I run a **${intake?.business_oneliner || "[type of business]"}**. Here's how my work breaks down:

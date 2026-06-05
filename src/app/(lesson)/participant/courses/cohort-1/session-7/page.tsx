@@ -61,7 +61,7 @@ export default async function Session8Page() {
     getSessionOverrides("cohort-1", 7),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
     "Dashboard planning conversation": `I want to build a business dashboard. Help me plan it before we build.
