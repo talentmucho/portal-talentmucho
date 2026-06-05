@@ -233,7 +233,7 @@ export default async function Session1Page() {
                   { step: "Go to claude.ai", detail: "Open a browser and navigate to claude.ai" },
                   { step: "Create a free account", detail: "Sign up with your email or Google account. The free plan is enough for tonight." },
                   { step: "Start a new conversation", detail: "Click \"Start new chat\" and type your first message. Say hi ~ Claude will respond." },
-                  { step: "Try the Pro plan (optional)", detail: "Upgrade to Claude Pro ($20/mo) for higher limits. We recommend it for the full bootcamp experience, but it&apos;s not required to start." },
+                  { step: "Upgrade to Claude Pro", detail: "We&apos;ll be diving into Claude Code in Week 3 ~ you&apos;ll need Pro for that. Use Abie&apos;s referral link below to get started." },
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
                     <CheckCircle2 className="size-4 shrink-0 text-[var(--taupe-400)] mt-0.5" />
@@ -244,6 +244,28 @@ export default async function Session1Page() {
                   </li>
                 ))}
               </ol>
+            </div>
+
+            {/* Referral callout */}
+            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-1">Not on Pro yet?</p>
+                <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground mb-0.5">
+                  Use Abie&apos;s referral link to upgrade
+                </p>
+                <p className="text-xs text-[var(--taupe-400)] font-light">
+                  We&apos;ll be diving into Claude Code in Week 3 ~ Pro is required. Upgrade before Saturday so you&apos;re ready to build.
+                </p>
+              </div>
+              <a
+                href="https://claude.ai/referral/w_4oPbSrvw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 shrink-0 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+              >
+                Get Claude Pro
+                <ArrowRight className="size-3.5" />
+              </a>
             </div>
 
             {/* Personalized prompt */}
