@@ -4,8 +4,7 @@ import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 
 export type IntakeAnswers = {
-  first_name?: string;
-  email?: string;
+  payment_email?: string;
   business_oneliner?: string;
   first_focus?: string;
   voice_owner?: string;
@@ -40,6 +39,10 @@ export async function saveIntakeResponses(
     },
     { onConflict: "user_id" }
   );
+
+  if (error) {
+    console.error("Supabase upsert error in saveIntakeResponses:", error);
+  }
 
   return { error: error?.message ?? null };
 }

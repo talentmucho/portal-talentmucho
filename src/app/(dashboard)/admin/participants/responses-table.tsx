@@ -6,8 +6,7 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 export type IntakeResponse = {
   id: string;
   user_id: string;
-  first_name: string | null;
-  email: string | null;
+  payment_email: string | null;
   business_oneliner: string | null;
   first_focus: string | null;
   voice_owner: string | null;
@@ -59,24 +58,22 @@ const VOICE_LABELS: Record<string, string> = {
   both: "Both",
 };
 
-function Field({ label, value }: { label: string; value: string | null | undefined }) {
+function Field({ label, value }: { label: string; value: React.ReactNode }) {
   if (!value) return null;
   return (
     <div>
-      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--taupe-400)] mb-0.5">
+      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--taupe-400)] mb-1">
         {label}
       </p>
-      <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+      <div className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
         {value}
-      </p>
+      </div>
     </div>
   );
 }
 
 function ExpandedRow({ r }: { r: IntakeResponse }) {
-  const metrics = (r.dashboard_metrics ?? [])
-    .map((m) => METRIC_LABELS[m] ?? m)
-    .join(", ");
+  // Metrics rendering moved directly into Field value
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 px-6 pb-5 pt-1">
@@ -93,12 +90,19 @@ function ExpandedRow({ r }: { r: IntakeResponse }) {
       <Field
         label="Dashboard metrics"
         value={
-          metrics
-            ? metrics +
-              (r.dashboard_metrics?.includes("custom") && r.dashboard_custom
-                ? ` (Custom: ${r.dashboard_custom})`
-                : "")
-            : null
+          r.dashboard_metrics && r.dashboard_metrics.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5 mt-1">
+              {r.dashboard_metrics.map((m) => {
+                const isCustom = m === "custom" && r.dashboard_custom;
+                const text = isCustom ? `Custom: ${r.dashboard_custom}` : METRIC_LABELS[m] ?? m;
+                return (
+                  <span key={m} className="inline-flex items-center px-2 py-1 rounded-md bg-[var(--beige-200)] dark:bg-white/10 text-xs font-medium text-[var(--charcoal-900)] dark:text-foreground">
+                    {text}
+                  </span>
+                );
+              })}
+            </div>
+          ) : null
         }
       />
       <Field label="OS" value={r.os ? r.os.charAt(0).toUpperCase() + r.os.slice(1) : null} />
@@ -135,9 +139,9 @@ export function ResponsesTable({ responses }: { responses: IntakeResponse[] }) {
   return (
     <div className="rounded-2xl border border-[var(--beige-200)] dark:border-[var(--border)] bg-white dark:bg-[var(--card)] overflow-hidden">
       {/* Header */}
-      <div className="grid grid-cols-[auto_1fr_1fr_140px_80px_100px] gap-4 px-6 py-3 border-b border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--charcoal-900)]/30">
+      <div className="grid grid-cols-[auto_1fr_140px_80px_100px] gap-4 px-6 py-3 border-b border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--charcoal-900)]/30">
         <span className="w-4" />
-        {["Name", "Email", "First Focus", "OS", "Submitted"].map((h) => (
+        {["Payment Email", "First Focus", "OS", "Submitted"].map((h) => (
           <p key={h} className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--taupe-400)]">
             {h}
           </p>
@@ -150,7 +154,7 @@ export function ResponsesTable({ responses }: { responses: IntakeResponse[] }) {
           <div key={r.id} className="border-b border-[var(--beige-100)] dark:border-white/5 last:border-0">
             <button
               onClick={() => toggle(r.id)}
-              className="w-full grid grid-cols-[auto_1fr_1fr_140px_80px_100px] gap-4 px-6 py-4 text-left hover:bg-[var(--beige-50)] dark:hover:bg-white/[0.02] transition-colors"
+              className="w-full grid grid-cols-[auto_1fr_140px_80px_100px] gap-4 px-6 py-4 text-left hover:bg-[var(--beige-50)] dark:hover:bg-white/[0.02] transition-colors"
             >
               <span className="flex items-center">
                 {isOpen

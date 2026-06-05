@@ -22,18 +22,17 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string; style?:
 };
 
 const SECTIONS_PROGRESS = [
-  { id: "who",       color: "#C4A882", start: 1, end: 2  },
-  { id: "projects",  color: "#C4A882", start: 3, end: 5  },
-  { id: "employee",  color: "#7D6B5A", start: 6, end: 6  },
-  { id: "dashboard", color: "#5A7A6B", start: 7, end: 8  },
-  { id: "ritual",    color: "#6B5A7A", start: 9, end: 10 },
+  { id: "who",       color: "#C4A882", start: 1, end: 1  },
+  { id: "projects",  color: "#C4A882", start: 2, end: 4  },
+  { id: "employee",  color: "#7D6B5A", start: 5, end: 5  },
+  { id: "dashboard", color: "#5A7A6B", start: 6, end: 7  },
+  { id: "ritual",    color: "#6B5A7A", start: 8, end: 9  },
 ];
 
-const TOTAL_STEPS = 10;
+const TOTAL_STEPS = 9;
 
 const STEP_VALIDATORS: ((a: Answers) => boolean)[] = [
-  (a) => !!(a.first_name as string)?.trim(),
-  (a) => !!(a.email as string)?.trim(),
+  (a) => !!(a.payment_email as string)?.trim(),
   (a) => !!(a.business_oneliner as string)?.trim(),
   (a) => !!(a.first_focus as string),
   (a) => !!(a.voice_owner as string),
@@ -77,8 +76,7 @@ export default function CohortIntakeForm({
   async function handleComplete() {
     setSaving(true);
     const { error } = await saveIntakeResponses({
-      first_name: answers.first_name as string,
-      email: answers.email as string,
+      payment_email: answers.payment_email as string,
       business_oneliner: answers.business_oneliner as string,
       first_focus: answers.first_focus as string,
       voice_owner: answers.voice_owner as string,
@@ -233,7 +231,7 @@ export default function CohortIntakeForm({
           nextButtonText="Continue →"
         >
 
-          {/* 1: first_name */}
+          {/* 1: payment_email */}
           <Step>
             <QHeader color="#C4A882" week={null} label="Hey ,  what's your first name?" why="We'll greet you by name inside your member area and in every email." />
             <input
@@ -254,14 +252,14 @@ export default function CohortIntakeForm({
               inputMode="email"
               autoComplete="email"
               className={inputCls}
-              value={(answers.email as string) ?? ""}
-              onChange={(e) => setAnswer("email", e.target.value)}
+              value={(answers.payment_email as string) ?? ""}
+              onChange={(e) => setAnswer("payment_email", e.target.value)}
               placeholder="you@example.com"
               maxLength={200}
             />
           </Step>
 
-          {/* 3: business_oneliner */}
+          {/* 2: business_oneliner */}
           <Step>
             <QHeader color="#C4A882" week={onboardingMode ? null : "Week 01"} label="In one line, what does your business do?" why="This becomes the seed knowledge for your Voice & Brand Project in Session 1." />
             <input

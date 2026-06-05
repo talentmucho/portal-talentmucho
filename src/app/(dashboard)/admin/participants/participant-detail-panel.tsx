@@ -62,16 +62,16 @@ const VOICE_LABELS: Record<string, string> = {
   both: "Both",
 };
 
-function DetailField({ label, value }: { label: string; value: string | null | undefined }) {
+function DetailField({ label, value }: { label: string; value: React.ReactNode }) {
   if (!value) return null;
   return (
     <div className="bg-[var(--beige-50)] dark:bg-white/[0.02] border border-[var(--beige-200)]/60 dark:border-white/5 rounded-xl p-3.5">
-      <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--taupe-400)] block mb-1">
+      <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--taupe-400)] block mb-1.5">
         {label}
       </span>
-      <span className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+      <div className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
         {value}
-      </span>
+      </div>
     </div>
   );
 }
@@ -83,11 +83,9 @@ export function ParticipantDetailPanel({
   courses,
   intakeResponses,
 }: Props) {
-  // Find onboarding response matching email
+  // Find onboarding response matching user_id
   const response = participant
-    ? intakeResponses.find(
-        (r) => r.email?.toLowerCase() === participant.email?.toLowerCase()
-      )
+    ? intakeResponses.find((r) => r.user_id === participant.id)
     : null;
 
   const [isPendingAccess, startTransitionAccess] = useTransition();
@@ -153,11 +151,7 @@ export function ParticipantDetailPanel({
     });
   }
 
-  const metrics = response
-    ? (response.dashboard_metrics ?? [])
-        .map((m) => METRIC_LABELS[m] ?? m)
-        .join(", ")
-    : null;
+  // (Metrics mapping removed, rendering moved directly into JSX using pills)
 
   return (
     <Drawer direction="right" open={open} onOpenChange={(o) => !o && onClose()}>
@@ -342,6 +336,10 @@ export function ParticipantDetailPanel({
             ) : (
               <div className="grid grid-cols-1 gap-3">
                 <DetailField
+                  label="Payment Email"
+                  value={response.payment_email}
+                />
+                <DetailField
                   label="Focus Area"
                   value={FOCUS_LABELS[response.first_focus ?? ""] ?? response.first_focus}
                 />
@@ -364,12 +362,19 @@ export function ParticipantDetailPanel({
                 <DetailField
                   label="Dashboard Metrics"
                   value={
-                    metrics
-                      ? metrics +
-                        (response.dashboard_metrics?.includes("custom") && response.dashboard_custom
-                          ? ` (Custom: ${response.dashboard_custom})`
-                          : "")
-                      : null
+                    response.dashboard_metrics && response.dashboard_metrics.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5 mt-0.5">
+                        {response.dashboard_metrics.map((m) => {
+                          const isCustom = m === "custom" && response.dashboard_custom;
+                          const text = isCustom ? `Custom: ${response.dashboard_custom}` : METRIC_LABELS[m] ?? m;
+                          return (
+                            <span key={m} className="inline-flex items-center px-2 py-1 rounded-md bg-[var(--beige-200)] dark:bg-white/10 text-xs font-medium text-[var(--charcoal-900)] dark:text-foreground">
+                              {text}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    ) : null
                   }
                 />
                 <div className="grid grid-cols-2 gap-3">
