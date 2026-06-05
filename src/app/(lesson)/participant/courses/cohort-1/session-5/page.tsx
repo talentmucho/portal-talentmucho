@@ -339,13 +339,15 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Resources</p>
             <ul className="space-y-2">
-              {session.resources.map((r) => (
-                <li key={r.label}>
-                  <a href={r.href} className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]">
-                    {r.label}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="/assets/events/kickoff-banner.png"
+                  download="talentmucho-zoom-background.png"
+                  className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
+                >
+                  Download Zoom background
+                </a>
+              </li>
             </ul>
           </div>
 
