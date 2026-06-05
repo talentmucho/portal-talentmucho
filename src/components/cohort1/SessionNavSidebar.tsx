@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, X, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ArrowLeft, X, PanelLeftClose, PanelLeftOpen, Lock } from "lucide-react";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import {
   TooltipProvider,
@@ -17,6 +17,7 @@ const WEEKS = [
   {
     label: "Pre-course",
     color: "#C4A882",
+    locked: false,
     sessions: [
       { n: 1, path: `${BASE}/session-1`, title: "Kickoff & orientation" },
     ],
@@ -24,6 +25,7 @@ const WEEKS = [
   {
     label: "Week 1 · Knowing Claude",
     color: "#C4A882",
+    locked: false,
     sessions: [
       { n: 2, path: `${BASE}/session-2`, title: "Interface & first conversation" },
       { n: 3, path: `${BASE}/session-3`, title: "Custom instructions" },
@@ -32,22 +34,25 @@ const WEEKS = [
   {
     label: "Week 2 · Delegating to Claude",
     color: "#7D6B5A",
+    locked: true,
     sessions: [
-      { n: 4, path: `${BASE}/session-4`, title: "AI employees ,  intro" },
+      { n: 4, path: `${BASE}/session-4`, title: "AI employees ~ intro" },
       { n: 5, path: `${BASE}/session-5`, title: "Build your AI employee" },
     ],
   },
   {
     label: "Week 3 · Building with Claude",
     color: "#5A7A6B",
+    locked: true,
     sessions: [
-      { n: 6, path: `${BASE}/session-6`, title: "Claude Code ,  first build" },
+      { n: 6, path: `${BASE}/session-6`, title: "Claude Code ~ first build" },
       { n: 7, path: `${BASE}/session-7`, title: "Build your dashboard" },
     ],
   },
   {
     label: "Week 4 · Living with Claude",
     color: "#6B5A7A",
+    locked: true,
     sessions: [
       { n: 8, path: `${BASE}/session-8`, title: "Full Claude stack" },
       { n: 9, path: `${BASE}/session-9`, title: "Graduation & showcase" },
@@ -60,9 +65,10 @@ interface Props {
   onClose: () => void;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
+  isAdmin?: boolean;
 }
 
-export function SessionNavSidebar({ isOpen, onClose, collapsed = false, onToggleCollapse }: Props) {
+export function SessionNavSidebar({ isOpen, onClose, collapsed = false, onToggleCollapse, isAdmin = false }: Props) {
   const pathname = usePathname();
 
   return (
@@ -137,68 +143,107 @@ export function SessionNavSidebar({ isOpen, onClose, collapsed = false, onToggle
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-5 tm-scrollbar">
         <TooltipProvider>
-          {WEEKS.map((week) => (
-            <div key={week.label}>
-              <div className={collapsed ? "flex justify-center mb-1.5" : "flex items-center gap-2 px-1 mb-1.5"}>
-                <span
-                  className="size-1.5 rounded-full shrink-0"
-                  style={{ backgroundColor: week.color }}
-                />
-                {!collapsed && (
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">
-                    {week.label}
-                  </p>
-                )}
-              </div>
-              <ul className="space-y-0.5">
-                {week.sessions.map((session) => {
-                  const isActive = pathname === session.path;
-                  const linkContent = (
-                    <Link
-                      href={session.path}
-                      onClick={onClose}
-                      className={[
-                        "flex items-center rounded-xl text-sm transition-all duration-150",
-                        collapsed ? "justify-center px-0 w-full py-2" : "gap-3 px-3 py-2",
-                        isActive
-                          ? "bg-[var(--beige-100)] dark:bg-white/10 text-[var(--charcoal-900)] dark:text-foreground font-medium"
-                          : "text-[var(--taupe-400)] hover:bg-[var(--beige-50)] dark:hover:bg-white/5 hover:text-[var(--charcoal-900)] dark:hover:text-foreground",
-                      ].join(" ")}
-                    >
-                      <span
+          {WEEKS.map((week) => {
+            const weekLocked = !isAdmin && week.locked;
+            return (
+              <div key={week.label}>
+                <div className={collapsed ? "flex justify-center mb-1.5" : "flex items-center gap-2 px-1 mb-1.5"}>
+                  <span
+                    className="size-1.5 rounded-full shrink-0"
+                    style={{ backgroundColor: weekLocked ? "#C4B5A5" : week.color }}
+                  />
+                  {!collapsed && (
+                    <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${weekLocked ? "text-[var(--beige-300)]" : "text-[var(--taupe-400)]"}`}>
+                      {week.label}
+                    </p>
+                  )}
+                  {!collapsed && weekLocked && (
+                    <Lock className="size-2.5 text-[var(--beige-300)] ml-auto" />
+                  )}
+                </div>
+                <ul className="space-y-0.5">
+                  {week.sessions.map((session) => {
+                    const isActive = pathname === session.path;
+
+                    if (weekLocked) {
+                      const lockedItem = (
+                        <div
+                          className={[
+                            "flex items-center rounded-xl text-sm cursor-not-allowed opacity-40",
+                            collapsed ? "justify-center px-0 w-full py-2" : "gap-3 px-3 py-2",
+                          ].join(" ")}
+                        >
+                          <span className="size-5 shrink-0 rounded-full flex items-center justify-center text-[10px] font-semibold bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10">
+                            {session.n}
+                          </span>
+                          {!collapsed && (
+                            <span className="leading-tight line-clamp-2 text-[13px] text-[var(--taupe-400)]">
+                              {session.title}
+                            </span>
+                          )}
+                        </div>
+                      );
+                      return (
+                        <li key={session.n}>
+                          {collapsed ? (
+                            <Tooltip side="right">
+                              <TooltipTrigger asChild>
+                                <div>{lockedItem}</div>
+                              </TooltipTrigger>
+                              <TooltipContent>Locked ~ coming soon</TooltipContent>
+                            </Tooltip>
+                          ) : lockedItem}
+                        </li>
+                      );
+                    }
+
+                    const linkContent = (
+                      <Link
+                        href={session.path}
+                        onClick={onClose}
                         className={[
-                          "size-5 shrink-0 rounded-full flex items-center justify-center text-[10px] font-semibold",
+                          "flex items-center rounded-xl text-sm transition-all duration-150",
+                          collapsed ? "justify-center px-0 w-full py-2" : "gap-3 px-3 py-2",
                           isActive
-                            ? "bg-[var(--charcoal-900)] dark:bg-white text-white dark:text-[var(--charcoal-900)]"
-                            : "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10",
+                            ? "bg-[var(--beige-100)] dark:bg-white/10 text-[var(--charcoal-900)] dark:text-foreground font-medium"
+                            : "text-[var(--taupe-400)] hover:bg-[var(--beige-50)] dark:hover:bg-white/5 hover:text-[var(--charcoal-900)] dark:hover:text-foreground",
                         ].join(" ")}
                       >
-                        {session.n}
-                      </span>
-                      {!collapsed && (
-                        <span className="leading-tight line-clamp-2 text-[13px]">
-                          {session.title}
+                        <span
+                          className={[
+                            "size-5 shrink-0 rounded-full flex items-center justify-center text-[10px] font-semibold",
+                            isActive
+                              ? "bg-[var(--charcoal-900)] dark:bg-white text-white dark:text-[var(--charcoal-900)]"
+                              : "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10",
+                          ].join(" ")}
+                        >
+                          {session.n}
                         </span>
-                      )}
-                    </Link>
-                  );
+                        {!collapsed && (
+                          <span className="leading-tight line-clamp-2 text-[13px]">
+                            {session.title}
+                          </span>
+                        )}
+                      </Link>
+                    );
 
-                  return (
-                    <li key={session.n}>
-                      {collapsed ? (
-                        <Tooltip side="right">
-                          <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
-                          <TooltipContent>{session.title}</TooltipContent>
-                        </Tooltip>
-                      ) : (
-                        linkContent
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+                    return (
+                      <li key={session.n}>
+                        {collapsed ? (
+                          <Tooltip side="right">
+                            <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
+                            <TooltipContent>{session.title}</TooltipContent>
+                          </Tooltip>
+                        ) : (
+                          linkContent
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </TooltipProvider>
       </nav>
 

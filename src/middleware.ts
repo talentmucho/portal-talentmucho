@@ -39,6 +39,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/participant", request.url));
   }
 
+  // Lock sessions 4–9 for non-admins
+  if (role !== "admin") {
+    const lockedSessions = [4, 5, 6, 7, 8, 9];
+    for (const n of lockedSessions) {
+      if (pathname.startsWith(`/participant/courses/cohort-1/session-${n}`)) {
+        return NextResponse.redirect(new URL("/participant/courses/cohort-1/session-1", request.url));
+      }
+    }
+  }
+
   if (pathname.startsWith("/participant") && role !== "participant") {
     // Admins can access course/lesson content
     if (role === "admin" && pathname.startsWith("/participant/courses")) {
