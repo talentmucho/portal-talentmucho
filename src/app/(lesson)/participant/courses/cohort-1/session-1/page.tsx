@@ -130,6 +130,31 @@ export default async function Session1Page() {
               </p>
             </div>
 
+            {/* Questions for the call */}
+            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)]">
+              <p className="tm-eyebrow mb-2">Come ready to answer</p>
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">
+                Questions we&apos;ll explore together tonight
+              </h3>
+              <p className="text-sm text-[var(--taupe-400)] mb-4 font-light">
+                These aren&apos;t trick questions ~ there&apos;s no wrong answer. They&apos;re conversation starters. Have a think before we go live.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  { q: "What&apos;s one task you do every week that eats way more time than it should?", hint: "We&apos;re going to assign that to Claude." },
+                  { q: "What does &quot;more time&quot; actually mean for you?", hint: "More time with family? More time on creative work? More time to think? Know your why." },
+                  { q: "What would you do with an extra 5 hours a week?", hint: "This is your North Star for the bootcamp." },
+                  { q: "What&apos;s one thing you&apos;re skeptical about when it comes to AI?", hint: "Bring your doubts. We&apos;d rather address them on night one than week four." },
+                  { q: "How do you want this cohort to feel by the end of Week 4?", hint: "Think mindset, not just tools." },
+                ].map((item, i) => (
+                  <li key={i} className="border-b border-[var(--beige-200)] dark:border-white/5 pb-3 last:border-0 last:pb-0">
+                    <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground" dangerouslySetInnerHTML={{ __html: item.q }} />
+                    <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5" dangerouslySetInnerHTML={{ __html: item.hint }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Agenda */}
             <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-4">
