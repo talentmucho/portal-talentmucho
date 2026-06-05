@@ -220,30 +220,32 @@ export default async function Session1Page() {
               </div>
             </div>
 
-            {/* How to install Claude */}
-            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
-              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">
-                How to install Claude
-              </h3>
-              <p className="text-sm text-[var(--taupe-400)] mb-4">
-                We&apos;ll do this together on the call. Follow along here:
-              </p>
-              <ol className="space-y-3">
-                {[
-                  { step: "Go to claude.ai", detail: "Open a browser and navigate to claude.ai" },
-                  { step: "Create a free account", detail: "Sign up with your email or Google account. The free plan is enough for tonight." },
-                  { step: "Start a new conversation", detail: "Click \"Start new chat\" and type your first message. Say hi ~ Claude will respond." },
-                  { step: "Upgrade to Claude Pro", detail: "We&apos;ll be diving into Claude Code in Week 3 ~ you&apos;ll need Pro for that. Use Abie&apos;s referral link below to get started." },
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-3 items-start">
-                    <CheckCircle2 className="size-4 shrink-0 text-[var(--taupe-400)] mt-0.5" />
-                    <div>
-                      <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">{item.step}</p>
-                      <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5" dangerouslySetInnerHTML={{ __html: item.detail }} />
-                    </div>
-                  </li>
-                ))}
-              </ol>
+            {/* How to install Claude ~ Windows guide */}
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+              <div className="px-5 py-4 bg-white dark:bg-[var(--card)] flex items-center justify-between gap-4 border-b border-[var(--beige-200)] dark:border-white/5">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-0.5">Windows setup guide</p>
+                  <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
+                    Install Claude on your PC
+                  </h3>
+                  <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Desktop app + Claude Code · 3 install paths · under 2 min</p>
+                </div>
+                <a
+                  href="/guides/claude-install-windows.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 shrink-0 text-xs font-medium text-[var(--charcoal-900)] dark:text-foreground border border-[var(--beige-200)] dark:border-white/10 rounded-full px-3 py-1.5 hover:bg-[var(--beige-50)] dark:hover:bg-white/5 transition-colors"
+                >
+                  Open full guide
+                  <ArrowRight className="size-3" />
+                </a>
+              </div>
+              <iframe
+                src="/guides/claude-install-windows.html"
+                className="w-full border-0"
+                style={{ height: "520px" }}
+                title="Install Claude on Windows"
+              />
             </div>
 
             {/* Referral callout */}
