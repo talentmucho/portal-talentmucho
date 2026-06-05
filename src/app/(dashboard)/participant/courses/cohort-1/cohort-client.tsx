@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { Calendar, Clock, Video, ArrowRight, Lock } from "lucide-react";
 import { IntakeTab } from "./intake/intake-tab";
 import type { IntakeAnswers } from "@/app/actions/intake";
@@ -11,7 +12,7 @@ import {
   TabsContents,
   TabsContent,
 } from "@/components/animate-ui/components/radix/tabs";
-import { PARTICIPANT_ROADMAPS, sessionWeek } from "@/utils/participant-roadmaps";
+import { PARTICIPANT_ROADMAPS, sessionWeek, type ParticipantData } from "@/utils/participant-roadmaps";
 
 const weeks = [
   {
@@ -73,10 +74,83 @@ const sessions = [
 ];
 
 
+function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; labelPrefix?: string }) {
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Cover photo */}
+      <div className="relative w-full rounded-2xl overflow-hidden">
+        <Image src={data.photo} alt={data.name} width={1200} height={800} className="w-full h-auto block" />
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${data.accentColor}F0 0%, ${data.accentColor}80 30%, transparent 70%)` }}
+        />
+        <div className="absolute bottom-0 left-0 px-6 pb-8">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/60 mb-2">Talent Mucho · AI Business Bootcamp · June 2026</p>
+          <p className="font-serif font-light text-white leading-tight mb-1" style={{ fontSize: "clamp(1.6rem, 3vw, 2.8rem)", textShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
+            {data.name}&apos;s <span className="italic">Personal Roadmap</span>
+          </p>
+          <p className="text-sm text-white/75 font-light">4 weeks · 9 live sessions · built around the real business {data.name} is running</p>
+        </div>
+      </div>
+      <div className="h-0.5 w-full rounded-full" style={{ background: `linear-gradient(to right, ${data.accentColor}, ${data.accentColor}00)` }} />
+
+      {/* Insight */}
+      <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
+        <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: data.accentColor }}>{labelPrefix === "Your" ? "Your bootcamp brief" : `${data.name}'s bootcamp brief`}</p>
+        <p className="text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">{data.insight}</p>
+      </div>
+
+      {/* Deliverables */}
+      <div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">What {labelPrefix === "Your" ? "you'll" : `${data.name} will`} build</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {data.deliverables.map((d, i) => (
+            <div key={i} className="p-4 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] flex gap-3 items-start">
+              <span className="shrink-0 size-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white mt-0.5" style={{ background: d.color }}>{i + 1}</span>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1" style={{ color: d.color }}>{d.week}</p>
+                <p className="text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">{d.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Session moves */}
+      <div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Session-by-session · {labelPrefix === "Your" ? "your" : `${data.name}'s`} moves</p>
+        <div className="flex flex-col gap-2">
+          {data.moves.map((m, i) => {
+            const wk = sessionWeek(i);
+            return (
+              <div key={i} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] grid grid-cols-[72px_1fr] overflow-hidden">
+                <div className="flex flex-col items-end justify-start gap-0.5 p-4 border-r border-[var(--beige-200)] dark:border-white/5" style={{ background: `${wk.color}12` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: wk.color }}>{m.session}</span>
+                  <span className="text-[10px] text-[var(--taupe-400)] tabular-nums">{m.date}</span>
+                </div>
+                <div className="p-4">
+                  <p className="text-[10px] font-medium text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">{m.label}</p>
+                  <div className="flex gap-2 items-start text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed rounded-xl px-3 py-2.5" style={{ background: `${data.accentColor}08` }}>
+                    <svg className="size-3.5 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke={data.accentColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    <span><strong className="font-semibold">{labelPrefix === "Your" ? "Your" : `${data.name}'s`} move:</strong> {m.move}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const PARTICIPANT_KEYS = Object.keys(PARTICIPANT_ROADMAPS) as (keyof typeof PARTICIPANT_ROADMAPS)[];
+
 export default function Cohort1Client({ intake, isAdmin = false }: { intake: IntakeAnswers & { payment_email?: string | null; submitted_at?: string | null }; isAdmin?: boolean }) {
   const firstName = intake.first_name || "";
   const key = firstName.toLowerCase().split(" ")[0];
   const roadmap = PARTICIPANT_ROADMAPS[key];
+  const [activeParticipant, setActiveParticipant] = useState<string>(PARTICIPANT_KEYS[0]);
 
   return (
     <div className="p-6 md:p-8 flex flex-col gap-6">
@@ -216,75 +290,37 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
 
           {/* ── Roadmap ── */}
           <TabsContent value="roadmap">
-            {roadmap ? (
-              <div className="pt-2 flex flex-col gap-6">
-                {/* Cover photo */}
-                <div className="relative w-full rounded-2xl overflow-hidden">
-                  <Image
-                    src={roadmap.photo}
-                    alt={roadmap.name}
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto block"
-                  />
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-1/2"
-                    style={{ background: `linear-gradient(to top, ${roadmap.accentColor}E0 0%, transparent 100%)` }}
-                  />
-                  <div className="absolute bottom-0 left-0 px-6 pb-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-1">Your 4-week journey</p>
-                    <p className="font-serif font-light text-white text-2xl leading-tight">
-                      {roadmap.name}&apos;s <span className="italic">Personal Roadmap</span>
-                    </p>
-                  </div>
-                </div>
-
-                {/* Insight */}
-                <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: roadmap.accentColor }}>Your bootcamp brief</p>
-                  <p className="text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">{roadmap.insight}</p>
-                </div>
-
-                {/* Deliverables */}
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">What you&apos;ll build</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {roadmap.deliverables.map((d, i) => (
-                      <div key={i} className="p-4 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] flex gap-3 items-start">
-                        <span className="shrink-0 size-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white mt-0.5" style={{ background: d.color }}>{i + 1}</span>
-                        <div>
-                          <p className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1" style={{ color: d.color }}>{d.week}</p>
-                          <p className="text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">{d.text}</p>
+            {isAdmin ? (
+              <div className="pt-2 flex flex-col gap-4">
+                {/* Participant switcher */}
+                <div className="flex gap-1.5 overflow-x-auto pb-1">
+                  {PARTICIPANT_KEYS.map((k) => {
+                    const p = PARTICIPANT_ROADMAPS[k];
+                    const active = k === activeParticipant;
+                    return (
+                      <button
+                        key={k}
+                        onClick={() => setActiveParticipant(k)}
+                        className="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium shrink-0 transition-all border"
+                        style={{
+                          background: active ? p.accentColor : "transparent",
+                          color: active ? "white" : "var(--taupe-400)",
+                          borderColor: active ? p.accentColor : "var(--beige-200)",
+                        }}
+                      >
+                        <div className="size-5 rounded-full overflow-hidden shrink-0">
+                          <Image src={p.photo} alt={p.name} width={20} height={20} className="object-cover w-full h-full" />
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                        {p.name}
+                      </button>
+                    );
+                  })}
                 </div>
-
-                {/* Session moves */}
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Session-by-session · your moves</p>
-                  <div className="flex flex-col gap-2">
-                    {roadmap.moves.map((m, i) => {
-                      const wk = sessionWeek(i);
-                      return (
-                        <div key={i} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] grid grid-cols-[72px_1fr] overflow-hidden">
-                          <div className="flex flex-col items-end justify-start gap-0.5 p-4 border-r border-[var(--beige-200)] dark:border-white/5" style={{ background: `${wk.color}12` }}>
-                            <span className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: wk.color }}>{m.session}</span>
-                            <span className="text-[10px] text-[var(--taupe-400)] tabular-nums">{m.date}</span>
-                          </div>
-                          <div className="p-4">
-                            <p className="text-[10px] font-medium text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">{m.label}</p>
-                            <div className="flex gap-2 items-start text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed rounded-xl px-3 py-2.5" style={{ background: `${roadmap.accentColor}08` }}>
-                              <svg className="size-3.5 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke={roadmap.accentColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                              <span><strong className="font-semibold">Your move:</strong> {m.move}</span>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <RoadmapView data={PARTICIPANT_ROADMAPS[activeParticipant]} labelPrefix={PARTICIPANT_ROADMAPS[activeParticipant].name} />
+              </div>
+            ) : roadmap ? (
+              <div className="pt-2">
+                <RoadmapView data={roadmap} labelPrefix="Your" />
               </div>
             ) : (
               <div className="pt-6 text-center text-sm text-[var(--taupe-400)] font-light">
