@@ -67,8 +67,8 @@ export default async function RoadmapPage() {
       {/* Scroll container */}
       <div className="flex-1 overflow-y-auto tm-scrollbar">
 
-        {/* Cover photo */}
-        {photo && (
+        {/* Cover hero */}
+        {photo ? (
           <div className="relative w-full">
             <Image
               src={photo}
@@ -78,71 +78,69 @@ export default async function RoadmapPage() {
               className="w-full h-auto block"
               priority
             />
-            {/* gradient overlay at bottom for text legibility */}
+            {/* deep multi-stop gradient so text always pops */}
             <div
-              className="absolute bottom-0 left-0 right-0 h-1/2"
+              className="absolute inset-0"
               style={{
-                background: `linear-gradient(to top, ${accentColor}E0 0%, transparent 100%)`,
+                background: `linear-gradient(to top, ${accentColor}F5 0%, ${accentColor}AA 30%, ${accentColor}40 60%, transparent 85%)`,
               }}
             />
-            {/* Name over photo */}
-            <div className="absolute bottom-0 left-0 px-6 md:px-16 pb-8">
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/70 mb-2">
+            {/* text block */}
+            <div className="absolute bottom-0 left-0 right-0 px-6 md:px-14 pb-10 md:pb-14">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/60 mb-3">
                 Talent Mucho · AI Business Bootcamp · June 2026
               </p>
               <h1
-                className="font-serif font-light text-white leading-[1.1]"
-                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+                className="font-serif font-light text-white leading-[1.05] mb-3"
+                style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", textShadow: "0 2px 24px rgba(0,0,0,0.25)" }}
               >
                 {firstName}&apos;s
-                <span className="block italic opacity-90">Personal Roadmap</span>
+                <span className="block italic">Personal Roadmap</span>
               </h1>
+              <p className="text-sm text-white/80 font-light max-w-md mb-5 leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
+                4 weeks · 9 live sessions · built around the real business you&apos;re running
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: `Focus: ${focusArea}` },
+                  { label: `AI employee: ${aiRole}` },
+                  { label: `${timezone} · ${peakTime}` },
+                  { label: os },
+                ].map((pill) => (
+                  <span
+                    key={pill.label}
+                    className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm"
+                    style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)" }}
+                  >
+                    {pill.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* fallback if no photo */
+          <div
+            className="relative px-6 md:px-16 pt-16 pb-12 border-b border-[var(--beige-200)] dark:border-white/5 overflow-hidden"
+            style={{ background: `linear-gradient(135deg, ${accentColor}08 0%, var(--beige-50) 60%)` }}
+          >
+            <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none" style={{ background: accentColor, transform: "translate(30%, -30%)" }} />
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--taupe-400)] mb-4">Talent Mucho · AI Business Bootcamp · June 2026</p>
+            <h1 className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-2 leading-[1.1]" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+              {firstName}&apos;s
+              <span className="block italic" style={{ color: accentColor }}>Personal Roadmap</span>
+            </h1>
+            <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-2">4 weeks · 9 live sessions · built around the real business you&apos;re running.</p>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {[{ label: `Focus: ${focusArea}` }, { label: `AI employee: ${aiRole}` }, { label: `${timezone} · ${peakTime}` }, { label: os }].map((pill) => (
+                <span key={pill.label} className="inline-flex items-center gap-1.5 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-3 py-1 text-xs text-[var(--taupe-400)] bg-white/70 dark:bg-white/5 backdrop-blur">{pill.label}</span>
+              ))}
             </div>
           </div>
         )}
 
-        {/* Hero text (shown below cover, or standalone if no photo) */}
-        <div
-          className="relative px-6 md:px-16 pt-8 pb-10 border-b border-[var(--beige-200)] dark:border-white/5 overflow-hidden"
-          style={!photo ? { background: `linear-gradient(135deg, ${accentColor}08 0%, var(--beige-50) 60%)` } : {}}
-        >
-          {!photo && (
-            <>
-              <div
-                className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
-                style={{ background: accentColor, transform: "translate(30%, -30%)" }}
-              />
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--taupe-400)] mb-4">
-                Talent Mucho · AI Business Bootcamp · June 2026
-              </p>
-              <h1
-                className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-2 leading-[1.1]"
-                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-              >
-                {firstName}&apos;s
-                <span className="block italic" style={{ color: accentColor }}>Personal Roadmap</span>
-              </h1>
-            </>
-          )}
-          <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-2">
-            Four weeks. Nine live sessions. Every session designed around the real business you&apos;re running. This is what the next 28 days look like for you.
-          </p>
-          <div className="flex flex-wrap gap-2 mt-5">
-            {[
-              { label: `Focus: ${focusArea}` },
-              { label: `AI employee: ${aiRole}` },
-              { label: `${timezone} · ${peakTime}` },
-              { label: os },
-            ].map((pill) => (
-              <span
-                key={pill.label}
-                className="inline-flex items-center gap-1.5 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-3 py-1 text-xs text-[var(--taupe-400)] bg-white/70 dark:bg-white/5 backdrop-blur"
-              >
-                {pill.label}
-              </span>
-            ))}
-          </div>
-        </div>
+        {/* Thin accent divider */}
+        <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${accentColor}, ${accentColor}00)` }} />
 
         <div className="max-w-3xl mx-auto px-6 md:px-8 py-10 flex flex-col gap-10">
 
