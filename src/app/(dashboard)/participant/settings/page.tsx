@@ -15,14 +15,7 @@ export default async function SettingsPage() {
 
   const admin = createAdminClient();
 
-  const [{ data: profile }, { data: intake }] = await Promise.all([
-    supabase.from("profiles").select("full_name").eq("id", user.id).single(),
-    admin
-      .from("intake_responses")
-      .select("first_name, payment_email, business_oneliner, first_focus, voice_owner, ai_employee_role, ai_employee_custom, dashboard_metrics, dashboard_custom, os, timezone, peak_time, one_thing, submitted_at")
-      .eq("user_id", user.id)
-      .maybeSingle(),
-  ]);
+  const { data: profile } = await supabase.from("profiles").select("full_name").eq("id", user.id).single();
 
   const fullName = profile?.full_name || user.user_metadata?.full_name || "";
   const email = user.email ?? "";
@@ -45,7 +38,7 @@ export default async function SettingsPage() {
 
       {/* Tabs ,  flex-1 fills remaining height, min-h-0 allows shrink */}
       <div className="flex-1 min-h-0 px-5 sm:px-8 pb-8">
-        <SettingsForm fullName={fullName} email={email} intake={intake ?? {}} />
+        <SettingsForm fullName={fullName} email={email} />
       </div>
     </div>
   );
