@@ -1,5 +1,6 @@
-﻿import Link from "next/link";
-import { ArrowLeft, ArrowRight, PlayCircle } from "lucide-react";
+﻿import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const SESSION = {
   tag: "Kickoff",
@@ -65,15 +66,22 @@ export default function Session1Page() {
 
         {/* Content */}
         <main className="flex-1 flex flex-col p-6 md:p-8 gap-6 min-w-0 overflow-y-auto tm-scrollbar">
-          <div className="w-full max-h-[55vh] aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] flex flex-col items-center justify-center gap-3">
+          <div className="relative w-full max-h-[55vh] aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] overflow-hidden">
             {SESSION.videoUrl ? (
-              <iframe src={SESSION.videoUrl} className="w-full h-full rounded-2xl" allowFullScreen />
+              <iframe src={SESSION.videoUrl} className="w-full h-full" allowFullScreen />
             ) : (
               <>
-                <PlayCircle className="size-12 text-[var(--taupe-400)] opacity-40" />
-                <p className="text-sm text-[var(--taupe-400)]">
-                  Recording will appear here after the live session
-                </p>
+                <Image
+                  src="/assets/events/kickoff-banner.png"
+                  alt="TalentMucho AI Bootcamp ~ Learn. Create. Grow."
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 70vw, 100vw"
+                  className="object-cover"
+                />
+                <span className="absolute bottom-3 right-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--charcoal-900)]/70 bg-white/70 backdrop-blur px-2.5 py-1 rounded-full">
+                  Recording goes live after the session
+                </span>
               </>
             )}
           </div>
