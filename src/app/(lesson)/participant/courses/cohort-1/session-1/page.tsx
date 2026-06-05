@@ -138,8 +138,8 @@ export default async function Session1Page() {
               <ol className="space-y-0">
                 {[
                   { time: "0:00 – 0:10", label: "Welcome & housekeeping", qa: false },
-                  { time: "0:10 – 0:35", label: "Q&A ~ your expectations, fears, and what success looks like for you", qa: true },
-                  { time: "0:35 – 1:00", label: "Round of introductions ~ who you are and what your business does", qa: false },
+                  { time: "0:10 – 0:35", label: "Round of introductions ~ who you are and what your business does", qa: false },
+                  { time: "0:35 – 1:00", label: "Q&A ~ your expectations, fears, and what success looks like for you", qa: true },
                   { time: "1:00 – 1:20", label: "What is Claude? A quick recap", qa: false },
                   { time: "1:20 – 1:45", label: "Installing Claude & setting up your account", qa: false },
                   { time: "1:45 – 1:55", label: "Your first conversation ~ live demo", qa: false },
