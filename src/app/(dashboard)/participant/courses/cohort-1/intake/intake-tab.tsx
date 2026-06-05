@@ -2,8 +2,14 @@
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronDown } from "lucide-react";
 import { saveIntakeResponses, type IntakeAnswers } from "@/app/actions/intake";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/animate-ui/components/radix/dropdown-menu";
 
 const inputClass =
   "w-full px-4 py-3 rounded-lg border border-[var(--beige-200)] dark:border-white/10 bg-white dark:bg-[var(--espresso-700)] text-sm text-[var(--charcoal-900)] dark:text-foreground placeholder:text-[var(--taupe-400)] focus:outline-none focus:ring-2 focus:ring-[var(--clay-500)] focus:border-transparent transition-all";
@@ -74,17 +80,24 @@ function Select({
   options: { value: string; label: string }[];
   placeholder?: string;
 }) {
+  const selectedLabel = options.find((o) => o.value === value)?.label || placeholder;
+
   return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={inputClass}
-    >
-      <option value="" disabled>{placeholder}</option>
-      {options.map((o) => (
-        <option key={o.value} value={o.value}>{o.label}</option>
-      ))}
-    </select>
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        className={`${inputClass} flex items-center justify-between`}
+      >
+        <span className={value ? "" : "text-[var(--taupe-400)]"}>{selectedLabel}</span>
+        <ChevronDown className="size-4 opacity-50" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)] min-w-[200px]">
+        {options.map((o) => (
+          <DropdownMenuItem key={o.value} onSelect={() => onChange(o.value)}>
+            {o.label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
@@ -102,8 +115,12 @@ function CheckboxGroup({
   function toggle(val: string) {
     if (values.includes(val)) {
       onChange(values.filter((v) => v !== val));
-    } else if (values.length < max) {
-      onChange([...values, val]);
+    } else {
+      const nextValues = [...values, val];
+      if (nextValues.length > max) {
+        nextValues.shift(); // Remove oldest
+      }
+      onChange(nextValues);
     }
   }
   return (

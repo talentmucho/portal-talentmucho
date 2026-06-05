@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W2 · S4",
@@ -47,11 +46,14 @@ const buildSteps = [
   "Save and open a test conversation",
 ];
 
-const PROMPTS: Record<string, string> = {
-  "System prompt template": `You are [Employee Name], [Job Title] for [Business Name].
+export default async function Session6Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "System prompt template": `You are [Employee Name], **${intake?.ai_employee_role || "[Job Title]"}** for [Business Name].
 
 ABOUT THE BUSINESS:
-[Business Name] is a [type of business]. We serve [describe your clients ,  who they are, what they're trying to achieve, what they care about].
+**${intake?.business_oneliner || "[Business Name] is a [type of business]. We serve [describe your clients]"}**. We serve [describe your clients ,  who they are, what they're trying to achieve, what they care about].
 
 YOUR ROLE:
 Your job is to [primary responsibility in one sentence]. You are the first point of contact for [type of interactions this employee handles].
@@ -76,7 +78,7 @@ TONE AND COMMUNICATION STYLE:
 WHEN IN DOUBT:
 If you&apos;re unsure how to handle something, say: "That&apos;s a great question ,  let me check with [Owner Name] and get back to you shortly." Do not guess. Do not make commitments you can&apos;t keep.`,
 
-  "Test scenario pack": `Generate 3 test scenarios for my AI employee based on the system prompt I just gave you.
+    "Test scenario pack": `Generate 3 test scenarios for my AI employee based on the system prompt I just gave you.
 
 The scenarios should be:
 
@@ -94,7 +96,7 @@ For each scenario:
 - Write what an ideal response looks like
 - Note what a bad response would look like (so I know what to watch for)`,
 
-  "Debrief and iterate": `I just tested my AI employee against 3 scenarios. Here&apos;s what happened:
+    "Debrief and iterate": `I just tested my AI employee against 3 scenarios. Here&apos;s what happened:
 
 SCENARIO 1 result: [paste what your employee actually said]
 What worked: [what was good]
@@ -109,9 +111,8 @@ What worked: [what was good]
 What was off: [what missed the mark]
 
 Based on this, rewrite my system prompt to fix the problems I found. Show me the specific sections you changed and explain why each change helps.`,
-};
+  };
 
-export default function Session6Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

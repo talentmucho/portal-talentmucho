@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W1 · S1",
@@ -46,22 +45,25 @@ const steps_project = [
   "Leave the Project open for the exercises below",
 ];
 
-const PROMPTS: Record<string, string> = {
-  "Orient Claude to my business": `I run a [type of business ,  e.g. coaching practice, e-commerce store, design agency].
+export default async function Session2Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "Orient Claude to my business": `I run a **${intake?.first_focus || "[type of business ,  e.g. coaching practice, e-commerce store, design agency]"}**.
 
 Here's the context you need to work with me effectively:
 
-Business: [describe what you do in 2–3 sentences]
+Business: **${intake?.business_oneliner || "[describe what you do in 2–3 sentences]"}**
 Customers: [who you serve and what they hire you to do]
 Team size: [solo / small team of ___]
 My biggest current challenge: [one clear, specific problem]
-My goal for this bootcamp: [what I want to walk away able to do]
+My goal for this bootcamp: **${intake?.one_thing || "[what I want to walk away able to do]"}**
 
 From now on in this Project, use this context to give me specific, relevant advice ,  not generic tips.
 
 Before we start, ask me one clarifying question that would help you give me better answers.`,
 
-  "Your first real ask": `Based on the business context I just gave you, help me with this specific task:
+    "Your first real ask": `Based on the business context I just gave you, help me with this specific task:
 
 [Describe one task or problem from your actual business. Be specific ,  not "help me with marketing" but "help me write a follow-up email for a prospect who went quiet after our discovery call."]
 
@@ -72,7 +74,7 @@ Format your response as:
 
 Keep it practical. I should be able to act on this today.`,
 
-  "Test Claude's understanding": `Before we go further, I want to check what you know about me.
+    "Test Claude's understanding": `Before we go further, I want to check what you know about me.
 
 Summarize my business in your own words ,  what I do, who I serve, and what I'm working on.
 
@@ -80,9 +82,8 @@ Then tell me:
 - What types of tasks you think I should use you for most in this bootcamp
 - What information you're still missing that would make you more useful
 - One question you'd want me to answer before our next conversation`,
-};
+  };
 
-export default function Session2Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

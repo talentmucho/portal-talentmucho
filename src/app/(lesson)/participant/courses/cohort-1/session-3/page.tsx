@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W1 · S2",
@@ -52,11 +51,14 @@ const uploadGuide = [
   { file: "Client FAQ or common questions", why: "Claude answers using your actual answers, not guesses" },
 ];
 
-const PROMPTS: Record<string, string> = {
-  "Custom instructions template": `You are my business assistant for [Business Name].
+export default async function Session4Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "Custom instructions template": `You are my business assistant for [Business Name].
 
 ABOUT MY BUSINESS:
-[2–3 sentences: what you do, who you serve, how you're different from competitors]
+**${intake?.business_oneliner || "[2–3 sentences: what you do, who you serve, how you're different from competitors]"}**
 
 MY CUSTOMERS:
 [Describe your ideal client ,  their situation, what they're trying to solve, how they make decisions]
@@ -79,7 +81,7 @@ NEVER:
 - Send anything to a client without noting it needs my approval first
 - Start responses with "Certainly!" or "Great question!"`,
 
-  "Ask Claude to improve your instructions": `I've just written my custom instructions for this Project. Read them carefully, then tell me:
+    "Ask Claude to improve your instructions": `I've just written my custom instructions for this Project. Read them carefully, then tell me:
 
 1. What's clear and well-defined (what you can do confidently with these instructions)
 2. What's vague or missing (where you'd have to guess)
@@ -87,7 +89,7 @@ NEVER:
 
 Then suggest a revised version of any weak section.`,
 
-  "Check Claude knows your business": `Based on my custom instructions and any files I've uploaded, summarize:
+    "Check Claude knows your business": `Based on my custom instructions and any files I've uploaded, summarize:
 
 1. What you know about my business (be specific ,  not general)
 2. What types of tasks you can handle confidently in this Project
@@ -95,9 +97,8 @@ Then suggest a revised version of any weak section.`,
 4. One file or piece of information that, if I added it, would make you significantly more useful
 
 If anything in my instructions is contradictory or unclear, flag it now.`,
-};
+  };
 
-export default function Session4Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

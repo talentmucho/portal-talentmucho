@@ -10,15 +10,12 @@ import {
   TabsContent,
 } from "@/components/animate-ui/components/radix/tabs";
 import { updateProfile, updateEmail, updatePassword } from "@/app/actions/settings";
-import { IntakeTab } from "./intake-tab";
-import type { IntakeAnswers } from "@/app/actions/intake";
 
 const initialState = { error: null };
 
 interface Props {
   fullName: string;
   email: string;
-  intake: IntakeAnswers & { payment_email?: string | null; submitted_at?: string | null };
 }
 
 const inputClass =
@@ -63,7 +60,7 @@ function PasswordInput({
   );
 }
 
-export function SettingsForm({ fullName, email, intake }: Props) {
+export function SettingsForm({ fullName, email }: Props) {
   const [profileState, profileAction, profilePending] = useActionState(updateProfile, initialState);
   const [emailState, emailAction, emailPending] = useActionState(updateEmail, initialState);
   const [passwordState, passwordAction, passwordPending] = useActionState(updatePassword, initialState);
@@ -113,13 +110,6 @@ export function SettingsForm({ fullName, email, intake }: Props) {
           >
             <Lock className="size-3.5" />
             Security
-          </TabsTrigger>
-          <TabsTrigger
-            value="onboarding"
-            className="justify-center md:justify-start px-3 py-2 md:py-2.5 h-auto flex-1 md:flex-none"
-          >
-            <ClipboardList className="size-3.5" />
-            Onboarding
           </TabsTrigger>
         </TabsList>
       </div>
@@ -213,10 +203,6 @@ export function SettingsForm({ fullName, email, intake }: Props) {
               </button>
             </form>
           </div>
-        </TabsContent>
-
-        <TabsContent value="onboarding">
-          <IntakeTab initial={intake} />
         </TabsContent>
       </div>
     </Tabs>

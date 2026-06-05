@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W4 · S7",
@@ -74,8 +73,11 @@ const workflowExample = [
   { time: "4:30 PM", layer: "Layer 2", action: "Your AI employee sends a catch-up message to clients who haven&apos;t checked in this week" },
 ];
 
-const PROMPTS: Record<string, string> = {
-  "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here&apos;s what I built:
+export default async function Session9Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here&apos;s what I built:
 
 My Claude.ai Projects:
 1. [Project name] ,  I use this for: [purpose]
@@ -84,7 +86,7 @@ My Claude.ai Projects:
 
 My Cowork AI employee:
 - Name: [name]
-- Role: [job title]
+- Role: **${intake?.ai_employee_role || "[job title]"}**
 - They handle: [list their main tasks]
 - They escalate: [what comes to me]
 
@@ -97,7 +99,7 @@ Now help me:
 2. Spot any overlaps ,  places where two layers are doing the same thing
 3. Write a summary of my complete Claude stack in plain language I could explain to a colleague`,
 
-  "Write my daily routine": `Based on my Claude stack above, help me write a specific daily Claude routine.
+    "Write my daily routine": `Based on my Claude stack above, help me write a specific daily Claude routine.
 
 My typical workday looks like:
 [Describe your day ,  when you start, what types of work you do in the morning vs. afternoon, how you interact with clients, what tasks are repetitive]
@@ -124,7 +126,7 @@ WEEKLY (day ___):
 
 Make each step concrete and specific to my actual business ,  not generic habits.`,
 
-  "Prepare my showcase": `I need to present my work from the bootcamp in 2 minutes. Here&apos;s what I built:
+    "Prepare my showcase": `I need to present my work from the bootcamp in 2 minutes. Here&apos;s what I built:
 
 [Paste your stack map from the first prompt above]
 
@@ -139,9 +141,8 @@ Write me a 2-minute verbal presentation using this structure:
 - 15 sec: What I&apos;m building next
 
 Keep it conversational. No slides needed ,  this is spoken.`,
-};
+  };
 
-export default function Session9Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 
