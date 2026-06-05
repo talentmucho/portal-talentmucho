@@ -25,7 +25,7 @@ export function ParticipantShell({ fullName, email, children }: Props) {
         onClick={() => setSidebarOpen(false)}
       />
 
-      {/* Sidebar — always dark, drawer on mobile */}
+      {/* Sidebar ,  always dark, drawer on mobile */}
       <div
         className={[
           "fixed inset-y-0 left-0 z-50 w-72",
@@ -58,7 +58,7 @@ export function ParticipantShell({ fullName, email, children }: Props) {
           </button>
         </header>
 
-        {/* Main — white on light / card on dark */}
+        {/* Main ,  white on light / card on dark */}
         <main className="flex-1 overflow-hidden bg-white dark:bg-[var(--charcoal-900)] md:rounded-3xl md:border md:border-[var(--beige-200)] dark:md:border-[var(--border)]"
           style={{ boxShadow: "0 2px 16px -2px rgb(61 53 46 / 0.06)" }}
         >

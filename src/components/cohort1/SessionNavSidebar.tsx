@@ -33,7 +33,7 @@ const WEEKS = [
     label: "Week 2 · Delegating to Claude",
     color: "#7D6B5A",
     sessions: [
-      { n: 4, path: `${BASE}/session-4`, title: "AI employees — intro" },
+      { n: 4, path: `${BASE}/session-4`, title: "AI employees ,  intro" },
       { n: 5, path: `${BASE}/session-5`, title: "Build your AI employee" },
     ],
   },
@@ -41,7 +41,7 @@ const WEEKS = [
     label: "Week 3 · Building with Claude",
     color: "#5A7A6B",
     sessions: [
-      { n: 6, path: `${BASE}/session-6`, title: "Claude Code — first build" },
+      { n: 6, path: `${BASE}/session-6`, title: "Claude Code ,  first build" },
       { n: 7, path: `${BASE}/session-7`, title: "Build your dashboard" },
     ],
   },

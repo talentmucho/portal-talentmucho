@@ -34,15 +34,15 @@ const bringList = [
 
 const objectives = [
   "Write custom instructions that shape every conversation in a Project",
-  "Know which documents to upload — and why",
+  "Know which documents to upload ,  and why",
   "Understand how Claude uses uploaded files in practice",
   "Complete all 3 configured Claude.ai Projects",
 ];
 
 const projects = [
-  { name: "Client-Facing Work", purpose: "Writing, emails, proposals, content — anything a client might read" },
+  { name: "Client-Facing Work", purpose: "Writing, emails, proposals, content ,  anything a client might read" },
   { name: "Internal Operations", purpose: "SOPs, processes, team communication, checklists, planning" },
-  { name: "Thinking Partner", purpose: "Strategy, decisions, analysis, brainstorming — your confidential advisor" },
+  { name: "Thinking Partner", purpose: "Strategy, decisions, analysis, brainstorming ,  your confidential advisor" },
 ];
 
 const uploadGuide = [
@@ -59,16 +59,16 @@ ABOUT MY BUSINESS:
 [2–3 sentences: what you do, who you serve, how you're different from competitors]
 
 MY CUSTOMERS:
-[Describe your ideal client — their situation, what they're trying to solve, how they make decisions]
+[Describe your ideal client ,  their situation, what they're trying to solve, how they make decisions]
 
 TONE AND STYLE:
-- Voice: [formal / conversational / warm / direct — pick one that fits you]
+- Voice: [formal / conversational / warm / direct ,  pick one that fits you]
 - Write like: [describe your communication style in 1 sentence, or paste an example phrase]
-- Response format: [brief bullets / full paragraphs / depends on task — tell Claude your preference]
+- Response format: [brief bullets / full paragraphs / depends on task ,  tell Claude your preference]
 - Response length: [short and punchy / thorough and detailed / match the task]
 
 ALWAYS:
-- Reference my business context when giving advice — no generic tips
+- Reference my business context when giving advice ,  no generic tips
 - Ask one clarifying question before writing anything client-facing
 - Flag when you're uncertain or when something needs my review before it goes out
 - Use the tone from my uploaded writing sample
@@ -89,7 +89,7 @@ Then suggest a revised version of any weak section.`,
 
   "Check Claude knows your business": `Based on my custom instructions and any files I've uploaded, summarize:
 
-1. What you know about my business (be specific — not general)
+1. What you know about my business (be specific ,  not general)
 2. What types of tasks you can handle confidently in this Project
 3. What you're still uncertain about
 4. One file or piece of information that, if I added it, would make you significantly more useful
@@ -169,19 +169,19 @@ export default function Session4Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What custom instructions actually do</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Custom instructions are text that Claude reads <strong className="font-medium">before every single message</strong> in a Project. Think of them as the onboarding document you&apos;d give a new contractor on their first day — who you are, how you work, what you expect, and what not to do.
+                Custom instructions are text that Claude reads <strong className="font-medium">before every single message</strong> in a Project. Think of them as the onboarding document you&apos;d give a new contractor on their first day ,  who you are, how you work, what you expect, and what not to do.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Without custom instructions, every message starts from scratch. Claude doesn&apos;t know if you want bullet points or paragraphs, formal or casual, long-form or brief. With them, Claude already knows — and it shows in every response.
+                Without custom instructions, every message starts from scratch. Claude doesn&apos;t know if you want bullet points or paragraphs, formal or casual, long-form or brief. With them, Claude already knows ,  and it shows in every response.
               </p>
               <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4">
                 <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">The four parts of great custom instructions</p>
                 <ol className="flex flex-col gap-2">
                   {[
                     { label: "WHO YOU ARE", desc: "2–3 sentences about your business, your customers, and your role" },
-                    { label: "TONE & STYLE", desc: "How you communicate — voice, format, response length" },
+                    { label: "TONE & STYLE", desc: "How you communicate ,  voice, format, response length" },
                     { label: "ALWAYS DO", desc: "What Claude should always do in this Project" },
-                    { label: "NEVER DO", desc: "What Claude should never do — your non-negotiables" },
+                    { label: "NEVER DO", desc: "What Claude should never do ,  your non-negotiables" },
                   ].map((part, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <span className="font-semibold text-[var(--charcoal-900)] dark:text-foreground shrink-0 min-w-[90px]">{part.label}</span>
@@ -195,7 +195,7 @@ export default function Session4Page() {
 
           {/* What to upload */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What to upload — and why</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What to upload ,  and why</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Files you upload to a Project stay there permanently. Claude can reference them in every conversation. The goal is to give Claude the same reference materials you&apos;d give a new team member.
@@ -216,7 +216,7 @@ export default function Session4Page() {
 
           {/* Three Projects */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your 3 Projects — what each one is for</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your 3 Projects ,  what each one is for</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {projects.map((p, i) => (
                 <div key={p.name} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-2">
@@ -231,9 +231,9 @@ export default function Session4Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — copy and use these</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Custom instructions template</strong> — paste it into your Project&apos;s custom instructions, fill in every bracket, and save. Then use the other two to verify and refine.
+              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Custom instructions template</strong> ,  paste it into your Project&apos;s custom instructions, fill in every bracket, and save. Then use the other two to verify and refine.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -264,15 +264,15 @@ export default function Session4Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-2">Week 1 Deliverable</p>
             <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-              3 configured Claude.ai Projects — each with custom instructions and at least one uploaded file that makes Claude context-aware for that type of work.
+              3 configured Claude.ai Projects ,  each with custom instructions and at least one uploaded file that makes Claude context-aware for that type of work.
             </p>
           </div>
 
           {/* Next session card */}
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: AI employees — what Cowork makes real</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 2 · Session 3 — Sat, Jun 13</p>
+              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: AI employees ,  what Cowork makes real</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 2 · Session 3 ,  Sat, Jun 13</p>
             </div>
             <Link
               href={NEXT}

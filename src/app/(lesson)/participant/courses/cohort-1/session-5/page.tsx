@@ -40,10 +40,10 @@ const objectives = [
 
 const buildSteps = [
   "Open Cowork and click \"New Employee\"",
-  "Give them a name (first name only — e.g. \"Alex\") and a job title",
+  "Give them a name (first name only ,  e.g. \"Alex\") and a job title",
   "Paste your system prompt into the briefing field",
   "Add reference files (same documents from your Claude.ai Project are a good start)",
-  "Set your escalation rules — what should automatically come to you",
+  "Set your escalation rules ,  what should automatically come to you",
   "Save and open a test conversation",
 ];
 
@@ -51,42 +51,42 @@ const PROMPTS: Record<string, string> = {
   "System prompt template": `You are [Employee Name], [Job Title] for [Business Name].
 
 ABOUT THE BUSINESS:
-[Business Name] is a [type of business]. We serve [describe your clients — who they are, what they're trying to achieve, what they care about].
+[Business Name] is a [type of business]. We serve [describe your clients ,  who they are, what they're trying to achieve, what they care about].
 
 YOUR ROLE:
 Your job is to [primary responsibility in one sentence]. You are the first point of contact for [type of interactions this employee handles].
 
 YOUR RESPONSIBILITIES:
 You handle the following autonomously:
-- [Task 1: be specific — e.g. "Respond to new client inquiries within 24 hours with a warm, professional greeting and 3 qualifying questions"]
+- [Task 1: be specific ,  e.g. "Respond to new client inquiries within 24 hours with a warm, professional greeting and 3 qualifying questions"]
 - [Task 2]
 - [Task 3]
 
 You escalate to [Owner/Manager Name] when:
-- [Escalation trigger 1 — e.g. "A client expresses frustration or dissatisfaction"]
+- [Escalation trigger 1 ,  e.g. "A client expresses frustration or dissatisfaction"]
 - [Escalation trigger 2]
-- [Escalation trigger 3 — e.g. "A request falls outside the services we offer"]
+- [Escalation trigger 3 ,  e.g. "A request falls outside the services we offer"]
 
 TONE AND COMMUNICATION STYLE:
 - Voice: [warm and professional / direct and efficient / friendly and approachable]
 - Always write in full sentences. No bullet points in client-facing messages.
 - Sign off with: [how you want messages to close]
-- Never use: [words or phrases you want to avoid — e.g. "synergy", "circle back", "as per my last email"]
+- Never use: [words or phrases you want to avoid ,  e.g. "synergy", "circle back", "as per my last email"]
 
 WHEN IN DOUBT:
-If you&apos;re unsure how to handle something, say: "That&apos;s a great question — let me check with [Owner Name] and get back to you shortly." Do not guess. Do not make commitments you can&apos;t keep.`,
+If you&apos;re unsure how to handle something, say: "That&apos;s a great question ,  let me check with [Owner Name] and get back to you shortly." Do not guess. Do not make commitments you can&apos;t keep.`,
 
   "Test scenario pack": `Generate 3 test scenarios for my AI employee based on the system prompt I just gave you.
 
 The scenarios should be:
 
-SCENARIO 1 — EASY CASE:
+SCENARIO 1 ,  EASY CASE:
 A typical, straightforward interaction this employee handles all the time. They should be able to respond confidently and correctly.
 
-SCENARIO 2 — EDGE CASE:
+SCENARIO 2 ,  EDGE CASE:
 An unusual or ambiguous situation where the right answer isn&apos;t obvious. The employee should ask one clarifying question rather than guessing.
 
-SCENARIO 3 — OUT OF SCOPE:
+SCENARIO 3 ,  OUT OF SCOPE:
 A request that is clearly outside this employee&apos;s role. The employee should acknowledge this gracefully and redirect the person without leaving them stuck.
 
 For each scenario:
@@ -98,7 +98,7 @@ For each scenario:
 
 SCENARIO 1 result: [paste what your employee actually said]
 What worked: [what was good]
-What was off: [what missed the mark — tone, accuracy, format?]
+What was off: [what missed the mark ,  tone, accuracy, format?]
 
 SCENARIO 2 result: [paste what your employee actually said]
 What worked: [what was good]
@@ -187,7 +187,7 @@ export default function Session6Page() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { label: "1. Identity", desc: "Who they are, what their job title is, and how they sound. A name makes them real — it&apos;s easier to refine \"Alex\" than \"my AI assistant.\"" },
+                  { label: "1. Identity", desc: "Who they are, what their job title is, and how they sound. A name makes them real ,  it&apos;s easier to refine \"Alex\" than \"my AI assistant.\"" },
                   { label: "2. Context", desc: "Your business, your clients, your standards, and your voice. This is where you upload your files and write your business description. The more specific, the better." },
                   { label: "3. Rules", desc: "What they handle autonomously vs. what they escalate. Without clear rules, your employee will either over-reach (making decisions they shouldn&apos;t) or under-reach (asking you about everything)." },
                 ].map((part) => (
@@ -202,7 +202,7 @@ export default function Session6Page() {
 
           {/* Build steps */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Building in Cowork — step by step</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Building in Cowork ,  step by step</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {buildSteps.map((step, i) => (
@@ -219,10 +219,10 @@ export default function Session6Page() {
 
           {/* Testing */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What good looks like — testing all 3 scenarios</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What good looks like ,  testing all 3 scenarios</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Before you declare your AI employee ready, run them through three types of scenarios. One easy, one ambiguous, one out of scope. Most employees fail the edge cases first — and that&apos;s where the iteration happens.
+                Before you declare your AI employee ready, run them through three types of scenarios. One easy, one ambiguous, one out of scope. Most employees fail the edge cases first ,  and that&apos;s where the iteration happens.
               </p>
               <div className="flex flex-col gap-3">
                 {[
@@ -241,9 +241,9 @@ export default function Session6Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — copy and use these</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">System prompt template</strong> — paste it into Cowork as your employee&apos;s brief. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Test scenario pack</strong> in Claude.ai to generate realistic test cases. After testing, use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Debrief and iterate</strong> to improve.
+              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">System prompt template</strong> ,  paste it into Cowork as your employee&apos;s brief. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Test scenario pack</strong> in Claude.ai to generate realistic test cases. After testing, use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Debrief and iterate</strong> to improve.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -282,8 +282,8 @@ export default function Session6Page() {
           {/* Next session card */}
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Claude Code — your first build</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 3 · Session 5 — Sat, Jun 20</p>
+              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Claude Code ,  your first build</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 3 · Session 5 ,  Sat, Jun 20</p>
             </div>
             <Link
               href={NEXT}

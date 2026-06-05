@@ -20,7 +20,7 @@ export default function Cohort1Layout({ children }: { children: React.ReactNode 
         onClick={() => setSidebarOpen(false)}
       />
 
-      {/* Sidebar — drawer on mobile, floating on desktop */}
+      {/* Sidebar ,  drawer on mobile, floating on desktop */}
       <div
         className={[
           "fixed inset-y-0 left-0 z-50 w-64",

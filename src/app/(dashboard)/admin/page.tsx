@@ -43,7 +43,7 @@ export default async function AdminDashboard() {
   const stats = [
     { label: "Total Participants", value: String(participantCount ?? 0), icon: Users },
     { label: "Active Cohorts", value: String(cohortCount ?? 0), icon: GraduationCap },
-    { label: "Avg. Completion", value: avgCompletion !== null ? `${avgCompletion}%` : "—", icon: BarChart2 },
+    { label: "Avg. Completion", value: avgCompletion !== null ? `${avgCompletion}%` : ", ", icon: BarChart2 },
     { label: "Sessions This Month", value: String(sessionsThisMonth ?? 0), icon: CalendarCheck },
   ];
 
@@ -66,7 +66,7 @@ export default async function AdminDashboard() {
     id: p.id,
     name: p.full_name ?? p.email,
     email: p.email,
-    cohort: enrollmentMap[p.id]?.length ? "Cohort 1" : "—",
+    cohort: enrollmentMap[p.id]?.length ? "Cohort 1" : ", ",
     sessionsCompleted: completedMap[p.id] ?? 0,
     totalSessions: totalLessons ?? 0,
     status: enrollmentMap[p.id]?.length ? "active" : "pending",

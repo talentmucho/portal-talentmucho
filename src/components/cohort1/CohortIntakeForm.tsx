@@ -140,7 +140,7 @@ export default function CohortIntakeForm({
             We&apos;ve received your answers. Our team will review your application and give you access to the course within <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">24 hours</strong>.
           </p>
           <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-sm">
-            Keep an eye on your inbox — we&apos;ll send you a confirmation email once your access is ready.
+            Keep an eye on your inbox ,  we&apos;ll send you a confirmation email once your access is ready.
           </p>
           <Link
             href="/participant"
@@ -233,7 +233,20 @@ export default function CohortIntakeForm({
 
           {/* 1: payment_email */}
           <Step>
-            <QHeader color="#C4A882" week={null} label="What email did you use at checkout?" why="We use this to verify your payment and link your account." />
+            <QHeader color="#C4A882" week={null} label="Hey ,  what's your first name?" why="We'll greet you by name inside your member area and in every email." />
+            <input
+              type="text"
+              className={inputCls}
+              value={(answers.first_name as string) ?? ""}
+              onChange={(e) => setAnswer("first_name", e.target.value)}
+              placeholder="First name"
+              maxLength={80}
+            />
+          </Step>
+
+          {/* 2: email */}
+          <Step>
+            <QHeader color="#C4A882" week={null} label="What email did you use at checkout?" why="We lock your map to this email so you can come back to it from any device." />
             <input
               type="email"
               inputMode="email"
@@ -359,7 +372,7 @@ export default function CohortIntakeForm({
 
           {/* 10: one_thing */}
           <Step>
-            <QHeader color="#6B5A7A" week={onboardingMode ? null : "Week 04"} label="If June 28 comes and you got exactly ONE thing from bootcamp — what would it be?" why="Abie and Meri read every single one of these before kickoff. Promise." />
+            <QHeader color="#6B5A7A" week={onboardingMode ? null : "Week 04"} label="If June 28 comes and you got exactly ONE thing from bootcamp ,  what would it be?" why="Abie and Meri read every single one of these before kickoff. Promise." />
             <textarea
               className={inputCls + " resize-none"}
               value={(answers.one_thing as string) ?? ""}

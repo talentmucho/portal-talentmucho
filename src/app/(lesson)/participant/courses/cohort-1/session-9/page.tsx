@@ -46,7 +46,7 @@ const deliverableChecklist = [
 
 const whatComesNext = [
   { action: "Keep your AI employee running", desc: "Iterate on the system prompt as you learn what works. Most system prompts improve 3–4 times before they feel right." },
-  { action: "Add a second Claude.ai Project", desc: "When you hit a new problem area — client communication, team management, product development — build a Project around it." },
+  { action: "Add a second Claude.ai Project", desc: "When you hit a new problem area ,  client communication, team management, product development ,  build a Project around it." },
   { action: "Build a second Claude Code tool", desc: "When you see a manual process that could be visual or interactive, that&apos;s your next build." },
   { action: "Teach someone else", desc: "Showing another person how to set up Claude.ai is the fastest way to lock in what you&apos;ve learned. Teach one person before next week." },
 ];
@@ -55,9 +55,9 @@ const PROMPTS: Record<string, string> = {
   "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here&apos;s what I built:
 
 Claude.ai Projects:
-1. [Project name] — use: [purpose]
-2. [Project name] — use: [purpose]
-3. [Project name] — use: [purpose]
+1. [Project name] ,  use: [purpose]
+2. [Project name] ,  use: [purpose]
+3. [Project name] ,  use: [purpose]
 
 Cowork AI employee:
 - Name: [name], Role: [role]
@@ -70,12 +70,12 @@ Claude Code dashboard:
 My daily routine:
 [Paste your written routine from Session 7]
 
-One thing that already changed in my business: [describe — even small]
+One thing that already changed in my business: [describe ,  even small]
 
 Write me a specific 30-day plan. Include:
-1. Three things to build or improve in the next 30 days (be specific — not "improve my AI employee" but "add a rule to handle client refund requests without escalating")
+1. Three things to build or improve in the next 30 days (be specific ,  not "improve my AI employee" but "add a rule to handle client refund requests without escalating")
 2. One daily Claude habit to maintain (what, when, and what it replaces)
-3. One team member or client to involve — and how to introduce them to what you&apos;ve built
+3. One team member or client to involve ,  and how to introduce them to what you&apos;ve built
 4. One metric to track that will tell you Claude is actually working for your business`,
 
   "Teach someone else": `I want to introduce a [colleague / team member / business partner] to Claude.ai. They have no experience with AI tools yet.
@@ -88,11 +88,11 @@ I want to show them:
 3. My dashboard and what it tells me
 
 Write me:
-1. A 5-minute intro script I can use to walk them through it — start with the "what&apos;s in it for them" before showing the tools
+1. A 5-minute intro script I can use to walk them through it ,  start with the "what&apos;s in it for them" before showing the tools
 2. Three things I should let them try hands-on (so they feel it, not just watch)
 3. One follow-up question I should ask them 3 days later`,
 
-  "Review your practice in 30 days": `[Use this prompt 30 days from now — save it somewhere you&apos;ll find it]
+  "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you&apos;ll find it]
 
 It&apos;s been 30 days since I completed the AI Business Bootcamp. Here&apos;s my honest assessment:
 
@@ -108,7 +108,7 @@ What&apos;s still not working: [be honest]
 
 Based on this, tell me:
 1. What to prioritize in the next 30 days
-2. What to stop doing (even if I set it up — if it&apos;s not working, cut it)
+2. What to stop doing (even if I set it up ,  if it&apos;s not working, cut it)
 3. One new thing to add to my Claude stack`,
 };
 
@@ -181,7 +181,7 @@ export default function Session10Page() {
 
           {/* Final deliverables checklist */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Final deliverables — confirm you have all four</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Final deliverables ,  confirm you have all four</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               {deliverableChecklist.map((item, i) => (
                 <div key={i} className="flex items-start gap-3 py-2 border-b border-[var(--beige-200)] dark:border-white/5 last:border-0 last:pb-0 first:pt-0">
@@ -202,14 +202,14 @@ export default function Session10Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your 2-minute showcase format</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                No slides required. This is a spoken presentation — show your actual work if you can share your screen. Keep it tight. The cohort learns as much from your specific details as from any session.
+                No slides required. This is a spoken presentation ,  show your actual work if you can share your screen. Keep it tight. The cohort learns as much from your specific details as from any session.
               </p>
               <div className="flex flex-col gap-2">
                 {[
-                  { time: "30 sec", content: "Who you are and what your business does — brief, the cohort knows you" },
-                  { time: "45 sec", content: "What you built — be specific. \"I built a client intake AI employee named Alex who handles all first-response messages\" not \"I built an AI employee\"" },
-                  { time: "30 sec", content: "One result or change — what&apos;s different now? Even small counts: \"I saved 2 hours last week\" or \"I sent my first AI-drafted proposal\"" },
-                  { time: "15 sec", content: "What you&apos;re building or improving next — commit to one thing publicly" },
+                  { time: "30 sec", content: "Who you are and what your business does ,  brief, the cohort knows you" },
+                  { time: "45 sec", content: "What you built ,  be specific. \"I built a client intake AI employee named Alex who handles all first-response messages\" not \"I built an AI employee\"" },
+                  { time: "30 sec", content: "One result or change ,  what&apos;s different now? Even small counts: \"I saved 2 hours last week\" or \"I sent my first AI-drafted proposal\"" },
+                  { time: "15 sec", content: "What you&apos;re building or improving next ,  commit to one thing publicly" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <span className="text-xs font-semibold text-[var(--taupe-400)] min-w-[48px] mt-0.5">{item.time}</span>
@@ -222,10 +222,10 @@ export default function Session10Page() {
 
           {/* What comes next */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What comes next — graduation is the beginning</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What comes next ,  graduation is the beginning</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Graduation means you have a foundation — not that you&apos;re done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here&apos;s what that looks like in practice:
+                Graduation means you have a foundation ,  not that you&apos;re done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here&apos;s what that looks like in practice:
               </p>
               <div className="flex flex-col gap-3">
                 {whatComesNext.map((item) => (
@@ -243,9 +243,9 @@ export default function Session10Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — use these today and in the weeks ahead</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  use these today and in the weeks ahead</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Run <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Your 30-day plan</strong> in your Thinking Partner Project today. Save <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Review your practice in 30 days</strong> somewhere you&apos;ll find it — set a calendar reminder.
+              Run <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Your 30-day plan</strong> in your Thinking Partner Project today. Save <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Review your practice in 30 days</strong> somewhere you&apos;ll find it ,  set a calendar reminder.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
