@@ -134,7 +134,6 @@ type IntakeWithPaymentEmail = IntakeAnswers & { payment_email?: string | null; s
 
 export function IntakeTab({ initial }: { initial: IntakeWithPaymentEmail }) {
   const [form, setForm] = useState<IntakeAnswers>({
-    first_name:        initial.first_name        ?? "",
     business_oneliner: initial.business_oneliner ?? "",
     first_focus:       initial.first_focus       ?? "",
     voice_owner:       initial.voice_owner       ?? "",
