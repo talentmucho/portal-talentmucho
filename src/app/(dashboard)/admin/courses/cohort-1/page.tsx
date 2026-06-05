@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { Calendar, Clock, Users, Video } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Users, Video } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import {
@@ -162,13 +162,22 @@ export default async function AdminCohort1Page() {
             ))}
           </div>
         </div>
-        <Link
-          href="/admin/courses/cohort-1/introductions"
-          className="inline-flex items-center gap-2 shrink-0 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-4 py-2 text-sm text-[var(--charcoal-900)] dark:text-foreground hover:bg-[var(--beige-50)] dark:hover:bg-white/5 transition-colors"
-        >
-          <Users className="size-3.5" />
-          Introductions
-        </Link>
+        <div className="flex items-center gap-2 shrink-0">
+          <Link
+            href="/participant/courses/cohort-1/session-1"
+            className="inline-flex items-center gap-2 bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Preview session
+            <ArrowRight className="size-3.5" />
+          </Link>
+          <Link
+            href="/admin/courses/cohort-1/introductions"
+            className="inline-flex items-center gap-2 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-4 py-2 text-sm text-[var(--charcoal-900)] dark:text-foreground hover:bg-[var(--beige-50)] dark:hover:bg-white/5 transition-colors"
+          >
+            <Users className="size-3.5" />
+            Introductions
+          </Link>
+        </div>
       </div>
 
       {/* Tabs */}
