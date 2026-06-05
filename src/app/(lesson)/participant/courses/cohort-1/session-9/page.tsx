@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W4 · S8",
@@ -51,8 +50,11 @@ const whatComesNext = [
   { action: "Teach someone else", desc: "Showing another person how to set up Claude.ai is the fastest way to lock in what you&apos;ve learned. Teach one person before next week." },
 ];
 
-const PROMPTS: Record<string, string> = {
-  "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here&apos;s what I built:
+export default async function Session10Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here&apos;s what I built:
 
 Claude.ai Projects:
 1. [Project name] ,  use: [purpose]
@@ -60,7 +62,7 @@ Claude.ai Projects:
 3. [Project name] ,  use: [purpose]
 
 Cowork AI employee:
-- Name: [name], Role: [role]
+- Name: [name], Role: **${intake?.ai_employee_role || "[role]"}**
 - Handles: [main tasks]
 
 Claude Code dashboard:
@@ -78,7 +80,7 @@ Write me a specific 30-day plan. Include:
 3. One team member or client to involve ,  and how to introduce them to what you&apos;ve built
 4. One metric to track that will tell you Claude is actually working for your business`,
 
-  "Teach someone else": `I want to introduce a [colleague / team member / business partner] to Claude.ai. They have no experience with AI tools yet.
+    "Teach someone else": `I want to introduce a [colleague / team member / business partner] to Claude.ai. They have no experience with AI tools yet.
 
 About them: [describe their role, what they do day-to-day, what they might be skeptical about]
 
@@ -92,7 +94,7 @@ Write me:
 2. Three things I should let them try hands-on (so they feel it, not just watch)
 3. One follow-up question I should ask them 3 days later`,
 
-  "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you&apos;ll find it]
+    "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you&apos;ll find it]
 
 It&apos;s been 30 days since I completed the AI Business Bootcamp. Here&apos;s my honest assessment:
 
@@ -110,9 +112,8 @@ Based on this, tell me:
 1. What to prioritize in the next 30 days
 2. What to stop doing (even if I set it up ,  if it&apos;s not working, cut it)
 3. One new thing to add to my Claude stack`,
-};
+  };
 
-export default function Session10Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

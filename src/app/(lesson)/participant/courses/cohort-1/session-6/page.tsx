@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W3 · S5",
@@ -69,8 +68,11 @@ cd my-dashboard
 claude`,
 };
 
-const BUILD_PROMPTS: Record<string, string> = {
-  "First build prompt": `Build me a [type of tool ,  e.g. business dashboard, client intake form, weekly report template] for my [type of business].
+export default async function Session7Page() {
+  const intake = await getIntakeData();
+
+  const BUILD_PROMPTS: Record<string, string> = {
+    "First build prompt": `Build me a [type of tool ,  e.g. business dashboard, client intake form, weekly report template] for my **${intake?.business_oneliner || "[type of business]"}**.
 
 This will be used by: [who ,  just me / my team / my clients]
 
@@ -90,7 +92,7 @@ Tech requirements:
 
 Keep it simple. Version 1 ,  get something real on screen.`,
 
-  "Iterate on what you built": `I can see the first version. Here&apos;s what I want to change:
+    "Iterate on what you built": `I can see the first version. Here&apos;s what I want to change:
 
 KEEP:
 - [what&apos;s working well ,  be specific]
@@ -108,7 +110,7 @@ REMOVE:
 
 Make only these changes. Don&apos;t redesign anything else.`,
 
-  "Describe what&apos;s wrong precisely": `The build has an issue. I want to fix this specifically:
+    "Describe what&apos;s wrong precisely": `The build has an issue. I want to fix this specifically:
 
 WHAT&apos;S WRONG:
 [Describe what you see that&apos;s wrong ,  not "it looks bad" but "the revenue number shows $0 instead of the sample data values"]
@@ -120,9 +122,8 @@ WHAT IT SHOULD DO:
 [Describe the correct behavior ,  e.g. "The revenue card should show $12,400 using the sample data in the data file"]
 
 Don&apos;t change anything else while fixing this.`,
-};
+  };
 
-export default function Session7Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

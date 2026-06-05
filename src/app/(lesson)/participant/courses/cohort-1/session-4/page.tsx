@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W2 · S3",
@@ -42,11 +41,13 @@ const roleExamples = [
   { name: "Onboarding Coordinator", handles: "Greets new clients, sends welcome sequences, answers FAQs, collects intake info", escalates: "Unusual requests, unhappy clients, contract questions" },
   { name: "Content Writer", handles: "Writes in your brand voice, formats for each platform, drafts from briefs", escalates: "Sensitive topics, strategy decisions, client-facing launches" },
   { name: "Ops Assistant", handles: "Processes intake forms, routes requests, drafts SOPs, summarizes notes", escalates: "Anything requiring judgment calls or external action" },
-  { name: "Sales Qualifier", handles: "Responds to inquiries, asks qualifying questions, scores leads, schedules calls", escalates: "Ready-to-close prospects, pricing conversations, custom deals" },
-];
+]
 
-const PROMPTS: Record<string, string> = {
-  "Identify my best first AI employee role": `I run a [type of business]. Here's how my work breaks down:
+export default async function Session5Page() {
+  const intake = await getIntakeData();
+
+  const PROMPTS: Record<string, string> = {
+    "Identify my best first AI employee role": `I run a **${intake?.business_oneliner || "[type of business]"}**. Here's how my work breaks down:
 
 Tasks I do every day: [list 3–5 daily tasks]
 Tasks I do every week: [list 3–5 weekly tasks]
@@ -61,10 +62,10 @@ Based on this, suggest:
 3. Why this role would have the most impact on my business
 4. What I need to prepare before building them`,
 
-  "Draft a role description": `I want to create an AI employee for my business. Here's the role I've identified:
+    "Draft a role description": `I want to create an AI employee for my business. Here's the role I've identified:
 
 Role name: [what you'll call this employee ,  e.g. "Alex"]
-Job title: [e.g. Client Onboarding Coordinator]
+Job title: **${intake?.ai_employee_role || "[e.g. Client Onboarding Coordinator]"}**
 Primary responsibility: [one sentence ,  what is their core job?]
 
 They will handle these tasks autonomously:
@@ -84,7 +85,7 @@ Write me:
 2. A list of 5 rules they must always follow
 3. A list of 3 things they must never do`,
 
-  "Write the system prompt": `Using the role description I just gave you, write a complete system prompt for this AI employee.
+    "Write the system prompt": `Using the role description I just gave you, write a complete system prompt for this AI employee.
 
 The system prompt should:
 - Open with their identity (name, role, and who they work for)
@@ -95,9 +96,8 @@ The system prompt should:
 - State clearly what they escalate and how
 
 Format it so I can paste it directly into Cowork.`,
-};
+  };
 
-export default function Session5Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

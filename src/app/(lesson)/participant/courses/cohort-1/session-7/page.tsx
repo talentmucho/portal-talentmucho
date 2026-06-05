@@ -1,8 +1,7 @@
-﻿"use client";
-
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "W3 · S6",
@@ -54,10 +53,13 @@ const iterationRules = [
   { wrong: "Something&apos;s broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn&apos;t reading it" },
 ];
 
-const PROMPTS: Record<string, string> = {
-  "Dashboard planning conversation": `I want to build a business dashboard. Help me plan it before we build.
+export default async function Session8Page() {
+  const intake = await getIntakeData();
 
-My business: [describe what you do in 2–3 sentences]
+  const PROMPTS: Record<string, string> = {
+    "Dashboard planning conversation": `I want to build a business dashboard. Help me plan it before we build.
+
+My business: **${intake?.business_oneliner || "[describe what you do in 2–3 sentences]"}**
 Who uses this dashboard: [just me / my team / clients]
 
 The main reason I want this:
@@ -74,7 +76,7 @@ How I&apos;ll update the data: [manually each week / automatically from ___]
 
 Based on this, ask me 3 clarifying questions that will help us build the right thing ,  not the most impressive thing, the most useful thing.`,
 
-  "Build prompt (use in Claude Code)": `Build me a business dashboard using React.
+    "Build prompt (use in Claude Code)": `Build me a business dashboard using React.
 
 PURPOSE: [one sentence ,  what this dashboard helps me do]
 
@@ -98,7 +100,7 @@ NOTES:
 - Run with: npm run dev
 - Keep it Version 1 simple ,  no charts unless I specifically ask`,
 
-  "Iterate ,  change specific things": `The dashboard looks good. I want to make these specific changes:
+    "Iterate ,  change specific things": `The dashboard looks good. I want to make these specific changes:
 
 CHANGE 1:
 - What: [specific element ,  e.g. "The Revenue card"]
@@ -117,7 +119,7 @@ CHANGE 3:
 
 Make only these changes. Don&apos;t redesign, don&apos;t improve anything else.`,
 
-  "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here&apos;s the exact issue:
+    "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here&apos;s the exact issue:
 
 WHAT I SEE:
 [Describe what&apos;s appearing on screen ,  e.g. "The Active Clients card shows '0' instead of a real number"]
@@ -129,9 +131,8 @@ WHERE THE DATA IS:
 [Tell Claude Code where to look ,  e.g. "The data is in /src/data/clients.json, key name is 'activeCount'"]
 
 Fix only this issue. If you&apos;re going to change more than 5 lines, check with me first.`,
-};
+  };
 
-export default function Session8Page() {
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 

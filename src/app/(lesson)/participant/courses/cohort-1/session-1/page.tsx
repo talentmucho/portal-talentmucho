@@ -1,5 +1,6 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, PlayCircle } from "lucide-react";
+import { getIntakeData } from "@/utils/intake-helper";
 
 const SESSION = {
   tag: "Kickoff",
@@ -21,7 +22,19 @@ const SESSION = {
 const OVERVIEW = "/participant/courses/cohort-1";
 const NEXT     = "/participant/courses/cohort-1/session-2";
 
-export default function Session1Page() {
+export default async function Session1Page() {
+  const intake = await getIntakeData();
+
+  const focusArea = intake?.first_focus || "business operations";
+  const businessContext = intake?.business_oneliner || "[your business one-liner]";
+  
+  const customPrompt = (
+    <>
+      Act as an expert in <strong className="font-bold text-[var(--charcoal-900)] dark:text-white bg-[var(--beige-200)] dark:bg-white/10 px-1 rounded">{focusArea}</strong>. My business does: <strong className="font-bold text-[var(--charcoal-900)] dark:text-white bg-[var(--beige-200)] dark:bg-white/10 px-1 rounded">{businessContext}</strong>.{"\n"}
+      Please give me a strategic checklist for week 1.
+    </>
+  );
+
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
 
@@ -87,6 +100,20 @@ export default function Session1Page() {
               {SESSION.title}
             </h1>
             <p className="tm-body-sm max-w-2xl">{SESSION.description}</p>
+
+            <div className="mt-8 p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">
+                Your first personalized prompt
+              </h3>
+              <p className="text-sm text-[var(--taupe-400)] mb-4">
+                Based on your onboarding answers, we've crafted a prompt for you to try in Claude right now.
+              </p>
+              <div className="relative group">
+                <pre className="p-4 rounded-xl bg-[var(--beige-50)] dark:bg-[var(--espresso-700)] text-sm text-[var(--charcoal-900)] dark:text-[var(--taupe-400)] whitespace-pre-wrap font-mono">
+                  {customPrompt}
+                </pre>
+              </div>
+            </div>
           </div>
 
           {/* Next step nudge */}
