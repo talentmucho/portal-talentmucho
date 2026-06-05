@@ -59,7 +59,7 @@ export default async function Session4Page() {
     getSessionOverrides("cohort-1", 3),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
     "Custom instructions template": `You are my business assistant for [Business Name].

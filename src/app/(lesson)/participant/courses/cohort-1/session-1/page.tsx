@@ -31,7 +31,7 @@ export default async function Session1Page() {
     getSessionOverrides("cohort-1", 1),
     getIsAdmin(),
   ]);
-  const session = applyOverrides({ ...SESSION, zoomUrl: "#" }, overrides);
+  const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const focusArea = intake?.first_focus || "business operations";
   const businessContext = intake?.business_oneliner || "[your business one-liner]";
