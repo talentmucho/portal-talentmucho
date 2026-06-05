@@ -231,20 +231,7 @@ export default function CohortIntakeForm({
           nextButtonText="Continue →"
         >
 
-          {/* 1: payment_email */}
-          <Step>
-            <QHeader color="#C4A882" week={null} label="Hey ,  what's your first name?" why="We'll greet you by name inside your member area and in every email." />
-            <input
-              type="text"
-              className={inputCls}
-              value={(answers.first_name as string) ?? ""}
-              onChange={(e) => setAnswer("first_name", e.target.value)}
-              placeholder="First name"
-              maxLength={80}
-            />
-          </Step>
-
-          {/* 2: email */}
+          {/* 1: email */}
           <Step>
             <QHeader color="#C4A882" week={null} label="What email did you use at checkout?" why="We lock your map to this email so you can come back to it from any device." />
             <input

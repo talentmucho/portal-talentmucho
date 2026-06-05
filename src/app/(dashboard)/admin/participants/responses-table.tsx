@@ -163,10 +163,7 @@ export function ResponsesTable({ responses }: { responses: IntakeResponse[] }) {
                 }
               </span>
               <span className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground truncate">
-                {r.first_name ?? ", "}
-              </span>
-              <span className="text-sm text-[var(--taupe-400)] font-light truncate">
-                {r.email ?? ", "}
+                {r.payment_email ?? "-"}
               </span>
               <span className="text-xs text-[var(--taupe-400)] font-light">
                 {FOCUS_LABELS[r.first_focus ?? ""] ?? r.first_focus ?? ", "}
