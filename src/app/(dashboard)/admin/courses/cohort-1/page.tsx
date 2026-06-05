@@ -177,6 +177,12 @@ export default async function AdminCohort1Page() {
             <Users className="size-3.5" />
             Introductions
           </Link>
+          <Link
+            href="/admin/courses/cohort-1/roadmap"
+            className="inline-flex items-center gap-2 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-4 py-2 text-sm text-[var(--charcoal-900)] dark:text-foreground hover:bg-[var(--beige-50)] dark:hover:bg-white/5 transition-colors"
+          >
+            Roadmaps
+          </Link>
         </div>
       </div>
 
