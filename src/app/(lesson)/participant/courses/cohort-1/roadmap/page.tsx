@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { getIntakeData } from "@/utils/intake-helper";
 
 // ─── Per-participant session moves ───────────────────────────────────────────
@@ -10,12 +11,14 @@ type Move = { session: string; date: string; label: string; move: string };
 type ParticipantData = {
   insight: string;
   accentColor: string;
+  photo?: string;
   moves: Move[];
   deliverables: { week: string; color: string; text: string }[];
 };
 
 const PARTICIPANT_ROADMAPS: Record<string, ParticipantData> = {
   norife: {
+    photo: "/assets/participants/norife.png",
     insight:
       "Norife already uses AI in client work and has chosen lead generation as her core focus. Her goal isn't to learn the basics — it's to build a repeatable, AI-powered pipeline that consistently brings in new clients for her VA and coaching business. Every session is an opportunity to build a real lead gen asset.",
     accentColor: "#1A6B52",
@@ -38,6 +41,7 @@ const PARTICIPANT_ROADMAPS: Record<string, ParticipantData> = {
     ],
   },
   celeste: {
+    photo: "/assets/participants/celeste.png",
     insight:
       "Celeste is building The Life CEO into a scalable AI-powered coaching brand. She wants Claude to sound like her, attract buyers, and run the operational side so she can focus on her clients. Every session should produce something she can put in front of her audience.",
     accentColor: "#3D3489",
@@ -60,6 +64,7 @@ const PARTICIPANT_ROADMAPS: Record<string, ParticipantData> = {
     ],
   },
   daniel: {
+    photo: "/assets/participants/daniel.png",
     insight:
       "Daniel is building something new — a voice and content brand from the ground up. He's starting from scratch, and the bootcamp is his first structured step. Every session should produce something tangible: a piece of content, a drafted service, a built tool. By the end he should have evidence of what he's capable of.",
     accentColor: "#6B4A1A",
@@ -82,6 +87,7 @@ const PARTICIPANT_ROADMAPS: Record<string, ParticipantData> = {
     ],
   },
   lora: {
+    photo: "/assets/participants/lora.png",
     insight:
       "Lora is a remote sales specialist closing premium contracts from Manila. She needs Claude to make her faster — faster outreach, faster follow-ups, faster CRM updates — so she can close more without working more. Her bootcamp is about building a remote sales machine that runs on AI.",
     accentColor: "#1A5070",
@@ -104,6 +110,7 @@ const PARTICIPANT_ROADMAPS: Record<string, ParticipantData> = {
     ],
   },
   marielle: {
+    photo: "/assets/participants/marielle.png",
     insight:
       "Marielle is an Online Business Manager who wants Claude to think like her and do more of the work that moves her business forward. She's detail-oriented, proactive, and manages multiple clients. Her bootcamp is about building a system that lets her take on more clients without taking on more hours.",
     accentColor: "#5A2D82",
@@ -154,7 +161,8 @@ export default async function RoadmapPage() {
   const peakTime     = intake.peak_time || "your peak hours";
   const os           = intake.os || "Windows";
 
-  const insight = data?.insight ?? `${firstName} is joining this bootcamp with a clear goal: to ${oneThing}. Every session has been designed around the reality of running ${business}, with a focus on ${focusArea}. By the end of Week 4, ${firstName} will have a Claude stack that runs alongside their business every day.`;
+  const photo = data?.photo ?? null;
+  const insight = data?.insight ??`${firstName} is joining this bootcamp with a clear goal: to ${oneThing}. Every session has been designed around the reality of running ${business}, with a focus on ${focusArea}. By the end of Week 4, ${firstName} will have a Claude stack that runs alongside their business every day.`;
   const accentColor = data?.accentColor ?? "#7D6B5A";
 
   const moves: Move[] = data?.moves ?? [
@@ -207,6 +215,22 @@ export default async function RoadmapPage() {
             className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
             style={{ background: accentColor, transform: "translate(30%, -30%)" }}
           />
+          {photo && (
+            <div className="mb-6">
+              <div
+                className="size-20 rounded-full overflow-hidden border-2"
+                style={{ borderColor: `${accentColor}40` }}
+              >
+                <Image
+                  src={photo}
+                  alt={firstName}
+                  width={80}
+                  height={80}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          )}
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--taupe-400)] mb-4">
             Talent Mucho · AI Business Bootcamp · June 2026
           </p>
