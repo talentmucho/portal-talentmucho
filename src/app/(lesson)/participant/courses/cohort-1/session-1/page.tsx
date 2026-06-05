@@ -96,7 +96,7 @@ export default function Session1Page() {
                 Up next: The interface, Projects, your first conversation
               </p>
               <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">
-                Week 1 · Session 1 — Sat, Jun 6
+                Week 1 · Session 1 ,  Sat, Jun 6
               </p>
             </div>
             <Link

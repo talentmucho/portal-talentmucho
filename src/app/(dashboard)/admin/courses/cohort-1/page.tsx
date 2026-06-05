@@ -31,7 +31,7 @@ const weeks = [
     deliverable:
       "1 named AI employee in Cowork, briefed and tested against real scenarios from your business.",
     sessions: [
-      "Sat, Jun 13 · AI employees — what Cowork makes real",
+      "Sat, Jun 13 · AI employees ,  what Cowork makes real",
       "Sun, Jun 14 · Build and test your first AI employee live",
     ],
   },
@@ -42,7 +42,7 @@ const weeks = [
     deliverable:
       "1 custom business dashboard built with Claude Code. No coding experience needed.",
     sessions: [
-      "Sat, Jun 20 · Claude Code — your first build",
+      "Sat, Jun 20 · Claude Code ,  your first build",
       "Sun, Jun 21 · Build your business dashboard",
     ],
   },
@@ -63,9 +63,9 @@ const sessions = [
   { tag: "Kickoff", date: "Fri, Jun 5", time: "6–8 PM EST", topic: "Welcome, orientation, Claude.ai setup", color: "#C4A882" },
   { tag: "W1 · S1", date: "Sat, Jun 6", time: "10 AM–1 PM EST", topic: "The interface, Projects, your first conversation", color: "#C4A882" },
   { tag: "W1 · S2", date: "Sun, Jun 7", time: "10 AM–1 PM EST", topic: "Custom instructions, file uploads", color: "#C4A882" },
-  { tag: "W2 · S3", date: "Sat, Jun 13", time: "10 AM–1 PM EST", topic: "AI employees — what Cowork makes real", color: "#7D6B5A" },
+  { tag: "W2 · S3", date: "Sat, Jun 13", time: "10 AM–1 PM EST", topic: "AI employees ,  what Cowork makes real", color: "#7D6B5A" },
   { tag: "W2 · S4", date: "Sun, Jun 14", time: "10 AM–1 PM EST", topic: "Build and test your first AI employee live", color: "#7D6B5A" },
-  { tag: "W3 · S5", date: "Sat, Jun 20", time: "10 AM–1 PM EST", topic: "Claude Code — your first build", color: "#5A7A6B" },
+  { tag: "W3 · S5", date: "Sat, Jun 20", time: "10 AM–1 PM EST", topic: "Claude Code ,  your first build", color: "#5A7A6B" },
   { tag: "W3 · S6", date: "Sun, Jun 21", time: "10 AM–1 PM EST", topic: "Build your business dashboard", color: "#5A7A6B" },
   { tag: "W4 · S7", date: "Sat, Jun 27", time: "10 AM–1 PM EST", topic: "Your full Claude stack working together", color: "#6B5A7A" },
   { tag: "W4 · S8", date: "Sun, Jun 28", time: "10 AM–1 PM EST", topic: "Showcases, Q&A, and graduation", color: "#6B5A7A" },

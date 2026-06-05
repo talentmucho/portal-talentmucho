@@ -8,12 +8,12 @@ const SESSION = {
   tag: "W2 · S3",
   color: "#7D6B5A",
   weekLabel: "Week 2 · Delegating to Claude",
-  title: "AI employees — what Cowork makes real",
+  title: "AI employees ,  what Cowork makes real",
   date: "Sat, Jun 13",
   time: "10 AM–1 PM EST",
   videoUrl: null as string | null,
   description:
-    "An introduction to AI employees — what they are, what Cowork makes possible, and how real businesses are using them today. You'll see a live demo and leave with a clear plan for what you're building in Session 4.",
+    "An introduction to AI employees ,  what they are, what Cowork makes possible, and how real businesses are using them today. You'll see a live demo and leave with a clear plan for what you're building in Session 4.",
   resources: [
     { label: "Cowork platform overview", href: "#" },
     { label: "AI employee role examples", href: "#" },
@@ -53,7 +53,7 @@ Tasks I do every week: [list 3–5 weekly tasks]
 Tasks I hate doing or always postpone: [list 2–3]
 Tasks that eat up my time but feel repetitive: [list 2–3]
 
-My current biggest bottleneck is: [describe — where does work pile up or slow down?]
+My current biggest bottleneck is: [describe ,  where does work pile up or slow down?]
 
 Based on this, suggest:
 1. The single best role for my first AI employee (name the role)
@@ -63,12 +63,12 @@ Based on this, suggest:
 
   "Draft a role description": `I want to create an AI employee for my business. Here's the role I've identified:
 
-Role name: [what you'll call this employee — e.g. "Alex"]
+Role name: [what you'll call this employee ,  e.g. "Alex"]
 Job title: [e.g. Client Onboarding Coordinator]
-Primary responsibility: [one sentence — what is their core job?]
+Primary responsibility: [one sentence ,  what is their core job?]
 
 They will handle these tasks autonomously:
-1. [task 1 — be specific about what "handling" looks like]
+1. [task 1 ,  be specific about what "handling" looks like]
 2. [task 2]
 3. [task 3]
 
@@ -76,7 +76,7 @@ They will escalate to me when:
 1. [escalation trigger 1]
 2. [escalation trigger 2]
 
-The tone they should use: [describe — warm and professional / direct and efficient / friendly and casual]
+The tone they should use: [describe ,  warm and professional / direct and efficient / friendly and casual]
 The clients they'll interact with: [describe who your clients are]
 
 Write me:
@@ -176,7 +176,7 @@ export default function Session5Page() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-2">
-                  <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">Claude.ai Projects — tool</p>
+                  <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">Claude.ai Projects ,  tool</p>
                   <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">You open it. You ask it something. It helps. You close it. You&apos;re always in the loop. Great for active work: writing, analysis, thinking.</p>
                 </div>
                 <div className="rounded-xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-4 flex flex-col gap-2">
@@ -192,10 +192,10 @@ export default function Session5Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What Cowork adds that Claude.ai alone can&apos;t do</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               {[
-                { feature: "Named identity", desc: "Your AI employee has a name, a defined role, and a persistent briefing — they show up as someone, not something." },
-                { feature: "Role specialization", desc: "Scoped context, specific workflows, and rules tailored to exactly one job. Not a generalist — a specialist." },
+                { feature: "Named identity", desc: "Your AI employee has a name, a defined role, and a persistent briefing ,  they show up as someone, not something." },
+                { feature: "Role specialization", desc: "Scoped context, specific workflows, and rules tailored to exactly one job. Not a generalist ,  a specialist." },
                 { feature: "Delegation", desc: "You assign them work and they run it in your style. You review what needs review; the rest handles itself." },
-                { feature: "Escalation logic", desc: "Defined rules for when they act autonomously vs. when they flag something for you — so nothing falls through the cracks." },
+                { feature: "Escalation logic", desc: "Defined rules for when they act autonomously vs. when they flag something for you ,  so nothing falls through the cracks." },
               ].map((item) => (
                 <div key={item.feature} className="flex items-start gap-3 py-2 border-b border-[var(--beige-200)] dark:border-white/5 last:border-0">
                   <div className="flex-1 min-w-0">
@@ -209,7 +209,7 @@ export default function Session5Page() {
 
           {/* Role examples */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Real role examples — what other businesses have built</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Real role examples ,  what other businesses have built</p>
             <div className="flex flex-col gap-3">
               {roleExamples.map((role) => (
                 <div key={role.name} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-2">
@@ -249,9 +249,9 @@ export default function Session5Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — use these to design your first AI employee</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  use these to design your first AI employee</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Run these in your <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Thinking Partner</strong> Project — it&apos;s the right space for strategic decisions like this.
+              Run these in your <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Thinking Partner</strong> Project ,  it&apos;s the right space for strategic decisions like this.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -282,7 +282,7 @@ export default function Session5Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Build and test your first AI employee live</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 2 · Session 4 — Sun, Jun 14</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 2 · Session 4 ,  Sun, Jun 14</p>
             </div>
             <Link
               href={NEXT}

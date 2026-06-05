@@ -13,7 +13,7 @@ const SESSION = {
   time: "10 AM–1 PM EST",
   videoUrl: null as string | null,
   description:
-    "All three outputs from the bootcamp — your Claude.ai Projects, your AI employee, and your Claude Code dashboard — run together in a real workflow. We'll map exactly where Claude fits in your workday and write your daily routine.",
+    "All three outputs from the bootcamp ,  your Claude.ai Projects, your AI employee, and your Claude Code dashboard ,  run together in a real workflow. We'll map exactly where Claude fits in your workday and write your daily routine.",
   resources: [
     { label: "Daily routine template", href: "#" },
     { label: "Stack integration guide", href: "#" },
@@ -69,7 +69,7 @@ const workflowExample = [
   { time: "8:00 AM", layer: "Layer 3", action: "Open your Claude Code dashboard → see 3 new client inquiries flagged overnight" },
   { time: "8:15 AM", layer: "Layer 2", action: "Your Cowork AI employee already responded to 2 of them with qualification questions" },
   { time: "8:30 AM", layer: "Layer 1", action: "Open Claude.ai → paste the third (complex) inquiry → get a draft response → review and send" },
-  { time: "11:00 AM", layer: "Layer 1", action: "Use Claude.ai to prep for an afternoon client call — pull talking points from your Project" },
+  { time: "11:00 AM", layer: "Layer 1", action: "Use Claude.ai to prep for an afternoon client call ,  pull talking points from your Project" },
   { time: "4:00 PM", layer: "Layer 1", action: "Ask Claude.ai to draft your weekly client update using metrics from your dashboard" },
   { time: "4:30 PM", layer: "Layer 2", action: "Your AI employee sends a catch-up message to clients who haven&apos;t checked in this week" },
 ];
@@ -78,9 +78,9 @@ const PROMPTS: Record<string, string> = {
   "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here&apos;s what I built:
 
 My Claude.ai Projects:
-1. [Project name] — I use this for: [purpose]
-2. [Project name] — I use this for: [purpose]
-3. [Project name] — I use this for: [purpose]
+1. [Project name] ,  I use this for: [purpose]
+2. [Project name] ,  I use this for: [purpose]
+3. [Project name] ,  I use this for: [purpose]
 
 My Cowork AI employee:
 - Name: [name]
@@ -90,22 +90,22 @@ My Cowork AI employee:
 
 My Claude Code dashboard:
 - Shows: [what metrics / data]
-- I check it: [when — morning / weekly / before client calls]
+- I check it: [when ,  morning / weekly / before client calls]
 
 Now help me:
-1. Identify any gaps — workflows I should have covered but didn&apos;t
-2. Spot any overlaps — places where two layers are doing the same thing
+1. Identify any gaps ,  workflows I should have covered but didn&apos;t
+2. Spot any overlaps ,  places where two layers are doing the same thing
 3. Write a summary of my complete Claude stack in plain language I could explain to a colleague`,
 
   "Write my daily routine": `Based on my Claude stack above, help me write a specific daily Claude routine.
 
 My typical workday looks like:
-[Describe your day — when you start, what types of work you do in the morning vs. afternoon, how you interact with clients, what tasks are repetitive]
+[Describe your day ,  when you start, what types of work you do in the morning vs. afternoon, how you interact with clients, what tasks are repetitive]
 
 Write my routine in this format:
 
 MORNING (time ___):
-→ I open [which tool] to [do what — be specific]
+→ I open [which tool] to [do what ,  be specific]
 → This takes approximately [__ minutes]
 
 MIDDAY (time ___):
@@ -122,23 +122,23 @@ END OF DAY (time ___):
 WEEKLY (day ___):
 → Deeper use: [what]
 
-Make each step concrete and specific to my actual business — not generic habits.`,
+Make each step concrete and specific to my actual business ,  not generic habits.`,
 
   "Prepare my showcase": `I need to present my work from the bootcamp in 2 minutes. Here&apos;s what I built:
 
 [Paste your stack map from the first prompt above]
 
-One concrete result or change in my business since starting: [describe something real — even small — that&apos;s different now]
+One concrete result or change in my business since starting: [describe something real ,  even small ,  that&apos;s different now]
 
 Something I&apos;m going to build or improve next: [what&apos;s next for your Claude practice]
 
 Write me a 2-minute verbal presentation using this structure:
 - 30 sec: Who I am and what my business does
-- 45 sec: What I built (make it tangible — not "I built things" but specific)
+- 45 sec: What I built (make it tangible ,  not "I built things" but specific)
 - 30 sec: One result or change this created
 - 15 sec: What I&apos;m building next
 
-Keep it conversational. No slides needed — this is spoken.`,
+Keep it conversational. No slides needed ,  this is spoken.`,
 };
 
 export default function Session9Page() {
@@ -243,7 +243,7 @@ export default function Session9Page() {
 
           {/* Workflow example */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How they connect — a real workday example</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How they connect ,  a real workday example</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] overflow-hidden">
               {workflowExample.map((item, i) => (
                 <div
@@ -263,14 +263,14 @@ export default function Session9Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Designing your daily routine</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                A routine is a Claude stack that runs without you having to decide when to use it. The participants who get the most out of Claude after the bootcamp aren&apos;t the ones who use it the most — they&apos;re the ones who have specific triggers that open Claude automatically.
+                A routine is a Claude stack that runs without you having to decide when to use it. The participants who get the most out of Claude after the bootcamp aren&apos;t the ones who use it the most ,  they&apos;re the ones who have specific triggers that open Claude automatically.
               </p>
               <div className="flex flex-col gap-2">
                 {[
                   { trigger: "Morning open", question: "Which tool do you open first, every day? What are you looking for?" },
                   { trigger: "Midday delegate", question: "What does your AI employee handle without you checking in?" },
                   { trigger: "End of day check", question: "What does your dashboard tell you at 5 PM?" },
-                  { trigger: "Weekly depth", question: "When do you sit with Claude for longer thinking — planning, strategy, reflection?" },
+                  { trigger: "Weekly depth", question: "When do you sit with Claude for longer thinking ,  planning, strategy, reflection?" },
                 ].map((item) => (
                   <div key={item.trigger} className="flex items-start gap-3 py-2 border-b border-[var(--beige-200)] dark:border-white/5 last:border-0">
                     <div className="flex-1 min-w-0">
@@ -285,7 +285,7 @@ export default function Session9Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — use these in your Thinking Partner Project</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  use these in your Thinking Partner Project</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
               Run these in order. The stack map feeds into the daily routine. Both feed into your showcase.
             </p>
@@ -294,14 +294,14 @@ export default function Session9Page() {
 
           {/* Showcase prep */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Showcase prep — what to have ready for Session 8</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Showcase prep ,  what to have ready for Session 8</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Your 2-minute showcase covers 4 things:</p>
               <ol className="flex flex-col gap-2">
                 {[
-                  "30 sec: Who you are and what your business does (assume the group knows you — be brief)",
-                  "45 sec: What you built — show it if you can. Describe it specifically if not.",
-                  "30 sec: One result or change in your business — even small counts",
+                  "30 sec: Who you are and what your business does (assume the group knows you ,  be brief)",
+                  "45 sec: What you built ,  show it if you can. Describe it specifically if not.",
+                  "30 sec: One result or change in your business ,  even small counts",
                   "15 sec: What you&apos;re building or improving next",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">
@@ -317,7 +317,7 @@ export default function Session9Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-2">Week 4 Deliverable</p>
             <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-              A written daily Claude routine: 3 specific moments in your workday where Claude is open and ready — with the exact tool and the exact task described for each.
+              A written daily Claude routine: 3 specific moments in your workday where Claude is open and ready ,  with the exact tool and the exact task described for each.
             </p>
           </div>
 
@@ -325,7 +325,7 @@ export default function Session9Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Showcases, Q&amp;A, and graduation</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 4 · Session 8 — Sun, Jun 28</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 4 · Session 8 ,  Sun, Jun 28</p>
             </div>
             <Link
               href={NEXT}

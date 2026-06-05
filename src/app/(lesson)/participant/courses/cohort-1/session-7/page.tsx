@@ -13,7 +13,7 @@ const SESSION = {
   time: "10 AM–1 PM EST",
   videoUrl: null as string | null,
   description:
-    "The big build session. You'll use Claude Code to create a custom dashboard for your business — pulling in your data, designing what matters to you, and iterating live. No coding experience required.",
+    "The big build session. You'll use Claude Code to create a custom dashboard for your business ,  pulling in your data, designing what matters to you, and iterating live. No coding experience required.",
   resources: [
     { label: "Dashboard planning worksheet", href: "#" },
     { label: "Claude Code examples", href: "#" },
@@ -28,7 +28,7 @@ const NEXT     = "/participant/courses/cohort-1/session-8";
 const bringList = [
   "Claude Code installed from Session 5",
   "5 key metrics you track in your business (write them down)",
-  "Your current tracking method — spreadsheet, app, or notebook",
+  "Your current tracking method ,  spreadsheet, app, or notebook",
   "A rough sketch or description of what your dashboard should look like",
 ];
 
@@ -43,15 +43,15 @@ const planningQuestions = [
   { q: "What decision does this help you make?", hint: "\"I want to know at a glance if I need to push on revenue this week\" is a decision. \"I want to see my numbers\" isn&apos;t." },
   { q: "What are the 5 numbers you&apos;d look at first every morning?", hint: "These become your primary metric cards. If you can&apos;t name 5, start with 3." },
   { q: "Who else needs to see this?", hint: "Just you = simpler. Your team = needs labels and context. Clients = needs to look polished." },
-  { q: "How will you update the data?", hint: "Manually (you type in numbers each week) or automatically (connected to a source). Start manually — it&apos;s simpler and you can automate later." },
+  { q: "How will you update the data?", hint: "Manually (you type in numbers each week) or automatically (connected to a source). Start manually ,  it&apos;s simpler and you can automate later." },
   { q: "What does Version 1 look like?", hint: "Define the smallest version that&apos;s still useful. Resist the urge to build everything at once." },
 ];
 
 const iterationRules = [
-  { wrong: "It doesn&apos;t look right", right: "The revenue card font is too small — make it 32px and bold" },
-  { wrong: "I want it simpler", right: "Remove the chart entirely — just show the number" },
+  { wrong: "It doesn&apos;t look right", right: "The revenue card font is too small ,  make it 32px and bold" },
+  { wrong: "I want it simpler", right: "Remove the chart entirely ,  just show the number" },
   { wrong: "The colors are off", right: "Change the sidebar background from dark gray to navy (#1a2332)" },
-  { wrong: "Something&apos;s broken", right: "The \"Active Clients\" card shows 0 instead of 12 — the sample data is in clients.json but the component isn&apos;t reading it" },
+  { wrong: "Something&apos;s broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn&apos;t reading it" },
 ];
 
 const PROMPTS: Record<string, string> = {
@@ -64,27 +64,27 @@ The main reason I want this:
 [What decision or habit does this dashboard support? Be specific.]
 
 Metrics I want to track:
-1. [metric name] — currently tracked in: [spreadsheet / app / my head]
-2. [metric name] — currently tracked in: [where]
-3. [metric name] — currently tracked in: [where]
-4. [metric name] — currently tracked in: [where]
-5. [metric name] — currently tracked in: [where]
+1. [metric name] ,  currently tracked in: [spreadsheet / app / my head]
+2. [metric name] ,  currently tracked in: [where]
+3. [metric name] ,  currently tracked in: [where]
+4. [metric name] ,  currently tracked in: [where]
+5. [metric name] ,  currently tracked in: [where]
 
 How I&apos;ll update the data: [manually each week / automatically from ___]
 
-Based on this, ask me 3 clarifying questions that will help us build the right thing — not the most impressive thing, the most useful thing.`,
+Based on this, ask me 3 clarifying questions that will help us build the right thing ,  not the most impressive thing, the most useful thing.`,
 
   "Build prompt (use in Claude Code)": `Build me a business dashboard using React.
 
-PURPOSE: [one sentence — what this dashboard helps me do]
+PURPOSE: [one sentence ,  what this dashboard helps me do]
 
-METRICS TO DISPLAY (top section — large, prominent numbers):
+METRICS TO DISPLAY (top section ,  large, prominent numbers):
 - [Metric 1 name]: sample value [X]
 - [Metric 2 name]: sample value [X]
 - [Metric 3 name]: sample value [X]
 
 SECONDARY INFO (below the main metrics):
-- [List or table showing: active projects / recent clients / upcoming tasks — choose one]
+- [List or table showing: active projects / recent clients / upcoming tasks ,  choose one]
   - Sample data: [describe what a few rows would look like]
 
 LAYOUT:
@@ -94,15 +94,15 @@ LAYOUT:
 
 NOTES:
 - Store sample data in a separate data file so I can easily update it
-- Make it responsive — looks good on laptop and tablet
+- Make it responsive ,  looks good on laptop and tablet
 - Run with: npm run dev
-- Keep it Version 1 simple — no charts unless I specifically ask`,
+- Keep it Version 1 simple ,  no charts unless I specifically ask`,
 
-  "Iterate — change specific things": `The dashboard looks good. I want to make these specific changes:
+  "Iterate ,  change specific things": `The dashboard looks good. I want to make these specific changes:
 
 CHANGE 1:
-- What: [specific element — e.g. "The Revenue card"]
-- Current state: [what it looks like now — e.g. "Shows the number in small gray text"]
+- What: [specific element ,  e.g. "The Revenue card"]
+- Current state: [what it looks like now ,  e.g. "Shows the number in small gray text"]
 - What I want: [e.g. "Make the number large (40px), dark, and bold. Add a small upward arrow next to it."]
 
 CHANGE 2:
@@ -120,13 +120,13 @@ Make only these changes. Don&apos;t redesign, don&apos;t improve anything else.`
   "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here&apos;s the exact issue:
 
 WHAT I SEE:
-[Describe what&apos;s appearing on screen — e.g. "The Active Clients card shows '0' instead of a real number"]
+[Describe what&apos;s appearing on screen ,  e.g. "The Active Clients card shows '0' instead of a real number"]
 
 WHAT SHOULD HAPPEN:
-[What the correct output should be — e.g. "It should show '12' based on the clients array in data.js"]
+[What the correct output should be ,  e.g. "It should show '12' based on the clients array in data.js"]
 
 WHERE THE DATA IS:
-[Tell Claude Code where to look — e.g. "The data is in /src/data/clients.json, key name is 'activeCount'"]
+[Tell Claude Code where to look ,  e.g. "The data is in /src/data/clients.json, key name is 'activeCount'"]
 
 Fix only this issue. If you&apos;re going to change more than 5 lines, check with me first.`,
 };
@@ -200,7 +200,7 @@ export default function Session8Page() {
 
           {/* Plan before you build */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Plan before you build — 5 questions to answer first</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Plan before you build ,  5 questions to answer first</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 The most common reason a Claude Code build comes out wrong: the builder skipped planning. Use the planning prompt below to answer these questions before you type a single build command.
@@ -226,7 +226,7 @@ export default function Session8Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">The Version 1 mindset</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> — not a perfect version that doesn&apos;t exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that&apos;s still being designed.
+                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> ,  not a perfect version that doesn&apos;t exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that&apos;s still being designed.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Build V1, open it in the browser, show it to someone today, iterate. The iteration is where the learning happens.
@@ -236,7 +236,7 @@ export default function Session8Page() {
 
           {/* Iteration rules */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How to describe what&apos;s wrong — precision matters</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How to describe what&apos;s wrong ,  precision matters</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Claude Code makes exactly the change you describe. Vague feedback creates random changes. Specific feedback creates precise improvements.
@@ -260,7 +260,7 @@ export default function Session8Page() {
 
           {/* Prompts */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — copy and use these</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
               Start with <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Dashboard planning conversation</strong> in Claude.ai. Then use the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Build prompt</strong> directly inside Claude Code. Use the iteration prompts when you see the first version and want to refine it.
             </p>
@@ -271,7 +271,7 @@ export default function Session8Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-2">Week 3 Deliverable</p>
             <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-              1 custom business dashboard built with Claude Code — running in your browser, showing at least 3 of your real metrics with sample data you can update.
+              1 custom business dashboard built with Claude Code ,  running in your browser, showing at least 3 of your real metrics with sample data you can update.
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export default function Session8Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Your full Claude stack working together</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 4 · Session 7 — Sat, Jun 27</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 4 · Session 7 ,  Sat, Jun 27</p>
             </div>
             <Link
               href={NEXT}

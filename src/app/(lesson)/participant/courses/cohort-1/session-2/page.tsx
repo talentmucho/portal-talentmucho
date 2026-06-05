@@ -13,7 +13,7 @@ const SESSION = {
   time: "10 AM–1 PM EST",
   videoUrl: null as string | null,
   description:
-    "We start with the interface itself — getting oriented in Claude.ai, understanding how Projects differ from conversations, and building your first real exchange with Claude using your actual business context.",
+    "We start with the interface itself ,  getting oriented in Claude.ai, understanding how Projects differ from conversations, and building your first real exchange with Claude using your actual business context.",
   resources: [
     { label: "Session slides", href: "#" },
     { label: "Claude.ai interface guide", href: "#" },
@@ -33,7 +33,7 @@ const objectives = [
 ];
 
 const bringList = [
-  "Claude.ai account — logged in and ready",
+  "Claude.ai account ,  logged in and ready",
   "Your onboarding answers from when you signed up",
   "3 real problems from your business you want help with",
 ];
@@ -41,13 +41,13 @@ const bringList = [
 const steps_project = [
   "Go to claude.ai and sign in",
   'Click "Projects" in the left sidebar',
-  'Click "New Project" and name it after your business (e.g. "Acme Co — General")',
-  "You're now inside a Project — any files or instructions you add here will persist across every conversation in this Project",
+  'Click "New Project" and name it after your business (e.g. "Acme Co ,  General")',
+  "You're now inside a Project ,  any files or instructions you add here will persist across every conversation in this Project",
   "Leave the Project open for the exercises below",
 ];
 
 const PROMPTS: Record<string, string> = {
-  "Orient Claude to my business": `I run a [type of business — e.g. coaching practice, e-commerce store, design agency].
+  "Orient Claude to my business": `I run a [type of business ,  e.g. coaching practice, e-commerce store, design agency].
 
 Here's the context you need to work with me effectively:
 
@@ -57,13 +57,13 @@ Team size: [solo / small team of ___]
 My biggest current challenge: [one clear, specific problem]
 My goal for this bootcamp: [what I want to walk away able to do]
 
-From now on in this Project, use this context to give me specific, relevant advice — not generic tips.
+From now on in this Project, use this context to give me specific, relevant advice ,  not generic tips.
 
 Before we start, ask me one clarifying question that would help you give me better answers.`,
 
   "Your first real ask": `Based on the business context I just gave you, help me with this specific task:
 
-[Describe one task or problem from your actual business. Be specific — not "help me with marketing" but "help me write a follow-up email for a prospect who went quiet after our discovery call."]
+[Describe one task or problem from your actual business. Be specific ,  not "help me with marketing" but "help me write a follow-up email for a prospect who went quiet after our discovery call."]
 
 Format your response as:
 1. Your recommendation
@@ -74,7 +74,7 @@ Keep it practical. I should be able to act on this today.`,
 
   "Test Claude's understanding": `Before we go further, I want to check what you know about me.
 
-Summarize my business in your own words — what I do, who I serve, and what I'm working on.
+Summarize my business in your own words ,  what I do, who I serve, and what I'm working on.
 
 Then tell me:
 - What types of tasks you think I should use you for most in this bootcamp
@@ -154,17 +154,17 @@ export default function Session2Page() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Why this session matters</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                The participants who get the most out of Claude aren&apos;t the ones who use it the most — they&apos;re the ones who use it right from the start. That means treating Claude like a thinking partner, not a search engine. Vague questions get generic answers. Specific context gets specific, useful output.
+                The participants who get the most out of Claude aren&apos;t the ones who use it the most ,  they&apos;re the ones who use it right from the start. That means treating Claude like a thinking partner, not a search engine. Vague questions get generic answers. Specific context gets specific, useful output.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                This session is about building that muscle. By the time you finish today, Claude will know enough about your business to give you advice that actually applies to you — not generic tips you could find anywhere.
+                This session is about building that muscle. By the time you finish today, Claude will know enough about your business to give you advice that actually applies to you ,  not generic tips you could find anywhere.
               </p>
             </div>
           </section>
 
           {/* Projects vs Conversations */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Projects vs. conversations — the key difference</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Projects vs. conversations ,  the key difference</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 When you start a new conversation on Claude.ai, Claude has zero memory of you, your business, or anything you&apos;ve discussed before. Every new chat starts cold. For one-off questions, that&apos;s fine. For running your business, it&apos;s a problem.
@@ -187,7 +187,7 @@ export default function Session2Page() {
 
           {/* Create your first Project */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Create your first Project — step by step</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Create your first Project ,  step by step</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {steps_project.map((step, i) => (
@@ -204,9 +204,9 @@ export default function Session2Page() {
 
           {/* Prompts to copy */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts — copy and use these in your Project</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these in your Project</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Start with <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Orient Claude to my business</strong> — paste it into your new Project, fill in the blanks, and send. Then follow with the next two in order.
+              Start with <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Orient Claude to my business</strong> ,  paste it into your new Project, fill in the blanks, and send. Then follow with the next two in order.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -218,7 +218,7 @@ export default function Session2Page() {
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Do this before Session 2:</p>
               <ol className="flex flex-col gap-2">
                 {[
-                  "Create a Project named after your business (or just \"My Business — General\")",
+                  "Create a Project named after your business (or just \"My Business ,  General\")",
                   "Paste the \"Orient Claude to my business\" prompt, fill it in with your real details, and send it",
                   "Answer Claude's clarifying question honestly",
                   "Use \"Your first real ask\" to get help with one actual task from your business this week",
@@ -240,7 +240,7 @@ export default function Session2Page() {
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Custom instructions, file uploads</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 1 · Session 2 — Sun, Jun 7</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 1 · Session 2 ,  Sun, Jun 7</p>
             </div>
             <Link
               href={NEXT}

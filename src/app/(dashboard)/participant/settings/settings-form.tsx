@@ -87,7 +87,7 @@ export function SettingsForm({ fullName, email }: Props) {
       orientation="vertical"
       className="flex flex-col md:flex-row gap-4 md:gap-6 h-full"
     >
-      {/* Tab nav — horizontal on mobile, vertical on desktop */}
+      {/* Tab nav ,  horizontal on mobile, vertical on desktop */}
       <div className="w-full md:w-44 md:shrink-0">
         <TabsList className="flex flex-row md:flex-col h-auto w-full items-center md:items-stretch p-1.5">
           <TabsTrigger
@@ -114,7 +114,7 @@ export function SettingsForm({ fullName, email }: Props) {
         </TabsList>
       </div>
 
-      {/* Content — plain div, no TabsContents (avoids AutoHeight overflow:hidden clipping) */}
+      {/* Content ,  plain div, no TabsContents (avoids AutoHeight overflow:hidden clipping) */}
       <div className="flex-1 min-w-0">
         <TabsContent value="profile">
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--card)] p-5 sm:p-6">

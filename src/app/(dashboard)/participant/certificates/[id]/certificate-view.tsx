@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft, FileImage } from "lucide-react";
 
-// TM brand tokens (explicit hex — CSS vars not available in html2canvas)
+// TM brand tokens (explicit hex ,  CSS vars not available in html2canvas)
 const C = {
   charcoal:   "#2A2520",
   beige50:    "#FAF8F5",
@@ -105,7 +105,7 @@ export function CertificateView({
         </div>
       </div>
 
-      {/* Certificate — fixed 960×640 internal, scales via ResizeObserver */}
+      {/* Certificate ,  fixed 960×640 internal, scales via ResizeObserver */}
       <div
         ref={wrapperRef}
         style={{
@@ -385,7 +385,7 @@ export function CertificateView({
                 marginBottom: "auto",
               }}
             >
-              — {descriptionText}, as part of the Claude AI Bootcamp by TalentMucho.
+              ,  {descriptionText}, as part of the Claude AI Bootcamp by TalentMucho.
             </p>
 
             {/* Bottom rule + footer */}

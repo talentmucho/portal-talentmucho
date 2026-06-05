@@ -39,7 +39,7 @@ export default async function SettingsPage() {
 
       <div className="my-8 h-px bg-gradient-to-r from-transparent via-[var(--beige-200)] dark:via-white/10 to-transparent" />
 
-      {/* Tabs — flex-1 fills remaining height, min-h-0 allows shrink */}
+      {/* Tabs ,  flex-1 fills remaining height, min-h-0 allows shrink */}
       <div className="flex-1 min-h-0 px-5 sm:px-8 pb-8">
         <SettingsForm fullName={fullName} email={email} />
       </div>

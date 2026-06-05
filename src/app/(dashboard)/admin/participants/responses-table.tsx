@@ -159,23 +159,23 @@ export function ResponsesTable({ responses }: { responses: IntakeResponse[] }) {
                 }
               </span>
               <span className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground truncate">
-                {r.first_name ?? "—"}
+                {r.first_name ?? ", "}
               </span>
               <span className="text-sm text-[var(--taupe-400)] font-light truncate">
-                {r.email ?? "—"}
+                {r.email ?? ", "}
               </span>
               <span className="text-xs text-[var(--taupe-400)] font-light">
-                {FOCUS_LABELS[r.first_focus ?? ""] ?? r.first_focus ?? "—"}
+                {FOCUS_LABELS[r.first_focus ?? ""] ?? r.first_focus ?? ", "}
               </span>
               <span className="text-xs text-[var(--taupe-400)] font-light capitalize">
-                {r.os ?? "—"}
+                {r.os ?? ", "}
               </span>
               <span className="text-xs text-[var(--taupe-400)] font-light">
                 {r.submitted_at
                   ? new Date(r.submitted_at).toLocaleDateString("en-US", {
                       month: "short", day: "numeric", year: "numeric",
                     })
-                  : "—"}
+                  : ", "}
               </span>
             </button>
 
