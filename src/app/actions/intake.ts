@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 
 export type IntakeAnswers = {
   payment_email?: string;
+  first_name?: string;
   business_oneliner?: string;
   first_focus?: string;
   voice_owner?: string;
