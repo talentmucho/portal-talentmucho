@@ -11,20 +11,27 @@ export default async function MyCoursesPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const role = user?.app_metadata?.role || user?.user_metadata?.role;
+  const isAdmin = role === "admin";
+
   const [coursesRes, enrollmentsRes] = await Promise.all([
     supabase
       .from("courses")
       .select("id, title, description, slug")
       .eq("is_published", true)
       .order("order_index"),
-    supabase
-      .from("enrollments")
-      .select("course_id")
-      .eq("participant_id", user?.id ?? ""),
+    isAdmin
+      ? Promise.resolve({ data: [] })
+      : supabase
+          .from("enrollments")
+          .select("course_id")
+          .eq("participant_id", user?.id ?? ""),
   ]);
 
   const courses = coursesRes.data ?? [];
-  const enrolledIds = new Set((enrollmentsRes.data ?? []).map((e) => e.course_id));
+  const enrolledIds = isAdmin
+    ? new Set(courses.map((c) => c.id))
+    : new Set((enrollmentsRes.data ?? []).map((e) => e.course_id));
 
   const enrolled = courses.filter((c) => enrolledIds.has(c.id));
   const locked = courses.filter((c) => !enrolledIds.has(c.id));

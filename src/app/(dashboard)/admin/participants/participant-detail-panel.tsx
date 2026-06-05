@@ -1,10 +1,13 @@
 "use client";
 
-import { useOptimistic, useTransition } from "react";
-import { X, BookOpen, Award, User, CheckCircle, Lock, Unlock } from "lucide-react";
+import { useOptimistic, useTransition, useState } from "react";
+import { X, BookOpen, Award, User, CheckCircle, Lock, Unlock, KeyRound, Eye, EyeOff, Check, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/animate-ui/components/radix/checkbox";
+import { Map } from "lucide-react";
+import { ParticipantRoadmap } from "@/components/participant-roadmap";
 import { toggleEnrollment } from "@/app/actions/enrollment";
 import { issueCertificate, revokeCertificate } from "@/app/actions/certificates";
+import { resetParticipantPassword } from "@/app/actions/participants";
 import { toast } from "sonner";
 import { type Participant, type Course } from "./columns";
 import { type IntakeResponse } from "./responses-table";
@@ -105,6 +108,26 @@ export function ParticipantDetailPanel({
         ? state.filter((id) => id !== courseId)
         : [...state, courseId]
   );
+
+  const [newPassword, setNewPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isPendingPw, startTransitionPw] = useTransition();
+  const [pwError, setPwError] = useState<string | null>(null);
+  const [pwSuccess, setPwSuccess] = useState(false);
+
+  function handleResetPassword() {
+    setPwError(null);
+    setPwSuccess(false);
+    startTransitionPw(async () => {
+      const res = await resetParticipantPassword(participant!.id, newPassword);
+      if (res.error) {
+        setPwError(res.error);
+      } else {
+        setPwSuccess(true);
+        setNewPassword("");
+      }
+    });
+  }
 
   if (!participant) return null;
 
@@ -315,6 +338,65 @@ export function ParticipantDetailPanel({
                   );
                 })
               )}
+            </div>
+          </div>
+
+          {/* Personalized Roadmap Section */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Map className="size-4 text-[var(--clay-500)]" />
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--charcoal-900)] dark:text-foreground">
+                Personalized Roadmap
+              </h4>
+            </div>
+            <ParticipantRoadmap response={response ?? null} />
+          </div>
+
+          {/* Reset Password Section */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <KeyRound className="size-4 text-[var(--clay-500)]" />
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--charcoal-900)] dark:text-foreground">
+                Reset Password
+              </h4>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={newPassword}
+                  onChange={(e) => {
+                    setNewPassword(e.target.value);
+                    setPwError(null);
+                    setPwSuccess(false);
+                  }}
+                  placeholder="New password (min 6 characters)"
+                  className="w-full h-9 px-3 pr-9 rounded-xl border border-[var(--beige-200)] dark:border-white/10 bg-[var(--beige-50)] dark:bg-white/5 text-sm text-[var(--charcoal-900)] dark:text-foreground placeholder:text-[var(--taupe-400)] focus:outline-none focus:border-[var(--charcoal-900)] dark:focus:border-white/30 transition-colors"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--taupe-400)] hover:text-[var(--charcoal-900)] dark:hover:text-foreground transition-colors"
+                >
+                  {showPassword ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
+                </button>
+              </div>
+              {pwError && (
+                <p className="text-xs text-red-500">{pwError}</p>
+              )}
+              {pwSuccess && (
+                <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                  <Check className="size-3" /> Password updated
+                </p>
+              )}
+              <button
+                onClick={handleResetPassword}
+                disabled={isPendingPw || !newPassword}
+                className="inline-flex items-center justify-center gap-1.5 w-full h-9 rounded-xl bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-xs font-medium hover:opacity-90 transition-opacity disabled:opacity-40"
+              >
+                {isPendingPw && <Loader2 className="size-3 animate-spin" />}
+                {isPendingPw ? "Updating..." : "Set new password"}
+              </button>
             </div>
           </div>
 
