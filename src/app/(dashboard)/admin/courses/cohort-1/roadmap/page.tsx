@@ -70,44 +70,39 @@ export default async function AdminRoadmapsPage({
       {/* Roadmap content */}
       <div className="flex-1 overflow-y-auto">
 
-        {/* Hero */}
-        <div
-          className="relative px-6 md:px-16 pt-12 pb-10 border-b border-[var(--beige-200)] dark:border-white/5 overflow-hidden"
-          style={{ background: `linear-gradient(135deg, ${data.accentColor}10 0%, var(--beige-50) 60%)` }}
-        >
-          <div
-            className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
-            style={{ background: data.accentColor, transform: "translate(30%, -30%)" }}
+        {/* Cover photo */}
+        <div className="relative w-full">
+          <Image
+            src={data.photo}
+            alt={data.name}
+            width={1200}
+            height={800}
+            className="w-full h-auto block"
+            priority
           />
-          <div className="flex items-center gap-5 mb-6">
-            <div
-              className="size-16 rounded-full overflow-hidden border-2 shrink-0"
-              style={{ borderColor: `${data.accentColor}50` }}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-1/2"
+            style={{
+              background: `linear-gradient(to top, ${data.accentColor}E0 0%, transparent 100%)`,
+            }}
+          />
+          <div className="absolute bottom-0 left-0 px-6 md:px-10 pb-7">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-2">
+              Talent Mucho · AI Business Bootcamp · June 2026
+            </p>
+            <h1
+              className="font-serif font-light text-white leading-tight"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
             >
-              <Image
-                src={data.photo}
-                alt={data.name}
-                width={64}
-                height={64}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--taupe-400)] mb-1">
-                Talent Mucho · AI Business Bootcamp · June 2026
-              </p>
-              <h1
-                className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground leading-tight"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
-              >
-                {data.name}&apos;s
-                <span className="italic ml-2" style={{ color: data.accentColor }}>
-                  Personal Roadmap
-                </span>
-              </h1>
-            </div>
+              {data.name}&apos;s
+              <span className="italic ml-2 opacity-90">Personal Roadmap</span>
+            </h1>
           </div>
-          <p className="text-sm font-light text-[var(--taupe-400)] max-w-xl leading-relaxed">{data.insight}</p>
+        </div>
+
+        {/* Insight */}
+        <div className="px-6 md:px-10 py-6 border-b border-[var(--beige-200)] dark:border-white/5">
+          <p className="text-sm font-light text-[var(--taupe-400)] max-w-2xl leading-relaxed">{data.insight}</p>
         </div>
 
         <div className="max-w-3xl mx-auto px-6 md:px-8 py-10 flex flex-col gap-10">

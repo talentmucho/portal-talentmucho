@@ -67,49 +67,67 @@ export default async function RoadmapPage() {
       {/* Scroll container */}
       <div className="flex-1 overflow-y-auto tm-scrollbar">
 
-        {/* Hero */}
-        <div
-          className="relative px-6 md:px-16 pt-16 pb-12 border-b border-[var(--beige-200)] dark:border-white/5 overflow-hidden"
-          style={{ background: `linear-gradient(135deg, ${accentColor}08 0%, var(--beige-50) 60%)` }}
-        >
-          {/* decorative accent */}
-          <div
-            className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
-            style={{ background: accentColor, transform: "translate(30%, -30%)" }}
-          />
-          {photo && (
-            <div className="mb-6">
-              <div
-                className="size-20 rounded-full overflow-hidden border-2"
-                style={{ borderColor: `${accentColor}40` }}
+        {/* Cover photo */}
+        {photo && (
+          <div className="relative w-full">
+            <Image
+              src={photo}
+              alt={firstName}
+              width={1200}
+              height={800}
+              className="w-full h-auto block"
+              priority
+            />
+            {/* gradient overlay at bottom for text legibility */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-1/2"
+              style={{
+                background: `linear-gradient(to top, ${accentColor}E0 0%, transparent 100%)`,
+              }}
+            />
+            {/* Name over photo */}
+            <div className="absolute bottom-0 left-0 px-6 md:px-16 pb-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/70 mb-2">
+                Talent Mucho · AI Business Bootcamp · June 2026
+              </p>
+              <h1
+                className="font-serif font-light text-white leading-[1.1]"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
               >
-                <Image
-                  src={photo}
-                  alt={firstName}
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
+                {firstName}&apos;s
+                <span className="block italic opacity-90">Personal Roadmap</span>
+              </h1>
             </div>
+          </div>
+        )}
+
+        {/* Hero text (shown below cover, or standalone if no photo) */}
+        <div
+          className="relative px-6 md:px-16 pt-8 pb-10 border-b border-[var(--beige-200)] dark:border-white/5 overflow-hidden"
+          style={!photo ? { background: `linear-gradient(135deg, ${accentColor}08 0%, var(--beige-50) 60%)` } : {}}
+        >
+          {!photo && (
+            <>
+              <div
+                className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
+                style={{ background: accentColor, transform: "translate(30%, -30%)" }}
+              />
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--taupe-400)] mb-4">
+                Talent Mucho · AI Business Bootcamp · June 2026
+              </p>
+              <h1
+                className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-2 leading-[1.1]"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+              >
+                {firstName}&apos;s
+                <span className="block italic" style={{ color: accentColor }}>Personal Roadmap</span>
+              </h1>
+            </>
           )}
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--taupe-400)] mb-4">
-            Talent Mucho · AI Business Bootcamp · June 2026
-          </p>
-          <h1
-            className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground mb-2 leading-[1.1]"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-          >
-            {firstName}&apos;s
-            <span className="block italic" style={{ color: accentColor }}>
-              Personal Roadmap
-            </span>
-          </h1>
-          <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-4">
+          <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-2">
             Four weeks. Nine live sessions. Every session designed around the real business you&apos;re running. This is what the next 28 days look like for you.
           </p>
-
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-5">
             {[
               { label: `Focus: ${focusArea}` },
               { label: `AI employee: ${aiRole}` },
