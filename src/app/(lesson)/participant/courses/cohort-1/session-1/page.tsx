@@ -130,6 +130,34 @@ export default async function Session1Page() {
               </p>
             </div>
 
+            {/* Agenda */}
+            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-4">
+                Tonight&apos;s agenda · 2 hours
+              </h3>
+              <ol className="space-y-0">
+                {[
+                  { time: "0:00 – 0:10", label: "Welcome & housekeeping", qa: false },
+                  { time: "0:10 – 0:35", label: "Q&A ~ your expectations, fears, and what success looks like for you", qa: true },
+                  { time: "0:35 – 1:00", label: "Round of introductions ~ who you are and what your business does", qa: false },
+                  { time: "1:00 – 1:20", label: "What is Claude? A quick recap", qa: false },
+                  { time: "1:20 – 1:45", label: "Installing Claude & setting up your account", qa: false },
+                  { time: "1:45 – 1:55", label: "Your first conversation ~ live demo", qa: false },
+                  { time: "1:55 – 2:00", label: "What to expect in Week 1 & wrap-up", qa: false },
+                ].map((item, i, arr) => (
+                  <li key={item.time} className={`flex gap-4 items-start py-3 ${i < arr.length - 1 ? "border-b border-[var(--beige-200)] dark:border-white/5" : ""}`}>
+                    <span className="shrink-0 text-xs tabular-nums text-[var(--taupe-400)] pt-0.5 w-24">{item.time}</span>
+                    <span className={`text-sm font-light ${item.qa ? "text-[var(--clay-500)] dark:text-[var(--taupe-400)] font-medium" : "text-[var(--charcoal-900)] dark:text-foreground"}`}>
+                      {item.label}
+                    </span>
+                    {item.qa && (
+                      <span className="ml-auto shrink-0 text-[10px] font-bold uppercase tracking-[0.14em] px-2 py-0.5 rounded-full bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]">Q&A</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+
             {/* Questions for the call */}
             <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)]">
               <p className="tm-eyebrow mb-2">Come ready to answer</p>
@@ -153,28 +181,6 @@ export default async function Session1Page() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            {/* Agenda */}
-            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
-              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-4">
-                Tonight&apos;s agenda · 2 hours
-              </h3>
-              <ol className="space-y-3">
-                {[
-                  { time: "0:00 – 0:10", label: "Welcome & housekeeping" },
-                  { time: "0:10 – 0:40", label: "Round of introductions ~ who you are and what your business does" },
-                  { time: "0:40 – 1:05", label: "What is Claude? A quick recap" },
-                  { time: "1:05 – 1:30", label: "Installing Claude & setting up your account" },
-                  { time: "1:30 – 1:50", label: "Your first conversation ~ live demo & Q&A" },
-                  { time: "1:50 – 2:00", label: "What to expect in Week 1 & wrap-up" },
-                ].map((item) => (
-                  <li key={item.time} className="flex gap-4 items-start">
-                    <span className="shrink-0 text-xs tabular-nums text-[var(--taupe-400)] pt-0.5 w-24">{item.time}</span>
-                    <span className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light">{item.label}</span>
-                  </li>
-                ))}
-              </ol>
             </div>
 
             {/* Introductions */}
