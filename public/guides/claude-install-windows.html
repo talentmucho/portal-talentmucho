@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install Claude on Windows · Talent Mucho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tm-cream:         #F3ECE2;
+  --tm-warm-white:    #FBF7F1;
+  --tm-espresso:      #8A6F55;
+  --tm-deep-espresso: #6B5240;
+  --tm-near-black:    #2A211B;
+  --tm-soft-taupe:    #A89684;
+  --tm-border-beige:  #E4DCCE;
+  --tm-body-gray:     #5C534A;
+  --tm-serif:  'Cormorant Garamond', Georgia, serif;
+  --tm-sans:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tm-radius-pill: 999px;
+  --tm-radius-card: 12px;
+  --tm-green-bg: #E3F3EC;
+  --tm-green-text: #1A6045;
+  --tm-blue-bg: #E3EDF8;
+  --tm-blue-text: #1A4070;
+  --tm-purple-bg: #ECEAF8;
+  --tm-purple-text: #2E2868;
+  --tm-amber-bg: #F5EDE0;
+  --tm-amber-text: #6B3A10;
+  --tm-warning-bg: #FDF3E3;
+  --tm-warning-text: #7C4A0D;
+  --tm-warning-border: #F5C97A;
+  --tm-code-bg: #1E1814;
+  --tm-code-text: #D4C5B2;
+  --tm-code-green: #7EC8A0;
+  --tm-code-amber: #E8C56A;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--tm-cream);
+  color: var(--tm-near-black);
+  font-family: var(--tm-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: pageLoad 400ms ease-in-out forwards;
+}
+
+@keyframes pageLoad { to { opacity: 1; } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.88); }
+  60%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(138, 111, 85, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(138, 111, 85, 0); }
+}
+@keyframes drawLine {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+/* ── Scroll-reveal ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-pop { opacity: 0; transform: scale(0.9); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+.reveal-pop.visible { opacity: 1; transform: scale(1); }
+
+/* ─── HEADER ─── */
+header {
+  background: var(--tm-near-black);
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-brand {
+  font-family: var(--tm-serif);
+  font-size: 22px;
+  color: var(--tm-cream);
+  letter-spacing: -0.01em;
+}
+.header-brand em { color: var(--tm-espresso); font-style: italic; }
+.header-label {
+  font-family: var(--tm-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--tm-soft-taupe);
+}
+
+/* ─── HERO ─── */
+.hero-section {
+  background: var(--tm-cream);
+  padding: 80px 48px 64px;
+  border-bottom: 1px solid var(--tm-border-beige);
+  max-width: 960px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--tm-soft-taupe);
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, var(--tm-soft-taupe) 0%, var(--tm-espresso) 40%, var(--tm-soft-taupe) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite 0.6s;
+}
+.hero-headline {
+  font-family: var(--tm-serif);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+.hero-headline em {
+  color: var(--tm-espresso);
+  font-style: italic;
+  display: block;
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--tm-body-gray);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--tm-warm-white);
+  border: 1px solid var(--tm-border-beige);
+  border-radius: var(--tm-radius-pill);
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--tm-near-black);
+}
+.info-pill svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--tm-espresso);
+  flex-shrink: 0;
+}
+
+/* ─── MAIN ─── */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 48px;
+}
+
+/* ─── METHOD TOGGLE ─── */
+.method-toggle {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.method-btn {
+  padding: 12px 24px;
+  border: 1px solid var(--tm-border-beige);
+  border-radius: var(--tm-radius-pill);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--tm-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tm-body-gray);
+  transition: border-color 200ms, color 200ms, background 200ms;
+}
+.method-btn:hover { border-color: var(--tm-espresso); color: var(--tm-espresso); }
+.method-btn.active {
+  background: var(--tm-deep-espresso);
+  border-color: var(--tm-deep-espresso);
+  color: var(--tm-warm-white);
+  animation: popIn 0.3s ease forwards;
+}
+.method-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--tm-soft-taupe);
+  margin-bottom: 16px;
+}
+
+/* ─── SECTION ─── */
+.method-panel { display: none; animation: fadeUp 400ms ease-out; }
+.method-panel.active { display: block; }
+
+/* ─── WEEK BLOCKS (reused as step blocks) ─── */
+.step-block { margin-bottom: 32px; }
+.step-block:nth-child(1) { --delay: 0ms; }
+.step-block:nth-child(2) { --delay: 80ms; }
+.step-block:nth-child(3) { --delay: 160ms; }
+.step-block:nth-child(4) { --delay: 240ms; }
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.step-pill {
+  padding: 4px 14px;
+  border-radius: var(--tm-radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.step-pill.s0 { background: #EDE8E0; color: var(--tm-body-gray); }
+.step-pill.s1 { background: var(--tm-green-bg); color: var(--tm-green-text); }
+.step-pill.s2 { background: var(--tm-blue-bg); color: var(--tm-blue-text); }
+.step-pill.s3 { background: var(--tm-purple-bg); color: var(--tm-purple-text); }
+.step-pill.s4 { background: var(--tm-amber-bg); color: var(--tm-amber-text); }
+.step-pill.done { background: var(--tm-green-bg); color: var(--tm-green-text); }
+.step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tm-near-black);
+}
+
+/* ─── SESSIONS → STEPS ─── */
+.sessions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+.session {
+  background: var(--tm-warm-white);
+  border: 1px solid var(--tm-border-beige);
+  border-radius: var(--tm-radius-card);
+  padding: 24px 32px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  transition: border-color 200ms;
+}
+.session:hover {
+  border-color: var(--tm-espresso);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(138,111,85,0.1);
+}
+.session { transition: border-color 200ms, transform 200ms, box-shadow 200ms; }
+.session-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 2px;
+  gap: 3px;
+  border-right: 1px solid var(--tm-border-beige);
+  padding-right: 16px;
+}
+.session-label { font-size: 11px; font-weight: 500; color: var(--tm-soft-taupe); white-space: nowrap; }
+.session-num { font-size: 12px; font-weight: 600; color: var(--tm-espresso); }
+.session-body h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tm-near-black);
+  margin-bottom: 6px;
+}
+.session-body p {
+  font-size: 14px;
+  color: var(--tm-body-gray);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* ─── FOCUS LINE ─── */
+.focus-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--tm-body-gray);
+  background: var(--tm-cream);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.focus-line svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; stroke: var(--tm-espresso); }
+.focus-line strong { color: var(--tm-near-black); font-weight: 600; }
+
+/* ─── CODE BLOCK ─── */
+.code-block {
+  background: var(--tm-code-bg);
+  border-radius: var(--tm-radius-card);
+  padding: 16px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  color: var(--tm-code-text);
+  line-height: 1.7;
+  position: relative;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+.code-block .cmd-green { color: var(--tm-code-green); }
+.code-block .cmd-amber { color: var(--tm-code-amber); }
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--tm-soft-taupe);
+  font-family: var(--tm-sans);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: var(--tm-radius-pill);
+  cursor: pointer;
+  transition: background 200ms;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* ─── WARNING BANNER ─── */
+.warning-banner {
+  background: var(--tm-warning-bg);
+  border: 1px solid var(--tm-warning-border);
+  border-radius: var(--tm-radius-card);
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--tm-warning-text);
+  line-height: 1.55;
+  margin-top: 8px;
+}
+.warning-banner svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; stroke: var(--tm-warning-text); }
+.warning-banner strong { font-weight: 600; }
+
+/* ─── DELIVERABLE BANNER ─── */
+.deliverable-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: var(--tm-radius-card);
+  padding: 16px 24px;
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+.deliverable-banner svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.deliverable-banner.green { background: var(--tm-green-bg); color: var(--tm-green-text); }
+.deliverable-banner.blue  { background: var(--tm-blue-bg);  color: var(--tm-blue-text); }
+.deliverable-banner strong { font-weight: 600; }
+.deliverable-banner { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.deliverable-banner:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+/* ─── REQUIREMENTS STRIP ─── */
+.req-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  background: var(--tm-warm-white);
+  border: 1px solid var(--tm-border-beige);
+  border-radius: var(--tm-radius-card);
+  padding: 16px 24px;
+  margin-bottom: 40px;
+}
+.req-item { display: flex; flex-direction: column; gap: 3px; }
+.req-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--tm-soft-taupe);
+}
+.req-value { font-size: 13px; font-weight: 500; color: var(--tm-near-black); }
+
+/* ─── EXIT CARD ─── */
+.exit-card {
+  background: var(--tm-near-black);
+  border-radius: var(--tm-radius-card);
+  padding: 32px;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.exit-item .el {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--tm-soft-taupe);
+  margin-bottom: 4px;
+}
+.exit-item .ev {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tm-cream);
+}
+.exit-item:last-child .ev {
+  color: var(--tm-espresso);
+  font-style: italic;
+  font-family: var(--tm-serif);
+  font-size: 17px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--tm-near-black);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-brand { font-family: var(--tm-serif); font-size: 18px; color: var(--tm-cream); }
+.footer-brand em { color: var(--tm-espresso); font-style: italic; }
+.footer-note { font-size: 13px; color: var(--tm-soft-taupe); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  header { padding: 16px; }
+  .hero-section { padding: 48px 16px 32px; }
+  .hero-headline { font-size: 36px; }
+  main { padding: 32px 16px; }
+  .session { grid-template-columns: 1fr; }
+  .session-meta { flex-direction: row; border-right: none; border-bottom: 1px solid var(--tm-border-beige); padding-right: 0; padding-bottom: 8px; margin-bottom: 8px; align-items: center; justify-content: flex-start; gap: 8px; }
+  .exit-card { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-brand">Talent <em>Mucho</em></div>
+  <div class="header-label">AI Bootcamp · June 2026</div>
+</header>
+
+<div class="hero-section">
+  <div class="hero-eyebrow">Talent Mucho · Setup Guide</div>
+  <h1 class="hero-headline reveal" style="transition-delay:0.1s">
+    Install Claude<br>
+    <em>On Your Windows PC</em>
+  </h1>
+  <p class="hero-sub reveal" style="transition-delay:0.2s">Two ways to get Claude running locally — the desktop app for everyone, and Claude Code for developers. Pick your path and follow the steps.</p>
+  <div class="hero-pills reveal" style="transition-delay:0.3s">
+    <span class="info-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Windows 10 or 11
+    </span>
+    <span class="info-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      x64 &amp; ARM64 supported
+    </span>
+    <span class="info-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Under 2 minutes
+    </span>
+    <span class="info-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Free account works
+    </span>
+  </div>
+</div>
+
+<main>
+
+  <div class="method-label reveal">Choose your install path</div>
+  <div class="method-toggle reveal" style="transition-delay:0.05s">
+    <button class="method-btn active" onclick="switchMethod('desktop', this)">Claude Desktop App</button>
+    <button class="method-btn" onclick="switchMethod('native', this)">Claude Code · Native Installer</button>
+    <button class="method-btn" onclick="switchMethod('npm', this)">Claude Code · npm</button>
+  </div>
+
+  <!-- ══════════ DESKTOP APP ══════════ -->
+  <div class="method-panel active" id="panel-desktop">
+
+    <div class="req-strip">
+      <div class="req-item"><span class="req-label">OS</span><span class="req-value">Windows 10 or 11</span></div>
+      <div class="req-item"><span class="req-label">Architecture</span><span class="req-value">x64 or ARM64</span></div>
+      <div class="req-item"><span class="req-label">Account</span><span class="req-value">Free claude.ai account</span></div>
+      <div class="req-item"><span class="req-label">Download from</span><span class="req-value">claude.ai/download only</span></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s1">Step 1</span>
+        <span class="step-title">Go to the official download page</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Browser</span><span class="session-num">Start here</span></div>
+          <div class="session-body">
+            <h4>Open claude.ai/download</h4>
+            <p>Always download Claude directly from Anthropic's official page. Do not use third-party stores or Microsoft Store versions — they may lack features like Cowork.</p>
+            <div class="focus-line">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>Your move:</strong> Open your browser and navigate to <strong>claude.ai/download</strong>. You'll see buttons for macOS, Windows, and Windows (ARM64).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s2">Step 2</span>
+        <span class="step-title">Download the Windows installer</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Download</span><span class="session-num">.exe file</span></div>
+          <div class="session-body">
+            <h4>Click the Windows button</h4>
+            <p>Click <strong>Windows</strong> to download the standard installer. If you have an ARM-based device (e.g. Snapdragon X Elite), choose <strong>Windows (arm64)</strong> instead.</p>
+            <div class="focus-line">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>Your move:</strong> The <code>.exe</code> file will appear in your Downloads folder when complete. This usually takes under 30 seconds.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s3">Step 3</span>
+        <span class="step-title">Run the installer</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Install</span><span class="session-num">~1 min</span></div>
+          <div class="session-body">
+            <h4>Double-click the .exe file</h4>
+            <p>Open your Downloads folder and double-click the installer. Windows may ask for administrator permission — click <strong>Yes</strong> to proceed. The installer runs silently with no options to configure.</p>
+            <div class="warning-banner">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span><strong>SmartScreen warning?</strong> If Windows shows a SmartScreen alert, click <strong>More info</strong> → <strong>Run anyway</strong>. This is normal for newly released apps from Anthropic.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s4">Step 4</span>
+        <span class="step-title">Sign in and start using Claude</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Launch</span><span class="session-num">Sign in</span></div>
+          <div class="session-body">
+            <h4>Claude opens automatically</h4>
+            <p>Once installed, Claude launches and asks you to sign in. Use the same account you use on claude.ai — either Google or email/password. No account yet? Create a free one at <strong>claude.ai/signup</strong>.</p>
+            <div class="focus-line">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>Your move:</strong> Find Claude in your Start menu any time. Pin it to your taskbar for quick access during the bootcamp sessions.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deliverable-banner green">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span><strong>You're set:</strong> Claude Desktop is now installed. Chat is free for all accounts. Cowork (autonomous agent) and Claude Code require a paid plan.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ CLAUDE CODE · NATIVE ══════════ -->
+  <div class="method-panel" id="panel-native">
+
+    <div class="req-strip">
+      <div class="req-item"><span class="req-label">OS</span><span class="req-value">Windows 10 or 11</span></div>
+      <div class="req-item"><span class="req-label">Node.js</span><span class="req-value">Not required</span></div>
+      <div class="req-item"><span class="req-label">Account</span><span class="req-value">Pro, Max, Team or API</span></div>
+      <div class="req-item"><span class="req-label">Auto-updates</span><span class="req-value">Yes, in background</span></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s1">Step 1</span>
+        <span class="step-title">Open PowerShell as Administrator</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">PowerShell</span><span class="session-num">Admin</span></div>
+          <div class="session-body">
+            <h4>Launch PowerShell with admin rights</h4>
+            <p>Press the Windows key, type <strong>PowerShell</strong>, right-click it in the results, and choose <strong>Run as administrator</strong>. Click Yes when prompted.</p>
+            <div class="focus-line">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>Your move:</strong> You should see a blue terminal window titled "Administrator: Windows PowerShell". You're ready for the next step.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s2">Step 2</span>
+        <span class="step-title">Run the native installer command</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Command</span><span class="session-num">Paste &amp; run</span></div>
+          <div class="session-body">
+            <h4>Paste this into PowerShell and press Enter</h4>
+            <p>This downloads the Claude Code binary, places it in your PATH, and sets up automatic updates — all in under a minute. No Node.js needed.</p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyText('iwr https://claude.ai/install.ps1 | iex', this)">copy</button>
+              <span class="cmd-green">iwr</span> https://claude.ai/install.ps1 <span class="cmd-green">|</span> iex
+            </div>
+            <div class="focus-line" style="margin-top: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>What this does:</strong> Downloads the installer script and executes it. Claude Code is placed at <code>~\.local\bin</code> and your PATH is updated automatically.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s3">Step 3</span>
+        <span class="step-title">Close and reopen PowerShell</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Restart</span><span class="session-num">Required</span></div>
+          <div class="session-body">
+            <h4>Close the terminal window entirely</h4>
+            <p>The PATH update doesn't take effect in the current session. Close PowerShell completely, then open a new one (standard, no need for admin this time).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s4">Step 4</span>
+        <span class="step-title">Sign in and run Claude</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Launch</span><span class="session-num">First run</span></div>
+          <div class="session-body">
+            <h4>Type <code>claude</code> and press Enter</h4>
+            <p>A browser window opens automatically for OAuth authentication. Sign in with your Anthropic account — no API key management needed. After signing in, return to the terminal.</p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyText('claude', this)">copy</button>
+              <span class="cmd-amber">claude</span>
+            </div>
+            <div class="focus-line" style="margin-top: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>From any project folder:</strong> Navigate into your project with <code>cd C:\Users\You\Projects\my-app</code> then run <code>claude</code> to start a session inside that codebase.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliverable-banner green">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span><strong>Claude Code is live.</strong> Navigate into any project folder and type <code>claude</code> to start. It reads your files and lets you make changes with plain English.</span>
+      </div>
+
+      <!-- Troubleshoot -->
+      <div class="warning-banner" style="margin-top: 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>"claude is not recognized" error?</strong> Run this in a new PowerShell window, then close and reopen it:
+          <div class="code-block" style="margin-top: 8px; font-size: 12px;">
+            [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$env:USERPROFILE\.local\bin", [EnvironmentVariableTarget]::User)
+          </div>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ CLAUDE CODE · NPM ══════════ -->
+  <div class="method-panel" id="panel-npm">
+
+    <div class="req-strip">
+      <div class="req-item"><span class="req-label">OS</span><span class="req-value">Windows 10 or 11</span></div>
+      <div class="req-item"><span class="req-label">Node.js</span><span class="req-value">Version 18 or later</span></div>
+      <div class="req-item"><span class="req-label">Account</span><span class="req-value">Pro, Max, Team or API</span></div>
+      <div class="req-item"><span class="req-label">Use when</span><span class="req-value">Pinning a specific version</span></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s1">Step 1</span>
+        <span class="step-title">Install Node.js 18 or later</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Node.js</span><span class="session-num">Prerequisite</span></div>
+          <div class="session-body">
+            <h4>Download from nodejs.org (LTS recommended)</h4>
+            <p>Go to <strong>nodejs.org</strong> and download the LTS version. Run the installer with default settings. After installing, verify it worked by opening PowerShell and running:</p>
+            <div class="code-block">
+              <span class="cmd-green">node</span> --version
+            </div>
+            <div class="focus-line" style="margin-top: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>You should see:</strong> Something like <code>v22.0.0</code>. If the version is below 18, download a newer LTS from nodejs.org and reinstall.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s2">Step 2</span>
+        <span class="step-title">Install Claude Code globally</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">npm</span><span class="session-num">Global install</span></div>
+          <div class="session-body">
+            <h4>Open PowerShell as Administrator and run:</h4>
+            <p>The <code>-g</code> flag installs Claude Code globally so you can run it from any folder on your system. This takes about a minute.</p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyText('npm install -g @anthropic-ai/claude-code', this)">copy</button>
+              npm install <span class="cmd-green">-g</span> @anthropic-ai/claude-code
+            </div>
+            <div class="warning-banner" style="margin-top: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span><strong>Permission error?</strong> Run PowerShell as Administrator (right-click → Run as administrator) and retry. Do not use <code>sudo</code> on Windows — it won't help and can break things.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-block">
+      <div class="step-header">
+        <span class="step-pill s3">Step 3</span>
+        <span class="step-title">Sign in via browser</span>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-meta"><span class="session-label">Launch</span><span class="session-num">First run</span></div>
+          <div class="session-body">
+            <h4>Run <code>claude</code> to open the browser login</h4>
+            <p>A browser window opens automatically. Sign in with your Anthropic account. After signing in, return to the terminal — you're ready to work.</p>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyText('claude', this)">copy</button>
+              <span class="cmd-amber">claude</span>
+            </div>
+            <div class="focus-line" style="margin-top: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span><strong>From any project:</strong> Navigate with <code>cd</code> into a project folder, then type <code>claude</code>. It reads your codebase and takes instructions in plain English.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deliverable-banner blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span><strong>Claude Code is installed via npm.</strong> To keep it updated, run <code>npm install -g @anthropic-ai/claude-code</code> periodically, or switch to the native installer for automatic updates.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ EXIT CARD ══════════ -->
+  <div class="exit-card">
+    <div class="exit-item"><div class="el">Option A</div><div class="ev">Claude Desktop — Chat, Cowork, Projects</div></div>
+    <div class="exit-item"><div class="el">Option B</div><div class="ev">Claude Code — terminal, any project folder</div></div>
+    <div class="exit-item"><div class="el">Both installed?</div><div class="ev">Desktop for conversations, Code for building</div></div>
+    <div class="exit-item"><div class="el">Next move</div><div class="ev">Open Claude and start your first session</div></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Talent <em>Mucho</em></div>
+  <div class="footer-note">AI Bootcamp · June 2026 · Setup Guide</div>
+</footer>
+
+<script>
+function switchMethod(id, btn) {
+  document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  // re-trigger scroll reveal for newly shown blocks
+  setTimeout(checkReveal, 50);
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'copied!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  }).catch(() => {
+    btn.textContent = 'error';
+    setTimeout(() => btn.textContent = 'copy', 1500);
+  });
+}
+
+// ── Scroll reveal ──
+function checkReveal() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-pop').forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 40) {
+      setTimeout(() => el.classList.add('visible'), i * 60);
+    }
+  });
+}
+
+// ── Step block stagger on switch ──
+function animateSteps() {
+  document.querySelectorAll('.method-panel.active .step-block').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = `opacity 0.4s ease ${i * 80}ms, transform 0.4s ease ${i * 80}ms`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }));
+  });
+}
+
+const origSwitch = switchMethod;
+window.switchMethod = function(id, btn) {
+  origSwitch(id, btn);
+  requestAnimationFrame(animateSteps);
+};
+
+window.addEventListener('scroll', checkReveal, { passive: true });
+window.addEventListener('load', () => { checkReveal(); animateSteps(); });
+</script>
+
+</body>
+</html>
