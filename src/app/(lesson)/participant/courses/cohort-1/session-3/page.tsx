@@ -10,11 +10,11 @@ const SESSION = {
   color: "#C4A882",
   weekLabel: "Week 1 · Knowing Claude",
   title: "Custom instructions, file uploads",
-  date: "Sun, Jun 7",
-  time: "10 AM–1 PM EST",
+  date: "Sun, Jun 8",
+  time: "4–7 PM CET · 14:00–17:00 UTC",
   videoUrl: null as string | null,
   description:
-    "You'll write your first custom instructions, upload the files that shape Claude's responses, and configure your brand voice. By the end of this session you'll have all 3 of your Claude.ai Projects ready to use.",
+    "You built your Projects in session 2. Now you configure them. By the end of this session each of your 5 Claude Projects will have custom instructions, uploaded files, and a verified brand voice ~ so Claude knows exactly how to work with you.",
   resources: [
     { label: "Custom instructions template", href: "#" },
     { label: "Brand voice worksheet", href: "#" },
@@ -27,23 +27,25 @@ const PREV     = "/participant/courses/cohort-1/session-2";
 const NEXT     = "/participant/courses/cohort-1/session-4";
 
 const bringList = [
-  "Your Project from Session 1 open in Claude.ai",
+  "Your 5 Claude Projects from Session 2 open in Claude.ai",
   "A writing sample in your voice (email, proposal, or social post)",
   "One SOP, process doc, or FAQ (PDF, Word, or plain text)",
-  "Your Bootcamp Map answers for reference",
+  "Your brand voice doc if you ran the skill-maker exercise",
 ];
 
 const objectives = [
-  "Write custom instructions that shape every conversation in a Project",
-  "Know which documents to upload ,  and why",
-  "Understand how Claude uses uploaded files in practice",
-  "Complete all 3 configured Claude.ai Projects",
+  "Write custom instructions for each of your 5 Claude Projects",
+  "Upload the files that make Claude context-aware for your business",
+  "Verify Claude actually knows your business using the check prompts",
+  "Leave with all 5 Projects configured and ready to use tomorrow",
 ];
 
 const projects = [
-  { name: "Client-Facing Work", purpose: "Writing, emails, proposals, content ,  anything a client might read" },
-  { name: "Internal Operations", purpose: "SOPs, processes, team communication, checklists, planning" },
-  { name: "Thinking Partner", purpose: "Strategy, decisions, analysis, brainstorming ,  your confidential advisor" },
+  { n: "01", name: "Client Relations", purpose: "Proposals, emails, onboarding ~ anything client-facing. Tone should be warm but professional." },
+  { n: "02", name: "Project Management", purpose: "Active work, timelines, deliverables. Instructions should include how you like to track status." },
+  { n: "03", name: "Finance & Invoicing", purpose: "Invoices, payment tracking, rates. Include your standard rates and payment terms." },
+  { n: "04", name: "Marketing & Content", purpose: "Your voice, positioning, content ideas. Upload your brand voice doc here." },
+  { n: "05", name: "Second Brain", purpose: "Ideas, notes, strategy ~ your private thinking space. No filters needed." },
 ];
 
 const uploadGuide = [
@@ -160,6 +162,53 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
             )}
           </div>
 
+          {/* Agenda */}
+          <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
+                Today&apos;s agenda · 3 hours
+              </h3>
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] shrink-0">4–7 PM CET · 14:00–17:00 UTC</span>
+            </div>
+            <ol className="space-y-0">
+              {[
+                { cet: "4:00 – 4:10", utc: "14:00", label: "Welcome & recap ~ what did you build in Session 2?", type: "plenary" },
+                { cet: "4:10 – 4:30", utc: "14:10", label: "What are custom instructions ~ the 4-part framework", type: "teach" },
+                { cet: "4:30 – 4:45", utc: "14:30", label: "File uploads ~ what to add and why it matters", type: "teach" },
+                { cet: "4:45 – 5:00", utc: "14:45", label: "Live demo ~ Abie configures one Project in real time", type: "demo" },
+                { cet: "5:00 – 5:05", utc: "15:00", label: "Work brief ~ what you&apos;re doing for the next hour", type: "plenary" },
+                { cet: "5:05 – 6:05", utc: "15:05", label: "Work time ~ write your instructions, upload your files, run the check prompts", type: "work" },
+                { cet: "6:05 – 6:15", utc: "16:05", label: "Break", type: "break" },
+                { cet: "6:15 – 6:45", utc: "16:15", label: "Group share ~ each person shows one configured Project and what Claude now knows", type: "share" },
+                { cet: "6:45 – 7:00", utc: "16:45", label: "Q&A · Week 1 deliverable check · preview of Week 2", type: "plenary" },
+              ].map((item, i, arr) => {
+                const badge: Record<string, { label: string; color: string }> = {
+                  teach:   { label: "Teaching",   color: "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]" },
+                  demo:    { label: "Live demo",  color: "bg-[var(--clay-500)]/10 text-[var(--clay-500)]" },
+                  work:    { label: "Work time",  color: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400" },
+                  share:   { label: "Sharing",    color: "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-400" },
+                  break:   { label: "Break",      color: "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]" },
+                  plenary: { label: "",           color: "" },
+                };
+                const b = badge[item.type];
+                return (
+                  <li key={item.cet} className={`flex gap-4 items-start py-3 ${i < arr.length - 1 ? "border-b border-[var(--beige-200)] dark:border-white/5" : ""}`}>
+                    <div className="shrink-0 w-28">
+                      <p className="text-xs tabular-nums text-[var(--taupe-400)]">{item.cet}</p>
+                      <p className="text-[10px] tabular-nums text-[var(--beige-300)] dark:text-white/30 mt-0.5">{item.utc} UTC</p>
+                    </div>
+                    <p className={`text-sm font-light flex-1 ${item.type === "work" ? "text-emerald-700 dark:text-emerald-400 font-medium" : "text-[var(--charcoal-900)] dark:text-foreground"}`}
+                      dangerouslySetInnerHTML={{ __html: item.label }}
+                    />
+                    {b.label && (
+                      <span className={`shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] px-2 py-0.5 rounded-full ${b.color}`}>{b.label}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
           {/* Objectives */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
@@ -227,19 +276,21 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
             </div>
           </section>
 
-          {/* Three Projects */}
+          {/* Five Projects */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your 3 Projects ,  what each one is for</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {projects.map((p, i) => (
-                <div key={p.name} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">Project {i + 1}</span>
-                  <p className="font-medium text-sm text-[var(--charcoal-900)] dark:text-foreground">{p.name}</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your 5 Projects ~ what to configure in each</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {projects.map((p) => (
+                <div key={p.name} className={`rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-2${p.n === "05" ? " sm:col-span-2" : ""}`}>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] px-1.5 py-0.5 rounded bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]">{p.n}</span>
+                    <p className="font-medium text-sm text-[var(--charcoal-900)] dark:text-foreground">{p.name}</p>
+                  </div>
                   <p className="text-xs text-[var(--taupe-400)] font-light leading-relaxed">{p.purpose}</p>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-[var(--taupe-400)] font-light">Each Project gets its own custom instructions tailored to its purpose. The Client-Facing Project should be more formal; the Thinking Partner can be direct and candid.</p>
+            <p className="text-xs text-[var(--taupe-400)] font-light">Each Project gets its own custom instructions tailored to its purpose. Client Relations should feel professional; Second Brain can be raw and candid.</p>
           </section>
 
           {/* Prompts */}
