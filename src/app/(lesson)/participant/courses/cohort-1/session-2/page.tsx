@@ -26,18 +26,11 @@ const OVERVIEW = "/participant/courses/cohort-1";
 const PREV     = "/participant/courses/cohort-1/session-1";
 const NEXT     = "/participant/courses/cohort-1/session-3";
 
-const objectives = [
-  "Create your Claude account ~ Free to start, Pro if you plan to use Claude Code or Cowork",
-  "Understand Projects vs conversations and why the difference matters",
-  "Create your first Claude Project with real business context",
-  "Know the 3 ways to use Claude and which fits your workflow",
-  "Start setting up your 5-project business system before Session 3",
-];
 
 const bringList = [
-  "Claude.ai account ,  logged in and ready",
-  "Your onboarding answers from when you signed up",
-  "3 real problems from your business you want help with",
+  "Claude account set up before joining ~ Free works, Pro recommended",
+  "One real task from your business you want help with today",
+  "A writing sample in your voice (email, post, or message you sent recently)",
 ];
 
 const steps_project = [
@@ -161,10 +154,10 @@ Then tell me:
               {[
                 { cet: "4:00 – 4:10", utc: "14:00", label: "Welcome & quick recap from kickoff", type: "plenary" },
                 { cet: "4:10 – 4:25", utc: "14:10", label: "Coming from ChatGPT? How to bring your memory across", type: "teach" },
-                { cet: "4:25 – 4:45", utc: "14:25", label: "Know your tools ~ the 3 ways to use Claude + install guides", type: "teach" },
-                { cet: "4:45 – 5:10", utc: "14:45", label: "Projects deep dive ~ why they exist + live demo: create your first Project", type: "demo" },
-                { cet: "5:10 – 5:25", utc: "15:10", label: "Your 5-project business system + prompts walkthrough", type: "teach" },
-                { cet: "5:25 – 5:30", utc: "15:25", label: "Work brief ~ what you&apos;re doing for the next hour", type: "plenary" },
+                { cet: "4:25 – 4:50", utc: "14:25", label: "4 ways to use Claude ~ matrix, install guides, Cowork preview (Week 2 teaser)", type: "teach" },
+                { cet: "4:50 – 5:15", utc: "14:50", label: "Projects deep dive ~ why they exist + live demo: create your first Project", type: "demo" },
+                { cet: "5:15 – 5:25", utc: "15:15", label: "Your 5-project business system + prompts walkthrough", type: "teach" },
+                { cet: "5:25 – 5:30", utc: "15:25", label: "Work brief ~ what you&apos;re building in the next hour", type: "plenary" },
                 { cet: "5:30 – 6:30", utc: "15:30", label: "Work time ~ set up your Projects, run the prompts, build your brand voice", type: "work" },
                 { cet: "6:30 – 6:50", utc: "16:30", label: "Group share ~ each person shows what Claude now knows about their business", type: "share" },
                 { cet: "6:50 – 7:00", utc: "16:50", label: "Q&A · preview of Session 3 (custom instructions + file uploads)", type: "plenary" },
@@ -195,23 +188,6 @@ Then tell me:
               })}
             </ol>
           </div>
-
-          {/* Objectives */}
-          <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
-            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
-              <ol className="flex flex-col gap-3">
-                {objectives.map((obj, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="size-6 shrink-0 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[11px] font-semibold text-[var(--taupe-400)]">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed pt-0.5">{obj}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </section>
 
           {/* Why this matters */}
           <section className="flex flex-col gap-3">
@@ -275,74 +251,79 @@ Then tell me:
             </ol>
           </section>
 
-          {/* 3 ways to use Claude ~ matrix */}
+          {/* 4 ways to use Claude ~ matrix */}
           <section className="flex flex-col gap-3">
             <div>
               <p className="tm-eyebrow mb-1">Know your tools</p>
-              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">3 ways to use Claude ~ and when to use each</h3>
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">4 ways to use Claude ~ and when to use each</h3>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn&apos;t just a chat window. Here&apos;s the full picture.</p>
             </div>
-            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
-              {/* Header row */}
-              <div className="grid grid-cols-4 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
-                {["", "Claude.ai", "Terminal (Claude Code)", "Browser Extension"].map((h, i) => (
-                  <div key={i} className="px-3 py-2.5">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
-                  </div>
-                ))}
-              </div>
-              {[
-                {
-                  label: "Best for",
-                  vals: [
-                    "Writing, brainstorming, documents, Projects",
-                    "Building tools, running code, automating tasks",
-                    "Using Claude inside any website or tool you already use",
-                  ],
-                },
-                {
-                  label: "Skill level",
-                  vals: ["Beginner ~ no setup needed", "Intermediate ~ requires install", "Beginner ~ install extension"],
-                },
-                {
-                  label: "Key benefit",
-                  vals: [
-                    "Best context retention via Projects; cleanest UI",
-                    "Can read/write files, run commands, build dashboards",
-                    "Use Claude in Gmail, Notion, LinkedIn, anywhere",
-                  ],
-                },
-                {
-                  label: "Limitation",
-                  vals: [
-                    "Can&apos;t interact with your local files or other apps",
-                    "Requires comfort with the command line",
-                    "Lighter context than full Claude Projects",
-                  ],
-                },
-                {
-                  label: "Use in bootcamp",
-                  vals: ["Weeks 1 & 2 ~ Projects + AI employees", "Week 3 ~ build your dashboard live", "Ongoing ~ speed up daily work"],
-                },
-              ].map((row, ri) => (
-                <div key={ri} className={`grid grid-cols-4 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
-                  <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{row.label}</p>
-                  </div>
-                  {row.vals.map((v, vi) => (
-                    <div key={vi} className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5 last:border-0">
-                      <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: v }} />
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden overflow-x-auto">
+              <div className="min-w-[640px]">
+                {/* Header row */}
+                <div className="grid grid-cols-5 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
+                  {["", "Claude.ai / Desktop App", "Terminal (CLI)", "Browser Extension", "IDE (VS Code)"].map((h, i) => (
+                    <div key={i} className="px-3 py-2.5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
                     </div>
                   ))}
                 </div>
-              ))}
+                {[
+                  {
+                    label: "Best for",
+                    vals: [
+                      "Writing, brainstorming, documents, Projects",
+                      "Building tools, running code, automating tasks",
+                      "Using Claude inside any website or app you already have open",
+                      "Coding with AI alongside your editor ~ Claude sees your files",
+                    ],
+                  },
+                  {
+                    label: "Skill level",
+                    vals: ["Beginner ~ no setup", "Intermediate ~ terminal comfort needed", "Beginner ~ one-click install", "Beginner ~ install extension in VS Code"],
+                  },
+                  {
+                    label: "Key benefit",
+                    vals: [
+                      "Best context via Projects; desktop app adds a dock shortcut + global hotkey ~ same experience, faster access",
+                      "Reads/writes local files, runs commands, builds dashboards",
+                      "Claude reads what&apos;s on your screen ~ scrape a page, summarise an email thread, or draft a reply without copy-pasting anything",
+                      "Claude sees your whole codebase; writes, edits, explains in place",
+                    ],
+                  },
+                  {
+                    label: "Limitation",
+                    vals: [
+                      "Can&apos;t touch your local files or other apps",
+                      "Requires comfort with the command line",
+                      "Lighter context ~ no persistent Projects",
+                      "Tightly coupled to VS Code ~ for scripts, installs, or filesystem tasks you&apos;ll naturally switch to the terminal",
+                    ],
+                  },
+                  {
+                    label: "Use in bootcamp",
+                    vals: ["Weeks 1 & 2 ~ Projects + AI employees", "Week 3 ~ build your dashboard live", "Ongoing ~ speed up any browser-based task", "Week 3 onward ~ coding alongside Claude"],
+                  },
+                ].map((row, ri) => (
+                  <div key={ri} className={`grid grid-cols-5 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
+                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{row.label}</p>
+                    </div>
+                    {row.vals.map((v, vi) => (
+                      <div key={vi} className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5 last:border-0">
+                        <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: v }} />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
             <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-              We&apos;ll use all three during this bootcamp. This session we start with Claude.ai. Week 3 we go into the terminal. The extension is yours to explore anytime.
+              We&apos;ll use all four during this bootcamp. Today starts with Claude.ai. Week 3 goes into the terminal and IDE. The browser extension is yours to explore anytime.
             </p>
 
             {/* Install guides */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-1">
               {/* Claude Code CLI */}
               <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] overflow-hidden">
                 <div className="px-4 py-3 border-b border-[var(--beige-200)] dark:border-white/5 flex items-center justify-between gap-3">
@@ -432,6 +413,47 @@ Then tell me:
                   </p>
                 </div>
               </div>
+
+              {/* Browser extension */}
+              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] overflow-hidden">
+                <div className="px-4 py-3 border-b border-[var(--beige-200)] dark:border-white/5 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] mb-0.5">Browser</p>
+                    <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Claude browser extension</p>
+                  </div>
+                  <a
+                    href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)] hover:text-[var(--charcoal-900)] dark:hover:text-foreground transition-colors"
+                  >
+                    Chrome Store
+                    <ArrowRight className="size-3" />
+                  </a>
+                </div>
+                <div className="p-4 flex flex-col gap-3">
+                  <ol className="space-y-2">
+                    {[
+                      { n: 1, text: "Open Chrome (or any Chromium browser)", sub: "Edge, Brave, and Arc work too" },
+                      { n: 2, text: "Go to the Chrome Web Store link above", sub: null },
+                      { n: 3, text: 'Click "Add to Chrome" → "Add extension"', sub: null },
+                      { n: 4, text: "Pin it to your toolbar", sub: "Click the puzzle icon → pin Claude" },
+                      { n: 5, text: "Click the Claude icon on any page", sub: "Opens a sidebar ~ Claude can see what you&apos;re reading" },
+                    ].map((s) => (
+                      <li key={s.n} className="flex gap-2.5 items-start">
+                        <span className="shrink-0 size-4 rounded-full bg-[var(--beige-100)] dark:bg-white/5 flex items-center justify-center text-[9px] font-bold text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10 mt-0.5">{s.n}</span>
+                        <div className="min-w-0">
+                          <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">{s.text}</p>
+                          {s.sub && <p className="text-[11px] text-[var(--taupe-400)] font-light mt-0.5" dangerouslySetInnerHTML={{ __html: s.sub }} />}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="text-[11px] text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">
+                    Works on Free plan. Lets you use Claude inside Gmail, Notion, Google Docs, LinkedIn ~ anywhere in your browser.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -465,7 +487,7 @@ Then tell me:
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your exercise for this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col gap-3">
-              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Do this before Session 2:</p>
+              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Do this during work time today:</p>
               <ol className="flex flex-col gap-2">
                 {[
                   "Create a Project named after your business (or just \"My Business ,  General\")",
@@ -657,16 +679,16 @@ Then tell me:
                     prompt: `Write a follow-up email to [client name] ~ their invoice for [€X] is [X days] overdue. Keep it firm but not aggressive. I still want to work with them.`,
                   },
                   {
-                    project: "Second Brain",
+                    project: "Cowork",
                     color: "#2E2868",
                     label: "Organise your downloads",
-                    prompt: `I have hundreds of files in my Downloads folder. Here&apos;s a sample of the names: [paste 20 file names]. Suggest a folder structure and naming convention I can apply to everything. Keep it simple ~ max 5 top-level folders.`,
+                    prompt: `Connect to my Downloads folder and clean it up.\n\n1. Scan everything in there\n2. Suggest max 5 top-level folders based on what you find\n3. Move each file into the right folder\n4. Flag anything that looks like a duplicate or that I should delete\n\nDon't ask me to paste anything ~ just do it.`,
                   },
                   {
-                    project: "Second Brain",
+                    project: "Cowork",
                     color: "#2E2868",
                     label: "Sort your video files",
-                    prompt: `Here are my video file names: [paste list]. Help me:\n1. Group them by series or topic\n2. Suggest a naming convention (date, topic, version)\n3. Identify which ones are likely duplicates based on name`,
+                    prompt: `Access my video library and sort it.\n\n1. Group files by series or topic based on the file names\n2. Rename them using this convention: YYYY-MM-DD_topic_v1\n3. Flag likely duplicates\n4. Create a simple index file listing what's in each folder\n\nNo copy-pasting needed ~ just read the folder directly.`,
                   },
                   {
                     project: "Project Management",
