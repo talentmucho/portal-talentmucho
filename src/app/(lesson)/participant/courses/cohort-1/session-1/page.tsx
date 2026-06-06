@@ -226,154 +226,132 @@ export default async function Session1Page() {
               </div>
             </div>
 
-            {/* Your 5 Claude Projects */}
-            <div className="flex flex-col gap-4">
+            {/* Which plan to get */}
+            <div className="flex flex-col gap-3">
               <div>
-                <p className="tm-eyebrow mb-1">Before Saturday</p>
-                <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">
-                  Your freelance business system ~ 5 Claude Projects
-                </h3>
-                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl">
-                  This is your homework tonight. Set up these 5 Projects in Claude before Saturday&apos;s session. Each one becomes a dedicated workspace where Claude knows exactly what it&apos;s helping you with. Together they form a complete business operating system ~ built around <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
-                </p>
+                <p className="tm-eyebrow mb-1">Before you sign up</p>
+                <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Which Claude plan is right for you?</h3>
+                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">You&apos;ll need at least Pro by Week 3 when we go into Claude Code. Pick your plan tonight so you&apos;re not rate-limited mid-session.</p>
               </div>
-
-              {/* 5 project cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+                <div className="grid grid-cols-5 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
+                  {["", "Free", "Pro", "Max", "Team"].map((h, i) => (
+                    <div key={i} className="px-3 py-2.5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
+                    </div>
+                  ))}
+                </div>
                 {[
                   {
-                    n: "01",
-                    color: "#1A6045",
-                    title: "Client Relations",
-                    desc: "From first contact to signed contract ~ proposals, communication templates, and onboarding materials.",
-                    store: ["Proposal drafts and sent versions", "Email templates (intro, follow-up, chase)", "Client onboarding questionnaires", "Meeting notes and action items"],
-                    tip: "Create a sub-folder per client so all their documents stay together from proposal through final delivery.",
+                    label: "Price",
+                    vals: ["$0", "$20 / mo", "$100 or $200 / mo", "$25 / seat / mo"],
                   },
                   {
-                    n: "02",
-                    color: "#1A4070",
-                    title: "Project Management",
-                    desc: "Track active work, timelines, deliverables, and progress for every client engagement you&apos;re running.",
-                    store: ["Project briefs and scope documents", "Task lists and milestone trackers", "Revision logs and feedback threads", "Post-project retrospective notes"],
-                    tip: "Use a traffic-light status on each active project: on track, at risk, or delayed. You can see the full picture at a glance.",
+                    label: "Usage limit",
+                    vals: ["Very limited", "5× more than Free", "5× or 20× Pro", "Same as Pro per seat"],
                   },
                   {
-                    n: "03",
-                    color: "#5A2D82",
-                    title: "Finance & Invoicing",
-                    desc: "Keep your money matters organised ~ what&apos;s been invoiced, what&apos;s outstanding, and how your income looks over time.",
-                    store: ["Invoice templates and sent copies", "Payment tracking log", "Rate cards and pricing notes", "Monthly and annual income summaries"],
-                    tip: "Set a fixed invoicing day each month. Consistency trains clients to pay on time and reduces the mental load of chasing.",
+                    label: "Projects",
+                    vals: ["No", "Yes", "Yes", "Yes"],
                   },
                   {
-                    n: "04",
-                    color: "#6B4A1A",
-                    title: "Marketing & Content",
-                    desc: "Build your presence, attract new clients, and keep your messaging consistent across all channels.",
-                    store: ["Bio and positioning statement drafts", "Case studies and portfolio write-ups", "Social media post ideas and drafts", "Testimonials and social proof bank"],
-                    tip: "After every project, ask the client for one sentence of feedback. Drop it straight into your testimonials bank.",
+                    label: "Claude Code",
+                    vals: ["No", "Yes", "Yes", "Yes"],
                   },
                   {
-                    n: "05",
-                    color: "#2E2868",
-                    title: "Second Brain",
-                    desc: "Your private thinking space ~ where raw ideas become clear thinking and what you learn shapes how you work.",
-                    store: ["Raw ideas and fleeting thoughts", "Book, podcast & article notes", "Lessons from past projects and clients", "Personal goals and weekly reflections"],
-                    tip: "This one is for you, not your clients. Don&apos;t organise it too early. Let Claude help you find the patterns.",
+                    label: "Best for",
+                    vals: [
+                      "Just testing",
+                      "Solo freelancers ~ this bootcamp minimum",
+                      "Daily heavy users & Week 3 builders",
+                      "Teams of 5+ sharing access",
+                    ],
                   },
-                ].map((p) => (
-                  <div key={p.n} className={`rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden flex flex-col${p.n === "05" ? " sm:col-span-2" : ""}`}>
-                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: `${p.color}12` }}>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full text-white" style={{ background: p.color }}>{p.n}</span>
-                      <h4 className="font-medium text-sm text-[var(--charcoal-900)] dark:text-foreground">{p.title}</h4>
+                  {
+                    label: "Our rec",
+                    vals: ["Skip", "Start here", "Upgrade if you hit limits in Week 3", "Only if you have a team"],
+                  },
+                ].map((row, ri) => (
+                  <div key={ri} className={`grid grid-cols-5 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
+                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{row.label}</p>
                     </div>
-                    <div className="p-4 bg-white dark:bg-[var(--card)] flex-1 flex flex-col gap-3">
-                      <p className="text-sm font-light text-[var(--taupe-400)] leading-relaxed" dangerouslySetInnerHTML={{ __html: p.desc }} />
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] mb-1.5">Store here</p>
-                        <ul className="space-y-1">
-                          {p.store.map((s) => (
-                            <li key={s} className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light flex gap-2 items-start">
-                              <span className="shrink-0 mt-1.5 size-1 rounded-full" style={{ background: p.color }} />
-                              {s}
-                            </li>
-                          ))}
-                        </ul>
+                    {row.vals.map((v, vi) => (
+                      <div
+                        key={vi}
+                        className={`px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5 last:border-0${vi === 1 ? " bg-[var(--clay-500)]/5" : ""}`}
+                      >
+                        <p className={`text-xs font-light leading-relaxed${vi === 1 ? " text-[var(--clay-500)] font-medium" : " text-[var(--charcoal-900)] dark:text-foreground"}`}>{v}</p>
                       </div>
-                      <div className="mt-auto pt-3 border-t border-[var(--beige-200)] dark:border-white/5">
-                        <p className="text-xs text-[var(--taupe-400)] font-light italic leading-relaxed">&ldquo;{p.tip}&rdquo;</p>
-                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-[var(--taupe-400)] font-light px-1">
+                Max comes in two tiers: 5× Pro usage ($100/mo) and 20× Pro usage ($200/mo). Most bootcamp participants won&apos;t need Max until they start building in Week 3 ~ upgrade then if you hit the wall.
+              </p>
+            </div>
+
+            {/* Claude models */}
+            <div className="flex flex-col gap-3">
+              <div>
+                <p className="tm-eyebrow mb-1">Know your tools</p>
+                <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Claude models ~ which one does what?</h3>
+                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude.ai picks the best model for each task automatically. This is just so you know what&apos;s running under the hood.</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+                <div className="grid grid-cols-4 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
+                  {["Model", "Speed", "Best for", "Available on"].map((h, i) => (
+                    <div key={i} className="px-3 py-2.5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
+                    </div>
+                  ))}
+                </div>
+                {[
+                  {
+                    model: "Haiku 4.5",
+                    speed: "Fastest",
+                    best: "Quick lookups, simple edits, high-volume tasks",
+                    plans: "All plans",
+                  },
+                  {
+                    model: "Sonnet 4.5",
+                    speed: "Balanced",
+                    best: "Everyday writing, research, Projects ~ the workhorse",
+                    plans: "All plans",
+                  },
+                  {
+                    model: "Sonnet 4.6",
+                    speed: "Balanced+",
+                    best: "More nuanced reasoning, better at long documents",
+                    plans: "Pro, Max, Team",
+                  },
+                  {
+                    model: "Opus 4.6",
+                    speed: "Slower",
+                    best: "Complex strategy, deep analysis, hard problems",
+                    plans: "Pro, Max, Team",
+                  },
+                ].map((row, ri) => (
+                  <div key={ri} className={`grid grid-cols-4 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
+                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                      <p className="text-xs font-semibold text-[var(--charcoal-900)] dark:text-foreground">{row.model}</p>
+                    </div>
+                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                      <p className="text-xs text-[var(--taupe-400)] font-light">{row.speed}</p>
+                    </div>
+                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                      <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">{row.best}</p>
+                    </div>
+                    <div className="px-3 py-3">
+                      <p className="text-xs text-[var(--taupe-400)] font-light">{row.plans}</p>
                     </div>
                   </div>
                 ))}
               </div>
-
-              {/* 4-step setup */}
-              <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)]">
-                <p className="tm-eyebrow mb-2">Set up tonight</p>
-                <h4 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-4">4 steps to get Claude running as your business assistant</h4>
-                <ol className="space-y-4">
-                  {[
-                    { n: 1, title: "Create a free account", body: "Go to claude.ai and sign up. Free plan is enough to get started tonight. No credit card needed." },
-                    { n: 2, title: "Create a Project for each folder", body: 'In Claude, click "New Project" and name it to match ~ for example, "Client Relations". Projects give Claude persistent memory specific to that area.' },
-                    { n: 3, title: "Add your instructions", body: `Inside each project, paste a short description of your business and what you need help with. Claude will use this as context for every conversation in that project. Start with: "${businessContext}".` },
-                    { n: 4, title: "Start asking", body: "Draft proposals in Client Relations, build trackers in Project Management, write invoices in Finance, create content in Marketing, and develop ideas in your Second Brain." },
-                  ].map((step) => (
-                    <li key={step.n} className="flex gap-4 items-start">
-                      <span className="shrink-0 size-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white mt-0.5 bg-[var(--charcoal-900)] dark:bg-white dark:text-[var(--charcoal-900)]">{step.n}</span>
-                      <div>
-                        <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground mb-0.5">{step.title}</p>
-                        <p className="text-sm font-light text-[var(--taupe-400)] leading-relaxed">{step.body}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {/* Starter prompt ~ personalized */}
-              <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
-                <p className="tm-eyebrow mb-2">Your starter prompt ~ Client Relations</p>
-                <p className="text-sm text-[var(--taupe-400)] font-light mb-4">
-                  Paste this into your Client Relations project to write your project description and instructions. Fill in the bracketed fields before sending.
-                </p>
-                <pre className="p-4 rounded-xl bg-[var(--beige-50)] dark:bg-[var(--espresso-700)] text-xs text-[var(--charcoal-900)] dark:text-[var(--taupe-400)] whitespace-pre-wrap font-mono leading-relaxed">
-{`I'm setting up a Claude Project called "Client Relations" for my freelance business.
-
-My name is ${firstName} and I work as a [your role/service]. My business: ${businessContext}.
-
-Please write two things:
-
-1. A short project description (2–3 sentences) telling Claude what this folder is for.
-
-2. Project instructions that tell Claude:
-   – My preferred tone when writing to clients: [e.g. warm and direct]
-   – My average project value: [e.g. €500–€2,000]
-   – One thing I always want in proposals: [e.g. a clear scope of work]
-   – Follow-up habits I want Claude to help me maintain: [e.g. check in 3 days after sending]
-
-Keep both practical, specific to my business, and ready to paste into Claude Project settings.`}
-                </pre>
-              </div>
-
-              {/* Brand voice prompt */}
-              <div className="p-5 rounded-2xl border-2 border-dashed border-[var(--beige-200)] dark:border-white/10 flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className="flex-1">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-1">Bonus task</p>
-                  <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Build your brand voice document</p>
-                  <p className="text-xs text-[var(--taupe-400)] font-light leading-relaxed">
-                    Open a fresh Claude conversation (not inside any project) and paste the prompt below. Claude will interview you and write a brand-voice.txt you can upload to every project.
-                  </p>
-                </div>
-                <a
-                  href="https://claude.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 shrink-0 border border-[var(--beige-200)] dark:border-white/10 text-[var(--charcoal-900)] dark:text-foreground text-sm font-medium px-4 py-2.5 rounded-full hover:bg-[var(--beige-50)] dark:hover:bg-white/5 transition-colors"
-                >
-                  Open Claude
-                  <ArrowRight className="size-3.5" />
-                </a>
-              </div>
+              <p className="text-xs text-[var(--taupe-400)] font-light px-1">
+                For this bootcamp: Sonnet 4.5 or 4.6 handles 95% of what we&apos;ll do. Switch to Opus only when you need deep reasoning on a hard problem.
+              </p>
             </div>
 
             {/* How to install Claude ~ Windows guide */}
@@ -402,99 +380,6 @@ Keep both practical, specific to my business, and ready to paste into Claude Pro
                 style={{ height: "520px" }}
                 title="Install Claude on Windows"
               />
-            </div>
-
-            {/* Moving from ChatGPT to Claude */}
-            <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] flex flex-col gap-4">
-              <div>
-                <p className="tm-eyebrow mb-1">Coming from ChatGPT?</p>
-                <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">How to bring your ChatGPT memory into Claude</h3>
-                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">ChatGPT&apos;s memory lives in your account. Here&apos;s how to export it and load it into Claude so you&apos;re not starting from zero.</p>
-              </div>
-              <ol className="space-y-3">
-                {[
-                  { n: 1, step: "Export your ChatGPT memory", detail: 'Go to ChatGPT → Settings → Personalisation → Memory → "Manage Memory". Copy all saved memories.' },
-                  { n: 2, step: "Paste into a plain text file", detail: 'Create a file called chatgpt-memory.txt and paste everything in. One memory per line is fine.' },
-                  { n: 3, step: "Upload to your Claude Projects", detail: 'Inside each Claude Project, upload chatgpt-memory.txt under "Project Knowledge". Claude will reference it in every conversation.' },
-                  { n: 4, step: "Write new Claude instructions", detail: 'In Project Instructions, tell Claude: "I\'ve uploaded my ChatGPT memory above. Use it as context about how I work, my preferences, and my business."' },
-                  { n: 5, step: "Test it", detail: 'Ask Claude: "Based on my uploaded memory, what do you know about how I like to work?" Refine your instructions from there.' },
-                ].map((s) => (
-                  <li key={s.n} className="flex gap-3 items-start border-b border-[var(--beige-200)] dark:border-white/5 pb-3 last:border-0 last:pb-0">
-                    <span className="shrink-0 size-5 rounded-full bg-[var(--beige-100)] dark:bg-white/5 flex items-center justify-center text-[10px] font-bold text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10 mt-0.5">{s.n}</span>
-                    <div>
-                      <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">{s.step}</p>
-                      <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5 leading-relaxed">{s.detail}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* 3 ways to use Claude ~ matrix */}
-            <div className="flex flex-col gap-3">
-              <div>
-                <p className="tm-eyebrow mb-1">Know your tools</p>
-                <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">3 ways to use Claude ~ and when to use each</h3>
-                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn&apos;t just a chat window. Here&apos;s the full picture.</p>
-              </div>
-              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
-                {/* Header row */}
-                <div className="grid grid-cols-4 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
-                  {["", "Claude.ai", "Terminal (Claude Code)", "Browser Extension"].map((h, i) => (
-                    <div key={i} className="px-3 py-2.5">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
-                    </div>
-                  ))}
-                </div>
-                {[
-                  {
-                    label: "Best for",
-                    vals: [
-                      "Writing, brainstorming, documents, Projects",
-                      "Building tools, running code, automating tasks",
-                      "Using Claude inside any website or tool you already use",
-                    ],
-                  },
-                  {
-                    label: "Skill level",
-                    vals: ["Beginner ~ no setup needed", "Intermediate ~ requires install", "Beginner ~ install extension"],
-                  },
-                  {
-                    label: "Key benefit",
-                    vals: [
-                      "Best context retention via Projects; cleanest UI",
-                      "Can read/write files, run commands, build dashboards",
-                      "Use Claude in Gmail, Notion, LinkedIn, anywhere",
-                    ],
-                  },
-                  {
-                    label: "Limitation",
-                    vals: [
-                      "Can&apos;t interact with your local files or other apps",
-                      "Requires comfort with the command line",
-                      "Lighter context than full Claude Projects",
-                    ],
-                  },
-                  {
-                    label: "Use in bootcamp",
-                    vals: ["Weeks 1 & 2 ~ Projects + AI employees", "Week 3 ~ build your dashboard live", "Ongoing ~ speed up daily work"],
-                  },
-                ].map((row, ri) => (
-                  <div key={ri} className={`grid grid-cols-4 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
-                    <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{row.label}</p>
-                    </div>
-                    {row.vals.map((v, vi) => (
-                      <div key={vi} className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5 last:border-0">
-                        <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: v }} />
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-                We&apos;ll use all three during this bootcamp. Tonight we start with Claude.ai. Week 3 we go into the terminal. The extension is yours to explore anytime.
-              </p>
             </div>
 
             {/* Referral callout */}
