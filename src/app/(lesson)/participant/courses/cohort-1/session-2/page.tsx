@@ -19,6 +19,7 @@ const SESSION = {
     { label: "Session slides", href: "#" },
     { label: "Claude.ai interface guide", href: "#" },
     { label: "Projects quick-start", href: "#" },
+    { label: "Prompt library ~ Week 1 workshop", href: "https://week-one-workshop.vercel.app/" },
   ],
 };
 
@@ -1241,6 +1242,16 @@ Keep both practical, specific to my business, and ready to paste into Claude Pro
                   className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
                 >
                   Download Zoom background
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://week-one-workshop.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
+                >
+                  Prompt library ~ Week 1 workshop
                 </a>
               </li>
             </ul>
