@@ -318,6 +318,85 @@ Then tell me:
             </p>
           </div>
 
+          {/* How far does Pro go */}
+          <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
+            <div>
+              <p className="tm-eyebrow mb-1">How far does Pro go?</p>
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Understanding tokens ~ what they are and how fast you use them</h3>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Anthropic doesn&apos;t publish exact limits. What they do say: Pro gives you 5× more than Free, and usage resets every 5 hours ~ not monthly. Here&apos;s what that means in practice.</p>
+            </div>
+
+            {/* Token analogy */}
+            <div className="rounded-xl bg-[var(--beige-50)] dark:bg-white/[0.02] border border-[var(--beige-200)] dark:border-white/5 p-4 flex flex-col gap-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">What is a token?</p>
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Think of tokens as word-chunks. Roughly <strong className="font-medium">750 words = 1,000 tokens</strong>. Both what you send and what Claude replies count toward your limit.</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-1">
+                {[
+                  { label: "Short message", eg: "~50 words", tokens: "≈ 65 tokens" },
+                  { label: "Blog post", eg: "~800 words", tokens: "≈ 1,000 tokens" },
+                  { label: "Proposal draft", eg: "~1,500 words", tokens: "≈ 2,000 tokens" },
+                  { label: "10-page PDF", eg: "uploaded file", tokens: "≈ 5,000–10,000 tokens" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-lg border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-white/5 p-3 flex flex-col gap-0.5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{item.label}</p>
+                    <p className="text-[10px] text-[var(--taupe-400)] font-light">{item.eg}</p>
+                    <p className="text-xs font-medium text-[var(--charcoal-900)] dark:text-foreground mt-1">{item.tokens}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Practical ballpark */}
+            <div className="flex flex-col gap-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">Practical ballpark on Pro (per 5-hour window)</p>
+              <div className="flex flex-col gap-1.5">
+                {[
+                  { type: "Short Q&A, quick edits", est: "100+ messages ~ you'll rarely hit the wall", hit: false },
+                  { type: "Mix of writing + doc analysis", est: "40–80 messages ~ typical bootcamp session, no issue", hit: false },
+                  { type: "Heavy long-doc work or big file uploads", est: "20–40 messages ~ you may see a slowdown", hit: true },
+                  { type: "Opus model on complex tasks", est: "Burns faster ~ same limit, heavier compute", hit: true },
+                ].map((row) => (
+                  <div key={row.type} className="flex items-start gap-3 py-2 border-b border-[var(--beige-200)] dark:border-white/5 last:border-0">
+                    <span className={`shrink-0 mt-1 size-1.5 rounded-full ${row.hit ? "bg-[var(--clay-500)]" : "bg-emerald-500"}`} />
+                    <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5">
+                      <p className="text-xs font-medium text-[var(--charcoal-900)] dark:text-foreground">{row.type}</p>
+                      <p className="text-xs text-[var(--taupe-400)] font-light">{row.est}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Where to check */}
+            <div className="rounded-xl bg-[var(--beige-50)] dark:bg-white/[0.02] border border-[var(--beige-200)] dark:border-white/5 p-4 flex flex-col gap-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">Where to check your usage</p>
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Go to <strong className="font-medium">Settings → Usage</strong>. You&apos;ll see two separate meters:</p>
+              <div className="flex flex-col gap-2">
+                {[
+                  { label: "Current session", detail: "A progress bar showing % used this session, with a countdown to when it resets (e.g. \"Resets in 3 hr 41 min\"). This is your short-term limit." },
+                  { label: "Weekly limits", detail: "Two bars ~ one for All models combined, one for Sonnet only. Both show % used and reset on a fixed day and time each week." },
+                ].map((item) => (
+                  <div key={item.label} className="flex gap-2.5 items-start">
+                    <span className="shrink-0 size-1.5 rounded-full bg-[var(--charcoal-900)] dark:bg-white mt-2" />
+                    <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+                      <strong className="font-medium">{item.label}:</strong> {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-[var(--taupe-400)] font-light">Anthropic doesn&apos;t publish the exact token ceilings ~ but the % bars tell you where you stand. If you&apos;re at 80%+ mid-session, finish what you&apos;re doing and let it reset before starting something heavy.</p>
+              <img
+                src="/assets/screenshots/usage-meter.png"
+                alt="Claude Settings → Usage screen showing current session and weekly limit bars"
+                className="w-full rounded-xl border border-[var(--beige-200)] dark:border-white/5 mt-1"
+              />
+            </div>
+
+            <p className="text-xs text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">
+              Bottom line: Pro is more than enough for this bootcamp. If you hit a limit mid-session, wait for the session reset ~ check Settings → Usage for the exact time. Upgrade to Max only when you&apos;re doing heavy daily builds in Week 3.
+            </p>
+          </div>
+
           {/* Claude models */}
           <div className="flex flex-col gap-3">
             <div>
@@ -463,7 +542,7 @@ Then tell me:
                   {
                     label: "Key benefit",
                     vals: [
-                      "Best context via Projects; desktop app adds a dock shortcut + global hotkey ~ same experience, faster access",
+                      "Best context via Projects; desktop app adds a dock shortcut + global hotkey. Only place to check your usage meter (Settings → Usage) ~ see % used, reset time, and weekly limits.",
                       "Reads/writes local files, runs commands, builds dashboards",
                       "Claude reads what&apos;s on your screen ~ scrape a page, summarise an email thread, or draft a reply without copy-pasting anything",
                       "Claude sees your full file tree; edits appear as inline diffs. Easily switch between AI tools on the same project ~ run Claude Code alongside GitHub Copilot or any other AI extension without leaving your workspace.",
