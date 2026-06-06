@@ -52,6 +52,56 @@ export default async function Session2Page() {
   const firstName = intake?.first_name || "there";
   const businessContext = intake?.business_oneliner || "[your business]";
 
+  const FOCUS_LABELS: Record<string, string> = {
+    ops: "Operations",
+    voice: "Content & Voice",
+    client: "Client Work",
+    sales: "Sales & Leads",
+  };
+  const ROLE_LABELS: Record<string, string> = {
+    inbox_triage: "Inbox Triage",
+    lead_qualifier: "Lead Qualifier",
+    content_reviewer: "Content Reviewer",
+  };
+  const FOCUS_PROJECTS: Record<string, { title: string; color: string; painPoint: string; suggestion: string; starterPrompt: string }> = {
+    sales: {
+      title: "Marketing & Content",
+      color: "#6B4A1A",
+      painPoint: "Your focus is lead generation ~ getting the right people to notice you and reach out.",
+      suggestion: "Set up your Marketing & Content project first. Paste in your positioning, your ideal client profile, and one piece of content you're proud of. Claude will use all of it to write lead gen content that actually sounds like you.",
+      starterPrompt: `Write 3 short LinkedIn posts this week that attract my ideal clients without sounding salesy.\n\nMy business: ${businessContext}\nIdeal client: [who they are, what they struggle with]\nTone: [conversational / direct / warm]\n\nEach post should end with a soft call to action ~ not a hard sell.`,
+    },
+    voice: {
+      title: "Marketing & Content",
+      color: "#6B4A1A",
+      painPoint: "Your focus is content and voice ~ creating consistently and making sure it sounds like you, not a robot.",
+      suggestion: "Start with your Marketing & Content project. Upload 3-5 pieces of your best past content and ask Claude to write a brand voice document from them. Everything you create from here will sound consistent.",
+      starterPrompt: `Analyze the following writing samples and write me a brand voice document.\n\nInclude: tone, sentence style, words I use often, words I avoid, how I open, how I close.\n\n[Paste 3~5 of your best posts, emails, or captions here]`,
+    },
+    client: {
+      title: "Client Relations",
+      color: "#1A6045",
+      painPoint: "Your focus is client work ~ winning new clients, delivering well, and getting paid on time.",
+      suggestion: "Set up your Client Relations project first. Add your current proposal template (or describe your offer) and your client onboarding process. Claude can draft proposals, follow-ups, and check-ins from there.",
+      starterPrompt: `Write a proposal email to a potential client.\n\nMy offer: ${businessContext}\nClient context: [what they do, what they need, how we connected]\nBudget discussed: [if any]\nTone: professional but warm ~ I want them to feel confident saying yes.`,
+    },
+    ops: {
+      title: "Project Management",
+      color: "#1A4070",
+      painPoint: "Your focus is operations ~ staying on top of what's active, what's late, and what needs your attention.",
+      suggestion: "Set up your Project Management project first. List your current active clients or projects and paste them in. Claude can help you build a tracker, write a weekly ops review, and flag what&apos;s at risk.",
+      starterPrompt: `I need a simple weekly ops review template for my business.\n\nMy business: ${businessContext}\nActive projects right now: [list them]\n\nFor each project give me: status (on track / at risk / delayed), next action, and who owns it.`,
+    },
+  };
+
+  const focusKey = intake?.first_focus ?? "";
+  const focusLabel = FOCUS_LABELS[focusKey] ?? null;
+  const roleLabel =
+    intake?.ai_employee_role === "custom"
+      ? intake?.ai_employee_custom || "Custom AI employee"
+      : ROLE_LABELS[intake?.ai_employee_role ?? ""] ?? null;
+  const focusProject = FOCUS_PROJECTS[focusKey] ?? null;
+
   const PROMPTS: Record<string, string> = {
     "Orient Claude to my business": `I run a **${intake?.first_focus || "[type of business ,  e.g. coaching practice, e-commerce store, design agency]"}**.
 
@@ -202,6 +252,134 @@ Then tell me:
             </div>
           </section>
 
+          {/* Which plan to get */}
+          <div className="flex flex-col gap-3">
+            <div>
+              <p className="tm-eyebrow mb-1">Before you sign up</p>
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Which Claude plan is right for you?</h3>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">You&apos;ll need at least Pro by Week 3 when we go into Claude Code. Pick your plan tonight so you&apos;re not rate-limited mid-session.</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+              <div className="grid grid-cols-5 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
+                {["", "Free", "Pro", "Max", "Team"].map((h, i) => (
+                  <div key={i} className="px-3 py-2.5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
+                  </div>
+                ))}
+              </div>
+              {[
+                {
+                  label: "Price",
+                  vals: ["$0", "$20 / mo", "$100 or $200 / mo", "$25 / seat / mo"],
+                },
+                {
+                  label: "Usage limit",
+                  vals: ["Very limited", "5× more than Free", "5× or 20× Pro", "Same as Pro per seat"],
+                },
+                {
+                  label: "Projects",
+                  vals: ["No", "Yes", "Yes", "Yes"],
+                },
+                {
+                  label: "Claude Code",
+                  vals: ["No", "Yes", "Yes", "Yes"],
+                },
+                {
+                  label: "Best for",
+                  vals: [
+                    "Just testing",
+                    "Solo freelancers ~ this bootcamp minimum",
+                    "Daily heavy users & Week 3 builders",
+                    "Teams of 5+ sharing access",
+                  ],
+                },
+                {
+                  label: "Our rec",
+                  vals: ["Skip", "Start here", "Upgrade if you hit limits in Week 3", "Only if you have a team"],
+                },
+              ].map((row, ri) => (
+                <div key={ri} className={`grid grid-cols-5 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
+                  <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">{row.label}</p>
+                  </div>
+                  {row.vals.map((v, vi) => (
+                    <div
+                      key={vi}
+                      className={`px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5 last:border-0${vi === 1 ? " bg-[var(--clay-500)]/5" : ""}`}
+                    >
+                      <p className={`text-xs font-light leading-relaxed${vi === 1 ? " text-[var(--clay-500)] font-medium" : " text-[var(--charcoal-900)] dark:text-foreground"}`}>{v}</p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--taupe-400)] font-light px-1">
+              Max comes in two tiers: 5× Pro usage ($100/mo) and 20× Pro usage ($200/mo). Most bootcamp participants won&apos;t need Max until they start building in Week 3 ~ upgrade then if you hit the wall.
+            </p>
+          </div>
+
+          {/* Claude models */}
+          <div className="flex flex-col gap-3">
+            <div>
+              <p className="tm-eyebrow mb-1">Know your tools</p>
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Claude models ~ which one does what?</h3>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude.ai picks the best model for each task automatically. This is just so you know what&apos;s running under the hood.</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+              <div className="grid grid-cols-4 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
+                {["Model", "Speed", "Best for", "Available on"].map((h, i) => (
+                  <div key={i} className="px-3 py-2.5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">{h}</p>
+                  </div>
+                ))}
+              </div>
+              {[
+                {
+                  model: "Haiku 4.5",
+                  speed: "Fastest",
+                  best: "Quick lookups, simple edits, high-volume tasks",
+                  plans: "All plans",
+                },
+                {
+                  model: "Sonnet 4.5",
+                  speed: "Balanced",
+                  best: "Everyday writing, research, Projects ~ the workhorse",
+                  plans: "All plans",
+                },
+                {
+                  model: "Sonnet 4.6",
+                  speed: "Balanced+",
+                  best: "More nuanced reasoning, better at long documents",
+                  plans: "Pro, Max, Team",
+                },
+                {
+                  model: "Opus 4.6",
+                  speed: "Slower",
+                  best: "Complex strategy, deep analysis, hard problems",
+                  plans: "Pro, Max, Team",
+                },
+              ].map((row, ri) => (
+                <div key={ri} className={`grid grid-cols-4 ${ri % 2 === 0 ? "bg-white dark:bg-transparent" : "bg-[var(--beige-50)] dark:bg-white/[0.02]"} border-b border-[var(--beige-200)] dark:border-white/5 last:border-0`}>
+                  <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                    <p className="text-xs font-semibold text-[var(--charcoal-900)] dark:text-foreground">{row.model}</p>
+                  </div>
+                  <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                    <p className="text-xs text-[var(--taupe-400)] font-light">{row.speed}</p>
+                  </div>
+                  <div className="px-3 py-3 border-r border-[var(--beige-200)] dark:border-white/5">
+                    <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">{row.best}</p>
+                  </div>
+                  <div className="px-3 py-3">
+                    <p className="text-xs text-[var(--taupe-400)] font-light">{row.plans}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--taupe-400)] font-light px-1">
+              For this bootcamp: Sonnet 4.5 or 4.6 handles 95% of what we&apos;ll do. Switch to Opus only when you need deep reasoning on a hard problem.
+            </p>
+          </div>
+
           {/* Projects vs Conversations */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Projects vs. conversations ,  the key difference</p>
@@ -288,7 +466,7 @@ Then tell me:
                       "Best context via Projects; desktop app adds a dock shortcut + global hotkey ~ same experience, faster access",
                       "Reads/writes local files, runs commands, builds dashboards",
                       "Claude reads what&apos;s on your screen ~ scrape a page, summarise an email thread, or draft a reply without copy-pasting anything",
-                      "Claude sees your whole codebase; writes, edits, explains in place",
+                      "Claude sees your full file tree; edits appear as inline diffs. Easily switch between AI tools on the same project ~ run Claude Code alongside GitHub Copilot or any other AI extension without leaving your workspace.",
                     ],
                   },
                   {
@@ -519,6 +697,52 @@ Then tell me:
                 We&apos;re doing this live, right now. You set these up on your screen, Abie &amp; Meri demo on theirs. Each Project becomes a dedicated workspace where Claude knows exactly what it&apos;s helping you with. Together they form a complete operating system for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
               </p>
             </div>
+
+            {/* Personalized pain point card */}
+            {intake && (focusProject || intake.one_thing) && (
+              <div className="rounded-2xl border border-[var(--clay-500)]/25 bg-[var(--clay-500)]/5 p-5 flex flex-col gap-4">
+                <div className="flex items-start justify-between gap-3 flex-wrap">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--clay-500)] mb-1">Your starting point, {firstName}</p>
+                    <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground leading-snug">Based on your onboarding answers ~ here&apos;s where to focus first</p>
+                  </div>
+                  {focusLabel && (
+                    <span className="shrink-0 inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-[10px] font-semibold uppercase tracking-[0.1em]">{focusLabel}</span>
+                  )}
+                </div>
+
+                {intake.one_thing && (
+                  <div className="rounded-xl bg-white dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 px-4 py-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)] mb-1">Your goal this bootcamp</p>
+                    <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">&ldquo;{intake.one_thing}&rdquo;</p>
+                  </div>
+                )}
+
+                {focusProject && (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">{focusProject.painPoint}</p>
+                    <div className="flex gap-2.5 items-start">
+                      <span className="shrink-0 size-2 rounded-full mt-2" style={{ background: focusProject.color }} />
+                      <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+                        <strong className="font-medium">{focusProject.title}:</strong>{" "}
+                        {focusProject.suggestion}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {focusProject && (
+                  <div className="rounded-xl bg-white dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 p-4 flex flex-col gap-2">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)]">Try this prompt in your first project</p>
+                    <pre className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-mono whitespace-pre-wrap leading-relaxed">{focusProject.starterPrompt}</pre>
+                  </div>
+                )}
+
+                {roleLabel && (
+                  <p className="text-xs text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">You said you want to build a <strong className="font-medium text-[var(--charcoal-900)] dark:text-foreground">{roleLabel}</strong> AI employee ~ we&apos;ll get there in Week 2. This session is where you build the foundation.</p>
+                )}
+              </div>
+            )}
 
             {/* 5 project cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
