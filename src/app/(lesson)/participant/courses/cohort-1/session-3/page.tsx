@@ -172,7 +172,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
             </div>
             <ol className="space-y-0">
               {[
-                { cet: "4:00 – 4:10", utc: "14:00", label: "Welcome & recap ~ what did you build in Session 2?", type: "plenary" },
+                { cet: "4:00 – 4:10", utc: "14:00", label: "Share ~ each person shows what they built in Session 2", type: "share" },
                 { cet: "4:10 – 4:30", utc: "14:10", label: "What are custom instructions ~ the 4-part framework", type: "teach" },
                 { cet: "4:30 – 4:45", utc: "14:30", label: "File uploads ~ what to add and why it matters", type: "teach" },
                 { cet: "4:45 – 5:00", utc: "14:45", label: "Share ~ what have you configured so far? Show us your Project setup", type: "share" },
