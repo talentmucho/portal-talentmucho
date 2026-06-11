@@ -34,7 +34,7 @@ const WEEKS = [
   {
     label: "Week 2 · Delegating to Claude",
     color: "#7D6B5A",
-    locked: true,
+    locked: false,
     sessions: [
       { n: 4, path: `${BASE}/session-4`, title: "AI employees ~ intro" },
       { n: 5, path: `${BASE}/session-5`, title: "Build your AI employee" },
