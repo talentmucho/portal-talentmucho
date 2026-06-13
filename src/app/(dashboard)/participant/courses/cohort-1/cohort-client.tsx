@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Calendar, Clock, Video, ArrowRight } from "lucide-react";
 import { IntakeTab } from "./intake/intake-tab";
@@ -211,9 +212,7 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
           {/* ── Overview ── */}
           <TabsContent value="overview">
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 pt-2">
-              {weeks.map((w) => {
-                const locked = !isAdmin && w.num !== "01";
-                if (locked) return null;
+              {weeks.map((w, weekIdx) => {
                 return (
                   <div
                     key={w.num}
@@ -239,10 +238,16 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
                         </p>
                       </div>
                       <div className="border-t border-[var(--beige-200)] dark:border-white/5 pt-3 space-y-1">
-                        {w.sessions.map((s) => (
-                          <p key={s} className="text-xs text-[var(--taupe-400)] leading-relaxed">
-                            · {s}
-                          </p>
+                        {w.sessions.map((s, j) => (
+                          <Link
+                            key={s}
+                            href={`/participant/courses/cohort-1/session-${2 + weekIdx * 2 + j}`}
+                            className="group flex items-start gap-1.5 text-xs text-[var(--taupe-400)] leading-relaxed rounded-md -mx-1 px-1 py-0.5 transition-colors hover:bg-white dark:hover:bg-white/5 hover:text-[var(--charcoal-900)] dark:hover:text-foreground"
+                          >
+                            <span aria-hidden>·</span>
+                            <span className="flex-1">{s}</span>
+                            <ArrowRight className="size-3 shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -256,9 +261,10 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
           <TabsContent value="schedule">
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden mt-2">
               {sessions.map((s, i) => (
-                <div
+                <Link
                   key={s.tag}
-                  className={`grid grid-cols-[auto_1fr] md:grid-cols-[100px_130px_110px_1fr] gap-2 md:gap-4 px-5 py-4 items-center ${
+                  href={`/participant/courses/cohort-1/session-${i + 1}`}
+                  className={`group grid grid-cols-[auto_1fr] md:grid-cols-[100px_130px_110px_1fr_auto] gap-2 md:gap-4 px-5 py-4 items-center transition-colors hover:bg-[var(--beige-100)] dark:hover:bg-white/[0.04] ${
                     i < sessions.length - 1
                       ? "border-b border-[var(--beige-200)] dark:border-white/5"
                       : ""
@@ -283,7 +289,8 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
                   <span className="text-sm text-[var(--taupe-400)] font-light col-span-2 md:col-auto">
                     {s.topic}
                   </span>
-                </div>
+                  <ArrowRight className="hidden md:block size-3.5 text-[var(--taupe-400)] opacity-0 group-hover:opacity-100 transition-opacity justify-self-end" />
+                </Link>
               ))}
             </div>
           </TabsContent>

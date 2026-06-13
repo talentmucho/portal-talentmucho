@@ -43,7 +43,7 @@ const WEEKS = [
   {
     label: "Week 3 · Building with Claude",
     color: "#5A7A6B",
-    locked: true,
+    locked: false,
     sessions: [
       { n: 6, path: `${BASE}/session-6`, title: "Claude Code ~ first build" },
       { n: 7, path: `${BASE}/session-7`, title: "Build your dashboard" },
@@ -52,7 +52,7 @@ const WEEKS = [
   {
     label: "Week 4 · Living with Claude",
     color: "#6B5A7A",
-    locked: true,
+    locked: false,
     sessions: [
       { n: 8, path: `${BASE}/session-8`, title: "Full Claude stack" },
       { n: 9, path: `${BASE}/session-9`, title: "Graduation & showcase" },
