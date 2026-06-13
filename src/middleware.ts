@@ -39,9 +39,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/participant", request.url));
   }
 
-  // Lock sessions 4–9 for non-admins
+  // Lock specific sessions for non-admins. Empty = all sessions unlocked.
+  // To re-lock, add session numbers here, e.g. [6, 7, 8, 9].
   if (role !== "admin") {
-    const lockedSessions = [4, 5, 6, 7, 8, 9];
+    const lockedSessions: number[] = [];
     for (const n of lockedSessions) {
       if (pathname.startsWith(`/participant/courses/cohort-1/session-${n}`)) {
         return NextResponse.redirect(new URL("/participant/courses/cohort-1/session-1", request.url));
