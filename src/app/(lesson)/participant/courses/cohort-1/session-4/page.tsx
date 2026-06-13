@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Send, CalendarClock, Sparkles } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { AiEmployeeVsSkill } from "@/components/cohort1/AiEmployeeVsSkill";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
 import { SessionEditPanel } from "@/components/session-edit-panel";
@@ -279,6 +280,12 @@ Format it so I can paste it directly into Cowork.`,
             </div>
           </section>
 
+          {/* AI employee vs Skill */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">AI employee vs. skill ~ know which one you&apos;re building</p>
+            <AiEmployeeVsSkill />
+          </section>
+
           {/* What Cowork adds */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What Cowork adds that Claude.ai alone can&apos;t do</p>
@@ -295,6 +302,107 @@ Format it so I can paste it directly into Cowork.`,
                     <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Dispatch & Schedule */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Dispatch &amp; Schedule ~ how your AI employee actually works for you</p>
+            <p className="text-sm text-[var(--taupe-400)] -mt-1">
+              Two ways to put an employee to work in Cowork. <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Dispatch</strong> runs a task now, in the background. <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Schedule</strong> runs it automatically on a cadence ~ no trigger from you.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Dispatch */}
+              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="size-7 rounded-full bg-[var(--clay-500)]/15 flex items-center justify-center shrink-0">
+                    <Send className="size-3.5 text-[var(--clay-500)]" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Dispatch</p>
+                    <p className="text-[11px] text-[var(--taupe-400)]">Run a task now, in the background</p>
+                  </div>
+                </div>
+                <ol className="flex flex-col gap-2">
+                  {[
+                    "Open your AI employee in Cowork",
+                    "Brief the task like you would a teammate ~ what, context, what “done” looks like",
+                    "Attach any files or examples it needs",
+                    "Hit Dispatch ~ it runs while you do other work",
+                    "Review the result, approve it, or send it back with notes",
+                  ].map((step, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
+                      <span className="size-4 shrink-0 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[9px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
+                      <span className="font-light">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Schedule */}
+              <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="size-7 rounded-full bg-indigo-500/15 flex items-center justify-center shrink-0">
+                    <CalendarClock className="size-3.5 text-indigo-500 dark:text-indigo-400" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Schedule</p>
+                    <p className="text-[11px] text-[var(--taupe-400)]">Run it automatically, on a cadence</p>
+                  </div>
+                </div>
+                <ol className="flex flex-col gap-2">
+                  {[
+                    "Open the employee and write the recurring task",
+                    "Set the cadence ~ e.g. every weekday 8am, or every Monday",
+                    "Define the output and where it should land (email, doc, message)",
+                    "Set escalation ~ when to flag you vs. just deliver",
+                    "Activate ~ it now runs on its own; you review the digest",
+                  ].map((step, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
+                      <span className="size-4 shrink-0 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[9px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
+                      <span className="font-light">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+
+            {/* Benefits */}
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--card)] p-5 flex flex-col gap-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)] mb-1">Why this changes your week</p>
+              {[
+                "Work happens without you in the loop ~ real delegation, not just assistance",
+                "Mornings start with work already done ~ briefs, drafts, and summaries waiting for you",
+                "Consistency ~ the same task runs the same way every single time",
+                "You shift from operator to reviewer ~ you approve instead of produce",
+                "Nothing slips ~ recurring work doesn't depend on you remembering",
+              ].map((b, i) => (
+                <p key={i} className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed flex items-start gap-2">
+                  <span className="text-[var(--clay-500)] shrink-0 mt-0.5">+</span>
+                  {b}
+                </p>
+              ))}
+            </div>
+
+            {/* Why better in Cowork */}
+            <div className="rounded-2xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-5 flex flex-col gap-2">
+              <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground flex items-center gap-2">
+                <Sparkles className="size-4 text-[var(--clay-500)]" />
+                Why this is better in Cowork than Claude.ai alone
+              </p>
+              {[
+                "Claude.ai is a tool you must be present for ~ open it, ask, close it. Cowork runs without you.",
+                "Persistent context ~ the employee already knows your business, so there's no re-briefing each time.",
+                "Background + scheduled execution ~ Claude.ai can't run on its own clock; a Cowork employee can.",
+                "Parallel employees ~ dispatch several jobs at once and let them run side by side.",
+                "Built-in escalation ~ it knows when to act vs. flag you, so the autonomy stays safe.",
+              ].map((b, i) => (
+                <p key={i} className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed flex items-start gap-2">
+                  <span className="text-[var(--clay-500)] shrink-0 mt-0.5">~</span>
+                  {b}
+                </p>
               ))}
             </div>
           </section>
