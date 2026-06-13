@@ -11,7 +11,7 @@ const SESSION = {
   weekLabel: "Week 2 · Delegating to Claude",
   title: "AI employees ,  what Cowork makes real",
   date: "Sat, Jun 13",
-  time: "10 AM–1 PM EST",
+  time: "4–7 PM CET · 14:00–17:00 UTC",
   videoUrl: null as string | null,
   description:
     "An introduction to AI employees ,  what they are, what Cowork makes possible, and how real businesses are using them today. You'll see a live demo and leave with a clear plan for what you're building in Session 4.",
@@ -40,9 +40,42 @@ const objectives = [
 ];
 
 const roleExamples = [
-  { name: "Onboarding Coordinator", handles: "Greets new clients, sends welcome sequences, answers FAQs, collects intake info", escalates: "Unusual requests, unhappy clients, contract questions" },
-  { name: "Content Writer", handles: "Writes in your brand voice, formats for each platform, drafts from briefs", escalates: "Sensitive topics, strategy decisions, client-facing launches" },
-  { name: "Ops Assistant", handles: "Processes intake forms, routes requests, drafts SOPs, summarizes notes", escalates: "Anything requiring judgment calls or external action" },
+  {
+    name: "Onboarding Coordinator",
+    handles: "Greets new clients, sends welcome sequences, answers FAQs, collects intake info",
+    escalates: "Unusual requests, unhappy clients, contract questions",
+    steps: [
+      "Name them and set the role ~ \"You are [name], the Onboarding Coordinator for [business].\"",
+      "Load context ~ upload your welcome sequence, intake form, and client FAQ",
+      "Define the workflow ~ greet, send the welcome, collect intake, answer common questions",
+      "Set escalation rules ~ unusual requests, unhappy clients, or contract questions get flagged to you",
+      "Test it ~ paste 3 real new-client messages and refine the replies until they sound like you",
+    ],
+  },
+  {
+    name: "Content Writer",
+    handles: "Writes in your brand voice, formats for each platform, drafts from briefs",
+    escalates: "Sensitive topics, strategy decisions, client-facing launches",
+    steps: [
+      "Name them and set the role ~ \"You are [name], the Content Writer for [business].\"",
+      "Load context ~ upload your brand voice doc, 2–3 writing samples, and platform formatting rules",
+      "Define the workflow ~ take a brief, draft in your voice, format for each platform",
+      "Set escalation rules ~ sensitive topics, strategy calls, or launches get flagged to you",
+      "Test it ~ give one real brief and check the voice matches before you trust it",
+    ],
+  },
+  {
+    name: "Ops Assistant",
+    handles: "Processes intake forms, routes requests, drafts SOPs, summarizes notes",
+    escalates: "Anything requiring judgment calls or external action",
+    steps: [
+      "Name them and set the role ~ \"You are [name], the Ops Assistant for [business].\"",
+      "Load context ~ upload your SOPs, intake forms, routing rules, and note templates",
+      "Define the workflow ~ process intake, route requests, draft SOPs, summarize notes",
+      "Set escalation rules ~ judgment calls or anything needing external action get flagged to you",
+      "Test it ~ run a real intake form and a messy set of notes through it",
+    ],
+  },
 ]
 
 export default async function Session5Page() {
@@ -159,6 +192,53 @@ Format it so I can paste it directly into Cowork.`,
             )}
           </div>
 
+          {/* Agenda */}
+          <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
+                Today&apos;s agenda · 3 hours
+              </h3>
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] shrink-0">4–7 PM CET · 14:00–17:00 UTC</span>
+            </div>
+            <ol className="space-y-0">
+              {[
+                { cet: "4:00 – 4:20", utc: "14:00", label: "Check-in &amp; review ~ each person shares progress on their Session 3 assignment, plus a quick look back at last session", type: "share" },
+                { cet: "4:20 – 4:45", utc: "14:20", label: "What is an AI employee? ~ tool vs employee, and what Cowork makes real", type: "teach" },
+                { cet: "4:45 – 5:05", utc: "14:45", label: "Discuss ~ where an AI employee fits in your business and which role to build first", type: "share" },
+                { cet: "5:05 – 5:20", utc: "15:05", label: "Grouping ~ break into groups by the role type each of you is building", type: "group" },
+                { cet: "5:20 – 5:30", utc: "15:20", label: "Break", type: "break" },
+                { cet: "5:30 – 6:00", utc: "15:30", label: "Lecture ~ how AI employees work: named identity, role specialization, delegation, and escalation logic", type: "teach" },
+                { cet: "6:00 – 6:40", utc: "16:00", label: "Hands-on ~ in your group, draft your AI employee&apos;s role description and system prompt", type: "work" },
+                { cet: "6:40 – 7:00", utc: "16:40", label: "Group share &amp; wrap ~ each group presents one AI employee + preview of Session 5", type: "share" },
+              ].map((item, i, arr) => {
+                const badge: Record<string, { label: string; color: string }> = {
+                  teach:   { label: "Teaching",   color: "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]" },
+                  demo:    { label: "Live demo",  color: "bg-[var(--clay-500)]/10 text-[var(--clay-500)]" },
+                  work:    { label: "Work time",  color: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400" },
+                  share:   { label: "Sharing",    color: "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-400" },
+                  group:   { label: "Grouping",   color: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400" },
+                  break:   { label: "Break",      color: "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)]" },
+                  plenary: { label: "",           color: "" },
+                };
+                const b = badge[item.type];
+                return (
+                  <li key={item.cet} className={`flex gap-4 items-start py-3 ${i < arr.length - 1 ? "border-b border-[var(--beige-200)] dark:border-white/5" : ""}`}>
+                    <div className="shrink-0 w-28">
+                      <p className="text-xs tabular-nums text-[var(--taupe-400)]">{item.cet}</p>
+                      <p className="text-[10px] tabular-nums text-[var(--beige-300)] dark:text-white/30 mt-0.5">{item.utc} UTC</p>
+                    </div>
+                    <p className={`text-sm font-light flex-1 ${item.type === "work" ? "text-emerald-700 dark:text-emerald-400 font-medium" : "text-[var(--charcoal-900)] dark:text-foreground"}`}
+                      dangerouslySetInnerHTML={{ __html: item.label }}
+                    />
+                    {b.label && (
+                      <span className={`shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] px-2 py-0.5 rounded-full ${b.color}`}>{b.label}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
           {/* Objectives */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
@@ -224,7 +304,7 @@ Format it so I can paste it directly into Cowork.`,
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Real role examples ,  what other businesses have built</p>
             <div className="flex flex-col gap-3">
               {roleExamples.map((role) => (
-                <div key={role.name} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-2">
+                <div key={role.name} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex flex-col gap-3">
                   <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">{role.name}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     <div>
@@ -235,6 +315,17 @@ Format it so I can paste it directly into Cowork.`,
                       <span className="text-[var(--taupe-400)] font-semibold uppercase tracking-[0.1em]">Escalates: </span>
                       <span className="text-[var(--charcoal-900)] dark:text-foreground font-light">{role.escalates}</span>
                     </div>
+                  </div>
+                  <div className="border-t border-[var(--beige-200)] dark:border-white/5 pt-3">
+                    <p className="text-[10px] text-[var(--taupe-400)] font-semibold uppercase tracking-[0.1em] mb-2">How to build this one</p>
+                    <ol className="flex flex-col gap-2">
+                      {role.steps.map((step, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-xs text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
+                          <span className="size-4 shrink-0 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[9px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
+                          <span className="font-light">{step}</span>
+                        </li>
+                      ))}
+                    </ol>
                   </div>
                 </div>
               ))}
