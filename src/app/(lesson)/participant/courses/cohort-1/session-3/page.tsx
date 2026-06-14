@@ -166,7 +166,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
           <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
             <div className="flex items-center justify-between gap-4 mb-4">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
-                Today&apos;s agenda · 3 hours
+                Today's agenda · 3 hours
               </h3>
               <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] shrink-0">4–7 PM CET · 14:00–17:00 UTC</span>
             </div>
@@ -297,7 +297,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Custom instructions template</strong> ,  paste it into your Project&apos;s custom instructions, fill in every bracket, and save. Then use the other two to verify and refine.
+              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Custom instructions template</strong> ,  paste it into your Project's custom instructions, fill in every bracket, and save. Then use the other two to verify and refine.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>

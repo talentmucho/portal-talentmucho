@@ -88,7 +88,7 @@ function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; la
         <div className="absolute bottom-0 left-0 px-6 md:px-8 pb-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/60 mb-2">Talent Mucho · AI Business Bootcamp · June 2026</p>
           <p className="font-serif font-light text-white leading-tight mb-2" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)", textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}>
-            {data.name}&apos;s <span className="italic">Personal Roadmap</span>
+            {data.name}'s <span className="italic">Personal Roadmap</span>
           </p>
           <p className="text-sm text-white/80 font-light">4 weeks · 9 live sessions · built around the real business {data.name} is running</p>
         </div>

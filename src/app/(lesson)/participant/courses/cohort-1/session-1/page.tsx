@@ -120,20 +120,20 @@ export default async function Session1Page() {
                 Welcome, {firstName}!
               </h1>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed max-w-2xl mb-3">
-                So happy to have you here. This kickoff is all about <em>you</em> ~ your business, your goals, and making sure your mindset is ready for what&apos;s coming.
+                So happy to have you here. This kickoff is all about <em>you</em> ~ your business, your goals, and making sure your mindset is ready for what's coming.
               </p>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl mb-3">
-                Over the next 4 weeks you&apos;re going to transform how you work. You told us you want to <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{oneThingGoal}</strong> ~ and that&apos;s exactly what we&apos;re going to build toward, starting tonight.
+                Over the next 4 weeks you&apos;re going to transform how you work. You told us you want to <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{oneThingGoal}</strong> ~ and that's exactly what we&apos;re going to build toward, starting tonight.
               </p>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl">
-                No fluff. No theory for theory&apos;s sake. By the end of each session you&apos;ll have something real running inside your business. Tonight we get everyone set up, introduced, and aligned ~ so we can hit the ground running on Saturday.
+                No fluff. No theory for theory's sake. By the end of each session you&apos;ll have something real running inside your business. Tonight we get everyone set up, introduced, and aligned ~ so we can hit the ground running on Saturday.
               </p>
             </div>
 
             {/* Agenda */}
             <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-4">
-                Tonight&apos;s agenda · 2 hours
+                Tonight's agenda · 2 hours
               </h3>
               <ol className="space-y-0">
                 {[
@@ -165,14 +165,14 @@ export default async function Session1Page() {
                 Questions we&apos;ll explore together tonight
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-4 font-light">
-                These aren&apos;t trick questions ~ there&apos;s no wrong answer. They&apos;re conversation starters. Have a think before we go live.
+                These aren&apos;t trick questions ~ there's no wrong answer. They&apos;re conversation starters. Have a think before we go live.
               </p>
               <ul className="space-y-3">
                 {[
-                  { q: "What&apos;s one task you do every week that eats way more time than it should?", hint: "We&apos;re going to assign that to Claude." },
+                  { q: "What's one task you do every week that eats way more time than it should?", hint: "We&apos;re going to assign that to Claude." },
                   { q: "What does &quot;more time&quot; actually mean for you?", hint: "More time with family? More time on creative work? More time to think? Know your why." },
                   { q: "What would you do with an extra 5 hours a week?", hint: "This is your North Star for the bootcamp." },
-                  { q: "What&apos;s one thing you&apos;re skeptical about when it comes to AI?", hint: "Bring your doubts. We&apos;d rather address them on night one than week four." },
+                  { q: "What's one thing you&apos;re skeptical about when it comes to AI?", hint: "Bring your doubts. We&apos;d rather address them on night one than week four." },
                   { q: "How do you want this cohort to feel by the end of Week 4?", hint: "Think mindset, not just tools." },
                 ].map((item, i) => (
                   <li key={i} className="border-b border-[var(--beige-200)] dark:border-white/5 pb-3 last:border-0 last:pb-0">
@@ -189,7 +189,7 @@ export default async function Session1Page() {
                 Introducing yourself
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-4">
-                When it&apos;s your turn on Zoom, share these three things in under 60 seconds:
+                When it's your turn on Zoom, share these three things in under 60 seconds:
               </p>
               <ol className="space-y-2">
                 {[
@@ -260,7 +260,7 @@ export default async function Session1Page() {
               <div className="flex-1">
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-1">Not on Pro yet?</p>
                 <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground mb-0.5">
-                  Use Abie&apos;s referral link to upgrade
+                  Use Abie's referral link to upgrade
                 </p>
                 <p className="text-xs text-[var(--taupe-400)] font-light">
                   We&apos;ll be diving into Claude Code in Week 3 ~ Pro is required. Upgrade before Saturday so you&apos;re ready to build.
@@ -299,7 +299,7 @@ export default async function Session1Page() {
                 What the next 4 weeks look like for your business
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-5">
-                Based on your onboarding answers, here&apos;s how each week connects to what you&apos;re building.
+                Based on your onboarding answers, here's how each week connects to what you&apos;re building.
               </p>
               <div className="space-y-4">
                 {[

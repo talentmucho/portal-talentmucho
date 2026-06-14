@@ -90,7 +90,7 @@ export default async function Session2Page() {
       title: "Project Management",
       color: "#1A4070",
       painPoint: "Your focus is operations ~ staying on top of what's active, what's late, and what needs your attention.",
-      suggestion: "Set up your Project Management project first. List your current active clients or projects and paste them in. Claude can help you build a tracker, write a weekly ops review, and flag what&apos;s at risk.",
+      suggestion: "Set up your Project Management project first. List your current active clients or projects and paste them in. Claude can help you build a tracker, write a weekly ops review, and flag what's at risk.",
       starterPrompt: `I need a simple weekly ops review template for my business.\n\nMy business: ${businessContext}\nActive projects right now: [list them]\n\nFor each project give me: status (on track / at risk / delayed), next action, and who owns it.`,
     },
   };
@@ -197,7 +197,7 @@ Then tell me:
           <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
             <div className="flex items-center justify-between gap-4 mb-4">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
-                Today&apos;s agenda · 3 hours
+                Today's agenda · 3 hours
               </h3>
               <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] shrink-0">4–7 PM CET · 14:00–17:00 UTC</span>
             </div>
@@ -324,7 +324,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">How far does Pro go?</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Understanding tokens ~ what they are and how fast you use them</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Anthropic doesn&apos;t publish exact limits. What they do say: Pro gives you 5× more than Free, and usage resets every 5 hours ~ not monthly. Here&apos;s what that means in practice.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Anthropic doesn&apos;t publish exact limits. What they do say: Pro gives you 5× more than Free, and usage resets every 5 hours ~ not monthly. Here's what that means in practice.</p>
             </div>
 
             {/* Token analogy */}
@@ -403,7 +403,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Know your tools</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Claude models ~ which one does what?</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude.ai picks the best model for each task automatically. This is just so you know what&apos;s running under the hood.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude.ai picks the best model for each task automatically. This is just so you know what's running under the hood.</p>
             </div>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
               <div className="grid grid-cols-4 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
@@ -465,7 +465,7 @@ Then tell me:
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Projects vs. conversations ,  the key difference</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                When you start a new conversation on Claude.ai, Claude has zero memory of you, your business, or anything you&apos;ve discussed before. Every new chat starts cold. For one-off questions, that&apos;s fine. For running your business, it&apos;s a problem.
+                When you start a new conversation on Claude.ai, Claude has zero memory of you, your business, or anything you&apos;ve discussed before. Every new chat starts cold. For one-off questions, that's fine. For running your business, it's a problem.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-1.5">
@@ -478,7 +478,7 @@ Then tell me:
                 </div>
               </div>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Think of a Project like hiring a contractor who keeps all your notes on file. Every time they show up, they already know your preferences, your style, and what you&apos;re working on. That&apos;s what we&apos;re building today.
+                Think of a Project like hiring a contractor who keeps all your notes on file. Every time they show up, they already know your preferences, your style, and what you&apos;re working on. That's what we&apos;re building today.
               </p>
             </div>
           </section>
@@ -488,7 +488,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Coming from ChatGPT?</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">How to bring your ChatGPT memory into Claude</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">ChatGPT&apos;s memory lives in your account. Here&apos;s how to export it and load it into Claude so you&apos;re not starting from zero.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">ChatGPT's memory lives in your account. Here's how to export it and load it into Claude so you&apos;re not starting from zero.</p>
             </div>
             <ol className="space-y-3">
               {[
@@ -514,7 +514,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Know your tools</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">4 ways to use Claude ~ and when to use each</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn&apos;t just a chat window. Here&apos;s the full picture.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn&apos;t just a chat window. Here's the full picture.</p>
             </div>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden overflow-x-auto">
               <div className="min-w-[640px]">
@@ -545,7 +545,7 @@ Then tell me:
                     vals: [
                       "Best context via Projects; desktop app adds a dock shortcut + global hotkey. Only place to check your usage meter (Settings → Usage) ~ see % used, reset time, and weekly limits.",
                       "Reads/writes local files, runs commands, builds dashboards",
-                      "Claude reads what&apos;s on your screen ~ scrape a page, summarise an email thread, or draft a reply without copy-pasting anything",
+                      "Claude reads what's on your screen ~ scrape a page, summarise an email thread, or draft a reply without copy-pasting anything",
                       "Claude sees your full file tree; edits appear as inline diffs. Easily switch between AI tools on the same project ~ run Claude Code alongside GitHub Copilot or any other AI extension without leaving your workspace.",
                     ],
                   },
@@ -774,7 +774,7 @@ Then tell me:
                 We build this together ~ your 5-project business system
               </h3>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl">
-                We&apos;re doing this live, right now. You set these up on your screen, Abie &amp; Meri demo on theirs. Each Project becomes a dedicated workspace where Claude knows exactly what it&apos;s helping you with. Together they form a complete operating system for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
+                We&apos;re doing this live, right now. You set these up on your screen, Abie &amp; Meri demo on theirs. Each Project becomes a dedicated workspace where Claude knows exactly what it's helping you with. Together they form a complete operating system for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
               </p>
             </div>
 
@@ -784,7 +784,7 @@ Then tell me:
                 <div className="flex items-start justify-between gap-3 flex-wrap">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--clay-500)] mb-1">Your starting point, {firstName}</p>
-                    <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground leading-snug">Based on your onboarding answers ~ here&apos;s where to focus first</p>
+                    <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground leading-snug">Based on your onboarding answers ~ here's where to focus first</p>
                   </div>
                   {focusLabel && (
                     <span className="shrink-0 inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-[10px] font-semibold uppercase tracking-[0.1em]">{focusLabel}</span>
@@ -847,7 +847,7 @@ Then tell me:
                   n: "03",
                   color: "#5A2D82",
                   title: "Finance & Invoicing",
-                  desc: "Keep your money matters organised ~ what&apos;s been invoiced, what&apos;s outstanding, and how your income looks over time.",
+                  desc: "Keep your money matters organised ~ what's been invoiced, what's outstanding, and how your income looks over time.",
                   store: ["Invoice templates and sent copies", "Payment tracking log", "Rate cards and pricing notes", "Monthly and annual income summaries"],
                   tip: "Set a fixed invoicing day each month. Consistency trains clients to pay on time and reduces the mental load of chasing.",
                 },
@@ -998,7 +998,7 @@ Then tell me:
                     project: "Project Management",
                     color: "#1A4070",
                     label: "Turn a messy brief into a plan",
-                    prompt: `Here&apos;s a brief from my client: "[paste brief]"\n\nBreak this into:\n1. Deliverables list\n2. Dependencies and order\n3. A realistic timeline for a [solo / small team] setup\n4. What&apos;s missing or unclear in the brief`,
+                    prompt: `Here's a brief from my client: "[paste brief]"\n\nBreak this into:\n1. Deliverables list\n2. Dependencies and order\n3. A realistic timeline for a [solo / small team] setup\n4. What's missing or unclear in the brief`,
                   },
                 ].map((item) => (
                   <div key={item.label} className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
@@ -1130,7 +1130,7 @@ Then tell me:
                 </div>
               </div>
               <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-                MCP connectors are set up once in Claude Desktop settings. We&apos;ll configure these in a later session ~ for now, just know they exist and what&apos;s possible.
+                MCP connectors are set up once in Claude Desktop settings. We&apos;ll configure these in a later session ~ for now, just know they exist and what's possible.
               </p>
             </div>
 

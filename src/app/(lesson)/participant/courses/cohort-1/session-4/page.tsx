@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Send, CalendarClock, Sparkles } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
-import { AiEmployeeVsSkill } from "@/components/cohort1/AiEmployeeVsSkill";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
 import { SessionEditPanel } from "@/components/session-edit-panel";
@@ -197,7 +196,7 @@ Format it so I can paste it directly into Cowork.`,
           <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">
             <div className="flex items-center justify-between gap-4 mb-4">
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground">
-                Today&apos;s agenda · 3 hours
+                Today's agenda · 3 hours
               </h3>
               <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)] shrink-0">4–7 PM CET · 14:00–17:00 UTC</span>
             </div>
@@ -209,7 +208,7 @@ Format it so I can paste it directly into Cowork.`,
                 { cet: "5:05 – 5:20", utc: "15:05", label: "Grouping ~ break into groups by the role type each of you is building", type: "group" },
                 { cet: "5:20 – 5:30", utc: "15:20", label: "Break", type: "break" },
                 { cet: "5:30 – 6:00", utc: "15:30", label: "Lecture ~ how AI employees work: named identity, role specialization, delegation, and escalation logic", type: "teach" },
-                { cet: "6:00 – 6:40", utc: "16:00", label: "Hands-on ~ in your group, draft your AI employee&apos;s role description and system prompt", type: "work" },
+                { cet: "6:00 – 6:40", utc: "16:00", label: "Hands-on ~ in your group, draft your AI employee's role description and system prompt", type: "work" },
                 { cet: "6:40 – 7:00", utc: "16:40", label: "Group share &amp; wrap ~ each group presents one AI employee + preview of Session 5", type: "share" },
               ].map((item, i, arr) => {
                 const badge: Record<string, { label: string; color: string }> = {
@@ -278,12 +277,6 @@ Format it so I can paste it directly into Cowork.`,
                 </div>
               </div>
             </div>
-          </section>
-
-          {/* AI employee vs Skill */}
-          <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">AI employee vs. skill ~ know which one you&apos;re building</p>
-            <AiEmployeeVsSkill />
           </section>
 
           {/* What Cowork adds */}
@@ -462,7 +455,7 @@ Format it so I can paste it directly into Cowork.`,
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  use these to design your first AI employee</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Run these in your <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Thinking Partner</strong> Project ,  it&apos;s the right space for strategic decisions like this.
+              Run these in your <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Thinking Partner</strong> Project ,  it's the right space for strategic decisions like this.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>

@@ -94,7 +94,7 @@ export default async function AdminRoadmapsPage({
               className="font-serif font-light text-white leading-tight"
               style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
             >
-              {data.name}&apos;s
+              {data.name}'s
               <span className="italic ml-2 opacity-90">Personal Roadmap</span>
             </h1>
           </div>

@@ -48,7 +48,7 @@ const deliverableChecklist = [
 const whatComesNext = [
   { action: "Keep your AI employee running", desc: "Iterate on the system prompt as you learn what works. Most system prompts improve 3–4 times before they feel right." },
   { action: "Add a second Claude.ai Project", desc: "When you hit a new problem area ,  client communication, team management, product development ,  build a Project around it." },
-  { action: "Build a second Claude Code tool", desc: "When you see a manual process that could be visual or interactive, that&apos;s your next build." },
+  { action: "Build a second Claude Code tool", desc: "When you see a manual process that could be visual or interactive, that's your next build." },
   { action: "Teach someone else", desc: "Showing another person how to set up Claude.ai is the fastest way to lock in what you&apos;ve learned. Teach one person before next week." },
 ];
 
@@ -61,7 +61,7 @@ export default async function Session10Page() {
   const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
-    "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here&apos;s what I built:
+    "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here's what I built:
 
 Claude.ai Projects:
 1. [Project name] ,  use: [purpose]
@@ -97,27 +97,27 @@ I want to show them:
 3. My dashboard and what it tells me
 
 Write me:
-1. A 5-minute intro script I can use to walk them through it ,  start with the "what&apos;s in it for them" before showing the tools
+1. A 5-minute intro script I can use to walk them through it ,  start with the "what's in it for them" before showing the tools
 2. Three things I should let them try hands-on (so they feel it, not just watch)
 3. One follow-up question I should ask them 3 days later`,
 
     "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you&apos;ll find it]
 
-It&apos;s been 30 days since I completed the AI Business Bootcamp. Here&apos;s my honest assessment:
+It's been 30 days since I completed the AI Business Bootcamp. Here's my honest assessment:
 
 What I&apos;ve actually been using:
 - Claude.ai Projects: [how often, for what]
-- My AI employee: [how often, what it&apos;s handling well, what still breaks]
-- My dashboard: [how often, whether it&apos;s become a habit]
+- My AI employee: [how often, what it's handling well, what still breaks]
+- My dashboard: [how often, whether it's become a habit]
 - My daily routine: [what stuck, what I dropped]
 
 What I built or improved in the 30 days: [describe]
 
-What&apos;s still not working: [be honest]
+What's still not working: [be honest]
 
 Based on this, tell me:
 1. What to prioritize in the next 30 days
-2. What to stop doing (even if I set it up ,  if it&apos;s not working, cut it)
+2. What to stop doing (even if I set it up ,  if it's not working, cut it)
 3. One new thing to add to my Claude stack`,
   };
 
@@ -221,7 +221,7 @@ Based on this, tell me:
                 {[
                   { time: "30 sec", content: "Who you are and what your business does ,  brief, the cohort knows you" },
                   { time: "45 sec", content: "What you built ,  be specific. \"I built a client intake AI employee named Alex who handles all first-response messages\" not \"I built an AI employee\"" },
-                  { time: "30 sec", content: "One result or change ,  what&apos;s different now? Even small counts: \"I saved 2 hours last week\" or \"I sent my first AI-drafted proposal\"" },
+                  { time: "30 sec", content: "One result or change ,  what's different now? Even small counts: \"I saved 2 hours last week\" or \"I sent my first AI-drafted proposal\"" },
                   { time: "15 sec", content: "What you&apos;re building or improving next ,  commit to one thing publicly" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
@@ -238,7 +238,7 @@ Based on this, tell me:
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What comes next ,  graduation is the beginning</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Graduation means you have a foundation ,  not that you&apos;re done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here&apos;s what that looks like in practice:
+                Graduation means you have a foundation ,  not that you&apos;re done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here's what that looks like in practice:
               </p>
               <div className="flex flex-col gap-3">
                 {whatComesNext.map((item) => (

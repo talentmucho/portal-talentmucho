@@ -60,7 +60,7 @@ const stackLayers = [
     layer: "Layer 3",
     name: "Claude Code dashboard",
     role: "Your visibility tool",
-    when: "When you need to see what&apos;s happening at a glance",
+    when: "When you need to see what's happening at a glance",
     examples: ["Check key metrics each morning", "Track client project status", "Review weekly numbers", "Monitor what your AI employee handled"],
     color: "#5A7A6B",
   },
@@ -84,7 +84,7 @@ export default async function Session9Page() {
   const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
-    "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here&apos;s what I built:
+    "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here's what I built:
 
 My Claude.ai Projects:
 1. [Project name] ,  I use this for: [purpose]
@@ -133,13 +133,13 @@ WEEKLY (day ___):
 
 Make each step concrete and specific to my actual business ,  not generic habits.`,
 
-    "Prepare my showcase": `I need to present my work from the bootcamp in 2 minutes. Here&apos;s what I built:
+    "Prepare my showcase": `I need to present my work from the bootcamp in 2 minutes. Here's what I built:
 
 [Paste your stack map from the first prompt above]
 
-One concrete result or change in my business since starting: [describe something real ,  even small ,  that&apos;s different now]
+One concrete result or change in my business since starting: [describe something real ,  even small ,  that's different now]
 
-Something I&apos;m going to build or improve next: [what&apos;s next for your Claude practice]
+Something I&apos;m going to build or improve next: [what's next for your Claude practice]
 
 Write me a 2-minute verbal presentation using this structure:
 - 30 sec: Who I am and what my business does

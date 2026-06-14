@@ -37,22 +37,22 @@ const objectives = [
   "Plan your dashboard before building it (5 questions first)",
   "Build a working first version with Claude Code",
   "Iterate based on what you see in the browser",
-  "Know how to describe what&apos;s wrong and get it fixed precisely",
+  "Know how to describe what's wrong and get it fixed precisely",
 ];
 
 const planningQuestions = [
   { q: "What decision does this help you make?", hint: "\"I want to know at a glance if I need to push on revenue this week\" is a decision. \"I want to see my numbers\" isn&apos;t." },
   { q: "What are the 5 numbers you&apos;d look at first every morning?", hint: "These become your primary metric cards. If you can&apos;t name 5, start with 3." },
   { q: "Who else needs to see this?", hint: "Just you = simpler. Your team = needs labels and context. Clients = needs to look polished." },
-  { q: "How will you update the data?", hint: "Manually (you type in numbers each week) or automatically (connected to a source). Start manually ,  it&apos;s simpler and you can automate later." },
-  { q: "What does Version 1 look like?", hint: "Define the smallest version that&apos;s still useful. Resist the urge to build everything at once." },
+  { q: "How will you update the data?", hint: "Manually (you type in numbers each week) or automatically (connected to a source). Start manually ,  it's simpler and you can automate later." },
+  { q: "What does Version 1 look like?", hint: "Define the smallest version that's still useful. Resist the urge to build everything at once." },
 ];
 
 const iterationRules = [
   { wrong: "It doesn&apos;t look right", right: "The revenue card font is too small ,  make it 32px and bold" },
   { wrong: "I want it simpler", right: "Remove the chart entirely ,  just show the number" },
   { wrong: "The colors are off", right: "Change the sidebar background from dark gray to navy (#1a2332)" },
-  { wrong: "Something&apos;s broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn&apos;t reading it" },
+  { wrong: "Something's broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn&apos;t reading it" },
 ];
 
 export default async function Session8Page() {
@@ -126,10 +126,10 @@ CHANGE 3:
 
 Make only these changes. Don&apos;t redesign, don&apos;t improve anything else.`,
 
-    "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here&apos;s the exact issue:
+    "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here's the exact issue:
 
 WHAT I SEE:
-[Describe what&apos;s appearing on screen ,  e.g. "The Active Clients card shows '0' instead of a real number"]
+[Describe what's appearing on screen ,  e.g. "The Active Clients card shows '0' instead of a real number"]
 
 WHAT SHOULD HAPPEN:
 [What the correct output should be ,  e.g. "It should show '12' based on the clients array in data.js"]
@@ -239,7 +239,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">The Version 1 mindset</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> ,  not a perfect version that doesn&apos;t exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that&apos;s still being designed.
+                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> ,  not a perfect version that doesn&apos;t exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that's still being designed.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Build V1, open it in the browser, show it to someone today, iterate. The iteration is where the learning happens.
@@ -249,7 +249,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
 
           {/* Iteration rules */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How to describe what&apos;s wrong ,  precision matters</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">How to describe what's wrong ,  precision matters</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Claude Code makes exactly the change you describe. Vague feedback creates random changes. Specific feedback creates precise improvements.
