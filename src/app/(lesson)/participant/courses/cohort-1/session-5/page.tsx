@@ -31,8 +31,8 @@ const PREV     = "/participant/courses/cohort-1/session-4";
 const NEXT     = "/participant/courses/cohort-1/session-6";
 
 const bringList = [
-  "The role you defined in Session 3 (name, title, responsibilities)",
-  "Your draft system prompt from the Session 3 exercise",
+  "The role you defined last session (name, title, responsibilities)",
+  "Your draft system prompt from last session's exercise",
   "3 real client requests (actual emails or messages you've received)",
 ];
 
@@ -47,7 +47,7 @@ const buildSteps = [
   "Open Cowork and click \"New Employee\"",
   "Give them a name (first name only ,  e.g. \"Alex\") and a job title",
   "Paste your system prompt into the briefing field",
-  "Add reference files (same documents from your Claude.ai Project are a good start)",
+  "Add reference files (the same documents you set up in Week 1 are a good start)",
   "Set your escalation rules ,  what should automatically come to you",
   "Save and open a test conversation",
 ];
@@ -408,7 +408,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
             </div>
             <ol className="space-y-0">
               {[
-                { cet: "4:00 – 4:15", utc: "14:00", label: "Check-in ~ each person shares the role they drafted in Session 4 and the one task it'll own", type: "share" },
+                { cet: "4:00 – 4:15", utc: "14:00", label: "Check-in ~ each person shares the role they drafted last session and the one task it'll own", type: "share" },
                 { cet: "4:15 – 4:35", utc: "14:15", label: "Recap ~ AI employee vs. skill, and the three-part brief: identity, context, rules", type: "teach" },
                 { cet: "4:35 – 4:50", utc: "14:35", label: "Walkthrough ~ building one employee in Cowork, live", type: "demo" },
                 { cet: "4:50 – 5:00", utc: "14:50", label: "Build brief ~ pick ONE employee, open Cowork, paste your system prompt", type: "plenary" },
@@ -490,6 +490,31 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
             </div>
           </section>
 
+          {/* Why Cowork */}
+          <Reveal className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Why build this in Cowork (not just a chat window)</p>
+            <div className="rounded-2xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-5 flex flex-col gap-2">
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
+                You could paste a prompt into a normal Claude chat ~ but it forgets you the moment you close it. A Cowork Project is what turns a prompt into an <strong className="font-semibold">employee</strong>:
+              </p>
+              {[
+                "Persistent Instructions + Files + Memory ~ it keeps knowing your business, no re-briefing every time",
+                "It has a name and a role, not a blank chat ~ you delegate to it, you don't re-explain to it",
+                "Add tools without code ~ Customize → search a connector (Apify, Sheets, Gmail) and it can act, not just talk",
+                "It runs across separate chats and campaigns ~ one Project, many jobs, shared memory",
+                "Escalation rules live in the brief ~ it knows when to act and when to flag you",
+              ].map((b, i) => (
+                <p key={i} className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed flex items-start gap-2">
+                  <span className="text-[var(--clay-500)] shrink-0 mt-0.5">+</span>
+                  {b}
+                </p>
+              ))}
+              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground leading-relaxed border-t border-[var(--clay-500)]/20 pt-3 mt-1">
+                A chat helps you once. A Cowork employee shows up every day.
+              </p>
+            </div>
+          </Reveal>
+
           {/* Build steps */}
           <Reveal className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Building in Cowork ,  step by step</p>
@@ -565,14 +590,22 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
 
           {/* Power-up: lead-gen with threads, Apify, APIs */}
           <Reveal className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Power-up ~ a Lead Generation Specialist that finds people on Threads</p>
-            <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              You build this as a <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Project</strong> (just like your screenshot). Worked example below: Abie&apos;s specialist finds creators on Threads &amp; Instagram, warms them up, and invites them into the free AI community ~ the bootcamp comes later.
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Power-up ~ a Lead Generation Specialist that finds people on Threads</p>
+              <span className="text-[9px] font-bold uppercase tracking-[0.12em] px-1.5 py-0.5 rounded-full bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-400">Advanced</span>
+            </div>
+            <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-3 -mt-1">
+              <p className="text-xs text-[var(--taupe-400)] font-light leading-relaxed">
+                <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">New to this? Skip it for now.</strong> Build one simple employee you just chat with first (your homework below). Come back to add tools once that one works ~ this is power-user territory, not a first-build requirement.
+              </p>
+            </div>
+            <p className="text-sm text-[var(--taupe-400)]">
+              You build this as a <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Project in Cowork</strong>. Worked example below: Abie&apos;s specialist finds creators on Threads &amp; Instagram, warms them up, and invites them into the free AI community ~ the bootcamp comes later.
             </p>
 
-            {/* Where things go in a Project */}
+            {/* Where things go in a Cowork Project */}
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
-              <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Where everything goes in your Project</p>
+              <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Where everything goes in your Cowork Project</p>
               {[
                 { k: "Instructions", v: "The brief ~ paste the full role (identity, ICP, tools, escalation, voice, guardrails). This is the system prompt." },
                 { k: "Files", v: "Your context ~ ICP notes, example DMs in your voice, a one-pager on the community and bootcamp." },
@@ -593,15 +626,15 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">1. Organize ~ one chat per campaign</p>
-                  <p className="text-[11px] text-[var(--taupe-400)]">Project Memory carries your voice and feedback across every chat</p>
+                  <p className="text-[11px] text-[var(--taupe-400)]">Cowork&apos;s Memory carries your voice and feedback across every chat</p>
                 </div>
               </div>
               <ol className="flex flex-col gap-2">
                 {[
-                  "Start a new chat in the Project for each source ~ e.g. \"Threads ~ #buildinpublic\" or \"IG ~ AI-curious creators\"",
+                  "Start a new chat in Cowork for each source ~ e.g. \"Threads ~ #buildinpublic\" or \"IG ~ AI-curious creators\"",
                   "Memory ties the chats together ~ it remembers your ICP, your voice, and the feedback you gave earlier",
                   "Keep separate campaigns in separate chats so leads and notes never get mixed up",
-                  "Come back days later and pick up where you left off ~ the Project remembers",
+                  "Come back days later and pick up where you left off ~ Cowork remembers",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                     <span className="size-4 shrink-0 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[9px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
@@ -624,7 +657,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
               </div>
               <ol className="flex flex-col gap-2">
                 {[
-                  "In your Project, open Customize and search \"Apify\" ~ there's a ready-made connector, no manual setup",
+                  "In Cowork, open Customize and search \"Apify\" ~ there's a ready-made connector, no manual setup",
                   "Add it and connect your Apify account when prompted (free tier is fine to start)",
                   "Pick an actor for your source ~ e.g. a Threads scraper or an Instagram hashtag / profile scraper",
                   "Tell Maya what to fetch ~ \"pull 40 people posting #buildinpublic who mention AI or being overwhelmed\"",
@@ -646,14 +679,14 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">3. Add more tools ~ let it save and enrich leads</p>
-                  <p className="text-[11px] text-[var(--taupe-400)]">Same Customize panel ~ connectors make tools available to the Project</p>
+                  <p className="text-[11px] text-[var(--taupe-400)]">Same Customize panel ~ connectors make tools available to your employee</p>
                 </div>
               </div>
               <ol className="flex flex-col gap-2">
                 {[
                   "Open Customize again and search for the tool you need ~ e.g. Google Sheets (save leads) or an email finder",
                   "Add the connector and sign in / authorize when prompted",
-                  "It's now usable inside this Project ~ no per-chat setup needed",
+                  "It's now usable inside your Cowork Project ~ no per-chat setup needed",
                   "In Instructions, say exactly when to use it ~ \"after I approve, append each lead to my Leads sheet\"",
                   "Test with one lead end-to-end before you run a whole batch",
                 ].map((step, i) => (
@@ -669,7 +702,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--card)] p-5 flex flex-col gap-2">
               <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--taupe-400)] mb-1">All together ~ Abie's community-building run</p>
               {[
-                "New chat in the Project: \"Threads ~ AI-curious creators\"",
+                "New chat in your Cowork Project: \"Threads ~ AI-curious creators\"",
                 "Apify (Threads actor) → 40 people posting about AI overwhelm or building solo",
                 "Maya scores each Warm / Maybe / Skip with a one-line reason",
                 "She drafts a no-pitch first-touch that reacts to each person's actual post",
@@ -693,7 +726,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
 
             {/* Filled example ~ Maya */}
             <div className="flex flex-col gap-2">
-              <p className="text-sm text-[var(--taupe-400)] font-light">Here&apos;s the full brief for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Maya</strong> ~ paste it straight into your Project&apos;s <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Instructions</strong>, then swap in your own ICP and accounts:</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light">Here&apos;s the full brief for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Maya</strong> ~ paste it straight into your Cowork Project&apos;s <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Instructions</strong>, then swap in your own ICP and accounts:</p>
               <CodeTabs codes={{ "Maya ~ Lead Gen Specialist (Instructions)": ABIE_LEADGEN_INSTRUCTIONS }} lang="markdown" />
             </div>
           </Reveal>
@@ -713,7 +746,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
                 { name: "Connector marketplace", tag: "Week 2", tagColor: "#7D6B5A", href: null, use: "Add tools to an employee with no code ~ Apify, Google Sheets, Gmail, Slack, Notion. Open Customize → search.", adapt: "Add only the connector a real task needs." },
                 { name: "Apify Store", tag: "Week 2", tagColor: "#7D6B5A", href: "https://apify.com/store", use: "Thousands of prebuilt scrapers (actors) for lead-gen + research ~ Reddit, Instagram, Threads, Google Maps.", adapt: "Pick an actor, point it at your keywords or accounts." },
                 { name: "Anthropic Prompt Library", tag: "Week 1", tagColor: "#C4A882", href: "https://docs.anthropic.com/en/resources/prompt-library/library", use: "Vetted starter prompts for common tasks, straight from Anthropic.", adapt: "Use as a base, then rewrite in your voice." },
-                { name: "Anthropic Agent Skills", tag: "Week 3", tagColor: "#5A7A6B", href: "https://github.com/anthropics/skills", use: "Reusable skill packs you can drop in (the npx skills add registry). More technical.", adapt: "Add a skill, then point it at your workflow." },
+                { name: "Abie's Claude Skills Directory", tag: "Week 3", tagColor: "#5A7A6B", href: "https://abiemaxey.com/tools/skills-directory", use: "71 curated Claude Code skills ~ the shortlist from the 1,116 on GitHub. Grab one instead of building from scratch.", adapt: "Copy a skill, then point it at your workflow." },
                 { name: "MCP directories", tag: "Week 3+", tagColor: "#5A7A6B", href: "https://smithery.ai", use: "Browse more tools/connectors to plug into Claude (Smithery, mcp.so, PulseMCP).", adapt: "Only add what a real task needs ~ don't collect tools." },
               ].map((r) => {
                 const inner = (
@@ -739,37 +772,6 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
               Tagged by week so you know when to reach for each ~ skills and scrapers come later, not on day one.
             </p>
           </Reveal>
-
-          {/* Exercise */}
-          <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your exercise for this session</p>
-            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col gap-3">
-              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Complete your AI employee by end of this week:</p>
-              <ol className="flex flex-col gap-2">
-                {[
-                  "Paste your system prompt into Cowork and save your employee",
-                  "Generate 3 test scenarios using the prompt above (in Claude.ai Thinking Partner)",
-                  "Run all 3 scenarios in Cowork and record what happened",
-                  "Use the \"Debrief and iterate\" prompt to get a revised system prompt",
-                  "Update your employee's brief with the improved version",
-                  "Run the scenarios one more time to confirm the issues are fixed",
-                ].map((step, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">
-                    <span className="size-5 shrink-0 rounded-full border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[10px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </section>
-
-          {/* Deliverable */}
-          <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-2">Week 2 Deliverable</p>
-            <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-              1 named AI employee in Cowork, briefed with a tested system prompt and confirmed to handle at least 3 real scenarios from your business.
-            </p>
-          </div>
 
           {/* Definition of done + share-out */}
           <Reveal className="flex flex-col gap-3">
@@ -803,29 +805,44 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
             </div>
           </Reveal>
 
+          {/* Deliverable */}
+          <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-2">Week 2 Deliverable</p>
+            <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+              1 named AI employee in Cowork, briefed with a tested system prompt and confirmed to handle at least 3 real scenarios from your business.
+            </p>
+          </div>
+
+          {/* Exercise ~ this week */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">This week ~ keep iterating</p>
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] p-5 flex flex-col gap-3">
+              <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Your homework ~ make the employee earn its keep:</p>
+              <ol className="flex flex-col gap-2">
+                {[
+                  "Run your employee on real work this week ~ actual tasks, not test cases",
+                  "When something is off, use the \"Debrief and iterate\" prompt to get a revised brief",
+                  "Update your employee's Instructions with the improved version",
+                  "Run your 3 scenarios one more time to confirm the issues are fixed",
+                  "Notice the ONE moment it saved you time ~ that's your proof for the showcase",
+                ].map((step, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">
+                    <span className="size-5 shrink-0 rounded-full border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[10px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+
           {/* Wrap-up */}
           <Reveal className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Wrapping up ~ where you started, where you are now</p>
             <div className="rounded-2xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                You walked in with a drafted role. You're walking out with a working employee that handles a real task in your business. That's the whole shift this week was built for.
+                You walked in with a drafted role. You're walking out with a working employee that handles a real task in your business. That's the whole shift this week was built for ~ now go let it work for you (your homework above).
               </p>
               <div className="flex flex-col gap-3">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--clay-500)] mb-1">Your homework this week</p>
-                  <ul className="flex flex-col gap-1.5">
-                    {[
-                      "Run your employee on real work ~ not test cases, actual tasks",
-                      "Use the 'Debrief and iterate' prompt once and update the brief",
-                      "Notice the ONE moment this week it saved you time ~ that's your proof",
-                    ].map((h) => (
-                      <li key={h} className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed flex items-start gap-2">
-                        <span className="text-[var(--clay-500)] shrink-0 mt-0.5">+</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--clay-500)] mb-1">Next week ~ Week 3, Building with Claude</p>
                   <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
@@ -843,7 +860,7 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
           <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">Up next: Claude Code ,  your first build</p>
-              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 3 · Session 5 ,  Sat, Jun 20</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Week 3 ,  Sat, Jun 20</p>
             </div>
             <Link
               href={NEXT}
