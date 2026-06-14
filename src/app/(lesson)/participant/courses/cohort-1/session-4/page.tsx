@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Send, CalendarClock, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Send, CalendarClock, Sparkles, Play } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
@@ -191,6 +191,34 @@ Format it so I can paste it directly into Cowork.`,
               </div>
             )}
           </div>
+
+          {/* Recording */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Session recording</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { label: "Part 1", href: "https://fathom.video/calls/708311289" },
+                { label: "Part 2", href: "https://fathom.video/calls/708311292" },
+              ].map((r) => (
+                <a
+                  key={r.label}
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 flex items-center gap-3 transition-colors hover:border-[var(--clay-500)]/40"
+                >
+                  <span className="size-9 shrink-0 rounded-full bg-[var(--clay-500)]/15 flex items-center justify-center">
+                    <Play className="size-4 text-[var(--clay-500)]" />
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Watch the recording ~ {r.label}</p>
+                    <p className="text-xs text-[var(--taupe-400)] font-light">Opens in Fathom</p>
+                  </div>
+                  <ArrowRight className="size-4 text-[var(--taupe-400)] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                </a>
+              ))}
+            </div>
+          </section>
 
           {/* Agenda */}
           <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]">

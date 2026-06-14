@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { AutonomyLadder } from "@/components/cohort1/AutonomyLadder";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
 import { SessionEditPanel } from "@/components/session-edit-panel";
@@ -278,27 +279,8 @@ Keep it conversational. No slides needed ,  this is spoken.`,
               As your stack matures, the question shifts from &ldquo;how do I use Claude&rdquo; to &ldquo;what do I let run without me.&rdquo; Here&apos;s how to decide ~ each rung is more leverage and more blast radius, so earn them in order.
             </p>
 
-            {/* Ladder */}
-            <div className="flex flex-col gap-2">
-              {[
-                { n: 1, level: "Chat", trig: "You", appr: "You", what: "A tool ~ you open it, ask, and close it", hot: false },
-                { n: 2, level: "Dispatch", trig: "You", appr: "You", what: "An employee you hand one task to", hot: false },
-                { n: 3, level: "Schedule", trig: "Itself (clock)", appr: "You, by exception", what: "An employee running on a cadence", hot: false },
-                { n: 4, level: "Agent", trig: "Itself (clock / event)", appr: "Itself ~ escalates exceptions", what: "It acts; you supervise", hot: true },
-              ].map((r) => (
-                <div key={r.n} className={`rounded-2xl border p-4 flex flex-col sm:flex-row sm:items-center gap-3 ${r.hot ? "border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5" : "border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)]"}`}>
-                  <div className="flex items-center gap-3 sm:w-44 shrink-0">
-                    <span className={`size-7 shrink-0 rounded-full flex items-center justify-center text-[11px] font-semibold ${r.hot ? "bg-[var(--clay-500)] text-white" : "bg-[var(--beige-100)] dark:bg-white/5 text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10"}`}>{r.n}</span>
-                    <span className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">{r.level}</span>
-                  </div>
-                  <div className="flex-1 grid grid-cols-1 sm:grid-cols-[1fr_1fr_1.2fr] gap-1 sm:gap-3 text-xs">
-                    <span className="text-[var(--charcoal-900)] dark:text-foreground"><span className="text-[var(--taupe-400)] font-semibold uppercase tracking-[0.08em]">Triggers: </span>{r.trig}</span>
-                    <span className="text-[var(--charcoal-900)] dark:text-foreground"><span className="text-[var(--taupe-400)] font-semibold uppercase tracking-[0.08em]">Approves: </span>{r.appr}</span>
-                    <span className="text-[var(--taupe-400)] font-light">{r.what}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* Ladder (animated) */}
+            <AutonomyLadder />
             <p className="text-xs text-[var(--taupe-400)] font-light">
               The line from <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">employee → agent</strong> is crossed when it self-triggers, runs a multi-step loop with tools, and surfaces only the exceptions ~ you move from <em>in</em> the loop to <em>on</em> the loop.
             </p>

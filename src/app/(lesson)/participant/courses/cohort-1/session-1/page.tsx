@@ -110,6 +110,19 @@ export default async function Session1Page() {
             )}
           </div>
 
+          {/* Full session recording */}
+          <section className="flex flex-col gap-2">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Full session recording</p>
+            <div className="relative w-full aspect-video rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)] overflow-hidden">
+              <iframe
+                src="https://drive.google.com/file/d/17SP7NZzkox8RaMAG2vlwXzWo5EAaxaAD/preview"
+                className="w-full h-full"
+                allow="autoplay"
+                allowFullScreen
+              />
+            </div>
+          </section>
+
           <div className="flex flex-col gap-8">
             <div>
               <p className="tm-eyebrow mb-1">{session.weekLabel}</p>
