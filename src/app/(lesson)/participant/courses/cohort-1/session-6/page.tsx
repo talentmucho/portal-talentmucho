@@ -115,11 +115,11 @@ ADD:
 REMOVE:
 - [what to cut, if anything ,  e.g. "Remove the chart ,  just the numbers for now"]
 
-Make only these changes. Don&apos;t redesign anything else.`,
+Make only these changes. Don't redesign anything else.`,
 
     "Describe what's wrong precisely": `The build has an issue. I want to fix this specifically:
 
-WHAT&apos;S WRONG:
+WHAT'S WRONG:
 [Describe what you see that's wrong ,  not "it looks bad" but "the revenue number shows $0 instead of the sample data values"]
 
 WHERE IT IS:
@@ -128,7 +128,7 @@ WHERE IT IS:
 WHAT IT SHOULD DO:
 [Describe the correct behavior ,  e.g. "The revenue card should show $12,400 using the sample data in the data file"]
 
-Don&apos;t change anything else while fixing this.`,
+Don't change anything else while fixing this.`,
   };
 
   return (
@@ -187,7 +187,7 @@ Don&apos;t change anything else while fixing this.`,
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -210,7 +210,7 @@ Don&apos;t change anything else while fixing this.`,
                 Claude Code is not a chatbot. It's an agentic coding tool that runs in your terminal. It reads your files, writes new ones, and builds software by working through tasks step by step ,  more like a developer sitting next to you than a tool you query.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                You don&apos;t need to know how to code. You describe what you want in plain language, Claude Code builds it, you review and approve each step, and you iterate until it's right. The build loop is: describe → review → approve → iterate.
+                You don't need to know how to code. You describe what you want in plain language, Claude Code builds it, you review and approve each step, and you iterate until it's right. The build loop is: describe → review → approve → iterate.
               </p>
               <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4">
                 <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">The build loop</p>
@@ -228,7 +228,7 @@ Don&apos;t change anything else while fixing this.`,
 
           {/* Can and can't build */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What it can (and can&apos;t) build for your business</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What it can (and can't) build for your business</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
                 <p className="text-xs font-semibold text-[var(--clay-500)] uppercase tracking-[0.12em]">Can build ✓</p>
@@ -242,7 +242,7 @@ Don&apos;t change anything else while fixing this.`,
                 </ul>
               </div>
               <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-5 flex flex-col gap-3">
-                <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">Can&apos;t do (without more setup) ×</p>
+                <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">Can't do (without more setup) ×</p>
                 <ul className="flex flex-col gap-2">
                   {cannotBuild.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-[var(--charcoal-900)] dark:text-foreground">
@@ -264,7 +264,7 @@ Don&apos;t change anything else while fixing this.`,
               </p>
               <div className="flex flex-col gap-2">
                 {[
-                  { label: "WHAT", desc: "Exactly what you&apos;re building ,  dashboard, form, tool, report generator" },
+                  { label: "WHAT", desc: "Exactly what you're building ,  dashboard, form, tool, report generator" },
                   { label: "FOR WHO", desc: "Who will use it ,  just you, your team, or your clients" },
                   { label: "DATA", desc: "What information goes in and comes out ,  list the specific metrics or fields" },
                   { label: "LOOK", desc: "How it should appear ,  describe visually, not technically (\"cards at top, table below\" is better than \"grid layout\")" },
@@ -306,7 +306,7 @@ Don&apos;t change anything else while fixing this.`,
                   "A clear description of the dashboard you want to build (write it out in plain language ,  not code)",
                   "Your 5 key business metrics you want to see in one place",
                   "A sketch of the layout ,  even on paper, even rough",
-                  "One question about what you&apos;re building (we&apos;ll answer them live)",
+                  "One question about what you're building (we'll answer them live)",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">
                     <span className="size-5 shrink-0 rounded-full border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[10px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>

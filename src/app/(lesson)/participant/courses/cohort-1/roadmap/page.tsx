@@ -98,7 +98,7 @@ export default async function RoadmapPage() {
                 <span className="block italic">Personal Roadmap</span>
               </h1>
               <p className="text-sm text-white/80 font-light max-w-md mb-5 leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
-                4 weeks · 9 live sessions · built around the real business you&apos;re running
+                4 weeks · 9 live sessions · built around the real business you're running
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -130,7 +130,7 @@ export default async function RoadmapPage() {
               {firstName}'s
               <span className="block italic" style={{ color: accentColor }}>Personal Roadmap</span>
             </h1>
-            <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-2">4 weeks · 9 live sessions · built around the real business you&apos;re running.</p>
+            <p className="text-sm text-[var(--taupe-400)] font-light max-w-lg mt-2">4 weeks · 9 live sessions · built around the real business you're running.</p>
             <div className="flex flex-wrap gap-2 mt-5">
               {[{ label: `Focus: ${focusArea}` }, { label: `AI employee: ${aiRole}` }, { label: `${timezone} · ${peakTime}` }, { label: os }].map((pill) => (
                 <span key={pill.label} className="inline-flex items-center gap-1.5 border border-[var(--beige-200)] dark:border-white/10 rounded-full px-3 py-1 text-xs text-[var(--taupe-400)] bg-white/70 dark:bg-white/5 backdrop-blur">{pill.label}</span>
@@ -194,7 +194,7 @@ export default async function RoadmapPage() {
 
           {/* Week deliverables */}
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">What you&apos;ll build</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">What you'll build</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {deliverables.map((d, i) => (
                 <div

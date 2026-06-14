@@ -49,7 +49,7 @@ const whatComesNext = [
   { action: "Keep your AI employee running", desc: "Iterate on the system prompt as you learn what works. Most system prompts improve 3–4 times before they feel right." },
   { action: "Add a second Claude.ai Project", desc: "When you hit a new problem area ,  client communication, team management, product development ,  build a Project around it." },
   { action: "Build a second Claude Code tool", desc: "When you see a manual process that could be visual or interactive, that's your next build." },
-  { action: "Teach someone else", desc: "Showing another person how to set up Claude.ai is the fastest way to lock in what you&apos;ve learned. Teach one person before next week." },
+  { action: "Teach someone else", desc: "Showing another person how to set up Claude.ai is the fastest way to lock in what you've learned. Teach one person before next week." },
 ];
 
 export default async function Session10Page() {
@@ -84,7 +84,7 @@ One thing that already changed in my business: [describe ,  even small]
 Write me a specific 30-day plan. Include:
 1. Three things to build or improve in the next 30 days (be specific ,  not "improve my AI employee" but "add a rule to handle client refund requests without escalating")
 2. One daily Claude habit to maintain (what, when, and what it replaces)
-3. One team member or client to involve ,  and how to introduce them to what you&apos;ve built
+3. One team member or client to involve ,  and how to introduce them to what you've built
 4. One metric to track that will tell you Claude is actually working for your business`,
 
     "Teach someone else": `I want to introduce a [colleague / team member / business partner] to Claude.ai. They have no experience with AI tools yet.
@@ -101,11 +101,11 @@ Write me:
 2. Three things I should let them try hands-on (so they feel it, not just watch)
 3. One follow-up question I should ask them 3 days later`,
 
-    "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you&apos;ll find it]
+    "Review your practice in 30 days": `[Use this prompt 30 days from now ,  save it somewhere you'll find it]
 
 It's been 30 days since I completed the AI Business Bootcamp. Here's my honest assessment:
 
-What I&apos;ve actually been using:
+What I've actually been using:
 - Claude.ai Projects: [how often, for what]
 - My AI employee: [how often, what it's handling well, what still breaks]
 - My dashboard: [how often, whether it's become a habit]
@@ -177,7 +177,7 @@ Based on this, tell me:
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -222,7 +222,7 @@ Based on this, tell me:
                   { time: "30 sec", content: "Who you are and what your business does ,  brief, the cohort knows you" },
                   { time: "45 sec", content: "What you built ,  be specific. \"I built a client intake AI employee named Alex who handles all first-response messages\" not \"I built an AI employee\"" },
                   { time: "30 sec", content: "One result or change ,  what's different now? Even small counts: \"I saved 2 hours last week\" or \"I sent my first AI-drafted proposal\"" },
-                  { time: "15 sec", content: "What you&apos;re building or improving next ,  commit to one thing publicly" },
+                  { time: "15 sec", content: "What you're building or improving next ,  commit to one thing publicly" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <span className="text-xs font-semibold text-[var(--taupe-400)] min-w-[48px] mt-0.5">{item.time}</span>
@@ -238,7 +238,7 @@ Based on this, tell me:
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What comes next ,  graduation is the beginning</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Graduation means you have a foundation ,  not that you&apos;re done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here's what that looks like in practice:
+                Graduation means you have a foundation ,  not that you're done. The businesses that get the most out of AI are the ones that keep iterating past the bootcamp. Here's what that looks like in practice:
               </p>
               <div className="flex flex-col gap-3">
                 {whatComesNext.map((item) => (
@@ -258,7 +258,7 @@ Based on this, tell me:
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  use these today and in the weeks ahead</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Run <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Your 30-day plan</strong> in your Thinking Partner Project today. Save <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Review your practice in 30 days</strong> somewhere you&apos;ll find it ,  set a calendar reminder.
+              Run <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Your 30-day plan</strong> in your Thinking Partner Project today. Save <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Review your practice in 30 days</strong> somewhere you'll find it ,  set a calendar reminder.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -272,7 +272,7 @@ Based on this, tell me:
             </div>
             <div className="px-6 py-5 bg-white dark:bg-[var(--card)] flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">You&apos;ve completed Cohort 1</p>
+                <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">You've completed Cohort 1</p>
                 <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Congratulations. Keep building.</p>
               </div>
               <Link

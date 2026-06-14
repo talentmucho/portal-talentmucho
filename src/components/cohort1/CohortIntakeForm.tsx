@@ -127,7 +127,7 @@ export default function CohortIntakeForm({
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--clay-500)]">
-              You&apos;re all set
+              You're all set
             </p>
             <h1
               className="font-serif font-light text-[var(--charcoal-900)] dark:text-foreground leading-tight"
@@ -137,10 +137,10 @@ export default function CohortIntakeForm({
             </h1>
           </div>
           <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-sm">
-            We&apos;ve received your answers. Our team will review your application and give you access to the course within <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">24 hours</strong>.
+            We've received your answers. Our team will review your application and give you access to the course within <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">24 hours</strong>.
           </p>
           <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-sm">
-            Keep an eye on your inbox ,  we&apos;ll send you a confirmation email once your access is ready.
+            Keep an eye on your inbox ,  we'll send you a confirmation email once your access is ready.
           </p>
           <Link
             href="/participant"

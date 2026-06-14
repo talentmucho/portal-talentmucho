@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
                 Reset your password
               </h2>
               <p className="tm-body-sm mb-6">
-                Enter your email and we&apos;ll send you a reset link.
+                Enter your email and we'll send you a reset link.
               </p>
 
               <form action={formAction} className="space-y-4">

@@ -241,7 +241,7 @@ Format it so I can paste it directly into Cowork.`,
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -264,16 +264,16 @@ Format it so I can paste it directly into Cowork.`,
                 A hammer is a tool. You pick it up when you need it, use it, put it down. It has no role, no identity, no judgment. You always have to be present to use it.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                An employee has a role. They know what they&apos;re responsible for. They handle things without you asking each time. They escalate what needs you. They run whether you&apos;re watching or not.
+                An employee has a role. They know what they're responsible for. They handle things without you asking each time. They escalate what needs you. They run whether you're watching or not.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-2">
                   <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">Claude.ai Projects ,  tool</p>
-                  <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">You open it. You ask it something. It helps. You close it. You&apos;re always in the loop. Great for active work: writing, analysis, thinking.</p>
+                  <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">You open it. You ask it something. It helps. You close it. You're always in the loop. Great for active work: writing, analysis, thinking.</p>
                 </div>
                 <div className="rounded-xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-4 flex flex-col gap-2">
                   <p className="text-xs font-semibold text-[var(--clay-500)] uppercase tracking-[0.12em]">Cowork AI employee ✓</p>
-                  <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Has a name, a role, and persistent context. Handles defined tasks. Escalates what needs you. Can run interactions you&apos;re not part of.</p>
+                  <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Has a name, a role, and persistent context. Handles defined tasks. Escalates what needs you. Can run interactions you're not part of.</p>
                 </div>
               </div>
             </div>
@@ -281,7 +281,7 @@ Format it so I can paste it directly into Cowork.`,
 
           {/* What Cowork adds */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What Cowork adds that Claude.ai alone can&apos;t do</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What Cowork adds that Claude.ai alone can't do</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               {[
                 { feature: "Named identity", desc: "Your AI employee has a name, a defined role, and a persistent briefing ,  they show up as someone, not something." },
@@ -435,7 +435,7 @@ Format it so I can paste it directly into Cowork.`,
 
           {/* Roles that don't work */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Roles that don&apos;t work well yet</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Roles that don't work well yet</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-[var(--card)] p-5 flex flex-col gap-2">
               {[
                 "Roles that need live data (current inventory, real-time pricing, live calendar availability)",

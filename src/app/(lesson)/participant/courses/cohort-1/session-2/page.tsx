@@ -208,7 +208,7 @@ Then tell me:
                 { cet: "4:25 – 4:50", utc: "14:25", label: "4 ways to use Claude ~ matrix, install guides, Cowork preview (Week 2 teaser)", type: "teach" },
                 { cet: "4:50 – 5:15", utc: "14:50", label: "Projects deep dive ~ why they exist + live demo: create your first Project", type: "demo" },
                 { cet: "5:15 – 5:25", utc: "15:15", label: "Your 5-project business system + prompts walkthrough", type: "teach" },
-                { cet: "5:25 – 5:30", utc: "15:25", label: "Work brief ~ what you&apos;re building in the next hour", type: "plenary" },
+                { cet: "5:25 – 5:30", utc: "15:25", label: "Work brief ~ what you're building in the next hour", type: "plenary" },
                 { cet: "5:30 – 6:30", utc: "15:30", label: "Work time ~ set up your Projects, run the prompts, build your brand voice", type: "work" },
                 { cet: "6:30 – 6:50", utc: "16:30", label: "Group share ~ each person shows what Claude now knows about their business", type: "share" },
                 { cet: "6:50 – 7:00", utc: "16:50", label: "Q&A · preview of Session 3 (custom instructions + file uploads)", type: "plenary" },
@@ -245,7 +245,7 @@ Then tell me:
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Why this session matters</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                The participants who get the most out of Claude aren&apos;t the ones who use it the most ,  they&apos;re the ones who use it right from the start. That means treating Claude like a thinking partner, not a search engine. Vague questions get generic answers. Specific context gets specific, useful output.
+                The participants who get the most out of Claude aren't the ones who use it the most ,  they're the ones who use it right from the start. That means treating Claude like a thinking partner, not a search engine. Vague questions get generic answers. Specific context gets specific, useful output.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 This session is about building that muscle. By the time you finish today, Claude will know enough about your business to give you advice that actually applies to you ,  not generic tips you could find anywhere.
@@ -258,7 +258,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Before you sign up</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Which Claude plan is right for you?</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">You&apos;ll need at least Pro by Week 3 when we go into Claude Code. Pick your plan tonight so you&apos;re not rate-limited mid-session.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">You'll need at least Pro by Week 3 when we go into Claude Code. Pick your plan tonight so you're not rate-limited mid-session.</p>
             </div>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
               <div className="grid grid-cols-5 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
@@ -315,7 +315,7 @@ Then tell me:
               ))}
             </div>
             <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-              Max comes in two tiers: 5× Pro usage ($100/mo) and 20× Pro usage ($200/mo). Most bootcamp participants won&apos;t need Max until they start building in Week 3 ~ upgrade then if you hit the wall.
+              Max comes in two tiers: 5× Pro usage ($100/mo) and 20× Pro usage ($200/mo). Most bootcamp participants won't need Max until they start building in Week 3 ~ upgrade then if you hit the wall.
             </p>
           </div>
 
@@ -324,7 +324,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">How far does Pro go?</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Understanding tokens ~ what they are and how fast you use them</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Anthropic doesn&apos;t publish exact limits. What they do say: Pro gives you 5× more than Free, and usage resets every 5 hours ~ not monthly. Here's what that means in practice.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Anthropic doesn't publish exact limits. What they do say: Pro gives you 5× more than Free, and usage resets every 5 hours ~ not monthly. Here's what that means in practice.</p>
             </div>
 
             {/* Token analogy */}
@@ -371,7 +371,7 @@ Then tell me:
             {/* Where to check */}
             <div className="rounded-xl bg-[var(--beige-50)] dark:bg-white/[0.02] border border-[var(--beige-200)] dark:border-white/5 p-4 flex flex-col gap-3">
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--taupe-400)]">Where to check your usage</p>
-              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Go to <strong className="font-medium">Settings → Usage</strong>. You&apos;ll see two separate meters:</p>
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">Go to <strong className="font-medium">Settings → Usage</strong>. You'll see two separate meters:</p>
               <div className="flex flex-col gap-2">
                 {[
                   { label: "Current session", detail: "A progress bar showing % used this session, with a countdown to when it resets (e.g. \"Resets in 3 hr 41 min\"). This is your short-term limit." },
@@ -385,7 +385,7 @@ Then tell me:
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-[var(--taupe-400)] font-light">Anthropic doesn&apos;t publish the exact token ceilings ~ but the % bars tell you where you stand. If you&apos;re at 80%+ mid-session, finish what you&apos;re doing and let it reset before starting something heavy.</p>
+              <p className="text-xs text-[var(--taupe-400)] font-light">Anthropic doesn't publish the exact token ceilings ~ but the % bars tell you where you stand. If you're at 80%+ mid-session, finish what you're doing and let it reset before starting something heavy.</p>
               <img
                 src="/assets/screenshots/usage-meter.png"
                 alt="Claude Settings → Usage screen showing current session and weekly limit bars"
@@ -394,7 +394,7 @@ Then tell me:
             </div>
 
             <p className="text-xs text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">
-              Bottom line: Pro is more than enough for this bootcamp. If you hit a limit mid-session, wait for the session reset ~ check Settings → Usage for the exact time. Upgrade to Max only when you&apos;re doing heavy daily builds in Week 3.
+              Bottom line: Pro is more than enough for this bootcamp. If you hit a limit mid-session, wait for the session reset ~ check Settings → Usage for the exact time. Upgrade to Max only when you're doing heavy daily builds in Week 3.
             </p>
           </div>
 
@@ -456,7 +456,7 @@ Then tell me:
               ))}
             </div>
             <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-              For this bootcamp: Sonnet 4.5 or 4.6 handles 95% of what we&apos;ll do. Switch to Opus only when you need deep reasoning on a hard problem.
+              For this bootcamp: Sonnet 4.5 or 4.6 handles 95% of what we'll do. Switch to Opus only when you need deep reasoning on a hard problem.
             </p>
           </div>
 
@@ -465,7 +465,7 @@ Then tell me:
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Projects vs. conversations ,  the key difference</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                When you start a new conversation on Claude.ai, Claude has zero memory of you, your business, or anything you&apos;ve discussed before. Every new chat starts cold. For one-off questions, that's fine. For running your business, it's a problem.
+                When you start a new conversation on Claude.ai, Claude has zero memory of you, your business, or anything you've discussed before. Every new chat starts cold. For one-off questions, that's fine. For running your business, it's a problem.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-1.5">
@@ -478,7 +478,7 @@ Then tell me:
                 </div>
               </div>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Think of a Project like hiring a contractor who keeps all your notes on file. Every time they show up, they already know your preferences, your style, and what you&apos;re working on. That's what we&apos;re building today.
+                Think of a Project like hiring a contractor who keeps all your notes on file. Every time they show up, they already know your preferences, your style, and what you're working on. That's what we're building today.
               </p>
             </div>
           </section>
@@ -488,7 +488,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Coming from ChatGPT?</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-2">How to bring your ChatGPT memory into Claude</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">ChatGPT's memory lives in your account. Here's how to export it and load it into Claude so you&apos;re not starting from zero.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">ChatGPT's memory lives in your account. Here's how to export it and load it into Claude so you're not starting from zero.</p>
             </div>
             <ol className="space-y-3">
               {[
@@ -514,7 +514,7 @@ Then tell me:
             <div>
               <p className="tm-eyebrow mb-1">Know your tools</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">4 ways to use Claude ~ and when to use each</h3>
-              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn&apos;t just a chat window. Here's the full picture.</p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Claude isn't just a chat window. Here's the full picture.</p>
             </div>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden overflow-x-auto">
               <div className="min-w-[640px]">
@@ -552,10 +552,10 @@ Then tell me:
                   {
                     label: "Limitation",
                     vals: [
-                      "Can&apos;t touch your local files or other apps",
+                      "Can't touch your local files or other apps",
                       "Requires comfort with the command line",
                       "Lighter context ~ no persistent Projects",
-                      "Tightly coupled to VS Code ~ for scripts, installs, or filesystem tasks you&apos;ll naturally switch to the terminal",
+                      "Tightly coupled to VS Code ~ for scripts, installs, or filesystem tasks you'll naturally switch to the terminal",
                     ],
                   },
                   {
@@ -577,7 +577,7 @@ Then tell me:
               </div>
             </div>
             <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-              We&apos;ll use all four during this bootcamp. Today starts with Claude.ai. Week 3 goes into the terminal and IDE. The browser extension is yours to explore anytime.
+              We'll use all four during this bootcamp. Today starts with Claude.ai. Week 3 goes into the terminal and IDE. The browser extension is yours to explore anytime.
             </p>
 
             {/* Install guides */}
@@ -602,7 +602,7 @@ Then tell me:
                 <div className="p-4 flex flex-col gap-3">
                   <ol className="space-y-2">
                     {[
-                      { n: 1, text: "Install Node.js 18+ if you don&apos;t have it", sub: "nodejs.org → download LTS" },
+                      { n: 1, text: "Install Node.js 18+ if you don't have it", sub: "nodejs.org → download LTS" },
                       { n: 2, text: "Run this in your terminal", sub: null, code: "npm install -g @anthropic-ai/claude-code" },
                       { n: 3, text: "Authenticate", sub: null, code: "claude" },
                       { n: 4, text: "Follow the browser login prompt", sub: "Logs you in with your Claude account" },
@@ -622,7 +622,7 @@ Then tell me:
                     ))}
                   </ol>
                   <p className="text-[11px] text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">
-                    Requires Pro plan or above. We&apos;ll use this in Week 3.
+                    Requires Pro plan or above. We'll use this in Week 3.
                   </p>
                 </div>
               </div>
@@ -696,7 +696,7 @@ Then tell me:
                       { n: 2, text: "Go to the Chrome Web Store link above", sub: null },
                       { n: 3, text: 'Click "Add to Chrome" → "Add extension"', sub: null },
                       { n: 4, text: "Pin it to your toolbar", sub: "Click the puzzle icon → pin Claude" },
-                      { n: 5, text: "Click the Claude icon on any page", sub: "Opens a sidebar ~ Claude can see what you&apos;re reading" },
+                      { n: 5, text: "Click the Claude icon on any page", sub: "Opens a sidebar ~ Claude can see what you're reading" },
                     ].map((s) => (
                       <li key={s.n} className="flex gap-2.5 items-start">
                         <span className="shrink-0 size-4 rounded-full bg-[var(--beige-100)] dark:bg-white/5 flex items-center justify-center text-[9px] font-bold text-[var(--taupe-400)] border border-[var(--beige-200)] dark:border-white/10 mt-0.5">{s.n}</span>
@@ -774,7 +774,7 @@ Then tell me:
                 We build this together ~ your 5-project business system
               </h3>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl">
-                We&apos;re doing this live, right now. You set these up on your screen, Abie &amp; Meri demo on theirs. Each Project becomes a dedicated workspace where Claude knows exactly what it's helping you with. Together they form a complete operating system for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
+                We're doing this live, right now. You set these up on your screen, Abie &amp; Meri demo on theirs. Each Project becomes a dedicated workspace where Claude knows exactly what it's helping you with. Together they form a complete operating system for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{businessContext}</strong>.
               </p>
             </div>
 
@@ -819,7 +819,7 @@ Then tell me:
                 )}
 
                 {roleLabel && (
-                  <p className="text-xs text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">You said you want to build a <strong className="font-medium text-[var(--charcoal-900)] dark:text-foreground">{roleLabel}</strong> AI employee ~ we&apos;ll get there in Week 2. This session is where you build the foundation.</p>
+                  <p className="text-xs text-[var(--taupe-400)] font-light border-t border-[var(--beige-200)] dark:border-white/5 pt-3">You said you want to build a <strong className="font-medium text-[var(--charcoal-900)] dark:text-foreground">{roleLabel}</strong> AI employee ~ we'll get there in Week 2. This session is where you build the foundation.</p>
                 )}
               </div>
             )}
@@ -839,7 +839,7 @@ Then tell me:
                   n: "02",
                   color: "#1A4070",
                   title: "Project Management",
-                  desc: "Track active work, timelines, deliverables, and progress for every client engagement you&apos;re running.",
+                  desc: "Track active work, timelines, deliverables, and progress for every client engagement you're running.",
                   store: ["Project briefs and scope documents", "Task lists and milestone trackers", "Revision logs and feedback threads", "Post-project retrospective notes"],
                   tip: "Use a traffic-light status on each active project: on track, at risk, or delayed. You can see the full picture at a glance.",
                 },
@@ -865,7 +865,7 @@ Then tell me:
                   title: "Second Brain",
                   desc: "Your private thinking space ~ where raw ideas become clear thinking and what you learn shapes how you work.",
                   store: ["Raw ideas and fleeting thoughts", "Book, podcast & article notes", "Lessons from past projects and clients", "Personal goals and weekly reflections"],
-                  tip: "This one is for you, not your clients. Don&apos;t organise it too early. Let Claude help you find the patterns.",
+                  tip: "This one is for you, not your clients. Don't organise it too early. Let Claude help you find the patterns.",
                 },
               ].map((p) => (
                 <div key={p.n} className={`rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden flex flex-col${p.n === "05" ? " sm:col-span-2" : ""}`}>
@@ -921,7 +921,7 @@ Then tell me:
               <div>
                 <p className="tm-eyebrow mb-1">Two tools, different jobs</p>
                 <h4 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">Claude Projects vs Cowork ~ when to use which</h4>
-                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Both run on Claude. The difference is what they&apos;re optimised for.</p>
+                <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">Both run on Claude. The difference is what they're optimised for.</p>
               </div>
               <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
                 <div className="grid grid-cols-3 bg-[var(--beige-100)] dark:bg-white/5 border-b border-[var(--beige-200)] dark:border-white/5">
@@ -1130,7 +1130,7 @@ Then tell me:
                 </div>
               </div>
               <p className="text-xs text-[var(--taupe-400)] font-light px-1">
-                MCP connectors are set up once in Claude Desktop settings. We&apos;ll configure these in a later session ~ for now, just know they exist and what's possible.
+                MCP connectors are set up once in Claude Desktop settings. We'll configure these in a later session ~ for now, just know they exist and what's possible.
               </p>
             </div>
 

@@ -37,7 +37,7 @@ export function AiEmployeeVsSkill() {
             <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">AI employee ~ a <span className="italic">who</span></p>
           </div>
           <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-            A named role that owns an area of your business. It has context, makes judgment calls, escalates what needs you, and runs whether you&apos;re watching or not.
+            A named role that owns an area of your business. It has context, makes judgment calls, escalates what needs you, and runs whether you're watching or not.
           </p>
         </div>
         <div className="rounded-2xl border border-indigo-500/30 bg-indigo-50 dark:bg-indigo-950/20 p-4 flex flex-col gap-2">
