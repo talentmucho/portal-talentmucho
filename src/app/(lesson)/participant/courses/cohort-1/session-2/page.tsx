@@ -12,7 +12,7 @@ const SESSION = {
   title: "The interface, Projects, your first conversation",
   date: "Sat, Jun 7",
   time: "4–7 PM CET · 14:00–17:00 UTC",
-  videoUrl: null as string | null,
+  videoUrl: "https://drive.google.com/file/d/17SP7NZzkox8RaMAG2vlwXzWo5EAaxaAD/preview" as string | null,
   description:
     "We start with the interface itself ,  getting oriented in Claude.ai, understanding how Projects differ from conversations, and building your first real exchange with Claude using your actual business context.",
   resources: [
