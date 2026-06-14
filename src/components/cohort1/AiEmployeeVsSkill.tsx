@@ -48,7 +48,7 @@ export function AiEmployeeVsSkill() {
             <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Skill ~ a <span className="italic">what</span></p>
           </div>
           <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
-            A repeatable procedure for one task ~ the same steps, the same output, every time. No identity. You (or an employee) trigger it the moment it&apos;s needed.
+            A repeatable procedure for one task ~ the same steps, the same output, every time. No identity. You (or an employee) trigger it the moment it's needed.
           </p>
         </div>
       </div>

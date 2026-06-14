@@ -51,7 +51,7 @@ export default async function ParticipantDashboard() {
             </span>
           </h2>
           <p className="tm-body-sm mt-1">
-            Here&apos;s a summary of your bootcamp progress.
+            Here's a summary of your bootcamp progress.
           </p>
           <div className="flex items-center gap-2 mt-3">
             <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--beige-100)] dark:bg-white/5 border border-[var(--beige-200)] dark:border-white/10 text-[var(--charcoal-900)] dark:text-foreground">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
+import { AiEmployeeVsSkill } from "@/components/cohort1/AiEmployeeVsSkill";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
 import { SessionEditPanel } from "@/components/session-edit-panel";
@@ -83,7 +84,7 @@ TONE AND COMMUNICATION STYLE:
 - Never use: [words or phrases you want to avoid ,  e.g. "synergy", "circle back", "as per my last email"]
 
 WHEN IN DOUBT:
-If you&apos;re unsure how to handle something, say: "That&apos;s a great question ,  let me check with [Owner Name] and get back to you shortly." Do not guess. Do not make commitments you can&apos;t keep.`,
+If you&apos;re unsure how to handle something, say: "That's a great question ,  let me check with [Owner Name] and get back to you shortly." Do not guess. Do not make commitments you can&apos;t keep.`,
 
     "Test scenario pack": `Generate 3 test scenarios for my AI employee based on the system prompt I just gave you.
 
@@ -96,14 +97,14 @@ SCENARIO 2 ,  EDGE CASE:
 An unusual or ambiguous situation where the right answer isn&apos;t obvious. The employee should ask one clarifying question rather than guessing.
 
 SCENARIO 3 ,  OUT OF SCOPE:
-A request that is clearly outside this employee&apos;s role. The employee should acknowledge this gracefully and redirect the person without leaving them stuck.
+A request that is clearly outside this employee's role. The employee should acknowledge this gracefully and redirect the person without leaving them stuck.
 
 For each scenario:
 - Write the incoming message (as if from a real client)
 - Write what an ideal response looks like
 - Note what a bad response would look like (so I know what to watch for)`,
 
-    "Debrief and iterate": `I just tested my AI employee against 3 scenarios. Here&apos;s what happened:
+    "Debrief and iterate": `I just tested my AI employee against 3 scenarios. Here's what happened:
 
 SCENARIO 1 result: [paste what your employee actually said]
 What worked: [what was good]
@@ -191,6 +192,12 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
             </div>
           </section>
 
+          {/* AI employee vs Skill */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">AI employee vs. skill ~ know which one you&apos;re building</p>
+            <AiEmployeeVsSkill />
+          </section>
+
           {/* Three-part brief */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">The three-part employee brief</p>
@@ -200,7 +207,7 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { label: "1. Identity", desc: "Who they are, what their job title is, and how they sound. A name makes them real ,  it&apos;s easier to refine \"Alex\" than \"my AI assistant.\"" },
+                  { label: "1. Identity", desc: "Who they are, what their job title is, and how they sound. A name makes them real ,  it's easier to refine \"Alex\" than \"my AI assistant.\"" },
                   { label: "2. Context", desc: "Your business, your clients, your standards, and your voice. This is where you upload your files and write your business description. The more specific, the better." },
                   { label: "3. Rules", desc: "What they handle autonomously vs. what they escalate. Without clear rules, your employee will either over-reach (making decisions they shouldn&apos;t) or under-reach (asking you about everything)." },
                 ].map((part) => (
@@ -235,13 +242,13 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What good looks like ,  testing all 3 scenarios</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-4">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Before you declare your AI employee ready, run them through three types of scenarios. One easy, one ambiguous, one out of scope. Most employees fail the edge cases first ,  and that&apos;s where the iteration happens.
+                Before you declare your AI employee ready, run them through three types of scenarios. One easy, one ambiguous, one out of scope. Most employees fail the edge cases first ,  and that's where the iteration happens.
               </p>
               <div className="flex flex-col gap-3">
                 {[
                   { scenario: "Easy case", expect: "Clean, accurate, sounds like your business. If this fails, your context or tone instructions are wrong." },
                   { scenario: "Edge case", expect: "Asks one good clarifying question before proceeding. If your employee guesses instead of asking, add a rule: \"When unsure, ask one question.\"" },
-                  { scenario: "Out of scope", expect: "Acknowledges it&apos;s outside their role and tells the person exactly what to do next (contact you, wait, who to call). Never leaves them hanging." },
+                  { scenario: "Out of scope", expect: "Acknowledges it's outside their role and tells the person exactly what to do next (contact you, wait, who to call). Never leaves them hanging." },
                 ].map((item) => (
                   <div key={item.scenario} className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-1.5">
                     <p className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">{item.scenario}</p>
@@ -256,7 +263,7 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Prompts ,  copy and use these</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">System prompt template</strong> ,  paste it into Cowork as your employee&apos;s brief. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Test scenario pack</strong> in Claude.ai to generate realistic test cases. After testing, use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Debrief and iterate</strong> to improve.
+              Start with the <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">System prompt template</strong> ,  paste it into Cowork as your employee's brief. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Test scenario pack</strong> in Claude.ai to generate realistic test cases. After testing, use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Debrief and iterate</strong> to improve.
             </p>
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
@@ -272,7 +279,7 @@ Based on this, rewrite my system prompt to fix the problems I found. Show me the
                   "Generate 3 test scenarios using the prompt above (in Claude.ai Thinking Partner)",
                   "Run all 3 scenarios in Cowork and record what happened",
                   "Use the \"Debrief and iterate\" prompt to get a revised system prompt",
-                  "Update your employee&apos;s brief with the improved version",
+                  "Update your employee's brief with the improved version",
                   "Run the scenarios one more time to confirm the issues are fixed",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">

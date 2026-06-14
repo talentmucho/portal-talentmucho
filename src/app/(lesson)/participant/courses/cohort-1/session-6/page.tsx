@@ -99,10 +99,10 @@ Tech requirements:
 
 Keep it simple. Version 1 ,  get something real on screen.`,
 
-    "Iterate on what you built": `I can see the first version. Here&apos;s what I want to change:
+    "Iterate on what you built": `I can see the first version. Here's what I want to change:
 
 KEEP:
-- [what&apos;s working well ,  be specific]
+- [what's working well ,  be specific]
 
 CHANGE:
 - [element] → [what it should be instead ,  e.g. "The font is too small → make all body text at least 16px"]
@@ -110,17 +110,17 @@ CHANGE:
 - [element] → [change ,  e.g. "The table has too many columns → remove the 'Last Modified' column"]
 
 ADD:
-- [new element, if any ,  e.g. "Add a footer with today&apos;s date"]
+- [new element, if any ,  e.g. "Add a footer with today's date"]
 
 REMOVE:
 - [what to cut, if anything ,  e.g. "Remove the chart ,  just the numbers for now"]
 
 Make only these changes. Don&apos;t redesign anything else.`,
 
-    "Describe what&apos;s wrong precisely": `The build has an issue. I want to fix this specifically:
+    "Describe what's wrong precisely": `The build has an issue. I want to fix this specifically:
 
 WHAT&apos;S WRONG:
-[Describe what you see that&apos;s wrong ,  not "it looks bad" but "the revenue number shows $0 instead of the sample data values"]
+[Describe what you see that's wrong ,  not "it looks bad" but "the revenue number shows $0 instead of the sample data values"]
 
 WHERE IT IS:
 [Location on the page ,  e.g. "Top left card" / "The table in the middle section" / "The navigation bar"]
@@ -207,10 +207,10 @@ Don&apos;t change anything else while fixing this.`,
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What Claude Code actually is</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Claude Code is not a chatbot. It&apos;s an agentic coding tool that runs in your terminal. It reads your files, writes new ones, and builds software by working through tasks step by step ,  more like a developer sitting next to you than a tool you query.
+                Claude Code is not a chatbot. It's an agentic coding tool that runs in your terminal. It reads your files, writes new ones, and builds software by working through tasks step by step ,  more like a developer sitting next to you than a tool you query.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                You don&apos;t need to know how to code. You describe what you want in plain language, Claude Code builds it, you review and approve each step, and you iterate until it&apos;s right. The build loop is: describe → review → approve → iterate.
+                You don&apos;t need to know how to code. You describe what you want in plain language, Claude Code builds it, you review and approve each step, and you iterate until it's right. The build loop is: describe → review → approve → iterate.
               </p>
               <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4">
                 <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">The build loop</p>
