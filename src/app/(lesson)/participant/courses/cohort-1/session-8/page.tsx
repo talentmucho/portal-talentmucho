@@ -72,7 +72,7 @@ const workflowExample = [
   { time: "8:30 AM", layer: "Layer 1", action: "Open Claude.ai → paste the third (complex) inquiry → get a draft response → review and send" },
   { time: "11:00 AM", layer: "Layer 1", action: "Use Claude.ai to prep for an afternoon client call ,  pull talking points from your Project" },
   { time: "4:00 PM", layer: "Layer 1", action: "Ask Claude.ai to draft your weekly client update using metrics from your dashboard" },
-  { time: "4:30 PM", layer: "Layer 2", action: "Your AI employee sends a catch-up message to clients who haven&apos;t checked in this week" },
+  { time: "4:30 PM", layer: "Layer 2", action: "Your AI employee sends a catch-up message to clients who haven't checked in this week" },
 ];
 
 export default async function Session9Page() {
@@ -84,7 +84,7 @@ export default async function Session9Page() {
   const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
 
   const PROMPTS: Record<string, string> = {
-    "Map my Claude stack": `I&apos;ve completed the AI Business Bootcamp. Here's what I built:
+    "Map my Claude stack": `I've completed the AI Business Bootcamp. Here's what I built:
 
 My Claude.ai Projects:
 1. [Project name] ,  I use this for: [purpose]
@@ -102,7 +102,7 @@ My Claude Code dashboard:
 - I check it: [when ,  morning / weekly / before client calls]
 
 Now help me:
-1. Identify any gaps ,  workflows I should have covered but didn&apos;t
+1. Identify any gaps ,  workflows I should have covered but didn't
 2. Spot any overlaps ,  places where two layers are doing the same thing
 3. Write a summary of my complete Claude stack in plain language I could explain to a colleague`,
 
@@ -139,13 +139,13 @@ Make each step concrete and specific to my actual business ,  not generic habits
 
 One concrete result or change in my business since starting: [describe something real ,  even small ,  that's different now]
 
-Something I&apos;m going to build or improve next: [what's next for your Claude practice]
+Something I'm going to build or improve next: [what's next for your Claude practice]
 
 Write me a 2-minute verbal presentation using this structure:
 - 30 sec: Who I am and what my business does
 - 45 sec: What I built (make it tangible ,  not "I built things" but specific)
 - 30 sec: One result or change this created
-- 15 sec: What I&apos;m building next
+- 15 sec: What I'm building next
 
 Keep it conversational. No slides needed ,  this is spoken.`,
   };
@@ -206,7 +206,7 @@ Keep it conversational. No slides needed ,  this is spoken.`,
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -276,7 +276,7 @@ Keep it conversational. No slides needed ,  this is spoken.`,
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Designing your daily routine</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                A routine is a Claude stack that runs without you having to decide when to use it. The participants who get the most out of Claude after the bootcamp aren&apos;t the ones who use it the most ,  they&apos;re the ones who have specific triggers that open Claude automatically.
+                A routine is a Claude stack that runs without you having to decide when to use it. The participants who get the most out of Claude after the bootcamp aren't the ones who use it the most ,  they're the ones who have specific triggers that open Claude automatically.
               </p>
               <div className="flex flex-col gap-2">
                 {[
@@ -315,7 +315,7 @@ Keep it conversational. No slides needed ,  this is spoken.`,
                   "30 sec: Who you are and what your business does (assume the group knows you ,  be brief)",
                   "45 sec: What you built ,  show it if you can. Describe it specifically if not.",
                   "30 sec: One result or change in your business ,  even small counts",
-                  "15 sec: What you&apos;re building or improving next",
+                  "15 sec: What you're building or improving next",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--charcoal-900)] dark:text-foreground">
                     <span className="size-5 shrink-0 rounded-full border border-[var(--beige-200)] dark:border-white/10 flex items-center justify-center text-[10px] font-semibold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>

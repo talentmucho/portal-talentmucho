@@ -123,10 +123,10 @@ export default async function Session1Page() {
                 So happy to have you here. This kickoff is all about <em>you</em> ~ your business, your goals, and making sure your mindset is ready for what's coming.
               </p>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl mb-3">
-                Over the next 4 weeks you&apos;re going to transform how you work. You told us you want to <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{oneThingGoal}</strong> ~ and that's exactly what we&apos;re going to build toward, starting tonight.
+                Over the next 4 weeks you're going to transform how you work. You told us you want to <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">{oneThingGoal}</strong> ~ and that's exactly what we're going to build toward, starting tonight.
               </p>
               <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed max-w-2xl">
-                No fluff. No theory for theory's sake. By the end of each session you&apos;ll have something real running inside your business. Tonight we get everyone set up, introduced, and aligned ~ so we can hit the ground running on Saturday.
+                No fluff. No theory for theory's sake. By the end of each session you'll have something real running inside your business. Tonight we get everyone set up, introduced, and aligned ~ so we can hit the ground running on Saturday.
               </p>
             </div>
 
@@ -162,17 +162,17 @@ export default async function Session1Page() {
             <div className="p-5 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-100)] dark:bg-[var(--card)]">
               <p className="tm-eyebrow mb-2">Come ready to answer</p>
               <h3 className="font-medium text-[var(--charcoal-900)] dark:text-foreground mb-1">
-                Questions we&apos;ll explore together tonight
+                Questions we'll explore together tonight
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-4 font-light">
-                These aren&apos;t trick questions ~ there's no wrong answer. They&apos;re conversation starters. Have a think before we go live.
+                These aren't trick questions ~ there's no wrong answer. They're conversation starters. Have a think before we go live.
               </p>
               <ul className="space-y-3">
                 {[
-                  { q: "What's one task you do every week that eats way more time than it should?", hint: "We&apos;re going to assign that to Claude." },
+                  { q: "What's one task you do every week that eats way more time than it should?", hint: "We're going to assign that to Claude." },
                   { q: "What does &quot;more time&quot; actually mean for you?", hint: "More time with family? More time on creative work? More time to think? Know your why." },
                   { q: "What would you do with an extra 5 hours a week?", hint: "This is your North Star for the bootcamp." },
-                  { q: "What's one thing you&apos;re skeptical about when it comes to AI?", hint: "Bring your doubts. We&apos;d rather address them on night one than week four." },
+                  { q: "What's one thing you're skeptical about when it comes to AI?", hint: "Bring your doubts. We'd rather address them on night one than week four." },
                   { q: "How do you want this cohort to feel by the end of Week 4?", hint: "Think mindset, not just tools." },
                 ].map((item, i) => (
                   <li key={i} className="border-b border-[var(--beige-200)] dark:border-white/5 pb-3 last:border-0 last:pb-0">
@@ -193,9 +193,9 @@ export default async function Session1Page() {
               </p>
               <ol className="space-y-2">
                 {[
-                  "Your name and where you&apos;re based",
+                  "Your name and where you're based",
                   "What your business does in one sentence",
-                  "One thing you&apos;re hoping to walk away with from this bootcamp",
+                  "One thing you're hoping to walk away with from this bootcamp",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start text-sm text-[var(--charcoal-900)] dark:text-foreground">
                     <span className="shrink-0 size-5 rounded-full bg-[var(--beige-200)] dark:bg-white/10 flex items-center justify-center text-[10px] font-bold text-[var(--taupe-400)] mt-0.5">{i + 1}</span>
@@ -218,10 +218,10 @@ export default async function Session1Page() {
                   Claude is an AI assistant built by Anthropic. Unlike a search engine that finds existing pages, Claude <em>generates</em> responses ~ it writes, reasons, summarises, and creates based on what you tell it.
                 </p>
                 <p>
-                  Think of it as a highly capable collaborator you can talk to in plain language. You don&apos;t need to code or use special commands. Just describe what you need.
+                  Think of it as a highly capable collaborator you can talk to in plain language. You don't need to code or use special commands. Just describe what you need.
                 </p>
                 <p>
-                  In this bootcamp we&apos;ll use Claude to run real parts of your business ~ from drafting content to building tools ~ starting today.
+                  In this bootcamp we'll use Claude to run real parts of your business ~ from drafting content to building tools ~ starting today.
                 </p>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default async function Session1Page() {
                   Use Abie's referral link to upgrade
                 </p>
                 <p className="text-xs text-[var(--taupe-400)] font-light">
-                  We&apos;ll be diving into Claude Code in Week 3 ~ Pro is required. Upgrade before Saturday so you&apos;re ready to build.
+                  We'll be diving into Claude Code in Week 3 ~ Pro is required. Upgrade before Saturday so you're ready to build.
                 </p>
               </div>
               <a
@@ -283,7 +283,7 @@ export default async function Session1Page() {
                 Your first personalized prompt
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-4">
-                Based on your onboarding answers, we&apos;ve crafted a prompt for you to try in Claude right now.
+                Based on your onboarding answers, we've crafted a prompt for you to try in Claude right now.
               </p>
               <div className="relative group">
                 <pre className="p-4 rounded-xl bg-[var(--beige-50)] dark:bg-[var(--espresso-700)] text-sm text-[var(--charcoal-900)] dark:text-[var(--taupe-400)] whitespace-pre-wrap font-mono">
@@ -299,25 +299,25 @@ export default async function Session1Page() {
                 What the next 4 weeks look like for your business
               </h3>
               <p className="text-sm text-[var(--taupe-400)] mb-5">
-                Based on your onboarding answers, here's how each week connects to what you&apos;re building.
+                Based on your onboarding answers, here's how each week connects to what you're building.
               </p>
               <div className="space-y-4">
                 {[
                   {
                     week: "Week 1 · Knowing Claude",
-                    highlight: `You said your first focus is ${focusArea}. This week you&apos;ll set up Claude Projects loaded with context about ${businessContext} so Claude can work the way you do.`,
+                    highlight: `You said your first focus is ${focusArea}. This week you'll set up Claude Projects loaded with context about ${businessContext} so Claude can work the way you do.`,
                   },
                   {
                     week: "Week 2 · Delegating to Claude",
-                    highlight: `You want a ${aiEmployeeRole} on your team. This week you&apos;ll build and brief your first AI employee inside Cowork and test it against real tasks from your business.`,
+                    highlight: `You want a ${aiEmployeeRole} on your team. This week you'll build and brief your first AI employee inside Cowork and test it against real tasks from your business.`,
                   },
                   {
                     week: "Week 3 · Building with Claude",
-                    highlight: `You want to track ${dashboardMetrics}. This week you&apos;ll use Claude Code to build a custom dashboard ~ no coding experience needed.`,
+                    highlight: `You want to track ${dashboardMetrics}. This week you'll use Claude Code to build a custom dashboard ~ no coding experience needed.`,
                   },
                   {
                     week: "Week 4 · Living with Claude",
-                    highlight: `You said you want to ${oneThingGoal}. This week you&apos;ll put your full Claude stack together and define the daily moments where AI runs alongside your business.`,
+                    highlight: `You said you want to ${oneThingGoal}. This week you'll put your full Claude stack together and define the daily moments where AI runs alongside your business.`,
                   },
                 ].map((item) => (
                   <div key={item.week} className="flex gap-4">
@@ -342,8 +342,8 @@ export default async function Session1Page() {
               <ul className="space-y-2">
                 {[
                   "A Claude.ai account (we just set this up tonight)",
-                  "A doc or note with 3–5 sentences describing your business ~ you&apos;ll paste this into your Claude Project",
-                  "One real task you&apos;ve been putting off ~ we&apos;ll use Claude to knock it out live",
+                  "A doc or note with 3–5 sentences describing your business ~ you'll paste this into your Claude Project",
+                  "One real task you've been putting off ~ we'll use Claude to knock it out live",
                   "Your laptop, not your phone",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start text-sm">

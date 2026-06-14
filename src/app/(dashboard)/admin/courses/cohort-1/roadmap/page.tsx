@@ -109,7 +109,7 @@ export default async function AdminRoadmapsPage({
 
           {/* What they'll build */}
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">What they&apos;ll build</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">What they'll build</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {data.deliverables.map((d, i) => (
                 <div

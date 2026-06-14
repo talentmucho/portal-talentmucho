@@ -176,7 +176,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
                 { cet: "4:10 – 4:30", utc: "14:10", label: "What are custom instructions ~ the 4-part framework", type: "teach" },
                 { cet: "4:30 – 4:45", utc: "14:30", label: "File uploads ~ what to add and why it matters", type: "teach" },
                 { cet: "4:45 – 5:00", utc: "14:45", label: "Share ~ what have you configured so far? Show us your Project setup", type: "share" },
-                { cet: "5:00 – 5:05", utc: "15:00", label: "Work brief ~ what you&apos;re doing for the next hour", type: "plenary" },
+                { cet: "5:00 – 5:05", utc: "15:00", label: "Work brief ~ what you're doing for the next hour", type: "plenary" },
                 { cet: "5:05 – 6:05", utc: "15:05", label: "Work time ~ write your instructions, upload your files, run the check prompts", type: "work" },
                 { cet: "6:05 – 6:15", utc: "16:05", label: "Break", type: "break" },
                 { cet: "6:15 – 6:45", utc: "16:15", label: "Group share ~ each person shows one configured Project and what Claude now knows", type: "share" },
@@ -211,7 +211,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -231,10 +231,10 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What custom instructions actually do</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Custom instructions are text that Claude reads <strong className="font-medium">before every single message</strong> in a Project. Think of them as the onboarding document you&apos;d give a new contractor on their first day ,  who you are, how you work, what you expect, and what not to do.
+                Custom instructions are text that Claude reads <strong className="font-medium">before every single message</strong> in a Project. Think of them as the onboarding document you'd give a new contractor on their first day ,  who you are, how you work, what you expect, and what not to do.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Without custom instructions, every message starts from scratch. Claude doesn&apos;t know if you want bullet points or paragraphs, formal or casual, long-form or brief. With them, Claude already knows ,  and it shows in every response.
+                Without custom instructions, every message starts from scratch. Claude doesn't know if you want bullet points or paragraphs, formal or casual, long-form or brief. With them, Claude already knows ,  and it shows in every response.
               </p>
               <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4">
                 <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">The four parts of great custom instructions</p>
@@ -260,7 +260,7 @@ If anything in my instructions is contradictory or unclear, flag it now.`,
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What to upload ,  and why</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                Files you upload to a Project stay there permanently. Claude can reference them in every conversation. The goal is to give Claude the same reference materials you&apos;d give a new team member.
+                Files you upload to a Project stay there permanently. Claude can reference them in every conversation. The goal is to give Claude the same reference materials you'd give a new team member.
               </p>
               <div className="flex flex-col gap-2">
                 {uploadGuide.map((item) => (

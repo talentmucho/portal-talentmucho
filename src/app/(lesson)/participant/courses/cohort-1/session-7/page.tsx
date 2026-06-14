@@ -41,18 +41,18 @@ const objectives = [
 ];
 
 const planningQuestions = [
-  { q: "What decision does this help you make?", hint: "\"I want to know at a glance if I need to push on revenue this week\" is a decision. \"I want to see my numbers\" isn&apos;t." },
-  { q: "What are the 5 numbers you&apos;d look at first every morning?", hint: "These become your primary metric cards. If you can&apos;t name 5, start with 3." },
+  { q: "What decision does this help you make?", hint: "\"I want to know at a glance if I need to push on revenue this week\" is a decision. \"I want to see my numbers\" isn't." },
+  { q: "What are the 5 numbers you'd look at first every morning?", hint: "These become your primary metric cards. If you can't name 5, start with 3." },
   { q: "Who else needs to see this?", hint: "Just you = simpler. Your team = needs labels and context. Clients = needs to look polished." },
   { q: "How will you update the data?", hint: "Manually (you type in numbers each week) or automatically (connected to a source). Start manually ,  it's simpler and you can automate later." },
   { q: "What does Version 1 look like?", hint: "Define the smallest version that's still useful. Resist the urge to build everything at once." },
 ];
 
 const iterationRules = [
-  { wrong: "It doesn&apos;t look right", right: "The revenue card font is too small ,  make it 32px and bold" },
+  { wrong: "It doesn't look right", right: "The revenue card font is too small ,  make it 32px and bold" },
   { wrong: "I want it simpler", right: "Remove the chart entirely ,  just show the number" },
   { wrong: "The colors are off", right: "Change the sidebar background from dark gray to navy (#1a2332)" },
-  { wrong: "Something's broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn&apos;t reading it" },
+  { wrong: "Something's broken", right: "The \"Active Clients\" card shows 0 instead of 12 ,  the sample data is in clients.json but the component isn't reading it" },
 ];
 
 export default async function Session8Page() {
@@ -79,7 +79,7 @@ Metrics I want to track:
 4. [metric name] ,  currently tracked in: [where]
 5. [metric name] ,  currently tracked in: [where]
 
-How I&apos;ll update the data: [manually each week / automatically from ___]
+How I'll update the data: [manually each week / automatically from ___]
 
 Based on this, ask me 3 clarifying questions that will help us build the right thing ,  not the most impressive thing, the most useful thing.`,
 
@@ -124,9 +124,9 @@ CHANGE 3:
 - Current state: [current state]
 - What I want: [desired state]
 
-Make only these changes. Don&apos;t redesign, don&apos;t improve anything else.`,
+Make only these changes. Don't redesign, don't improve anything else.`,
 
-    "When something looks broken": `Something isn the dashboard isn&apos;t working correctly. Here's the exact issue:
+    "When something looks broken": `Something isn the dashboard isn't working correctly. Here's the exact issue:
 
 WHAT I SEE:
 [Describe what's appearing on screen ,  e.g. "The Active Clients card shows '0' instead of a real number"]
@@ -137,7 +137,7 @@ WHAT SHOULD HAPPEN:
 WHERE THE DATA IS:
 [Tell Claude Code where to look ,  e.g. "The data is in /src/data/clients.json, key name is 'activeCount'"]
 
-Fix only this issue. If you&apos;re going to change more than 5 lines, check with me first.`,
+Fix only this issue. If you're going to change more than 5 lines, check with me first.`,
   };
 
   return (
@@ -196,7 +196,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
 
           {/* Objectives */}
           <section className="flex flex-col gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you&apos;ll do in this session</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">What you'll do in this session</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5">
               <ol className="flex flex-col gap-3">
                 {objectives.map((obj, i) => (
@@ -239,7 +239,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">The Version 1 mindset</p>
             <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
-                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> ,  not a perfect version that doesn&apos;t exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that's still being designed.
+                The goal of this session is <strong className="font-medium">a working first version you can show someone</strong> ,  not a perfect version that doesn't exist yet. A real dashboard with 3 metrics is worth more than a perfect dashboard that's still being designed.
               </p>
               <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
                 Build V1, open it in the browser, show it to someone today, iterate. The iteration is where the learning happens.
@@ -258,7 +258,7 @@ Fix only this issue. If you&apos;re going to change more than 5 lines, check wit
                 {iterationRules.map((rule, i) => (
                   <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div className="rounded-lg border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] px-3 py-2">
-                      <p className="text-[10px] font-semibold text-[var(--taupe-400)] uppercase tracking-[0.1em] mb-0.5">Don&apos;t say</p>
+                      <p className="text-[10px] font-semibold text-[var(--taupe-400)] uppercase tracking-[0.1em] mb-0.5">Don't say</p>
                       <p className="text-sm text-[var(--taupe-400)] font-light" dangerouslySetInnerHTML={{ __html: `"${rule.wrong}"` }} />
                     </div>
                     <div className="rounded-lg border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 px-3 py-2">
