@@ -716,6 +716,10 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
               ))}
             </div>
 
+            <p className="text-xs text-[var(--taupe-400)] font-light">
+              Wondering if Maya can run that weekly loop on her own? That&apos;s the autonomy question ~ we cover when it&apos;s safe to let her loose in Week 4.
+            </p>
+
             {/* Responsible use */}
             <div className="rounded-2xl border border-amber-500/30 bg-amber-50 dark:bg-amber-950/20 p-4 flex items-start gap-3">
               <ShieldAlert className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
