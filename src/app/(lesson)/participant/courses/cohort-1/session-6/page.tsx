@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Library, ExternalLink } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
@@ -253,6 +253,31 @@ Don't change anything else while fixing this.`,
                 </ul>
               </div>
             </div>
+          </section>
+
+          {/* Skills directory ~ don't start from scratch */}
+          <section className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <Library className="size-3.5 text-[var(--clay-500)]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Don&apos;t start from scratch ~ grab a skill</p>
+            </div>
+            <a
+              href="https://abiemaxey.com/tools/skills-directory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-2xl border border-[var(--clay-500)]/30 bg-[var(--clay-500)]/5 p-5 flex flex-col gap-2 transition-colors hover:border-[var(--clay-500)]/50"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">Abie&apos;s Claude Skills Directory</span>
+                <ExternalLink className="size-3.5 text-[var(--clay-500)] opacity-60 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">
+                Skills are prebuilt capabilities you can drop into Claude Code ~ code review, inbox zero, research, and more. The directory curates <strong className="font-semibold">71 skills</strong> from the 1,116 on GitHub, so you don&apos;t have to wade through them.
+              </p>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">
+                Browse it, copy the skill closest to what you&apos;re building, then adapt it ~ a head start beats a blank terminal. <span className="text-[var(--clay-500)] font-medium">abiemaxey.com/tools/skills-directory →</span>
+              </p>
+            </a>
           </section>
 
           {/* Anatomy of a build prompt */}
