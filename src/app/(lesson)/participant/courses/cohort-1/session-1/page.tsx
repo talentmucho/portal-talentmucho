@@ -12,7 +12,7 @@ const SESSION = {
   title: "Welcome, orientation, Claude.ai setup",
   date: "Fri, Jun 5",
   time: "6–8 PM EST",
-  videoUrl: null as string | null,
+  videoUrl: "https://fathom.video/embed/T2TBAM4YVnsqf1XDspzi14cyRQRkZ7yU",
   description:
     "Your first live session. We'll do introductions, walk through the bootcamp structure, and get every participant set up on Claude.ai before we go into Week 1.",
   resources: [

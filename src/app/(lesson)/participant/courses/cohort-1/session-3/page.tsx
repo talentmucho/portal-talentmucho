@@ -12,7 +12,7 @@ const SESSION = {
   title: "Custom instructions, file uploads",
   date: "Sun, Jun 8",
   time: "4–7 PM CET · 14:00–17:00 UTC",
-  videoUrl: null as string | null,
+  videoUrl: "https://fathom.video/embed/cqE-oekuNousB6GU5PPSFwvh79xbQHJm",
   description:
     "You built your Projects in session 2. Now you configure them. By the end of this session each of your 5 Claude Projects will have custom instructions, uploaded files, and a verified brand voice ~ so Claude knows exactly how to work with you.",
   resources: [
