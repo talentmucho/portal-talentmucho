@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, MessagesSquare, Bot, Plug, ShieldAlert } from "lucide-react";
+import { ArrowLeft, ArrowRight, MessagesSquare, Bot, Plug, ShieldAlert, Library, ExternalLink } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { AiEmployeeVsSkill } from "@/components/cohort1/AiEmployeeVsSkill";
 import { Reveal } from "@/components/cohort1/Reveal";
@@ -696,6 +696,48 @@ Give me a table: Handle | Platform | Fit | Signal | First-touch draft | Follow-u
               <p className="text-sm text-[var(--taupe-400)] font-light">Here&apos;s the full brief for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Maya</strong> ~ paste it straight into your Project&apos;s <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Instructions</strong>, then swap in your own ICP and accounts:</p>
               <CodeTabs codes={{ "Maya ~ Lead Gen Specialist (Instructions)": ABIE_LEADGEN_INSTRUCTIONS }} lang="markdown" />
             </div>
+          </Reveal>
+
+          {/* Starter shelf */}
+          <Reveal className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <Library className="size-3.5 text-[var(--clay-500)]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Don&apos;t start from scratch ~ the starter shelf</p>
+            </div>
+            <p className="text-sm text-[var(--taupe-400)] -mt-1">
+              Reach for <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">your own shelf first</strong> (the templates above + your Week 1 prompt library). Go external only when you outgrow it. The rule for everything here: <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">borrow → adapt → make it yours</strong>.
+            </p>
+            <div className="flex flex-col gap-2.5">
+              {[
+                { name: "Your template shelf", tag: "Start here", tagColor: "#C4A882", href: null, use: "The employee briefs on this page + your Week 1 prompt library ~ already in your voice.", adapt: "Swap in your business, ICP, and accounts." },
+                { name: "Connector marketplace", tag: "Week 2", tagColor: "#7D6B5A", href: null, use: "Add tools to an employee with no code ~ Apify, Google Sheets, Gmail, Slack, Notion. Open Customize → search.", adapt: "Add only the connector a real task needs." },
+                { name: "Apify Store", tag: "Week 2", tagColor: "#7D6B5A", href: "https://apify.com/store", use: "Thousands of prebuilt scrapers (actors) for lead-gen + research ~ Reddit, Instagram, Threads, Google Maps.", adapt: "Pick an actor, point it at your keywords or accounts." },
+                { name: "Anthropic Prompt Library", tag: "Week 1", tagColor: "#C4A882", href: "https://docs.anthropic.com/en/resources/prompt-library/library", use: "Vetted starter prompts for common tasks, straight from Anthropic.", adapt: "Use as a base, then rewrite in your voice." },
+                { name: "Anthropic Agent Skills", tag: "Week 3", tagColor: "#5A7A6B", href: "https://github.com/anthropics/skills", use: "Reusable skill packs you can drop in (the npx skills add registry). More technical.", adapt: "Add a skill, then point it at your workflow." },
+                { name: "MCP directories", tag: "Week 3+", tagColor: "#5A7A6B", href: "https://smithery.ai", use: "Browse more tools/connectors to plug into Claude (Smithery, mcp.so, PulseMCP).", adapt: "Only add what a real task needs ~ don't collect tools." },
+              ].map((r) => {
+                const inner = (
+                  <>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-sm font-semibold text-[var(--charcoal-900)] dark:text-foreground">{r.name}</span>
+                      <span className="text-[9px] font-bold uppercase tracking-[0.12em] px-1.5 py-0.5 rounded-full" style={{ background: `${r.tagColor}22`, color: r.tagColor, border: `1px solid ${r.tagColor}44` }}>{r.tag}</span>
+                      {r.href && <ExternalLink className="size-3 text-[var(--taupe-400)] opacity-0 group-hover:opacity-100 transition-opacity" />}
+                    </div>
+                    <p className="text-xs text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed mt-1">{r.use}</p>
+                    <p className="text-[11px] text-[var(--taupe-400)] font-light leading-relaxed mt-0.5"><span className="font-semibold">Adapt ~ </span>{r.adapt}</p>
+                  </>
+                );
+                const cls = "group block rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-4 transition-colors";
+                return r.href ? (
+                  <a key={r.name} href={r.href} target="_blank" rel="noopener noreferrer" className={`${cls} hover:border-[var(--clay-500)]/40`}>{inner}</a>
+                ) : (
+                  <div key={r.name} className={cls}>{inner}</div>
+                );
+              })}
+            </div>
+            <p className="text-[11px] text-[var(--taupe-400)] font-light">
+              Tagged by week so you know when to reach for each ~ skills and scrapers come later, not on day one.
+            </p>
           </Reveal>
 
           {/* Exercise */}
