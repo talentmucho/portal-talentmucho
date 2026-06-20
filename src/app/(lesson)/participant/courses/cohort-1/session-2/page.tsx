@@ -1237,15 +1237,6 @@ Keep both practical, specific to my business, and ready to paste into Claude Pro
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/assets/events/kickoff-banner.png"
-                  download="talentmucho-zoom-background.png"
-                  className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
-                >
-                  Download Zoom background
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://week-one-workshop.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"

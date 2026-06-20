@@ -314,20 +314,7 @@ Based on this, tell me:
             </ul>
           </div>
 
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Resources</p>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/assets/events/kickoff-banner.png"
-                  download="talentmucho-zoom-background.png"
-                  className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
-                >
-                  Download Zoom background
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Resources (zoom background) hidden per request */}
 
           <div className="mt-auto">
             <a href={session.zoomUrl} className="inline-flex items-center justify-center gap-2 w-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity">
