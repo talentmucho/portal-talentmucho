@@ -153,6 +153,24 @@ HOW IT SHOULD LOOK:
 
 Run with: npm run dev. Keep it simple ~ Version 1.`,
 
+    "Portfolio / landing page (sample)": `Build me a one-page personal brand landing page using Next.js (App Router), for **${intake?.business_oneliner || "[your personal brand ~ what you do]"}**.
+Use static content I can edit in one file ~ no backend.
+
+SECTIONS (top to bottom):
+1. Hero ~ my name (${intake?.first_name || "[your name]"}), a one-line tagline, a short intro, a primary button (e.g. "Work with me" / "Book a call"), and a photo placeholder
+2. About ~ 2~3 short paragraphs about me
+3. What I do ~ 3 services or offers as cards
+4. Featured work ~ a grid of 3~6 projects (title, one-line description, image placeholder, link)
+5. Testimonials ~ 2~3 short quotes with a name
+6. Contact ~ a call-to-action with my booking link or email
+
+HOW IT SHOULD LOOK:
+- Clean, modern, lots of whitespace ~ mobile-friendly
+- Use my brand kit: main [#__], accent [#__], background [#__], text [#__]; headings in [font], body in [font]
+- (No brand kit yet? Write "minimal, black on white, one accent colour.")
+
+Run with: npm run dev. Keep it Version 1 simple ~ real content beats perfect.`,
+
     "Iterate on what you built": `I can see the first version. Here's what I want to change:
 
 KEEP:
@@ -504,7 +522,7 @@ Don't change anything else while fixing this.`,
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Build prompts ~ use these inside Claude Code</p>
             <p className="text-sm text-[var(--taupe-400)] -mt-1">
-              Once Claude Code is running (<code className="text-xs bg-[var(--beige-100)] dark:bg-white/10 px-1.5 py-0.5 rounded font-mono">claude</code> in your terminal), paste these prompts directly into it. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">First build prompt</strong> for anything, or grab a ready-made <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Lead gen tracker</strong> or <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Content hub tracker</strong> to start.
+              Once Claude Code is running (<code className="text-xs bg-[var(--beige-100)] dark:bg-white/10 px-1.5 py-0.5 rounded font-mono">claude</code> in your terminal), paste these prompts directly into it. Use <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">First build prompt</strong> for anything, or grab a ready-made <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Lead gen tracker</strong>, <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Content hub tracker</strong>, or <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Portfolio page</strong> to start.
             </p>
             <CodeTabs codes={BUILD_PROMPTS} lang="markdown" />
           </section>
@@ -670,7 +688,6 @@ Keep it simple ~ one shared PIN is fine for now.`,
               {[
                 { label: "Get Claude Code", href: "https://claude.com/claude-code", note: "download + install" },
                 { label: "Claude Code docs", href: "https://code.claude.com/docs/en/overview", note: null },
-                { label: "Try Claude Code on the web", href: "https://claude.ai/code", note: null },
                 { label: "Node.js", href: "https://nodejs.org", note: "needed for the terminal" },
                 { label: "GitHub", href: "https://github.com", note: "free account" },
                 { label: "Vercel", href: "https://vercel.com", note: "deploy your build" },
