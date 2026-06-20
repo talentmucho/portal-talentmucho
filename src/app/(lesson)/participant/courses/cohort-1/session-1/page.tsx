@@ -401,15 +401,6 @@ export default async function Session1Page() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/assets/events/kickoff-banner.png"
-                  download="talentmucho-zoom-background.png"
-                  className="text-sm text-[var(--charcoal-900)] dark:text-foreground hover:opacity-70 transition-opacity underline underline-offset-2 decoration-[var(--beige-200)]"
-                >
-                  Download Zoom background
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://chat.whatsapp.com/ElPVKFHdiABJZJ7aZmcGLs"
                   target="_blank"
                   rel="noopener noreferrer"
