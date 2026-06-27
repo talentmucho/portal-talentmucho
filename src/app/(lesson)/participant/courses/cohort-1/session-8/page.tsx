@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Palette } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { AutonomyLadder } from "@/components/cohort1/AutonomyLadder";
 import { getIntakeData } from "@/utils/intake-helper";
@@ -83,6 +83,40 @@ export default async function Session8Page() {
     getIsAdmin(),
   ]);
   const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
+
+  const DESIGN_SYSTEM: Record<string, string> = {
+    "1. Generate my design system": `Act as a product designer. Don't describe a design system ~ DESIGN it visually so I can see it.
+
+My business: **${intake?.business_oneliner || "[describe what you do in 2~3 sentences]"}**
+The feeling I want people to get: [pick 3 words ~ e.g. "calm, premium, trustworthy"]
+Who it's for: [your ideal client/audience in one line]
+
+Create a visual design system as an artifact, showing:
+1. COLOUR TOKENS ~ primary, accent, 2~3 neutrals, and state colours (success/warning), each as a labelled swatch with its hex code
+2. TYPE SCALE ~ a heading font + body font (free Google Fonts) shown in use at each size (H1, H2, body, small)
+3. SPACING & RADIUS ~ the spacing steps and corner radius you'll reuse everywhere
+4. COMPONENTS ~ buttons (primary/secondary), an input, and a card, all styled with the tokens above
+
+Show it visually first. I'll react and we'll tweak it together (e.g. "warmer accent", "more spacing").`,
+
+    "2. Refine it": `Good start. Adjust the design system:
+- [what to change ~ e.g. "warmer accent / more muted"]
+- [e.g. "try a serif heading font", "rounder corners", "more breathing room"]
+
+Keep everything else consistent. Show me the updated system.`,
+
+    "3. Export the tokens": `I'm happy with this. Give me the design system as a copy-paste block I can drop into any build prompt:
+
+"Design system ~ colours: primary #__, accent #__, neutrals #__ / #__, success #__, warning #__. Type: headings in [font], body in [font], scale [sizes]. Radius: [value]. Spacing steps: [values]."
+
+Plus a one-line styling rule for each component (button, input, card).`,
+
+    "Apply it in Claude Code": `Restyle my dashboard to use this design system ~ don't change the layout or content, only the look.
+
+[Paste your exported design-system block here]
+
+Apply the tokens consistently across headers, cards, buttons, inputs, and links. Keep strong contrast so everything stays readable, and reuse the same tokens for anything I build next.`,
+  };
 
   const PROMPTS: Record<string, string> = {
     "Map my Claude stack": `I've completed the AI Business Bootcamp. Here's what I built:
@@ -272,6 +306,42 @@ Keep it conversational. No slides needed ~ this is spoken.`,
             </div>
           </section>
 
+          {/* Claude Design ~ generate a design system */}
+          <section className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <Palette className="size-3.5 text-[var(--clay-500)]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Generate a design system with Claude Design</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 bg-white dark:bg-[var(--card)] p-5 flex flex-col gap-3">
+              <p className="text-sm text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">
+                Once your stack works, the next jump is making it all look like <em>one product</em> instead of three separate builds. A <strong className="font-medium">design system</strong> is the small set of rules ~ colours, type, spacing, components ~ that every screen reuses, so your dashboard, your landing page, and anything you build next share one consistent look. <strong className="font-medium">Claude Design</strong> generates that whole system <em>visually</em> from a single description ~ no design tools, no code.
+              </p>
+              <div className="rounded-xl border border-[var(--beige-200)] dark:border-white/5 bg-[var(--beige-50)] dark:bg-white/[0.02] p-4 flex flex-col gap-2">
+                <p className="text-xs font-semibold text-[var(--taupe-400)] uppercase tracking-[0.12em]">What a design system gives you</p>
+                <ul className="flex flex-col gap-1.5">
+                  {[
+                    { k: "Colour tokens", v: "primary, accent, neutrals, and state colours ~ named once, reused everywhere" },
+                    { k: "Type scale", v: "a heading + body font and the exact sizes for H1, H2, body, small" },
+                    { k: "Spacing & radius", v: "consistent gaps and corners so every screen lines up" },
+                    { k: "Components", v: "buttons, inputs, and cards styled once, then reused" },
+                  ].map((x) => (
+                    <li key={x.k} className="flex items-start gap-3">
+                      <span className="text-xs font-bold text-[var(--taupe-400)] uppercase tracking-[0.1em] min-w-[112px] mt-0.5">{x.k}</span>
+                      <span className="text-sm text-[var(--charcoal-900)] dark:text-foreground font-light leading-relaxed">{x.v}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-sm text-[var(--taupe-400)] font-light leading-relaxed">
+                Do this in <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">Claude.ai</strong> ~ it&apos;s a design conversation, not a build. Run the first three prompts in order to generate, refine, and export your system; the last one drops it straight into Claude Code to restyle your dashboard.
+              </p>
+              <CodeTabs codes={DESIGN_SYSTEM} lang="markdown" />
+              <p className="text-xs text-[var(--taupe-400)] font-light leading-relaxed">
+                Once exported, the same tokens style <strong className="text-[var(--charcoal-900)] dark:text-foreground font-medium">every</strong> future build ~ your stack stops looking like three projects and starts looking like one brand.
+              </p>
+            </div>
+          </section>
+
           {/* Autonomy ladder */}
           <section className="flex flex-col gap-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">When to let it run alone ~ the autonomy ladder</p>
@@ -437,7 +507,23 @@ Keep it conversational. No slides needed ~ this is spoken.`,
             </ul>
           </div>
 
-          {/* Resources (zoom background) hidden per request */}
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Resources</p>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://insforge.dev/?via=joenabie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-2 text-sm text-[var(--charcoal-900)] dark:text-foreground hover:text-[var(--clay-500)] transition-colors"
+                >
+                  <span className="size-1.5 rounded-full bg-[var(--clay-500)] mt-1.5 shrink-0" />
+                  <span className="flex-1">Insforge ~ add a real backend &amp; database to your build</span>
+                  <ArrowUpRight className="size-3.5 shrink-0 text-[var(--taupe-400)] mt-0.5 group-hover:text-[var(--clay-500)] transition-colors" />
+                </a>
+              </li>
+            </ul>
+          </div>
 
           <div className="mt-auto">
             <a href={session.zoomUrl} className="inline-flex items-center justify-center gap-2 w-full bg-[var(--charcoal-900)] dark:bg-white text-[var(--beige-50)] dark:text-[var(--charcoal-900)] text-sm font-medium px-4 py-2.5 rounded-full hover:opacity-90 transition-opacity">
