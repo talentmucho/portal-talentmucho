@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Map } from "lucide-react";
 import { CodeTabs } from "@/components/animate-ui/components/animate/code-tabs";
 import { getIntakeData } from "@/utils/intake-helper";
 import { getSessionOverrides, getIsAdmin, applyOverrides } from "@/utils/session-content";
 import { SessionEditPanel } from "@/components/session-edit-panel";
+import { GraduationCertificate } from "@/components/cohort1/GraduationCertificate";
+import { resolveRoadmap } from "@/utils/participant-roadmaps";
 
 const SESSION = {
   tag: "W4 · S8",
@@ -59,6 +61,12 @@ export default async function Session10Page() {
     getIsAdmin(),
   ]);
   const session = applyOverrides({ ...SESSION, zoomUrl: "https://us06web.zoom.us/j/88295797091?pwd=MejE1DJBXzA8veH0KDbPY0B8sPb29k.1" }, overrides);
+
+  // Personalised graduation: certificate + roadmap recap
+  const roadmap = resolveRoadmap(intake);
+  const gradName = intake?.first_name?.trim() || roadmap.name;
+  const certNumber = `TM-C1-${(intake?.first_name || "GRAD").replace(/[^a-zA-Z]/g, "").slice(0, 4).toUpperCase() || "GRAD"}`;
+  const ROADMAP = "/participant/courses/cohort-1/roadmap";
 
   const PROMPTS: Record<string, string> = {
     "Your 30-day plan": `I just graduated from the AI Business Bootcamp. Here's what I built:
@@ -263,17 +271,81 @@ Based on this, tell me:
             <CodeTabs codes={PROMPTS} lang="markdown" />
           </section>
 
-          {/* Graduation card */}
-          <div className="rounded-2xl overflow-hidden border border-[var(--beige-200)] dark:border-white/5">
-            <div className="px-6 py-5 bg-[var(--charcoal-900)] dark:bg-white flex flex-col gap-2">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 dark:text-black/50">Cohort 1 · June 2026</p>
-              <p className="font-serif font-light text-white dark:text-[var(--charcoal-900)] text-lg">AI Business Bootcamp</p>
-              <p className="text-sm text-white/70 dark:text-black/60 font-light">4 weeks · 9 live sessions · 4 real deliverables running in your business</p>
+          {/* Graduation certificate */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Your graduation certificate</p>
+            <GraduationCertificate
+              participantName={gradName}
+              avatarSrc={roadmap.photo || null}
+              accentColor={roadmap.accentColor}
+              issuedDate="June 28, 2026"
+              certificateNumber={certNumber}
+            />
+          </section>
+
+          {/* Personal roadmap recap */}
+          <section className="flex flex-col gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)]">Where you go from here · your personal roadmap</p>
+            <div className="rounded-2xl border border-[var(--beige-200)] dark:border-white/5 overflow-hidden">
+              {/* Recap header */}
+              <div className="px-6 py-5 flex flex-col gap-1" style={{ background: roadmap.accentColor }}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">{gradName}&apos;s roadmap · Cohort 1</p>
+                <p className="font-serif font-light text-white text-lg leading-snug">
+                  You came in wanting to {intake?.one_thing || "get more done with less effort"}.
+                </p>
+                <p className="text-sm text-white/80 font-light">You leave with the system to do it ~ keep these moves going past graduation.</p>
+              </div>
+
+              <div className="bg-white dark:bg-[var(--card)] p-6 flex flex-col gap-5">
+                {/* Snapshot pills */}
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    `Focus: ${intake?.first_focus || "your business"}`,
+                    `AI employee: ${intake?.ai_employee_role || "AI assistant"}`,
+                  ].map((pill) => (
+                    <span
+                      key={pill}
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+                      style={{ background: `${roadmap.accentColor}12`, color: roadmap.accentColor, border: `1px solid ${roadmap.accentColor}33` }}
+                    >
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Week deliverables */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {roadmap.deliverables.map((d, i) => (
+                    <div key={i} className="p-4 rounded-2xl border border-[var(--beige-200)] dark:border-white/5 flex gap-3 items-start">
+                      <span className="shrink-0 size-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white mt-0.5" style={{ background: d.color }}>{i + 1}</span>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1" style={{ color: d.color }}>{d.week}</p>
+                        <p className="text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed">{d.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Link to full roadmap */}
+                <Link
+                  href={ROADMAP}
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto self-start text-sm font-medium px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+                  style={{ background: roadmap.accentColor, color: "#FAF8F5" }}
+                >
+                  <Map className="size-3.5" />
+                  Open your full personal roadmap
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </div>
             </div>
+          </section>
+
+          {/* Back to course */}
+          <div className="rounded-2xl overflow-hidden border border-[var(--beige-200)] dark:border-white/5">
             <div className="px-6 py-5 bg-white dark:bg-[var(--card)] flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">You've completed Cohort 1</p>
-                <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Congratulations. Keep building.</p>
+                <p className="text-sm font-medium text-[var(--charcoal-900)] dark:text-foreground">You&apos;ve completed Cohort 1</p>
+                <p className="text-xs text-[var(--taupe-400)] font-light mt-0.5">Congratulations, {gradName}. Keep building.</p>
               </div>
               <Link
                 href={OVERVIEW}

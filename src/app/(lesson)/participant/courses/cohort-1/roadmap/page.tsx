@@ -3,48 +3,30 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getIntakeData } from "@/utils/intake-helper";
-import { PARTICIPANT_ROADMAPS, sessionWeek, type Move } from "@/utils/participant-roadmaps";
+import { resolveRoadmap, sessionWeek } from "@/utils/participant-roadmaps";
 
 export default async function RoadmapPage() {
   const intake = await getIntakeData();
   if (!intake) redirect("/login");
 
   const firstName = intake.first_name || "";
-  const key = firstName.toLowerCase().split(" ")[0];
-  const data = PARTICIPANT_ROADMAPS[key];
 
   const focusArea    = intake.first_focus || "your business";
   const aiRole       = intake.ai_employee_role || "AI assistant";
   const metrics      = intake.dashboard_metrics || "key metrics";
-  const oneThing     = intake.one_thing || "get more done with less effort";
-  const business     = intake.business_oneliner || "your business";
-  const voiceOwner   = intake.voice_owner || "personal brand";
   const timezone     = intake.timezone || "your timezone";
   const peakTime     = intake.peak_time || "your peak hours";
   const os           = intake.os || "Windows";
+  const voiceOwner   = intake.voice_owner || "personal brand";
+  const oneThing     = intake.one_thing || "get more done with less effort";
 
-  const photo = data?.photo ?? null;
-  const insight = data?.insight ??`${firstName} is joining this bootcamp with a clear goal: to ${oneThing}. Every session has been designed around the reality of running ${business}, with a focus on ${focusArea}. By the end of Week 4, ${firstName} will have a Claude stack that runs alongside their business every day.`;
-  const accentColor = data?.accentColor ?? "#7D6B5A";
-
-  const moves: Move[] = data?.moves ?? [
-    { session: "Kickoff", date: "Jun 5", label: "Fri · Orientation", move: `Come with one sentence that describes your business and who it serves. Use it as your very first Claude prompt tonight.` },
-    { session: "S1", date: "Jun 6", label: "Sat · Week 1", move: `Create three Claude Projects around ${focusArea}. Load each with context about ${business}. Claude works best when it knows exactly what you're running.` },
-    { session: "S2", date: "Jun 7", label: "Sun · Week 1", move: `Upload 2–3 docs that represent your work — a proposal, an email, a brief. Write custom instructions as ${voiceOwner}. Ask Claude to draft something. If it sounds like you, you're set.` },
-    { session: "S3", date: "Jun 13", label: "Sat · Week 2", move: `Design your AI employee: a ${aiRole}. Write out the 5 tasks it handles. What does it need to know to do them well in your voice? Write that brief before Sunday.` },
-    { session: "S4", date: "Jun 14", label: "Sun · Week 2", move: `Run your AI employee through 3 real scenarios from your actual work. Refine the brief until it handles all three without needing extra prompting. When it does, you've just scaled your output.` },
-    { session: "S5", date: "Jun 20", label: "Sat · Week 3", move: `Sketch what you want your dashboard to show: ${metrics}. Write it in plain English before the session. Think of it as the one screen you'd open every morning.` },
-    { session: "S6", date: "Jun 21", label: "Sun · Week 3", move: `Build your dashboard with Claude Code. Stretch goal: add one metric that changes how you prioritise. Screenshot it when it's done — it's evidence of a new skill.` },
-    { session: "S7", date: "Jun 27", label: "Sat · Week 4", move: `Map your daily Claude routine: what you open, when, and why. Keep it under 30 minutes total. Write it like a habit you'd teach someone else.` },
-    { session: "S8", date: "Jun 28", label: "Sun · Week 4", move: `Present your full Claude stack — Projects, AI employee, dashboard — as one unified system. Frame it as: "this is how I ${oneThing}." That's your graduation story.` },
-  ];
-
-  const deliverables = data?.deliverables ?? [
-    { week: "Week 1", color: "#1A6045", text: `3 Claude Projects loaded with context about ${business} — Claude now knows your world.` },
-    { week: "Week 2", color: "#1A4070", text: `1 AI ${aiRole} briefed and tested against real scenarios from your work.` },
-    { week: "Week 3", color: "#2E2868", text: `A custom business dashboard tracking ${metrics}, built with Claude Code.` },
-    { week: "Week 4", color: "#6B3A10", text: `A daily Claude routine and a graduation showcase. You came in wanting to ${oneThing}. You leave with the system to do it.` },
-  ];
+  // Hand-authored roadmap when available, otherwise generated from intake.
+  const rd = resolveRoadmap(intake);
+  const photo = rd.photo || null;
+  const insight = rd.insight;
+  const accentColor = rd.accentColor;
+  const moves = rd.moves;
+  const deliverables = rd.deliverables;
 
   return (
     <div className="flex-1 bg-[var(--beige-50)] dark:bg-background flex flex-col overflow-hidden min-h-0">
@@ -219,7 +201,7 @@ export default async function RoadmapPage() {
           {/* Session-by-session moves */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">
-              Session-by-session · your moves
+              Session-by-session · your ideal version
             </p>
             <div className="flex flex-col gap-2">
               {moves.map((m, i) => {
@@ -250,7 +232,7 @@ export default async function RoadmapPage() {
                         <svg className="size-3.5 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke={accentColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
-                        <span><strong className="font-semibold text-[var(--charcoal-900)] dark:text-foreground">Your move:</strong> {m.move}</span>
+                        <span><strong className="font-semibold text-[var(--charcoal-900)] dark:text-foreground">Ideal version:</strong> {m.ideal}</span>
                       </div>
                     </div>
                   </div>
