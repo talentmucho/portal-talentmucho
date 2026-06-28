@@ -12,7 +12,7 @@ const SESSION = {
   title: "Build your business dashboard",
   date: "Sun, Jun 21",
   time: "3 – 7 PM CET",
-  videoUrl: null as string | null,
+  videoUrl: "https://fathom.video/embed/3Ua5hZSTN5EVaiaj1G58CHxbryd1fksU" as string | null,
   description:
     "The big build session. You'll use Claude Code to create a custom dashboard for your business ~ pulling in your data, designing what matters to you, and iterating live. No coding experience required.",
   resources: [

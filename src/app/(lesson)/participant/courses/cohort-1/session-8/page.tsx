@@ -13,7 +13,7 @@ const SESSION = {
   title: "Your full Claude stack working together",
   date: "Sat, Jun 27",
   time: "4 – 7 PM CET",
-  videoUrl: null as string | null,
+  videoUrl: "https://fathom.video/embed/aJvp-S1HBZs4p6cBJzmxFKyuqSz48jKF" as string | null,
   description:
     "All three outputs from the bootcamp ~ your Claude.ai Projects, your AI employee, and your Claude Code dashboard ~ run together in a real workflow. We'll map exactly where Claude fits in your workday and write your daily routine.",
   resources: [
