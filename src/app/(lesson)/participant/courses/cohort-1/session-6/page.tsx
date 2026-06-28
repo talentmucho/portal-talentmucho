@@ -15,7 +15,7 @@ const SESSION = {
   title: "Claude Code ~ your first build",
   date: "Sat, Jun 20",
   time: "3 – 7 PM CET",
-  videoUrl: null as string | null,
+  videoUrl: "https://fathom.video/embed/-uoJjLD-Cx-69MUGtegxk-2cmxdRymqy" as string | null,
   description:
     "Claude Code makes building with AI tangible ~ no prior coding needed. We'll set up your environment, understand the build loop, and complete a small business tool together so you feel the mechanics before the big build in Session 6.",
   resources: [
