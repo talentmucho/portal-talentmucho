@@ -134,7 +134,7 @@ export default async function AdminRoadmapsPage({
           {/* Session moves */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-4">
-              Session-by-session · their moves
+              Session-by-session · their ideal version
             </p>
             <div className="flex flex-col gap-2">
               {data.moves.map((m, i) => {
@@ -163,8 +163,8 @@ export default async function AdminRoadmapsPage({
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                         <span>
-                          <strong className="font-semibold text-[var(--charcoal-900)] dark:text-foreground">Their move:</strong>{" "}
-                          {m.move}
+                          <strong className="font-semibold text-[var(--charcoal-900)] dark:text-foreground">Ideal version:</strong>{" "}
+                          {m.ideal}
                         </span>
                       </div>
                     </div>

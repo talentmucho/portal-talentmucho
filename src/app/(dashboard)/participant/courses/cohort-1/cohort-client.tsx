@@ -13,7 +13,7 @@ import {
   TabsContents,
   TabsContent,
 } from "@/components/animate-ui/components/radix/tabs";
-import { PARTICIPANT_ROADMAPS, sessionWeek, type ParticipantData } from "@/utils/participant-roadmaps";
+import { PARTICIPANT_ROADMAPS, resolveRoadmap, sessionWeek, type ParticipantData } from "@/utils/participant-roadmaps";
 
 const weeks = [
   {
@@ -78,9 +78,16 @@ const sessions = [
 function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; labelPrefix?: string }) {
   return (
     <div className="flex flex-col gap-6">
-      {/* Cover photo — full bleed, no crop */}
-      <div className="relative w-full -mx-6 md:-mx-8" style={{ width: "calc(100% + 3rem)" }}>
-        <Image src={data.photo} alt={data.name} width={1200} height={800} className="w-full h-auto block" />
+      {/* Cover — full bleed. Uses the avatar photo when present, otherwise a brand gradient. */}
+      <div className="relative w-full -mx-6 md:-mx-8 overflow-hidden" style={{ width: "calc(100% + 3rem)" }}>
+        {data.photo ? (
+          <Image src={data.photo} alt={data.name} width={1200} height={800} className="w-full h-auto block" />
+        ) : (
+          <div
+            className="w-full h-56 md:h-72"
+            style={{ background: `linear-gradient(135deg, ${data.accentColor} 0%, ${data.accentColor}AA 55%, ${data.accentColor}66 100%)` }}
+          />
+        )}
         <div
           className="absolute inset-0"
           style={{ background: `linear-gradient(to top, ${data.accentColor}F5 0%, ${data.accentColor}90 25%, ${data.accentColor}30 55%, transparent 80%)` }}
@@ -119,7 +126,7 @@ function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; la
 
       {/* Session moves */}
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Session-by-session · {labelPrefix === "Your" ? "your" : `${data.name}'s`} moves</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--taupe-400)] mb-3">Session-by-session · {labelPrefix === "Your" ? "your" : `${data.name}'s`} ideal version</p>
         <div className="flex flex-col gap-2">
           {data.moves.map((m, i) => {
             const wk = sessionWeek(i);
@@ -133,7 +140,7 @@ function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; la
                   <p className="text-[10px] font-medium text-[var(--taupe-400)] uppercase tracking-[0.12em] mb-2">{m.label}</p>
                   <div className="flex gap-2 items-start text-sm font-light text-[var(--charcoal-900)] dark:text-foreground leading-relaxed rounded-xl px-3 py-2.5" style={{ background: `${data.accentColor}08` }}>
                     <svg className="size-3.5 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke={data.accentColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                    <span><strong className="font-semibold">{labelPrefix === "Your" ? "Your" : `${data.name}'s`} move:</strong> {m.move}</span>
+                    <span><strong className="font-semibold">Ideal version:</strong> {m.ideal}</span>
                   </div>
                 </div>
               </div>
@@ -148,9 +155,6 @@ function RoadmapView({ data, labelPrefix = "Your" }: { data: ParticipantData; la
 const PARTICIPANT_KEYS = Object.keys(PARTICIPANT_ROADMAPS) as (keyof typeof PARTICIPANT_ROADMAPS)[];
 
 export default function Cohort1Client({ intake, isAdmin = false }: { intake: IntakeAnswers & { payment_email?: string | null; submitted_at?: string | null }; isAdmin?: boolean }) {
-  const firstName = intake.first_name || "";
-  const key = firstName.toLowerCase().split(" ")[0];
-  const roadmap = PARTICIPANT_ROADMAPS[key];
   const [activeParticipant, setActiveParticipant] = useState<string>(PARTICIPANT_KEYS[0]);
 
   return (
@@ -325,13 +329,9 @@ export default function Cohort1Client({ intake, isAdmin = false }: { intake: Int
                 </div>
                 <RoadmapView data={PARTICIPANT_ROADMAPS[activeParticipant]} labelPrefix={PARTICIPANT_ROADMAPS[activeParticipant].name} />
               </div>
-            ) : roadmap ? (
-              <div className="pt-2">
-                <RoadmapView data={roadmap} labelPrefix="Your" />
-              </div>
             ) : (
-              <div className="pt-6 text-center text-sm text-[var(--taupe-400)] font-light">
-                Your roadmap will be available after the kickoff session.
+              <div className="pt-2">
+                <RoadmapView data={resolveRoadmap(intake)} labelPrefix="Your" />
               </div>
             )}
           </TabsContent>
